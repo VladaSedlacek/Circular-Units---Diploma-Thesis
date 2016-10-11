@@ -291,7 +291,7 @@ c:&=[k:\Q]+3-\sum_{i,j,l}([k\cap K_iK_jK_l:\Q]+2)-\sum_{i,j}([k\cap K_iK_j:\Q]+1
 
 We will always refer to the conjugates of $\eta$ by their coordinates $x_1,x_2,x_3,x_4$ according to Proposition \ref{gal}. This allows for geometric interpretation.
 
-\section{The case $r_1=r_2=r_4=a_3=1$}
+\section{The case $r_1=r_2=a_3=r_4=1$}
 (Note that in this case we have $s_{34}=1$.) %, therefore $$c=a_1a_2a_4\frac{m^3}{r_3}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}+a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1.$$
 \paragraph*{}
 We will add all the conjugates of $\eta$ to our basis except the following cases:
@@ -310,12 +310,40 @@ Next, we will recover the cases $$x_1=a_1m-1, 0\leq x_2 < a_2(m-1)-1, 0\leq x_3 
 Next, we will sequentially recover all the cases $$0\leq x_1 < a_1m-1, a_2(m-1)\leq x_2 < a_2m-1, 0\leq x_3 <\frac{m}{r_3}-1$$
 using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$. We can do this since any two conjugates of $\eta$ used in this relation differ by at least $a_2$ in their second coordinate. After this, we can recover the cases $$0\leq x_1 < a_1, x_2 = a_2m-1, 0\leq x_3 <\frac{m}{r_3}-1$$ using the relation $R_2N_2\sim 0$.
 \paragraph*{}
-Finally, we can use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2m-1, 0\leq x_3 <\frac{m}{r_3}-1$$ and subsequently $R_4N_4$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2(m-1)-1, 0\leq x_3 <\frac{m}{r_3}-1.$$ By repeating these two steps $(m-2)$ more times, increasing the first coordinate by $a_1$ each time, we will recover all the conjugates.
+Finally, we can use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2m-1, 0\leq x_3 <\frac{m}{r_3}-1$$ and subsequently $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2(m-1)-1, 0\leq x_3 <\frac{m}{r_3}-1.$$ By repeating these two steps $(m-2)$ more times, increasing the first coordinate by $a_1$ each time, we will recover all the conjugates.
 
-\section{The case $a_1=a_2=a_3=a_4=r_3=r_3=1, \gcd(\frac{m}{r_1},\frac{m}{r_2})=1$, $(\frac{m}{r_2}=2)$}
-In this case, using Lemma \ref{coprime}, we have $$c=\left(\frac{m}{r_1}-1\right)\left(\frac{m}{r_2}-1\right)\left(m-2\right)+\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)-1.$$
+\section{The case $a_1=a_2=r_3=r_4=1$}
+In this case, using Lemma \ref{coprime}, we have
+\begin{equation*}
+\begin{split}
+c&=a_3\left(\frac{m}{r_1}-1\right)\left(\frac{m}{r_2}-1\right)\left(m-1\right)-\left(\frac{m}{r_1}-1\right)\left(\frac{m}{r_2}-1\right)+\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)-1\\
+&+(a_4-1)\left(a_3\left(\frac{m}{r_1}-1\right)\left(\frac{m}{r_2}-1\right)m-\left(\frac{m}{r_1}-1\right)\left(\frac{m}{r_2}-1\right)\right).
+\end{split}
+\end{equation*}
+We will add the following $c$ conjugates of $\eta$ to our basis:
+\begin{itemize}
+\item $0\leq x_1<a_1\frac{m}{r_1}-1, 0\leq x_2<a_2\frac{m}{r_2}-1, 0\leq x_3<a_3m-1, 0<x_4\leq a_4m$,
+\item $0\leq x_1<a_1\frac{m}{r_1}-1, 0\leq x_2<a_2\frac{m}{r_2}-1, 0\leq x_3<a_3(m-1), x_4=0$,
+\item $a_1\frac{m}{r_1}-(\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)-1)\leq x_1\leq a_1\frac{m}{r_1}-1, \leq x_2=a_2\frac{m}{r_2}-1, x_3=a_3m-1, x_4=0$.
+\end{itemize}
 
-$$0\sim\left(\left(\sum_{u=0}^{m-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\right)+\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2}N_3\right)\left(\sum_{u=0}^{\frac{\frac{m}{r_1}-3}{2}}\sigma_1^{2u}\right)$$
+\paragraph*{}
+First we will recover the cases $0<x_4<a_4$, $x_1=a_1m-1$ or $x_2=a_2m-1$ or $x_1=\frac{m}{r_3}-1$ using the relations $N_1\sim 0, N_2\sim 0, R_3N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
+\paragraph*{}
+Next, we will recover the cases $0\leq x_3<a_3(m-1)$, $x_1=a_1m-1$ or $x_2=a_2m-1$ using the relations $N_1\sim 0, N_2\sim 0$. Now we can also use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}$ multiple times to recover the cases $$0\leq x_1\leq a_1\frac{m}{r_1}-1, 0\leq x_2\leq a_2\frac{m}{r_2}-1, a_3(m-1)<x_3<a_3m-1.$$
+\paragraph*{}
+At this moment, we are only missing the cases $$0\leq x_1\leq a_1\frac{m}{r_1}-1, 0\leq x_2\leq a_2\frac{m}{r_2}-1, x_3=a_3(m-1)=x_3$$ and some of those with $x_3=a_3m-1$. 
+Let's focus on the second kind. The conjugates with $x_3=a_3m-1$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $\frac{m}{r_1}$ and $\frac{m}{r_2}$. It is easy to see that such a rectangle can be partitioned into $\gcd(\frac{m}{r_1},\frac{m}{r_2})$ diagonals, each containing $\lcm(\frac{m}{r_1},\frac{m}{r_2})$ elements (two conjugates lie in the same diagonal iff one can be obtained from the other as a multiple of $\sigma_1^v\sigma_2^v$ for some $v\in\Z$). Now consider the relations $$T:=-\left(\sigma_3^{a_3-1}R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\right)-\sigma_1^{a_1\frac{m}{r_1}-2}\sigma_2^{a_2\frac{m}{r_2}-2} R_3N_3$$
+and
+$$S_v:=\sum_{u=0}^{v}\sigma_1^{-u}\sigma_2^{-u}T \text{ for } v\in\Z.$$
+Clearly $T\sim 0, S_v\sim 0$ for all $v\in\Z$. Also note that for any $v$, $S_v$ contains no conjugate with $x_3=a_3(m-1)$ and contains exactly one conjugate with $x_3=a_3m-1$ that we cannot recover yet minus $\sigma_3^{a_3m-1}$, and these two always lie on the same diagonal. Moreover, any conjugate sharing this diagonal can occur as the one with positive sign for suitable $v\in\Z$. Therefore, since we already have the conjugates $$a_1\frac{m}{r_1}-(\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)-1)\leq x_1\leq a_1\frac{m}{r_1}-1, \leq x_2=a_2\frac{m}{r_2}-1, x_3=a_3m-1$$ in our basis, we can recover all the conjugates that share the same diagonal with any of these.
+\paragraph*{}
+Now we can recover all the conjugates with $x_3=a_3m-1$ except $\lcm(\frac{m}{r_1},\frac{m}{r_2}$ of them, which lie on the same diagonal. By using the relation $\sigma_1^{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)-1}\left(S_v-S_w\right)\sim 0$ for suitable $v,w\in\Z$, it is clear that we can generate the difference of any two conjugates lying on this diagonal. Now note that in each column, there are exactly $\frac{\frac{m}{r_1}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}$ conjugates lying on this diagonal, and in each row, there are exactly $\frac{\frac{m}{r_2}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}$ conjugates lying on this diagonal. Moreover, we have $$\gcd\left(\frac{\frac{m}{r_1}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)},\frac{\frac{m}{r_2}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}\right)=1,$$
+so there exists an integer $z>0$ such that $$\frac{\frac{m}{r_2}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}z\equiv 1\pmod{\frac{\frac{m}{r_1}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}}.$$
+Using the observation above, we can generate $\frac{\frac{m}{r_2}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}z$ differences of conjugates lying on the last diagonal in such a way that we will obtain $\frac{\frac{m}{r_2}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}$ conjugates with a negative sign evenly distributed among the row $x_1=0$,  $\frac{\frac{\frac{m}{r_2}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}z-1}{\frac{\frac{m}{r_1}}{\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)}}$ conjugates with a positive sign evenly distributed among the column $x_2=0$ and finally one conjugate with a positive sign with $$x_1=a_1\frac{m}{r_1}-(\gcd\left(\frac{m}{r_1},\frac{m}{r_2}\right)-1)-1,x_2=\frac{m}{r_2}-1.$$
+We can keep this last one and get rid of the rest using the relations $N_1\sim 0$, $N_2\sim 0$. Using this last one, we can generate the rest of its diagonal in the same way as above. Hence we have recovered all the conjugates with $x_3=a_3m-1$. Finally, using the relation $R_3N_3\sim 0$, we can now recover all the conjugates with $x_3=a_3(m-1)$ and we are done.
+
+%$$0\sim\left(\left(\sum_{u=0}^{m-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\right)+\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2}N_3\right)\left(\sum_{u=0}^{\frac{\frac{m}{r_1}-3}{2}}\sigma_1^{2u}\right)$$
 \section{The module of relations}
 \section{Construction of suitable abelian fields}
 Let $m,a_1,a_2,a_3,a_4,r_1,r_2,r_3,r_4$ be positive integers such that 
