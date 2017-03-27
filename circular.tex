@@ -41,6 +41,8 @@
 \newcommand{\bb}{\mathfrak{b}}
 \newcommand{\rr}{\mathfrak{r}}
 \newcommand{\al}{\alpha}
+\newcommand{\uo}{\overline{u}}
+\newcommand{\vo}{\overline{v}}
 \newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
 \newcommand{\Char}{\mathrm{char }}
 \newcommand{\lcm}{\mathrm{lcm}}
@@ -365,6 +367,181 @@ Using the observation above, we can generate $n_2'z$ differences of conjugates l
 We can keep this last one and get rid of the rest using the relations $N_1\sim 0$, $N_2\sim 0$. Using this last one, we can generate the rest of its diagonal in the same way as above. Hence we have recovered all the conjugates with $x_3=a_3m-1$. Finally, using the relation $R_3N_3\sim 0$, we can now recover all the conjugates with $x_3=a_3(m-1)-1$ and we are done.
 
 %$$0\sim\left(\left(\sum_{u=0}^{m-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\right)+\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2}N_3\right)\left(\sum_{u=0}^{\frac{\frac{m}{r_1}-3}{2}}\sigma_1^{2u}\right)$$
+
+\section{The case $a_1=a_2=a_3=r_4=1, s_{12}=s_{13}=s_{23}=1,\gcd(n_1,n_2,n_3)=1$}
+In this case, using Lemma \ref{coprime}, we have
+%case when some n_i are coprime
+\begin{equation*}
+\begin{split}
+c=&a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)+a_4-2+a_4(n_1+n_2+n_3)+\\
+&\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+=&(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+\\
+&(n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2.
+\end{split}
+\end{equation*}
+We will add the following $c$ conjugates of $\eta$ to our basis:
+\begin{itemize}
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<a_3m-1, 0<x_4\leq a_4-1$,
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 1\leq x_3<n_3-1, x_4=0$,
+\item $0\leq x_1< n_1-\gcd(n_1,n_3)-1, 0\leq x_2<n_2-1, x_3=0, x_4=0$,
+\item           $x_1=n_1-\gcd(n_1,n_3)-1, 0\leq x_2<\gcd(n_2,n_3)+\gcd(n_1,n_2)-2, x_3=0, x_4=0$.
+\end{itemize}
+
+First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=a_3m-1$ using the relations $N_1\sim 0, N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$. Next, we will recover the cases $1< x_3 \leq n_3-1$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$ and the cases $x_3=0$, $0\leq x_1< n_1-\gcd(n_1,n_3)-1$, $x_2=n_2-1$ using the relation $N_2\sim 0$.
+\paragraph*{}
+At this moment, we are only missing all the cases with $x_3=1$ and some of those with $x_3=0$. From now on, we will only focus on recovering those with $x_3=0$ (without explicitly mentioning it anymore), because once we have those, we can recover those with $x_3=1$ using just the relation $N_3\sim 0$.
+\paragraph*{}
+Now let $t,u,v\in\Z$ be such that $n_1=tu,n_2=tv$ and $\gcd(u,v)=1$, i.e. $t=\gcd(n_1,n_2)$. Since $s_{12}=1$, this implies that $m=\lcm(n_1,n_2)=tuv$. But we also have the conditions $s_{13}=s_{23}=1$ which imply that $tuv=m=\lcm(tu,n_3)=\lcm(tv,n_3)$. Next, since $\gcd(n_1,n_2,n_3)=1$, $t$ must be coprime with $n_3$, therefore $n_3\mid uv$. Finally, the equalities $$\lcm(tu,n_3)=\frac{tun_3}{(tu,n_3)}=tuv=\frac{tvn_3}{(tv,n_3)}=\lcm(tv,n_3)$$
+show that $u,v\mid n_3$, hence $uv=\gcd(u,v)\mid n_3$ and $n_3=uv$. It follows that $t=r_3,u=r_2,v=r_1$ (and thus $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$. Thanks to the symmetry, we will assume $1<t<u<v$ (if any of $t,u,v$ would equal $1$, this case could be reduced to one of the previous two). We will also write $\uo:=u\pmod{t}$, $\vo:=v\pmod{t}$ (so that $\uo,\vo\in\{1,2,\dots,t-1\}$) and similarly for other expressions. In particular, the expressions $\uo/\vo$ and $\vo/\uo$ will be regarded modulo $t$ as well.
+% It follows that also $\gcd(t,u)=\gcd(t,v)=1$ (and therefore $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$. In fact, 
+\paragraph*{}
+The conjugates with $x_3=0$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $n_1$ and $n_2$. Since for each $x_4$, there are $n_3$ rectangles in total, the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles. Thus the relation $$T':=R_4\sum_{q=0}^{m-1}\sigma_1^{q}\sigma_2^{q}\sigma_3^{q}-\sum_{q=0}^{r_3-1} \sigma_1^{1+q n_3}\sigma_2^{1+q n_3}N_3 $$
+contains only elements we have already recovered and those with $x_3=0$ (and clearly $T'\sim 0$). More specifically, if we let $T$ be the sum of the conjugates contained in  $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ with $x_3=0$, then the relations $(1-\sigma_1\sigma_2)T$ and $T'$ differ only by conjugates which we have already recovered.
+\paragraph*{}
+Now we will decompose our rectangle (with $x_3=x_4=0$) into $t\times t$ rectangular blocks of height $u$ and width $v$ in the obvious way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $t$ consecutive blocks next to (resp. above) each other. Since $u,v\mid n_3$ and the conjugates in $T$ are given by $\sigma_1^{qn_3}\sigma_2^{qn_3}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $T$ contains exactly one conjugate in every big row (resp. big column), and these have the same relative position in each of the respective blocks (determined only by $n_3 \mod t$). We can be even more precise: the horizontal distance between $\sigma_1^{qn_3}\sigma_2^{qn_3}$ and $\sigma_1^{(q+1)n_3}\sigma_2^{(q+1)n_3}$ for $0\leq q \leq r_3-1$ is exactly $\uo\cdot v$, i.e $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot u$, i.e $\vo$ blocks (again this follows easily from the Chinese remainder theorem).
+\paragraph*{}
+From now on, we will regard the elements of our rectangle as their images in the quotient module of $\Z[G/H]/(N_1,N_2,N_3,N_4)$ by the $\Z$-module of the conjugates we can already recover (including those living in the maximal subfields ramified at three primes). We will call this quotient module $Q$. Showing that we have indeed chosen a basis then amounts to showing that the class of each conjugate in our rectangle is trivial in $Q$. For all $1\leq q\leq t$, we will denote the class of $\eta^{\sigma_1^{tu-q}}$ by $X_q$ and we will also put $X_{q'}:=X_q$ for all $q'\in\Z$, $q'\equiv q\pmod{t}$. Also for all $v+t-2\leq q\leq tv-1$ we will denote the class of $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ by $Y_q$.
+
+%It is easy to see that such a rectangle can be partitioned into $\gcd(n_1,n_2)$ diagonals, each containing $\lcm(n_1,n_2)$ elements (two conjugates lie in the same diagonal iff one can be obtained from the other as a multiple of $\sigma_1^v\sigma_2^v$ for some $v\in\Z$).
+
+%Explain shifts and the shape of the relation!
+
+\paragraph*{}
+Now it suffices to show that $X_q=0$ for all $1\leq q\leq t$ and $Y_q=0$ for all $v+t-2\leq q\leq tv-1$.
+\paragraph*{}
+Using the relation $N_1\sim 0$, we obtain the equation $u\cdot (X_1+\dots+X_t)=0$, and similarly the relation $N_2\sim 0$ implies $v\cdot (X_1+\dots+X_t)=0$. Since $\gcd(u,v)=1$, this implies $X_1+\dots+X_t=0$ be Bezout's identity. We will put $\beta=X_1+\dots+X_t$.
+Next, we will put $$\Gamma:=\sum_{q=0}^{-\uo/\vo-1}\sum_{p=1}^{\uo}X_{\overline{p-qv}}$$
+and $$\Delta:=\sum_{q=0}^{t-1}q\cdot\sum_{p=1}^{\uo}X_{\overline{p-qv}}.$$
+It's easy to check that all the $Y_q$'s cancel out in both of them, and that any shift in the indices in $\Gamma$ by $1,2,\dots,t-3$ will also result in a valid relation.
+\paragraph*{}
+Letting $t,u,v$ vary (but with the same meaning as before), we will construct a matrix $M(t,u,v)$ of type $t\times t$ as follows:
+\begin{itemize}
+\item The first row will consist of all 1's (corresponding to the relation $\beta$).
+\item The second row will correspond to the relation $\Gamma$.
+\item The $q$-th row for $3\leq q\leq t-1$ will correspond to the relation $\Gamma$ shifted by $q$ to the right.
+\item The last row will correspond to the relation $\Delta$.
+\end{itemize}
+
+Since the rows of $M(t,u,v)$ are the coefficients of valid relations, we have $M(t,u,v)\cdot X^T=0$, where $X=(X_1,\dots,X_t)$. We will show that $M(t,u,v)$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need several technical results to describe $M(t,u,v)$ more precisely.
+
+\begin{lemma}
+For any $u,u',v,v'$ with $u\equiv u'\pmod{t}, v\equiv v'\pmod{t}$, we have $|\det M(t,u,v)|=|\det M(t,u',v')|.$
+\end{lemma}
+\begin{proof}
+This follows from the facts that $\uo=\overline{u'}, \vo=\overline{v'}$, the shifts in both $\Delta$ and $\Gamma$ (and the number of summands in case of $\Gamma$) depend only on $\uo,\vo$ and each summand in both $\Gamma$ and $\Delta$ changes only by a multiple of $\beta$ whenever we alter $\uo$ or $\vo$ by a multiple of $m$.
+\end{proof}
+
+\begin{lemma}\label{shift}
+For any $u,u'$, the matrices $M(t,u',v)$ is obtained from the matrix $M(t,u,v)$ be cyclic column shift by $u'-u$ places to the right. In particular, $|\det M(t,u,v)|=|\det M(t,u',v)|.$
+\end{lemma}
+\begin{proof}
+It suffices to show this for the second and the last row. We will start with the second. Let $P(t,\uo,\vo)$ be the polynomial in the localization $L$ of the quotient ring $\Z[x]/(1+x+x^2+\dots+x^{t-1})$ at the multiplicative subset generated by $\{(1-x),(1-x^2),(1-x^3),\dots\}$ such that its coefficient at $x^q$ is exactly the coefficent at $X_{q+1}$ in $\Gamma$ for all $0\leq q \leq t-1$. Since a cyclic shift of the indices of $X_q$ corresponds to multiplication by $x$ in $L$, we have
+\begin{equation}\label{Gamma}
+\begin{split}
+P(t,\uo,\vo)&=(1+x+\dots+x^{\uo-1})(1+x^{m-\uo}+x^{2(m-\uo)}+\dots+x^{(t-\vo/\uo-1)(t-\uo)})\\
+&=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{(t-\vo/\uo)(t-\uo)}-1}{x^{t-\uo}-1}\\
+&=\frac{x^{\uo}-1}{x^{t-\uo}-1}\cdot \frac{x^{\vo}-1}{x-1}\\
+&=-x^{\uo}\cdot (1+x+x^2+\dots+x^{\vo-1})\\
+&=x^{\uo}\cdot (x^{\vo}+x^{\vo+1}+\dots+x^{t-1}).
+\end{split}
+\end{equation}
+Coming back to the coefficients in $\Gamma$, this means that % the second row of $M(t,u,v)$
+%is exactly $$(1,\underbrace{0,\dots,0}_{\vo},\underbrace{1,\dots,1}_{t-\vo})$$ for $\uo=1$ and 
+incrementing $\uo$ by $1$ results in a cyclic shift of $\Gamma$ by $1$ to the right.
+
+Similarly, let $P'(t,\uo,\vo)$ be the polynomial in $L$ corresponding to the last row. Then we have (using the substitution $y=x^{t-\uo}$, so that $y^m=1$ in $L$)
+\begin{equation}\label{Delta}
+\begin{split}
+P(t,\uo,\vo)&=(1+x+\dots+x^{\uo-1})(1+x+\dots+x^{\vo-1})(x^{t-\uo}+2x^{2(t-\uo)}+\dots+(t-1)x^{(t-1)(t-\uo)})\\
+&=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1}\cdot y \cdot \frac{\partial}{\partial y} \left(\frac{y^{m}-1}{y-1}\right)\\
+&=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1}\cdot y \cdot \frac{my^{m-1}(y-1)-(y^m-1)}{(y-1)^2}\\
+&=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1} \cdot \frac{m}{y-1}\\
+&=\frac{x^{\uo}-1}{x^{t-\uo}-1}\cdot m\cdot\frac{x^{\vo}-1}{(x-1)^2}\\
+&=-m\cdot x^{\uo}\cdot\frac{x^{\vo}-1}{(x-1)^2}\\
+\end{split}
+\end{equation}
+Again, this means that incrementing $\uo$ by $1$ results in a cyclic shift of $\Delta$ by $1$ to the right.
+\end{proof}
+
+Thanks to this result, we will fix $\uo=1$ in the following and write simply $M(t,v)$.
+
+\begin{lemma}
+The second row of $M(t,v)$
+is exactly $$(1,\underbrace{0,\dots,0}_{\vo},\underbrace{1,\dots,1}_{t-\vo}).$$
+\end{lemma}
+\begin{proof}
+This follows from the equation \eqref{Gamma}.
+\end{proof}
+
+\begin{lemma}
+The last row of $M(t,v)$ is $$(0,t-\vo,2(t-\vo),\dots,(\vo-2)(t-\vo),(\vo-1)(t-\vo),\vo(t-\vo),\vo(t-\vo-1),\vo(t-\vo-2),\dots,\vo).$$
+\end{lemma}
+\begin{proof}
+This follows from the equation \eqref{Delta} after some computations (it can also be done in elementary way for $\uo=1$).
+\end{proof}
+
+\begin{lemma}\label{euclid}
+%We have $|\det M(t,1,v)|=|\det M(v, t\mod v, v-t\mod v)|$.
+For $v\neq1$, we have $|\det M(t,v)|=|\det M(v, (v-t)\mod v)|$.
+\end{lemma}
+\begin{proof}
+By substracting the second row from the third, the third from the fourth, \dots, the $t-2$-th from the $t-1$-th, the matrix $M(t,v)$ becomes
+$$
+\begin{pmatrix}
+ 1 & 1 & 1 & \dots & 1& 1&1& \dots & 1 & 1\\ 
+ 1 & 0 & 0 & \dots & 0 & 1&1&\dots & 1 & 1\\ 
+ 0 & 1 & 0 & \dots& 0 & -1&0&\dots & 0 & 0\\ 
+ 0 & 0 & 1 & \dots & 0 &0&-1& \dots & 0 & 0\\ 
+ \vdots & \vdots & \vdots & \dots& \vdots & \vdots &\vdots &\ddots& \vdots & \vdots\\ 
+ \vdots & \vdots & \vdots & \dots& \vdots & \vdots &\vdots &\ddots& \vdots &-1\\ 
+-1 & \vdots & \vdots & \dots& \vdots & \vdots &\vdots &\ddots& \vdots &\vdots\\ 
+\vdots & -1 & \vdots & \dots& \vdots & \vdots &\vdots &\ddots& \vdots &\vdots\\ 
+\vdots & \vdots & \vdots & \dots& \vdots & \vdots &\vdots &\ddots& \vdots & \vdots\\ 
+ 0 & t-\vo &2(t-\vo) & \dots& \vo(t-\vo) &\vo(t-\vo-1)& \vo(t-\vo-2)  &\dots& 2\vo & \vo
+\end{pmatrix}.
+$$
+In other words, we have the equality $X_q=X_{q+\vo}$ for all $2\leq q\leq t-\vo$ (and even for some others, but we won't need those now). Therefore by adding the corresponding rows to the last one, we can get zeroes everywhere in the last row except for the second, third,\dots and $\vo$-th column. After this operation, the last row will become
+\end{proof}
+
+\begin{lemma}
+$M(t,v)$ is unimodular, hence $X=0$.
+\end{lemma}
+\begin{proof}
+Since $1=\gcd(t,v)=\gcd(v, (v-t)\mod v)$ %for $v\neq 1$
+ and $(v-t)\mod v<v$, after finitely many applications of Lemma \ref{euclid} we can make a reduction to the case $\vo=1$. Then by substracting the first row from all the others except the last one, we have
+\begin{equation*}
+\begin{split}
+\det M(t,v)&=\pm \det
+\begin{pmatrix}
+ 1 & 1 & 1 & 1 & \dots & 1 & 1\\ 
+ 1 & 0 & 1 & 1 & \dots & 1 & 1\\ 
+ 1 & 1 & 0 & 1 & \dots & 1 & 1\\ 
+ 1 & 1 & 1 & 0 & \dots & 1 & 1\\ 
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\ 
+ 1 & 1 & 1 & 1 & \dots & 0 & 1\\ 
+ 0 & t-1 & t-2 & t-3 & \dots  & 2 & 1
+\end{pmatrix}\\
+&=\pm \det
+\begin{pmatrix}
+ 1 & 1 & 1 & 1 & \dots & 1 & 1\\ 
+ 0 & -1 & 0 & 0 & \dots & 0 & 0\\ 
+ 0 & 0 & -1 & 0 & \dots & 0 & 0\\ 
+ 0 & 0 & 0 & -1 & \dots & 0 & 0\\ 
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\ 
+ 0 & 0 & 0 & 0 & \dots & -1 & 0\\ 
+ 0 & t-1 & t-2 & t-3 & \dots  & 2 & 1
+\end{pmatrix}\\
+&=\pm 1.
+\end{split}
+\end{equation*}
+\end{proof}
+
+\begin{lemma}
+$Y=0$.
+\end{lemma}
+\begin{proof}
+Almost done (starting at the first big column and using $N_1\sim 0$ while doing shifts, since $\gcd(\uo/\vo,t)=1$).
+\end{proof}
 \section{The module of relations}
 \section{Construction of suitable abelian fields}
 Let $m,a_1,a_2,a_3,a_4,r_1,r_2,r_3,r_4$ be positive integers such that 
