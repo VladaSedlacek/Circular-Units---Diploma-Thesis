@@ -219,7 +219,7 @@ a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}.
 
 \end{proof}
 \begin{lemma}\label{coprime}
-We have $s_{ij}=\gcd(r_i,r_j)$, $\gcd(r_i,r_j,r_l)=1$ (this is also equivalent to $\lcm\left(\frac{m}{r_i},\frac{m}{r_j},\frac{m}{r_l}\right)=m$ and to $\gcd(s_{ij},r_l)=1$) and $s_{ij}\frac{m}{r_ir_j}=\gcd(\frac{m}{r_i},\frac{m}{r_j})$.
+We have $$s_{ij}=\gcd(r_i,r_j),$$ $$\gcd(r_i,r_j,r_l)=1$$ (this is also equivalent to $\lcm\left(\frac{m}{r_i},\frac{m}{r_j},\frac{m}{r_l}\right)=m$ and to $\gcd(s_{ij},r_l)=1$) and $$s_{ij}\frac{m}{r_ir_j}=\gcd(\frac{m}{r_i},\frac{m}{r_j}).$$
 \end{lemma}
 \begin{proof}
 It follows from Proposition \ref{degrees} that $s_{ij}\mid r_i, s_{ij}\mid r_j$ and from its proof that $|\pi_i(H)|=\frac{m}{r_i}$, $|\pi_i\pi_j(H)|=\frac{m}{s_{ij}}$ and $|\pi_i\pi_j\pi_l(H)|=m$. The cyclicity of $H$ then implies
@@ -297,10 +297,10 @@ It is well known that $D^+$ is a $\Zbb[G]$-module of $\Zbb$-rank $[k:\Qbb]+|P|-1
 
 %Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). Such a basis is known only in a few very special cases though. We would like to construct it for general abelian fields as well, based only on the number of ramified primes.
 \paragraph*{}
-Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). The generators of $D^+$ are subject to norm relations that correspond to the sum of all elements of the respective inertia groups $T_i$. Namely, let $$R_i=\sum_{u=0}^{a_i-1}\sigma_i^u,\, N_i=\sum_{u=0}^{\frac{m}{r_i}-1}\sigma_i^{au_i}.$$ 
+Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). The generators of $D^+$ are subject to norm relations that correspond to the sum of all elements of the respective inertia groups $T_i$. Namely, let $$R_i=\sum_{u=0}^{a_i-1}\sigma_i^u,\, N_i=\sum_{u=0}^{\frac{m}{r_i}-1}\sigma_i^{ua_i}.$$ 
 Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e. the sum of all elements of $T_i$). If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have $N_4\equiv \sum_{u=0}^{m-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}$.
 
-Moreover, we will denote the congruence corresponding to the composition of canonical projections $\Z[G]\to \Z[G/H]\to \Z[G/H]/(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ by $\sim$, where $(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ is the ideal generated in $\Z[G/H]$ by the images of the elements $R_iN_i$. When we apply any element of this ideal to the highest generator $\eta$, we will obtain a multiplicative Z-linear combination of circular units belonging to subfields with less ramified primes. We will make use of this extensively.
+Moreover, we will denote the congruence corresponding to the composition of canonical projections $\Z[G]\to \Z[G/H]\to \Z[G/H]/(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ by $\sim$, where $(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ is the ideal generated in $\Z[G/H]$ by the images of the elements $R_iN_i$. When we apply any element of this ideal to the highest generator $\eta$, we will obtain a multiplicative $\Z$-linear combination of circular units belonging to subfields with less ramified primes. We will make use of this extensively.
 
 To construct a basis of $D^+$, we can take the union of all bases for the fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ (which have three ramified primes, so we can use the results in [1]) and add in
 \begin{equation*}
@@ -357,10 +357,10 @@ First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=
 Next, we will recover the cases $0\leq x_3<a_3(m-1)-1$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$. Now we can also use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ multiple times to recover the cases $$0\leq x_1\leq n_1-1, 0\leq x_2\leq n_2-1, a_3(m-1)\leq x_3<a_3m-1.$$
 \paragraph*{}
 At this moment, we are only missing all the cases with $x_3=a_3(m-1)-1$ and some of those with $x_3=a_3m-1$. 
-Let's focus on the second kind. The conjugates with $x_3=a_3m-1$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $n_1$ and $n_2$. It is easy to see that such a rectangle can be partitioned into $\gcd(n_1,n_2)$ diagonals, each containing $\lcm(n_1,n_2)$ elements (two conjugates lie in the same diagonal iff one can be obtained from the other as a multiple of $\sigma_1^v\sigma_2^v$ for some $v\in\Z$). Now consider the relations $$T:=-\left(\sigma_3^{a_3-1}R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\right)-\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2} R_3N_3$$
+Let's focus on the second kind. The conjugates with $x_3=a_3m-1$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $n_1$ and $n_2$. It is easy to see that such a rectangle can be partitioned into $\gcd(n_1,n_2)$ diagonals, each containing $\lcm(n_1,n_2)$ elements (two conjugates lie in the same diagonal iff their quotient is a power of $\eta^{\sigma_1^v\sigma_2^v}$ for some $v\in\Z$). Now consider the relations $$T:=-\left(\sigma_3^{a_3-1}R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\right)-\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2} R_3N_3$$
 and
 $$S_v:=\sum_{u=0}^{v}\sigma_1^{-u}\sigma_2^{-u}T \text{ for } v\in\Z.$$
-Clearly $T\sim 0, S_v\sim 0$ for all $v\in\Z$. Also note that for any $v$, $S_v$ contains no conjugate with $x_3=a_3(m-1)-1$ and contains exactly one conjugate with $x_3=a_3m-1$ that we cannot recover yet minus $\sigma_3^{a_3m-1}$, and these two always lie on the same diagonal. Moreover, any conjugate sharing this diagonal can occur as the one with positive sign for suitable $v\in\Z$. Therefore, since we already have the conjugates $$n_1-(\gcd\left(n_1,n_2\right)-1)\leq x_1\leq n_1-1, \leq x_2=n_2-1, x_3=a_3m-1$$ in our basis, we can recover all the conjugates that share the same diagonal with any (and therefore all) of these.
+Clearly $T\sim 0, S_v\sim 0$ for all $v\in\Z$. Also note that for any $v$, $\eta^{S_v}$ contains no conjugate with $x_3=a_3(m-1)-1$ and contains exactly one conjugate with $x_3=a_3m-1$ that we cannot recover yet minus $\sigma_3^{a_3m-1}$, and these two always lie on the same diagonal. Moreover, any conjugate sharing this diagonal can occur as the one with positive sign for suitable $v\in\Z$. Therefore, since we already have the conjugates $$n_1-(\gcd\left(n_1,n_2\right)-1)\leq x_1\leq n_1-1, \leq x_2=n_2-1, x_3=a_3m-1$$ in our basis, we can recover all the conjugates that share the same diagonal with any (and therefore all) of these.
 \paragraph*{}
 Now we can recover all the conjugates with $x_3=a_3m-1$ except $\lcm(n_1,n_2)$ of them, which share a diagonal. By using the relation $\sigma_1^{\gcd\left(n_1,n_2\right)-1}\left(S_v-S_w\right)\sim 0$ for suitable $v,w\in\Z$, it is clear that we can generate the difference of any two conjugates lying on this diagonal. Now let $$n_1':=\frac{n_1}{\gcd\left(n_1,n_2\right)}, \quad n_2':=\frac{n_2}{\gcd\left(n_1,n_2\right)}$$ and
 note that in each column, there are exactly $n_1'$ conjugates lying on this diagonal, and in each row, there are exactly $n_2'$ conjugates lying on this diagonal. Moreover, we have $$\gcd\left(n_1',n_2'\right)=1$$ by construction,
@@ -371,7 +371,7 @@ We can keep this last one and get rid of the rest using the relations $N_1\sim 0
 
 %$$0\sim\left(\left(\sum_{u=0}^{m-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\right)+\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2}N_3\right)\left(\sum_{u=0}^{\frac{\frac{m}{r_1}-3}{2}}\sigma_1^{2u}\right)$$
 
-\section{The case $a_1=a_2=a_3=r_4=1, s_{12}=s_{13}=s_{23}=1,\gcd(n_1,n_2,n_3)=1$}
+\section{The case $a_1=a_2=a_3=r_4=1, s_{12}=s_{13}=s_{23}=1,\gcd(n_1,n_2,n_3)=1 (\iff m=r_1r_2r_3)$}
 In this case, using Lemma \ref{coprime}, we have
 %case when some n_i are coprime
 \begin{equation*}
@@ -398,24 +398,43 @@ Now let $t,u,v\in\Z$ be such that $n_1=tu,n_2=tv$ and $\gcd(u,v)=1$, i.e. $t=\gc
 show that $u,v\mid n_3$, hence $uv=\gcd(u,v)\mid n_3$ and $n_3=uv$. It follows that $t=r_3,u=r_2,v=r_1$ (and thus $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$. Thanks to the symmetry, we will assume $1<t<u<v$ (if any of $t,u,v$ would equal $1$, this case could be reduced to one of the previous two). We will also write $\uo:=u\pmod{t}$, $\vo:=v\pmod{t}$ (so that $\uo,\vo\in\{1,2,\dots,t-1\}$) and similarly for other expressions. In particular, the expressions $\uo/\vo$ and $\vo/\uo$ will be regarded modulo $t$ as well.
 % It follows that also $\gcd(t,u)=\gcd(t,v)=1$ (and therefore $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$. In fact, 
 \paragraph*{}
-The conjugates with $x_3=0$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $n_1$ and $n_2$. Since for each $x_4$, there are $n_3$ rectangles in total, the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles. Thus the relation $$T':=R_4\sum_{q=0}^{m-1}\sigma_1^{q}\sigma_2^{q}\sigma_3^{q}-\sum_{q=0}^{r_3-1} \sigma_1^{1+q n_3}\sigma_2^{1+q n_3}N_3 $$
-contains only elements we have already recovered and those with $x_3=0$ (and clearly $T'\sim 0$). More specifically, if we let $T$ be the sum of the conjugates contained in  $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ with $x_3=0$, then the relations $(1-\sigma_1\sigma_2)T$ and $T'$ differ only by conjugates which we have already recovered.
+The conjugates with $x_3=0$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $n_1$ and $n_2$. Since for each $x_4$, there are $n_3$ rectangles in total, the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles. Thus the expression $\eta^{T'}$, where  $$T':=R_4\sum_{q=0}^{m-1}\sigma_1^{q}\sigma_2^{q}\sigma_3^{q}-\sum_{q=0}^{r_3-1} \sigma_1^{1+q n_3}\sigma_2^{1+q n_3}N_3 $$
+(clearly $T'\sim 0$), contains only conjugates we have already recovered and those with $x_3=0$. More specifically, if we let $T$ be the sum of the automorphisms contained in  $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ with $x_3=0$, i.e. $T=\sum_{q=0}^{r_3-1}\sigma_1^{qn_3}\sigma_2^{qn_3}$, then $\eta^{(1-\sigma_1\sigma_2)T-T'}$ contains only conjugates which we have already recovered.
 \paragraph*{}
-Now we will decompose our rectangle (with $x_3=x_4=0$) into $t\times t$ rectangular blocks of height $u$ and width $v$ in the obvious way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $t$ consecutive blocks next to (resp. above) each other. Since $u,v\mid n_3$ and the conjugates in $T$ are given by $\sigma_1^{qn_3}\sigma_2^{qn_3}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $T$ contains exactly one conjugate in every big row (resp. big column), and these have the same relative position in each of the respective blocks (determined only by $n_3 \mod t$). We can be even more precise: the horizontal distance between $\sigma_1^{qn_3}\sigma_2^{qn_3}$ and $\sigma_1^{(q+1)n_3}\sigma_2^{(q+1)n_3}$ for $0\leq q \leq r_3-1$ is exactly $\uo\cdot v$, i.e $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot u$, i.e $\vo$ blocks (again this follows easily from the Chinese remainder theorem).
+Now we will decompose our rectangle (with $x_3=x_4=0$) into $t\times t$ rectangular blocks of height $u$ and width $v$ in the obvious way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $t$ consecutive blocks next to (resp. above) each other. Since $u,v\mid n_3$ and the conjugates contained in $\eta^T$ are given by $\sigma_1^{qn_3}\sigma_2^{qn_3}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $\eta^T$ contains exactly one conjugate in every big row (resp. big column), and these have the same relative position in each of the respective blocks (determined only by $n_3 \mod t$). We can be even more precise: the horizontal distance between $\eta^{\sigma_1^{qn_3}\sigma_2^{qn_3}}$ and $\eta^ {\sigma_1^{(q+1)n_3}\sigma_2^{(q+1)n_3}}$ for $0\leq q \leq r_3-1$ is exactly $\uo\cdot v$, i.e. $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot u$, i.e. $\vo$ blocks (again this follows easily from the Chinese remainder theorem). It follows that the horizontal distance between any two conjugates in $\eta^T$ with a vertical distance of one block is $\uo/\vo$ blocks.
 \paragraph*{}
-From now on, we will regard the elements of our rectangle as their images in the quotient module of $\Z[G/H]/(N_1,N_2,N_3,N_4)$ by the $\Z$-module of the conjugates we can already recover (including those living in the maximal subfields ramified at three primes). We will call this quotient module $Q$. Showing that we have indeed chosen a basis then amounts to showing that the class of each conjugate in our rectangle is trivial in $Q$. For all $1\leq q\leq t$, we will denote the class of $\eta^{\sigma_1^{tu-q}}$ by $X_q$ and we will also put $X_{q'}:=X_q$ for all $q'\in\Z$, $q'\equiv q\pmod{t}$. Also for all $v+t-2\leq q\leq tv-1$ we will denote the class of $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ by $Y_q$.
+Let $Q$ be the quotient module of $D^+$ by the conjugates we can already recover (including those living in the maximal subfields ramified at three primes), regarded as $\Z$-modules (i.e. forgetting the $G$-structure, otherwise the quotient would be trivial). We will write $Q$ additively and for the remainder of this section, all equalities between (classes of) conjugates will be regarded as if in $Q$.
+%From now on, we will regard the elements of our rectangle as their images in the quotient module of $\Z[G/H]/(N_1,N_2,N_3,N_4)$ by the $\Z$-module of the conjugates we can already recover (including those living in the maximal subfields ramified at three primes). We will call this quotient module $Q$.
+\paragraph*{}
+Showing that we have indeed chosen a basis now amounts to showing that the class of each conjugate in our rectangle is trivial in $Q$. For all $2\leq q\leq t+1$, we will denote the class of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ by $X_q$ and we will also put $X_{q'}:=X_q$ for all $q'\in\Z$, $q'\equiv q\pmod{t}$. Also for all $v+t-2\leq q\leq tv-1$ we will denote the class of $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ by $Y_q$. We will refer to the set of these $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ with $v+t-2\leq q\leq tv-1$ as the critical line. Now it suffices to show that $X_q=0$ for all $1\leq q\leq t$ and $Y_q=0$ for all $v+t-2\leq q\leq tv-1$.
+\paragraph*{}
+It is easy to see that our rectangle can be partitioned into $t=\gcd(n_1,n_2)$ (2D) diagonals, each going through exactly one of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$ (two conjugates lie in the same diagonal iff their difference is a power of $\eta^{\sigma_1^q\sigma_2^q}$ for some $q\in\Z$). We will use this together with the fact that $\eta^{(1-\sigma_1\sigma_2)T}$ is trivial in $Q$ to find the classes of all conjugates in our rectangle in terms of $X_q,Y_q$. More specifically, if $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T}$ contains no elements from the critical line, it is just a difference of two conjugates, hence their classes are the same. On the other hand, if it contains $Y_{q}$ for some $q$ and a difference of two conjugates, the classes of these two conjugates differ only by $\pm Y_{q}$ (depending on the sign of $Y_{q}$ in $\eta^{\sigma_1^q\sigma_2^r(1-\sigma_1\sigma_2)T}$). Using the earlier observations, we can see that these are the only options, hence it follows that by going along each of the $t$ 2D diagonals starting at $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$, will will obtain that %the class of $\eta^{\sigma_1^q\sigma_2^r$
+$$
+[\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}]=
+\begin{cases}
+0 \quad &\!\begin{aligned} \text{ if }  &x_1<t(u-1)-1\\ &\text{ or } x_1=t(u-1)-1, x_2< v+t-2 \end{aligned}\\
+Y_{x_2} \quad &\text{ if } x_1=t(u-1)-1, v+t-2\leq x_2 \\
+X_{-x_1+x_2+1} \quad &\!\begin{aligned}\text{ if } & t(u-1)-1\leq x_1<tu-1 \\&
+ \text{ or }  x_1=tu-1, x_2\equiv q+\uo/\vo\cdot v\pmod{tv} \\
+ &\text{ for some } 0\leq q<v+t-2  \end{aligned}\\
+X_{-x_1+x_2+1}-Y_{x_2+(t-\uo/\vo)\cdot v} \quad &\!\begin{aligned}\text{ if } & x_1=tu-1, x_2\not\equiv q+\uo/\vo\cdot v\pmod{tv} \\
+&\text{ for any } 0\leq q<v+t-2\end{aligned}\\
+\end{cases}
+$$
+for any $0\leq x_1\leq tu-1, 0\leq x_2\leq tv-1$. Note that this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s.
+%$X_q^{\sigma_2^{x_2}}=X_{q+x_2}$ for any $q,x_2$.
 
-%It is easy to see that such a rectangle can be partitioned into $\gcd(n_1,n_2)$ diagonals, each containing $\lcm(n_1,n_2)$ elements (two conjugates lie in the same diagonal iff one can be obtained from the other as a multiple of $\sigma_1^v\sigma_2^v$ for some $v\in\Z$).
-
-%Explain shifts and the shape of the relation!
-
 \paragraph*{}
-Now it suffices to show that $X_q=0$ for all $1\leq q\leq t$ and $Y_q=0$ for all $v+t-2\leq q\leq tv-1$.
+Using the relation $N_1\sim 0$, we obtain the equation $u\cdot (X_1+\dots+X_t)=0$, and similarly the relation $N_2\sim 0$ implies $v\cdot (X_1+\dots+X_t)=0$, as well as $Y_{v+t-2}+\dots+Y_{tv-1}=0$. Since $\gcd(u,v)=1$, this implies $X_1+\dots+X_t=0$ be Bezout's identity. We will put $\beta=X_1+\dots+X_t$.
 \paragraph*{}
-Using the relation $N_1\sim 0$, we obtain the equation $u\cdot (X_1+\dots+X_t)=0$, and similarly the relation $N_2\sim 0$ implies $v\cdot (X_1+\dots+X_t)=0$. Since $\gcd(u,v)=1$, this implies $X_1+\dots+X_t=0$ be Bezout's identity. We will put $\beta=X_1+\dots+X_t$.
-Next, we will put $$\Gamma_q:=\sum_{r=0}^{-\uo/\vo-1}\sum_{p=1}^{\uo}X_{\overline{q+p-rv}}$$
-and $$\Delta:=\sum_{r=0}^{t-1}r\cdot\sum_{p=1}^{\uo}X_{\overline{p-rv}}.$$
-It's easy to check that all the $Y$'s cancel out in both of them.%, and that any shift in the indices in $\Gamma$ by $1,2,\dots,t-3$ will also result in a valid relation.
+%Next, note that for any set of conjugates, 
+%Next, for $0\leq q \leq t-3$, we will put $$\Gamma_q:=\sum_{r=0}^{t-\uo/\vo-1}\sum_{p=1}^{\uo}X_{\overline{q+p-rv}}$$
+%and $$\Delta:=\sum_{r=0}^{t-1}r\cdot\sum_{p=1}^{\uo}X_{\overline{p-rv}}.$$
+Next, for $0\leq q \leq t-3$, we can see that taking the sum of all conjugates with $x_2=q+r\cdot \uo/\vo\cdot v$ for $0\leq r\leq t-\uo/\vo-1$ (using the relation $N_1\sim 0$) will result in $0$ in $Q$. By construction, all the $Y$'s involved will cancel out, and since $(t-\uo/\vo)\cdot v\equiv -\vo \pmod{t}$, this implies (using $\beta=0$) that $\Gamma_q=0$ in $Q$, where
+$$\Gamma_q:=\sum_{r=0}^{t-\uo/\vo-1}\sum_{p=1}^{\uo}X_{\overline{q+p-rv}}.$$
+Similarly, taking the sum of all conjugates with $r\cdot \uo/\vo\cdot v\leq x_2\leq v-1+r\cdot \uo/\vo\cdot v$ times $r$ for $0\leq r\leq t-\uo/\vo-1$ gives us $0$ (again using $N_1\sim 0$), hence so does summing over all such $r$ (where by construction all the $Y$'s involved cancel out except for one of each, and their sum is zero anyway). Therefore we have (by using $(t-\uo/\vo)\cdot v\equiv -\vo \pmod{t}$ and $\beta=0$ again) $\Delta=0$ in $Q$, where
+$$\Delta:=\sum_{r=0}^{t-1}r\cdot\sum_{p=1}^{\uo}X_{\overline{p-rv}}.$$
+%It's easy to check that all the $Y$'s cancel out in both of them.%, and that any shift in the indices in $\Gamma$ by $1,2,\dots,t-3$ will also result in a valid relation.
 \paragraph*{}
 Now we will construct a matrix $M$ of type $t\times t$ as follows:
 \begin{itemize}
@@ -425,7 +444,7 @@ Now we will construct a matrix $M$ of type $t\times t$ as follows:
 \item The last row will correspond to the relation $\Delta$.
 \end{itemize}
 
-Since the rows of $M$ are the coefficients of valid relations, we have $M\cdot X^T=0$, where $X=(X_1,\dots,X_t)$. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
+Since the rows of $M$ are the coefficients of valid equations in $Q$, we have $M\cdot X^T=0$, where $X=(X_1,\dots,X_t)$. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
 
 \paragraph*{}
 Let $L$ be the localization of the quotient ring $\Z[x]/(1+x+x^2+\dots+x^{t-1})$ at the multiplicative subset generated by $x-1$ and $x^{t-\uo}-1$. (By abuse of notation, we will denote the class of $x$ in $L$ also by $x$). Note that since $$\gcd(x^t-1,x^q-1)=x^{\gcd(t,q)}-1$$ for any $q\in\Z$ and $\gcd(t,1)=\gcd(t,t-\uo)=1$, we have $$\gcd(1+x+x^2+\dots+x^{t-1},x-1)=\gcd(1+x+x^2+\dots+x^{t-1},x^{t-\uo}-1)=1,$$ so that $x-1$ nor $x^{t-\uo}-1$ are zero-divisors, hence $L$ is nontrivial. Moreover let $$D(x):=\sum_{q=1}^{t-1}q\cdot x^q\in L.$$
@@ -484,7 +503,7 @@ Similarly, using the substitution $y=x^{t-\uo}$ (so that $y^m=1$ in $L$), we can
 $M$ is unimodular, hence $X=0$.
 \end{theorem}
 \begin{proof}
-Let $\zt$ be a primitive $t$-th root of unity and let $C$ be the corresponding $t\times t$ character matrix, i.e. $C=(\zt^{r\cdot c})_{0\leq r,c<t}$. Then (after reindexing the dimensions of $M$ from $0$ to $t-1$) we have $M\cdot C=C'$, where $C_{0,0}=m$ and the $c-th$ column of $C'$ is
+Let $\zt$ be a primitive $t$-th root of unity and let $C$ be the corresponding $t\times t$ character matrix, i.e. $C=(\zt^{r\cdot c})_{0\leq r,c<t}$. Then (after reindexing the dimensions of $M$ from $0$ to $t-1$) we have $M\cdot C=C'$, where $C_{0,0}=t$ and the $c-th$ column of $C'$ is
 $$
 \begin{pmatrix}
 0\\ 
@@ -496,7 +515,7 @@ P(\zt^c) \\
 D(\zt^c) \cdot P(\zt^c)
 \end{pmatrix}
 $$
-for $0<c<t$ (we don't need to specify the $0$-th column, since it doesn't influence the determinant of $C'$). Thus by taking out $P(\zt^c)$ from each of these columns, we get  (since multiplication by $\vo$ is an automorphism of $\Z/t$)
+for $0<c<t$ (we don't need to specify the rest of the $0$-th column, since it doesn't influence the determinant of $C'$). Thus by taking out $P(\zt^c)$ from each of these columns, we get  (since multiplication by $\vo$ is an automorphism of $\Z/t$)
 $$|\det C'|=|\det C''|\cdot\abs*{\prod_{0<c<t}P(\zt^c)}=|\det C''|\cdot\abs*{\prod_{0<c<t}-\zt^{c\uo}}\cdot\abs*{\prod_{0<c<t}\frac{\zt^{c\vo}-1}{\zt^c-1}}=|\det C''|,$$
 where
 $$C''=
@@ -523,11 +542,12 @@ we will obtain a matrix with the same determinant as $C''$. Since the elementary
 $$|\det C|=|\det C''|=|\det C'|,$$ which together with the invertibility of $C$ (in fact it is well known that $\det C=\pm \sqrt{t^t}$) implies that $|\det M|=1$, as needed.
 \end{proof}
 
-\begin{lemma}
-$Y=0$.
-\end{lemma}
+\begin{cor}
+We have $Y_q=0$ for all $v+t-2\leq q\leq tv-1$.
+\end{cor}
 \begin{proof}
-Almost done (starting at the first big column and using $N_1\sim 0$ while doing shifts, since $\gcd(\uo/\vo,t)=1$).
+%This now follows 
+Take the sum of all conjugates with $x_2=r\cdot\uo/\vo\cdot v$ for $r=1$, then for $r=2$, and so on. In each sum all the conjugates are $0$ except the corresponding $Y_q$, so it must be zero as well. The result then follows by repeating the same procedure, only increasing $x_2$ in each of the sums by $1$ each time.
 \end{proof}
 \section{The module of relations}
 \section{Construction of suitable abelian fields}
