@@ -3,13 +3,15 @@
 \usepackage[T1]{fontenc}
 %\usepackage[czech]{babel}
 \usepackage{a4wide}
-\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,mathtools,csquotes,tikz}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,mathtools,csquotes,tikz,enumitem,calc}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{cor}[theorem]{Corollary}
 \newtheorem{prop}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 
 \newcommand{\Cbb}{\mathbb{C}}
 \newcommand{\Qbb}{\mathbb{Q}}
@@ -32,6 +34,7 @@
 \newcommand{\Tr}{\mathrm{Tr}}
 \newcommand{\N}{\mathrm{N}}
 \newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\cond}{\text{cond }}
 \newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
 \newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
 \newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
@@ -49,6 +52,7 @@
 \newcommand{\Char}{\mathrm{char }}
 \newcommand{\lcm}{\mathrm{lcm}}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\setlist[enumerate,1]{label={\upshape(\roman*)}}
 
 \newcommand\restr[2]{{% we make the whole thing an ordinary symbol
   \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
@@ -56,6 +60,35 @@
   %\vphantom{\big|} % pretend it's a little taller at normal size
   \right|_{#2} % this is the delimiter
   }}
+  
+\makeatletter
+\newcommand{\DESCRIPTION@original@item}{}
+\let\DESCRIPTION@original@item\item
+\newcommand*{\DESCRIPTION@envir}{DESCRIPTION}
+\newlength{\DESCRIPTION@totalleftmargin}
+\newlength{\DESCRIPTION@linewidth}
+\newcommand{\DESCRIPTION@makelabel}[1]{\llap{#1}}%
+\newcommand{\DESCRIPTION@item}[1][]{%
+  \setlength{\@totalleftmargin}%
+       {\DESCRIPTION@totalleftmargin+\widthof{\textbf{#1 }}-\leftmargin}%
+  \setlength{\linewidth}
+       {\DESCRIPTION@linewidth-\widthof{\textbf{#1 }}+\leftmargin}%
+  \par\parshape \@ne \@totalleftmargin \linewidth
+  \DESCRIPTION@original@item[\textbf{#1}]%
+}
+\newenvironment{DESCRIPTION}
+  {\list{}{\setlength{\labelwidth}{0cm}%
+           \let\makelabel\DESCRIPTION@makelabel}%
+   \setlength{\DESCRIPTION@totalleftmargin}{\@totalleftmargin}%
+   \setlength{\DESCRIPTION@linewidth}{\linewidth}%
+   \renewcommand{\item}{\ifx\@currenvir\DESCRIPTION@envir
+                           \expandafter\DESCRIPTION@item
+                        \else
+                           \expandafter\DESCRIPTION@original@item
+                        \fi}}
+  {\endlist}
+\makeatother
+  
 
 \begin{document}
 %\pagestyle{fancy}                      %Pro větší­ možnosti práce se záhlaví­mi a zápatími
@@ -74,10 +107,87 @@
 \date{\today}
 \maketitle
 
-Throughout this thesis, we will use the convention that whenever any of the indices $i,j,l,h$ appear on the same line, they are pairwise distinct and moreover $1\leq i,j,l,h\leq 4$.
+Throughout this thesis, we will use the convention that whenever any of the indices $i,j,l,h$ appear on the same line, they are pairwise distinct and moreover $1\leq i,j,l,h\leq 4$, unless stated otherwise. Also for any $n\in \Nbb$, $\zeta_n$ will denote a primitive $n$-th root of unity (WLOG we can take $\zeta_n=e^{2\pi i/n}$). 
 
-\section{Basic definitions and assumptions}
-Let $k$ be a real abelian field with exactly four ramified primes $p_1,p_2,p_3,p_4$. Let $K$ be the genus field (in the narrow sense) of $k$ and assume $K\neq k$. Let $G:=\Gal(K/\Q)$, then (by the properties of the genus field) we can identify $G$ with the direct product $T_1\times T_2\times T_3\times T_4$, where $T_i$ is the inertia group corresponding the ramified prime $p_i$. Next, we will define:
+\section{Preliminaries}
+\begin{definition}
+An \textit{abelian field} is a finite Galois extension of $\Q$ with an abelian Galois group. 
+\end{definition}
+
+\begin{definition}
+The \textit{genus field} (in the narrow sense) of an abelian field is its maximal abelian extension (i.e., finite Galois extension with an abelian Galois group) unramified at all (finite) primes.
+\end{definition}
+
+\begin{lemma}\label{genus}
+If $K$ is the genus field (in the narrow sense) of an abelian field $k$ and $P$ is the set of ramified primes of $k$, we have $\Gal(K/\Q)\cong \prod_{p\in P} T_p$, where $T_p$ is the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$.
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\begin{theorem}[Kronecker-Weber]
+Every abelian field is a subfield of some cyclotomic field.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{definition}
+Let $k$ be an abelian field. The least number $n\in\mathbb{N}$ such that $k\subseteq \Q(\zeta_n)$ is called the conductor of $k$ and denoted by $\cond k$.
+\end{definition}
+
+\begin{definition}
+Let $G$ be any group. The (integral) \textit{group ring} $\Z[G]$ is the free $\Z$-module with basis $G$, which is made into a ring by using the group law on $G$ and extending linearly.
+\end{definition}
+
+\begin{definition}
+An element $\alpha$ of a number field $K$ is called totally positive if for any embedding $\sigma: K\to \R$, we have $\sigma(\alpha)>0$.
+\end{definition}
+
+\section{The group of circular numbers}
+Let $k$ a real abelian field, $K$ its the genus field in the narrow sense, $P$ is the set of ramified primes of $k$, $K_p$ is the maximal subfield of $K$ ramified only at $p\in P$. Since $\Gal(K/k)$ has a natural action on $K$ (given by evaluating an automorphism on an element), this makes $K$ into a $\Z[\Gal(K/k)]$-module. 
+
+\begin{definition}
+The group $D(k)$ of circular numbers of $k$ (using Lettl's modification of Sinnott's definition) is given as
+$$D:=\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P \}\big\rangle_{\Z[\Gal(K/k)]},$$
+where $\langle \dots \rangle_{\Z[\Gal(K/k)]}$ means \enquote{generated as a $\Z[\Gal(K/k)]$-submodule of $K$} and $$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)})/\left(\prod_{i\in I}K'_i)\right)\cap k'}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)}\right),$$ where $\text{N}$ denotes the norm operator. The subset of totally positive elements of $D(k)$ will be denoted by $D^+(k)$.
+\end{definition}
+
+\begin{definition}
+The group $C(k)$ of circular numbers of $k$ is $E(k)\cap D$, where $E(k)$ is the group of units of the ring of algebraic integers of $k$. The subset of totally positive elements of $C(k)$ will be denoted by $C^+(k)$.
+\end{definition}
+
+One of the reasons that $C(k)$ is important is the following famous result:
+\begin{theorem}
+The index $[E(k):C(k)]$ is finite.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{lemma}\leavevmode
+%We have $$C(k)=\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P, 1<|I| \}\cup\big\rangle_{\Z[\Gal(K/k)]}$$
+\begin{enumerate}%[i)]
+\item For $|I|>1$, we have $\eta_I\in E(k)$.
+\item For $I=\{p\}$, we have $\eta_I\not\in E(k)$, but $\eta_I^{1-\sigma}\in E(k)$ for any $\sigma$ in the inertia subgroup of $\Gal(K/k)$ corresponding to $p$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+The next result shows that $D^+$ and $C^+$ are free $\Z$-modules.
+\begin{lemma}
+$D^+(k)$ is a subgroup of $D(k)$ given as $$D(k)=\big\langle -1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/k)]},$$
+hence canonically isomorphic to the non-torsion part of $D(k)$. The similar statement is true for $C^+(k)$ and $C(k)$.
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\begin{lemma}
+The $\Z$-rank of $D^+$ is $[k:\Q]+|P|-1$.
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+\section{Notation and assumptions}
+In the remainder of the thesis, we will fix $k$ to be a real abelian field with exactly four ramified primes $p_1,p_2,p_3,p_4$. Let $K$ be the genus field in the narrow sense of $k$. Let $G:=\Gal(K/\Q)$, then by lemma \ref{genus}, we can identify $G$ with the direct product $T_1\times T_2\times T_3\times T_4$, where $T_i$ is the inertia group corresponding the ramified prime $p_i$. Next, we will define:
 
 \begin{itemize}
 \item $H:=\Gal(K/k)$, 
@@ -87,6 +197,7 @@ Let $k$ be a real abelian field with exactly four ramified primes $p_1,p_2,p_3,p
 \item $r_i:=|H\cap \ker \pi_i|$,
 \item $s_{ij}:=|H\cap \ker (\pi_i\pi_j)|$,
 \item $n_i:=\frac{m}{r_i}$,
+\item $\eta:=\eta_{1234}$,
 \item $K_i$ as the maximal subfield of $K$ ramified only at $p_i$ (so that $$T_i=\Gal(K/K_jK_lK_h)\cong \Gal(K_i/\Q).)$$
 \end{itemize}
 
@@ -129,7 +240,7 @@ The extension $K/K_iK_jK_l$ is totally ramified at the prime ideals above $p_h$,
 %Přidat zvláštní lemma o Galoisových grupách K_iK_jK_l/K_i a podobně kvůli čitelnosti?
 
 \begin{prop}\label{degrees}
-We have $a_i=[k\cap K_i:\Q]$, $r_i=[K:kK_i]$, $|T_i|=a_i\frac{m}{r_i}$,  $s_{ij}=[K:kK_iK_j]$. Also $[K_i:k\cap K_i]=\frac{m}{r_i}$, $[K_iK_j:k\cap K_iK_j]=\frac{m}{s_{ij}}$ and $[K_iK_jK_l:k\cap K_iK_jK_l]=m$.
+We have $a_i=[k\cap K_i:\Q]$, $r_i=[K:kK_i]$, $|T_i|=a_in_i$,  $s_{ij}=[K:kK_iK_j]$. Also $[K_i:k\cap K_i]=n_i$, $[K_iK_j:k\cap K_iK_j]=\frac{m}{s_{ij}}$ and $[K_iK_jK_l:k\cap K_iK_jK_l]=m$.
 \end{prop}
 \begin{proof}
 Since
@@ -143,13 +254,13 @@ Since
 %$$\Gal(K/K_i)\cong \Gal(K/\Q)/\Gal(K_i/\Q)\cong T_1T_2T_3T_4/T_i\cong T_jT_lT_h$$
  and $\Gal(K/k)=H$, it follows that $\Gal(K/k\cap K_i)= T_jT_lT_h\cdot H$. Now consider the short exact sequence %(clearly $\ker \pi_i=T_jT_lT_h$) 
 $$0\to H\cap \ker \pi_i\to H \xrightarrow{\restr{\pi_i}{H}} \pi_i(H)\to 0.$$
-It follows that $|\pi_i(H)|=\frac{m}{r_i}$ and $$\pi_i(H)\cong \frac{H}{H\cap \ker \pi_i}=\frac{H}{H\cap T_jT_lT_h}\cong \frac{T_jT_lT_h\cdot H}{T_jT_lT_h}= \frac{\Gal(K/k\cap K_i)}{\Gal(K/K_i)}\cong \Gal(K_i/k\cap K_i).$$
+It follows that $|\pi_i(H)|=\frac{m}{r_i}=n_i$ and $$\pi_i(H)\cong \frac{H}{H\cap \ker \pi_i}=\frac{H}{H\cap T_jT_lT_h}\cong \frac{T_jT_lT_h\cdot H}{T_jT_lT_h}= \frac{\Gal(K/k\cap K_i)}{\Gal(K/K_i)}\cong \Gal(K_i/k\cap K_i).$$
 Therefore 
 $$[k\cap K_i:\Q]=\frac{|\Gal(K_i/\Q)|}{|\Gal(K_i/k\cap K_i)|}=\frac{|T_i|}{|\pi_i(H)|}=a_i$$
 %$$[k\cap K_i:\Q]=\frac{|T_1T_2T_3T_4|}{|T_jT_lT_h\cdot H|}=\frac{|T_1T_2T_3T_4|\cdot |H\cap T_jT_lT_h|}{|T_jT_lT_h|\cdot |H|}=\frac{|T_i|}{|\pi_i(H)|}=a_i.$$
 and
 $$[K:kK_i]=\frac{|\Gal(K/k)|}{|\Gal(kK_i/k)|}=\frac{|H|}{|\Gal(K_i/k\cap K_i)|}=\frac{m}{|\pi_i(H)|}=r_i.$$
-Putting everything together, we obtain $$|T_i|=[K_i:k\cap K_i]\cdot[k\cap K_i:\Q]=a_i|\pi_i(H)|=a_i\frac{m}{r_i}.$$
+Putting everything together, we obtain $$|T_i|=[K_i:k\cap K_i]\cdot[k\cap K_i:\Q]=a_i|\pi_i(H)|=a_in_i.$$
 Next, we also have 
 \begin{equation*}
 \begin{split}
@@ -182,7 +293,7 @@ Finally note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l
   \node (d) at (2,0)  {$K_i$};
   \node (e) at (0,-2)  {$k\cap K_i$};
   \node (f) at (0,-4)  {$\Q$};
-  \draw   (a) -- node [left]{$r_i$} (b) -- node [above left]{$\frac{m}{r_i}$} (c) -- (e) -- node [below right]{$|\pi_i(H)|$} (d) -- node [above right]{$\frac{|T_j\times T_l\times T_h|}{r_i}$} (b)
+  \draw   (a) -- node [left]{$r_i$} (b) -- node [above left]{$n_i$} (c) -- (e) -- node [below right]{$|\pi_i(H)|$} (d) -- node [above right]{$\frac{|T_j\times T_l\times T_h|}{r_i}$} (b)
   (e) -- node [left]{$a_i$} (f);
 \end{tikzpicture}
 \qquad
@@ -284,36 +395,42 @@ Finally, we have $$\Gal(k/k\cap K_2K_3K_4)\cong \Gal(kK_2K_3K_4/K_2K_3K_4)=\Gal(
 \end{center}
 \end{proof}
 
-\section{The group of circular numbers}
+\section{General strategy}
 
-Recall that $D^+$, the subgroup of totally positive elements of the group $D$ of circular numbers of a real abelian field $k'$ (using Lettl's modification of Sinnott's definition), has one generator $\eta_I$ for each nonempty subset $I\subseteq P$, where $P$ is the set of ramified primes of $k'$. (Since $k'$ is real, $D^+$ is also canonically isomorphic to the non-torsion part of $D$.) 
+%Recall that $D^+$, the subgroup of totally positive elements of the group $D$ of circular numbers of a real abelian field $k'$ (using Lettl's modification of Sinnott's definition), has one generator $\eta_I$ for each nonempty subset $I\subseteq P$, where $P$ is the set of ramified primes of $k'$. (Since $k'$ is real, $D^+$ is also canonically isomorphic to the non-torsion part of $D$.) 
 
-More explicitly, if we let $K'_i$ be the largest subfield of $K'$ (the genus field of $k'$ in the narrow sense) ramified only at $p_i$ for any $i\in I$, we have
-$$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)})/\left(\prod_{i\in I}K'_i)\right)\cap k'}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)}\right).$$
-It is well known that $D^+$ is a $\Zbb[G]$-module of $\Zbb$-rank $[k:\Qbb]+|P|-1$. 
+%More explicitly, if we let $K'_i$ be the largest subfield of $K'$ (the genus field of $k'$ in the narrow sense) ramified only at $p_i$ for any $i\in I$, we have
+%$$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)})/\left(\prod_{i\in I}K'_i)\right)\cap k'}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)}\right).$$
+%It is well known that $D^+$ is a $\Zbb[G]$-module of $\Zbb$-rank $[k:\Qbb]+|P|-1$. 
 
-(In our case, we have $k'=k, K'=K, K'_i=K_i, |P|=4$, $\eta:=\eta_{\{1,2,3,4\}}$.)
+%(In our case, we have $k'=k, K'=K, K'_i=K_i, |P|=4$, $\eta:=\eta_{\{1,2,3,4\}}$.)
 
 %The generators of $D^+$ are subject to norm relations (which can be obtained by computing the norm of the generators to a subfield with less ramified primes) and for $|P|\geq 3$, also to the so-called Ennola relations, which are highly nontrivial relations that are not consequences of the norm relations.
 
 %Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). Such a basis is known only in a few very special cases though. We would like to construct it for general abelian fields as well, based only on the number of ramified primes.
-\paragraph*{}
+%\paragraph*{}
 Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). The generators of $D^+$ are subject to norm relations that correspond to the sum of all elements of the respective inertia groups $T_i$. Namely, let $$R_i=\sum_{u=0}^{a_i-1}\sigma_i^u,\, N_i=\sum_{u=0}^{n_i-1}\sigma_i^{ua_i}.$$ 
-Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e. the sum of all elements of $T_i$). If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have $N_4\equiv \sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}$.
+Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e. the sum of all elements of $T_i$). If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have $$N_4\equiv \sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}.$$ Note that any subgroup of $k^*$ is naturally a $\Z[G/H]$-module, since the action of $H$ on $k$ is trivial.
 
-Moreover, we will denote the congruence corresponding to the composition of canonical projections $\Z[G]\to \Z[G/H]\to \Z[G/H]/(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ by $\sim$, where $(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ is the ideal generated in $\Z[G/H]$ by the images of the elements $R_iN_i$. When we apply any element of this ideal to the highest generator $\eta$, we will obtain a multiplicative $\Z$-linear combination of circular units belonging to subfields with less ramified primes. We will make use of this extensively.
+Moreover, we will denote the congruence corresponding to the composition of canonical projections $$\Z[G]\to \Z[G/H]\to \Z[G/H]/(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$$ by $\sim$, where $(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ is the ideal generated in $\Z[G/H]$ by the images of the elements $R_iN_i$. When we apply any element of this ideal to the highest generator $\eta$, we will obtain a multiplicative $\Z$-linear combination of circular units belonging to subfields with less ramified primes. We will make use of this extensively.
 
-To construct a basis of $D^+$, we can take the union of all bases for the fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ (which have three ramified primes, so we can use the results in [1]) and add in
+\begin{lemma}
+The fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ satisfy the assumptions of [1].
+\end{lemma}
+\begin{proof}
+\end{proof}
+
+To construct a basis of $D^+$, we can take the union of all bases for the fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ (we can use the results in [1] to find these) and add in
 \begin{equation*}
 \begin{split}
 c:&=[k:\Q]+3-\sum_{i,j,l}([k\cap K_iK_jK_l:\Q]+2)+\sum_{i,j}([k\cap K_iK_j:\Q]+1)-\sum_{i}[k\cap K_i:\Q]\\&=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}
 a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1
 \end{split}
 \end{equation*}
-(by the principle of inclusion and exclusion due to the fact that these bases were constructed \enquote{inductively}) conjugates of $\eta$. Then we will need to show how to obtain the missing conjugates of $\eta$ using the relations $$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3\sim 0, R_4\sum_{u=0}^{m-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\sim 0.$$
+(by the principle of inclusion and exclusion due to the fact that these bases were constructed \enquote{inductively}) conjugates of $\eta$. Then we will need to show how to obtain the missing conjugates of $\eta$ using the relations $$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3\sim 0, R_4\sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\sim 0.$$
 
-We will always refer to the conjugates of $\eta$ by their coordinates $x_1,x_2,x_3,x_4$ according to Proposition \ref{gal}. This allows for geometric interpretation.
-
+We will always refer to the conjugates of $\eta$ by their coordinates $x_1,x_2,x_3,x_4$ according to Proposition \ref{gal}. This allows us to visualise $\Gal(k/\Q)$ geometrically as a discrete (at most) four-dimensional cuboid.
+\section{The case $r_1=r_2=r_3=r_4=1$}
 \section{The case $r_1=r_2=a_3=r_4=1$}
 (Note that in this case we have $s_{34}=1$ and $n_1=n_2=n_4=m$.) %, therefore $$c=a_1a_2a_4\frac{m^3}{r_3}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}+a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1.$$
 \paragraph*{}
@@ -336,7 +453,7 @@ using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$
 Finally, we can use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2m-1, 0\leq x_3 <n_3-1$$ and subsequently $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2(m-1)-1, 0\leq x_3 <n_3-1.$$ By repeating these two steps $(m-2)$ more times, increasing the first coordinate by $a_1$ each time, we will recover all the conjugates.
 
 \section{The case $a_1=a_2=r_3=r_4=1$}
-(Recall that $n_i=\frac{m}{r_i}$.)
+%(Recall that $n_i=\frac{m}{r_i}$.)
 
 In this case, using Lemma \ref{coprime}, we have
 \begin{equation*}
@@ -372,71 +489,152 @@ We can keep this last one and get rid of the rest using the relations $N_1\sim 0
 
 %$$0\sim\left(\left(\sum_{u=0}^{m-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\right)+\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2}N_3\right)\left(\sum_{u=0}^{\frac{\frac{m}{r_1}-3}{2}}\sigma_1^{2u}\right)$$
 
+\section{The case $a_1=a_2=a_3=r_4=1, r_1\neq 1, r_2\neq 1, r_3 \neq 1,\gcd(n_1,n_2,n_3)=\gcd(n_1,n_2)$}
+
 \section{The case $a_1=a_2=a_3=r_4=1, r_1\neq 1, r_2\neq 1, r_3 \neq 1, s_{12}=s_{13}=s_{23}=1,\gcd(n_1,n_2,n_3)=1$}
-(Note that the condition $\gcd(n_1,n_2,n_3)=1$ is equivalent to $\lcm(r_1,r_2,r_3)=m$, and since we assume that the $r_i$ are pairwise coprime, this is also equivalent to $m=r_1r_2r_3$. Also note that the condition $r_1\neq 1, r_2\neq 1, r_3 \neq 1$ is actually not restrictive, since we have already solved the cases where it is not true. And finally note that $r_1,r_2,r_3$ are pariwise distinct, otherwise their coprimality would imply that two of them equal $1$. This means that we can without loss of generality assume that $r_1>r_2>r_3$.)\\
-%Since $r_1$ and $r_3$ are coprime, we have $\lcm(r_1,r_3)=r_1r_3$, hence $\gcd(n_1,n_3)=n$
-In this case, Lemma \ref{coprime} implies that $\frac{n_1n_3}{m}=\frac{m}{r_1r_3}=\gcd(n_1,n_3)$.
-Thus we have
-%case when some n_i are coprime
+In this case, we have
 \begin{equation*}
-\begin{split}
+\Gal(k/\Qbb)\cong
+ \{\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k};  0\leq x_1<n_1, 0\leq x_2<n_2,  0\leq x_3<n_3,0\leq x_4<a_4\}
+\end{equation*}
+and $$N_1\sim 0, N_2\sim 0, N_3\sim 0, R_4\sum_{u=0}^{m-1}\sigma_1^u\sigma_2^u\sigma_3^u\sim0.$$
+%Note that the condition $\gcd(n_1,n_2,n_3)=1$ is equivalent to $\lcm(r_1,r_2,r_3)=m$, and since we assume that the $r_i$ are pairwise coprime, this is also equivalent to $m=r_1r_2r_3$. Also 
+Note that the condition $r_1\neq 1, r_2\neq 1, r_3 \neq 1$ is actually not restrictive, since we have already solved the cases where it is not true. Also $r_1,r_2,r_3$ must be pairwise distinct, otherwise their coprimality would imply that two of them equal $1$. This means that we can without loss of generality assume that $r_1>r_2>r_3$ (MAYBE NOT NEEDED?). %Finally note that
+%Since $r_1$ and $r_3$ are coprime, we have $\lcm(r_1,r_3)=r_1r_3$, hence $\gcd(n_1,n_3)=n$
+
+\begin{lemma}
+Under the assumptions $s_{12}=s_{13}=s_{23}=1,$ the following are equivalent:
+\begin{enumerate}%[label={\upshape(\roman*)}]
+\item $\gcd(n_1,n_2,n_3)=1$,
+\item $\lcm(r_1,r_2,r_3)=m$,
+\item $r_1r_2r_3=m$,
+\item $n_1=r_2r_3, n_2=r_1r_3, n_3=r_1r_2$,
+\item $\frac{n_1n_2n_3}{m}=m$,
+\item $\gcd(n_1,n_2)=r_3, \gcd(n_1,n_3)=r_2, \gcd(n_2,n_3)=r_1$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\leavevmode
+%mbox{}\\
+\begin{DESCRIPTION}%[labelindent=0cm]
+\item[\enquote{(i) $\Leftrightarrow$ (ii)}:] For any $t\in\Z$, we have
+\begin{align*}
+t \mid \gcd(n_1,n_2,n_3) &\Leftrightarrow t \mid n_1, t\mid n_2, t\mid n_3 \Leftrightarrow r_1\mid \frac{m}{t}, r_2\mid \frac{m}{t}, r_3\mid \frac{m}{t} \\&\Leftrightarrow \lcm(r_1,r_2,r_3)\mid \frac{m}{t} \Leftrightarrow t \mid \frac{m}{ \lcm(r_1,r_2,r_3)},
+\end{align*}
+from which it follows that $ \gcd(n_1,n_2,n_3)=\frac{m}{ \lcm(r_1,r_2,r_3)}$.
+\item[\enquote{(ii) $\Leftrightarrow$ (iii)}:]   Since $s_{12}=s_{13}=s_{23}=1$, any common multiple of $r_1,r_2,r_3$ is in fact a multiple of $r_1r_2r_3$, hence $\lcm(r_1,r_2,r_3)=r_1r_2r_3$.
+\item[\enquote{(iii) $\Leftrightarrow$ (iv)}:] This follows straight from the definition $n_i=\frac{m}{r_i}$.
+\item[\enquote{(iii) $\Leftrightarrow$ (v)}:] We have $\frac{n_1n_2n_3}{m}=\frac{m^2}{r_1r_2r_3}$, which equals $m$ iff $\frac{m}{r_1r_2r_3}=1$.
+\item[\enquote{(iv) $\Rightarrow$ (vi)}:] For $\{i,j,l\}=\{1,2,3\}$, we have $\gcd(n_i,n_j)=\gcd(r_jr_l,r_ir_l)=r_ls_{ij}=r_l$.
+\item[\enquote{(vi) $\Rightarrow$ (i)}:] Since $\gcd(n_1,n_2,n_3)$ must divide $\gcd(n_1,n_2)$, $\gcd(n_1,n_3)$, $\gcd(n_2,n_3)$ and these are pairwise coprime, it must be equal to $1$.
+\end{DESCRIPTION}
+\end{proof}
+
+%In this case, Lemma \ref{coprime} implies that $\frac{n_1n_3}{m}=\frac{m}{r_1r_3}=\gcd(n_1,n_3)$.
+Thus $\frac{n_1n_2n_3}{m}=m=r_2n_2=\gcd(n_1,n_3)n_2$ and we have
+\begin{align*}
 c=&a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)-a_4-2+a_4(n_1+n_2+n_3)+\\
 &\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
 =&(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+\\
-&n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2.
-\end{split}
-\end{equation*}
+&n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2\\
+=&(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+\\
+&(n_2-1)(n_1-r_2-1)+r_1+r_3-2.
+\end{align*}
+
 We will add the following $c$ conjugates of $\eta$ to our basis:
 \begin{itemize}
 \item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<n_3-1, 0<x_4\leq a_4-1$,
 \item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 1< x_3 \leq n_3-1, x_4=0$,
-\item $0\leq x_1< n_1-\gcd(n_1,n_3)-1, 0\leq x_2<n_2-1, x_3=0, x_4=0$,
-\item           $x_1=n_1-\gcd(n_1,n_3)-1, 0\leq x_2<\gcd(n_2,n_3)+\gcd(n_1,n_2)-2, x_3=0, x_4=0$.
+\item $0\leq x_1< n_1-r_2-1, 0\leq x_2<n_2-1, x_3=0, x_4=0$,
+\item           $x_1=n_1-r_2-1, 0\leq x_2<r_1+r_3-2, x_3=0, x_4=0$.
 \end{itemize}
-(Note that $n_1-\gcd(n_1,n_3)-1\geq 0$, since the equality $n_1=\gcd(n_1,n_3)$ would imply $n_1\mid n_3$, hence $r_3 \mid r_1$, which is not possible, since $s_{13}=1$ and $r_3>1$.)
-
-First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=n_3-1$ using the relations $N_1\sim 0, N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$. Next, we will recover the cases $1< x_3 \leq n_3-1$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$ and the cases $x_3=0$, $0\leq x_1< n_1-\gcd(n_1,n_3)-1$, $x_2=n_2-1$ using the relation $N_2\sim 0$.
+(Note that $n_1-r_2-1=r_2(r_3-1)-1> 0$ and $r_1+r_3-2>0$ since $r_1,r_2,r_3>1$.)
+%Note that $n_1-\gcd(n_1,n_3)-1\geq 0$, since the equality $n_1=\gcd(n_1,n_3)$ would imply $n_1\mid n_3$, hence $r_3 \mid r_1$, which is not possible, since $s_{13}=1$ and $r_3>1$.)
+\paragraph*{}
+First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=n_3-1$ using the relations $N_1\sim 0, N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$. Next, we will recover the cases $1< x_3 \leq n_3-1$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$ and the cases $x_3=0$, $0\leq x_1< n_1-r_2-1$, $x_2=n_2-1$ using the relation $N_2\sim 0$.
 \paragraph*{}
 At this moment, we are only missing all the cases with $x_3=1$ and some of those with $x_3=0$. From now on, we will only focus on recovering those with $x_3=0$ (without explicitly mentioning it anymore), because once we have those, we can recover those with $x_3=1$ using just the relation $N_3\sim 0$.
 \paragraph*{}
-Now let $t,u,v\in\Z$ be such that $n_1=tu,n_2=tv$ and $\gcd(u,v)=1$, i.e. $$t=\gcd(n_1,n_2)=\frac{m}{r_1r_2}=r_3$$ (since $s_{12}=1$). Then $$u=\frac{n_1}{t}=\frac{m}{r_1r_3}=r_2$$
-and $$v=\frac{n_2}{t}=\frac{m}{r_2r_3}=r_1,$$
-so it follows that $$n_3=\frac{m}{r_1}=r_2r_3=uv.$$
-In particular, $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$.
+%Now let $t,u,v\in\Z$ be such that $n_1=tu,n_2=tv$ and $\gcd(u,v)=1$, i.e. $$t=\gcd(n_1,n_2)=\frac{m}{r_1r_2}=r_3$$ (since $s_{12}=1$). Then $$u=\frac{n_1}{t}=\frac{m}{r_1r_3}=r_2$$
+%and $$v=\frac{n_2}{t}=\frac{m}{r_2r_3}=r_1,$$
+%so it follows that $$n_3=\frac{m}{r_1}=r_2r_3=uv.$$
+%In particular, $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$.
 
 %Since $s_{12}=1$, this implies that $m=\lcm(n_1,n_2)=tuv$. But we also have the conditions $s_{13}=s_{23}=1$ which imply that $tuv=m=\lcm(tu,n_3)=\lcm(tv,n_3)$. Next, since $\gcd(n_1,n_2,n_3)=1$, $t$ must be coprime with $n_3$, therefore $n_3\mid uv$. Finally, the equalities $$\lcm(tu,n_3)=\frac{tun_3}{\gcd(tu,n_3)}=tuv=\frac{tvn_3}{\gcd(tv,n_3)}=\lcm(tv,n_3)$$
 %show that $u\mid n_3, v\mid n_3$, hence $uv=\lcm(u,v)\mid n_3$ and $n_3=uv$. It follows that $$t=r_3,u=r_2,v=r_1$$ (and thus $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$). %Thanks to the symmetry, we will assume $1<t<u<v$ (if any of $t,u,v$ would equal $1$, this case could be reduced to one of the previous two). 
-We will also write $\uo:=u\pmod{t}$, $\vo:=v\pmod{t}$ (so that $\uo,\vo\in\{1,2,\dots,t-1\}$) and similarly for other expressions. In particular, the expressions $\uo/\vo$ and $\vo/\uo$ will be regarded as being in the previous set.
+From now on, we will use the notation $t:=r_3, u:=r_2, v:=r_1$ (PROBABLY NOT?). We will also write $\uo:=u\pmod{t}$, $\vo:=v\pmod{t}$ (so that $\uo,\vo\in\{1,2,\dots,t-1\}$) and similarly for other expressions. In particular, the expressions $\uo/\vo$ and $\vo/\uo$ will be regarded as being in the previous set.
 % It follows that also $\gcd(t,u)=\gcd(t,v)=1$ (and therefore $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$. In fact, 
+
 \paragraph*{}
-The conjugates with $x_3=0$ (and $x_4=0$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ must contain $\frac{m}{n_3}=r_3=t$ conjugates in each of these rectangles. Thus the expression $\eta^{T'}$, where  $$T':=R_4\sum_{q=0}^{m-1}\sigma_1^{q}\sigma_2^{q}\sigma_3^{q}-\sum_{q=0}^{r_3-1} \sigma_1^{1+q n_3}\sigma_2^{1+q n_3}N_3 $$
-(clearly $T'\sim 0$), contains no conjugates with $x_3=1$. More specifically, if we let $T$ be the sum of the automorphisms contained in  $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ with $x_3=0$, i.e. $T=\sum_{q=0}^{r_3-1}\sigma_1^{qn_3}\sigma_2^{qn_3}$, then $\eta^{(1-\sigma_1\sigma_2)T-T'}$ contains only conjugates having $x_4>0$ or $x_3>1$.%which we have already recovered.
+Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/k)]}$$
+and let $Q$ be the quotient $\Z$-module of $Q'$ by the conjugates we can already recover, i.e
+\begin{align*}
+Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}; \quad & 0\leq x_1< n_1, 0\leq x_2<n_2, 1< x_3<n_3,0\leq x_4<a_4,\\
+\text { or }& 0\leq x_1< n_1-r_2-1, 0\leq x_2<n_2, x_3=x_4=0,\\
+\text { or }& x_1= n_1-r_2-1, 0\leq x_2<r_1+r_3-2, x_3=x_4=0 \}\big\rangle_{\Z}.
+\end{align*}
+We will write $Q$ additively and for any $\rho\in\Gal(k/\Q)$, we will denote the image of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
+Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. For all $2\leq q\leq t+1$, we will denote the class of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ by $X_q$ and we will also put $X_{q'}:=X_q$ for all $q'\in\Z$, $q'\equiv q\pmod{t}$. Also for all $v+t-2\leq q\leq tv-1$ we will denote the class of $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ by $Y_q$. We will refer to the set of these $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ with $v+t-2\leq q\leq tv-1$ as the critical line.
+
 \paragraph*{}
-Now we will decompose our rectangle (with $x_3=x_4=0$) into $t\times t$ rectangular blocks of height $u$ and width $v$ in the obvious way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $t$ consecutive blocks next to (resp. above) each other. Since $u\mid n_3, v\mid n_3$ and the conjugates contained in $\eta^T$ are given by $\sigma_1^{qn_3}\sigma_2^{qn_3}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $\eta^T$ contains exactly one conjugate in every big row (resp. big column), and these have the same relative position in each of the respective blocks (determined only by $n_3 \mod t$). We can be even more precise: the horizontal distance between $\eta^{\sigma_1^{qn_3}\sigma_2^{qn_3}}$ and $\eta^ {\sigma_1^{(q+1)n_3}\sigma_2^{(q+1)n_3}}$ for $0\leq q \leq r_3-1$ is exactly $\uo\cdot v$, i.e. $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot u$, i.e. $\vo$ blocks (again this follows easily from the Chinese remainder theorem). It follows that the horizontal distance between any two conjugates in $\eta^T$ with a vertical distance of one block is $\uo/\vo$ blocks.
+The conjugates with $x_3=0$ and $x_4=0$ (i.e., those of the form $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the sum $\eta^{R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}}$ must contain $\frac{m}{n_3}=r_3=t$ conjugates in each of these rectangles. 
+
+Now let $T$ be the sum of the automorphisms contained in  $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ with $x_3=x_4=0$, i.e. $$T=\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}$$
+and let $$T':=R_4\left(\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}-\sigma_1\sigma_2 TN_3\right).$$
+%Then clearly $T'\sim 0$.
+\begin{lemma}
+The expression $\eta^{T'}$ contains no conjugates having $x_3=1$  and $\eta^{(1-\sigma_1\sigma_2)T-T'}$ contains only conjugates having $x_4>0$ or $x_3>1$. %In other words, $((1-\sigma_1\sigma_2)T-T')\cdot \mu=0$ in $Q$.
+\end{lemma}
+\begin{proof}
+Since the order of $\sigma_3$ is $n_3$, we have $\sigma_3^u=\sigma_3^1$ iff $u=vn_3+1$ for some $v\in\Z$. But since $$R_4\left(\sum_{v=0}^{r_3-1}\sigma_1^{vn_3+1}\sigma_2^{vn_3+1}\sigma_3^{vn_3+1}-\sigma_1\sigma_2 \sigma_3T\right)=0,$$
+it follows that there are no automorphisms in $T'$ whose power of $\sigma_3$ is $1$.
 \paragraph*{}
-Let $Q$ be the quotient module of $D^+$ by the conjugates we can already recover (including those living in the maximal subfields ramified at three primes), regarded as $\Z$-modules (i.e. forgetting the $G$-structure, otherwise the quotient would be trivial). We will write $Q$ additively and for the remainder of this section, all equalities between (classes of) conjugates will be regarded as if in $Q$.
+Proof of the second part...
+\end{proof}
+
+\begin{cor}
+In $Q$, we have $((1-\sigma_1\sigma_2)T-T')\cdot \mu=0$ and $(1-\sigma_1\sigma_2)T\cdot \mu=0$.
+\end{cor}
+\begin{proof}
+The first part is immediate, because the conjugates of $\eta$ having $x_4>0$ or $x_3>1$ become trivial in $Q$. The second equality follows from the fact that $T'\sim 0$, hence $T'\cdot \mu =0$ (in fact, the image of $\eta^{T'}$ is alredy trivial in $Q'$).
+\end{proof}
+\paragraph*{}
+Now we will decompose our rectangle (of conjugates having $x_3=x_4=0$) into $t\times t$ rectangular blocks of height $u$ and width $v$ in the obvious way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $t$ consecutive blocks next to (resp. above) each other. Since $u\mid n_3, v\mid n_3$ and the conjugates contained in $\eta^T$ are given by $\sigma_1^{qn_3}\sigma_2^{qn_3}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $\eta^T$ contains exactly one conjugate in every big row (resp. big column), and these have the same relative position in each of the respective blocks (determined only by $n_3 \mod t$). We can be even more precise: the horizontal distance between $\eta^{\sigma_1^{qn_3}\sigma_2^{qn_3}}$ and $\eta^ {\sigma_1^{(q+1)n_3}\sigma_2^{(q+1)n_3}}$ for $0\leq q \leq r_3-1$ is exactly $\uo\cdot v$, i.e. $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot u$, i.e. $\vo$ blocks (again this follows easily from the Chinese remainder theorem). It follows that the horizontal distance between any two conjugates in $\eta^T$ with a vertical distance of one block is $\uo/\vo$ blocks.
+%Let $Q$ be the quotient module of $D^+$ by the conjugates we can already recover (including those living in the maximal subfields ramified at three primes), regarded as $\Z$-modules (i.e. forgetting the $G$-structure, otherwise the quotient would be trivial). We will write $Q$ additively and for the remainder of this section, all equalities between (classes of) conjugates will be regarded as if in $Q$.
 %From now on, we will regard the elements of our rectangle as their images in the quotient module of $\Z[G/H]/(N_1,N_2,N_3,N_4)$ by the $\Z$-module of the conjugates we can already recover (including those living in the maximal subfields ramified at three primes). We will call this quotient module $Q$.
-\paragraph*{}
-Showing that we have indeed chosen a basis now amounts to showing that the class of each conjugate in our rectangle is trivial in $Q$. For all $2\leq q\leq t+1$, we will denote the class of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ by $X_q$ and we will also put $X_{q'}:=X_q$ for all $q'\in\Z$, $q'\equiv q\pmod{t}$. Also for all $v+t-2\leq q\leq tv-1$ we will denote the class of $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ by $Y_q$. We will refer to the set of these $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ with $v+t-2\leq q\leq tv-1$ as the critical line. Now it suffices to show that $X_q=0$ for all $1\leq q\leq t$ and $Y_q=0$ for all $v+t-2\leq q\leq tv-1$.
-\paragraph*{}
-It is easy to see that our rectangle can be partitioned into $t=\gcd(n_1,n_2)$ (2D) diagonals, each going through exactly one of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$ (two conjugates lie in the same diagonal iff their difference is a power of $\eta^{\sigma_1^q\sigma_2^q}$ for some $q\in\Z$). We will use this together with the fact that $\eta^{(1-\sigma_1\sigma_2)T}$ is trivial in $Q$ to find the classes of all conjugates in our rectangle in terms of $X_q,Y_q$. More specifically, if $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T}$ contains no elements from the critical line, it is just a difference of two conjugates, hence their classes are the same. On the other hand, if it contains $Y_{q}$ for some $q$ and a difference of two conjugates, the classes of these two conjugates differ only by $\pm Y_{q}$ (depending on the sign of $Y_{q}$ in $\eta^{\sigma_1^q\sigma_2^r(1-\sigma_1\sigma_2)T}$). Using the earlier observations, we can see that these are the only options, hence it follows that by going along each of the $t$ 2D diagonals starting at $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$, will will obtain that %the class of $\eta^{\sigma_1^q\sigma_2^r$
+
+\begin{lemma}
+For any $0\leq x_1\leq tu-1, 0\leq x_2\leq tv-1$, we have
 $$
-[\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}]=
+\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=
 \begin{cases}
-0 \quad &\!\begin{aligned} \text{ if }  &x_1<t(u-1)-1\\ &\text{ or } x_1=t(u-1)-1, x_2< v+t-2 \end{aligned}\\
-Y_{x_2} \quad &\text{ if } x_1=t(u-1)-1, v+t-2\leq x_2 \\
-X_{-x_1+x_2+1} \quad &\!\begin{aligned}\text{ if } & t(u-1)-1\leq x_1<tu-1 \\&
+0 \quad &\!\begin{aligned} \text{ if }  &x_1<u(t-1)-1\\ &\text{ or } x_1=u(t-1)-1, x_2< v+t-2 \end{aligned}\\
+Y_{x_2} \quad &\text{ if } x_1=u(t-1)-1, v+t-2\leq x_2 \\
+X_{-x_1+x_2+1} \quad &\!\begin{aligned}\text{ if } & t(u-1)-1< x_1<tu-1 \\&
  \text{ or }  x_1=tu-1, x_2\equiv q+\uo/\vo\cdot v\pmod{tv} \\
  &\text{ for some } 0\leq q<v+t-2  \end{aligned}\\
 X_{-x_1+x_2+1}-Y_{x_2+(t-\uo/\vo)\cdot v} \quad &\!\begin{aligned}\text{ if } & x_1=tu-1, x_2\not\equiv q+\uo/\vo\cdot v\pmod{tv} \\
-&\text{ for any } 0\leq q<v+t-2\end{aligned}\\
+&\text{ for any } 0\leq q<v+t-2.\end{aligned}
 \end{cases}
 $$
-for any $0\leq x_1\leq tu-1, 0\leq x_2\leq tv-1$. Note that this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s.
+\end{lemma}
+\begin{proof}
+It is easy to see that our rectangle can be partitioned into $t=\gcd(n_1,n_2)$ (2D) diagonals, each going through exactly one of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$ (two conjugates lie in the same diagonal iff their difference is a power of $\eta^{\sigma_1^q\sigma_2^q}$ for some $q\in\Z$). We will use this together with the fact that $\eta^{(1-\sigma_1\sigma_2)T}$ is trivial in $Q$ to find the classes of all conjugates in our rectangle in terms of $X_q,Y_q$. More specifically, if $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T}$ contains no elements from the critical line, it is just a difference of two conjugates, hence their classes are the same. On the other hand, if it contains $Y_{q}$ for some $q$ and a difference of two conjugates, the classes of these two conjugates differ only by $\pm Y_{q}$ (depending on the sign of $Y_{q}$ in $\eta^{\sigma_1^q\sigma_2^r(1-\sigma_1\sigma_2)T}$). Using the earlier observations, we can see that these are the only options, hence it follows that by going along each of the $t$ 2D diagonals starting at $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$, will will obtain that ...%the class of $\eta^{\sigma_1^q\sigma_2^r$
+Note that this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s).
 %$X_q^{\sigma_2^{x_2}}=X_{q+x_2}$ for any $q,x_2$.
-
+\end{proof}
+Now it suffices to show that $X_q=0$ for all $1\leq q\leq t$ and $Y_q=0$ for all $v+t-2\leq q\leq tv-1$. To achieve this, we will use linear algebra.
 \paragraph*{}
-Using the relation $N_1\sim 0$, we obtain the equation $u\cdot (X_1+\dots+X_t)=0$, and similarly the relation $N_2\sim 0$ implies $v\cdot (X_1+\dots+X_t)=0$, as well as $Y_{v+t-2}+\dots+Y_{tv-1}=0$. Since $\gcd(u,v)=1$, this implies $X_1+\dots+X_t=0$ by Bezout's identity. We will put $\beta=X_1+\dots+X_t$.
+Let $\alpha:= Y_{v+t-2}+\dots+Y_{tv-1}$ and $\beta:=X_1+X_2+\dots+X_t$.
+\begin{lemma}
+We have $\alpha=\beta=0$.
+\end{lemma}
+\begin{proof}
+Using the relation $N_2\sim 0$, we have$$0=\sigma_1^{n_1-r_1-1}N_2\cdot \mu =\sum_{x_2=0}^{tv-1}  \sigma_1^{t(u-1)}\sigma_2^{x_2}\cdot \mu= \alpha$$ and
+$$0= \sigma_1^{u(t-1)}N_2\cdot \mu=\sum_{x_2=0}^{tv-1}  \sigma_1^{u(t-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{tv-1}  X_{-u(t-1)+x_2+1}=\sum_{x_2=0}^{tv-1}  X_{x_2+u+1}=v\cdot \beta.$$
+Similarly, using the relation $N_1\sim 0$, we have $$0= N_1\cdot \mu=\dots=u\cdot \beta.$$ Since $\gcd(u,v)=1$, this implies $\beta=0$ by Bezout's identity.
+\end{proof}
+%Using the relation $N_1\sim 0$, we obtain the equation $u\cdot (X_1+\dots+X_t)=0$, and similarly the relation $N_2\sim 0$ implies $v\cdot (X_1+\dots+X_t)=0$, as well as $Y_{v+t-2}+\dots+Y_{tv-1}=0$. Since $\gcd(u,v)=1$, this implies $X_1+\dots+X_t=0$ by Bezout's identity. We will put $\beta=X_1+\dots+X_t$.
 \paragraph*{}
 %Next, note that for any set of conjugates, 
 %Next, for $0\leq q \leq t-3$, we will put $$\Gamma_q:=\sum_{r=0}^{t-\uo/\vo-1}\sum_{p=1}^{\uo}X_{\overline{q+p-rv}}$$
@@ -455,7 +653,7 @@ Now we will construct a matrix $M$ of type $t\times t$ as follows:
 \item The last row will correspond to the relation $\Delta$.
 \end{itemize}
 
-Since the rows of $M$ are the coefficients of valid equations in $Q$, we have $M\cdot X'=0$, where $X=(X_1,\dots,X_t)$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
+Since the rows of $M$ are the coefficients of valid equlities in $Q$, we have $M\cdot X'=0$, where $X=(X_1,\dots,X_t)$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
 
 \paragraph*{}
 Let $L$ be the localization of the quotient ring $\Z[x]/(1+x+x^2+\dots+x^{t-1})$ at the multiplicative subset generated by $x-1$ and $x^{t-\uo}-1$. (By abuse of notation, we will denote the class of $x$ in $L$ also by $x$). Note that since $$\gcd(x^t-1,x^q-1)=x^{\gcd(t,q)}-1$$ for any $q\in\Z$ and $\gcd(t,1)=\gcd(t,t-\uo)=1$, we have $$\gcd(1+x+x^2+\dots+x^{t-1},x-1)=\gcd(1+x+x^2+\dots+x^{t-1},x^{t-\uo}-1)=1,$$ so that $x-1$ nor $x^{t-\uo}-1$ are zero-divisors, hence $L$ is nontrivial. Moreover let $$D(x):=\sum_{q=1}^{t-1}q\cdot x^q\in L.$$
