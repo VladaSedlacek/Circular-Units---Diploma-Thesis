@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 %\usepackage[czech]{babel}
 \usepackage{a4wide}
-\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,mathtools,csquotes,tikz,enumitem,calc}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,mathtools,csquotes,tikz,enumitem,calc,pdfpages}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \newtheorem{theorem}{Theorem}
@@ -45,9 +45,10 @@
 \newcommand{\rr}{\mathfrak{r}}
 \newcommand{\al}{\alpha}
 \newcommand{\z}{\zeta}
-\newcommand{\zt}{\zeta_t}
-\newcommand{\uo}{\overline{u}}
-\newcommand{\vo}{\overline{v}}
+\newcommand{\zt}{\zeta_{r_3}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\uo}{\overline{r_2}}
+\newcommand{\vo}{\overline{r_1}}
 \newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
 \newcommand{\Char}{\mathrm{char }}
 \newcommand{\lcm}{\mathrm{lcm}}
@@ -115,7 +116,7 @@ An \textit{abelian field} is a finite Galois extension of $\Q$ with an abelian G
 \end{definition}
 
 \begin{definition}
-The \textit{genus field} (in the narrow sense) of an abelian field is its maximal abelian extension (i.e., finite Galois extension with an abelian Galois group) unramified at all (finite) primes.
+The \textit{genus field} (in the narrow sense) of an abelian field is its maximal extension which is abelian over $\Q$ and unramified at all (finite) primes.
 \end{definition}
 
 \begin{lemma}\label{genus}
@@ -135,27 +136,27 @@ Let $k$ be an abelian field. The least number $n\in\mathbb{N}$ such that $k\subs
 \end{definition}
 
 \begin{definition}
-Let $G$ be any group. The (integral) \textit{group ring} $\Z[G]$ is the free $\Z$-module with basis $G$, which is made into a ring by using the group law on $G$ and extending linearly.
+Let $G$ be any group. The (integral) \textit{group ring} $\Z[G]$ is the free $\Z$-module with basis $G$, which is made into a ring, extending linearly the group law on $G$.
 \end{definition}
 
 \begin{definition}
-An element $\alpha$ of a number field $K$ is called totally positive if for any embedding $\sigma: K\to \R$, we have $\sigma(\alpha)>0$.
+An element $\alpha$ of a totally real number field $K$ is called totally positive if for any embedding $\sigma: K\to \R$, we have $\sigma(\alpha)>0$.
 \end{definition}
 
 \section{The group of circular numbers}
-Let $k$ a real abelian field, $K$ its the genus field in the narrow sense, $P$ is the set of ramified primes of $k$, $K_p$ is the maximal subfield of $K$ ramified only at $p\in P$. Since $\Gal(K/k)$ has a natural action on $K$ (given by evaluating an automorphism on an element), this makes $K$ into a $\Z[\Gal(K/k)]$-module. 
+Let $k$ be a real abelian field, $K$ its the genus field in the narrow sense, $P$ is the set of ramified primes of $k$, $K_p$ is the maximal subfield of $K$ ramified only at $p\in P$. Since $\Gal(K/\Q)$ has a natural action on $K$ (given by evaluating an automorphism on an element), this makes $K$ into a $\Z[\Gal(K/\Q)]$-module. 
 
 \begin{definition}
 The group $D(k)$ of circular numbers of $k$ (using Lettl's modification of Sinnott's definition) is given as
-$$D:=\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P \}\big\rangle_{\Z[\Gal(K/k)]},$$
-where $\langle \dots \rangle_{\Z[\Gal(K/k)]}$ means \enquote{generated as a $\Z[\Gal(K/k)]$-submodule of $K$} and $$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)})/\left(\prod_{i\in I}K'_i)\right)\cap k'}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)}\right),$$ where $\text{N}$ denotes the norm operator. The subset of totally positive elements of $D(k)$ will be denoted by $D^+(k)$.
+$$D:=\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P \}\big\rangle_{\Z[\Gal(K/\Q)]},$$
+where $\langle \dots \rangle_{\Z[\Gal(K/\Q)]}$ means \enquote{generated as a $\Z[\Gal(K/\Q)]$-submodule of $K$} and $$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)})/\left(\prod_{i\in I}K_i)\right)\cap k}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)}\right),$$ where $\text{N}$ denotes the norm operator and the product of fields denotes their compositum. The subset of totally positive elements of $D(k)$ will be denoted by $D^+(k)$.
 \end{definition}
 
 \begin{definition}
 The group $C(k)$ of circular numbers of $k$ is $E(k)\cap D$, where $E(k)$ is the group of units of the ring of algebraic integers of $k$. The subset of totally positive elements of $C(k)$ will be denoted by $C^+(k)$.
 \end{definition}
 
-One of the reasons that $C(k)$ is important is the following famous result:
+One of the reasons that $C(k)$ is important is the following famous result, due to Sinnott:
 \begin{theorem}
 The index $[E(k):C(k)]$ is finite.
 \end{theorem}
@@ -166,28 +167,35 @@ The index $[E(k):C(k)]$ is finite.
 %We have $$C(k)=\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P, 1<|I| \}\cup\big\rangle_{\Z[\Gal(K/k)]}$$
 \begin{enumerate}%[i)]
 \item For $|I|>1$, we have $\eta_I\in E(k)$.
-\item For $I=\{p\}$, we have $\eta_I\not\in E(k)$, but $\eta_I^{1-\sigma}\in E(k)$ for any $\sigma$ in the inertia subgroup of $\Gal(K/k)$ corresponding to $p$.
+\item For $I=\{p\}$, we have $\eta_I\not\in E(k)$, but $\eta_I^{1-\sigma}\in E(k)$ for any $\sigma\in \Gal(K/\Q)$. % in the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
 \end{proof}
 
-The next result shows that $D^+$ and $C^+$ are free $\Z$-modules.
+\begin{cor}
+We have $$C(k)=\big\langle \{ -1, \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
+\end{cor}
+
+The next result shows that $D^+(k)$ and $C^+(k)$ are free $\Z$-modules.
 \begin{lemma}
-$D^+(k)$ is a subgroup of $D(k)$ given as $$D(k)=\big\langle -1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/k)]},$$
-hence canonically isomorphic to the non-torsion part of $D(k)$. The similar statement is true for $C^+(k)$ and $C(k)$.
+$D^+(k)$ is a subgroup of $D(k)$ given as $$D^+(k)=\big\langle  \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/\Q)]},$$
+hence canonically isomorphic to the non-torsion part of $D(k)$. Similarly, $C^+(k)$ is a subgroup of $C(k)$ given as $$C^+(k)=\big\langle \{ \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
 \end{lemma}
 \begin{proof}
 \end{proof}
 
 \begin{lemma}
-The $\Z$-rank of $D^+$ is $[k:\Q]+|P|-1$.
+The $\Z$-rank of $D^+(k)$ is $[k:\Q]+|P|-1$.
 \end{lemma}
 \begin{proof}
 \end{proof}
 
 \section{Notation and assumptions}
-In the remainder of the thesis, we will fix $k$ to be a real abelian field with exactly four ramified primes $p_1,p_2,p_3,p_4$. Let $K$ be the genus field in the narrow sense of $k$. Let $G:=\Gal(K/\Q)$, then by lemma \ref{genus}, we can identify $G$ with the direct product $T_1\times T_2\times T_3\times T_4$, where $T_i$ is the inertia group corresponding the ramified prime $p_i$. Next, we will define:
+In the remainder of the thesis, we will fix $k$ to be a real abelian field with exactly four ramified primes $p_1,p_2,p_3,p_4$ and we will abbreviate $D(k),D^{+}(k),C(k),C^+(k)$ simply as $D,D^{+},C,C^+$.
+\paragraph*{}
+
+ Let $K$ be the genus field in the narrow sense of $k$ and let $G:=\Gal(K/\Q)$. Then by Lemma \ref{genus}, we can identify $G$ with the direct product $T_1\times T_2\times T_3\times T_4$, where $T_i$ is the inertia group corresponding the ramified prime $p_i$. Next, we will define:
 
 \begin{itemize}
 \item $H:=\Gal(K/k)$, 
@@ -197,7 +205,7 @@ In the remainder of the thesis, we will fix $k$ to be a real abelian field with 
 \item $r_i:=|H\cap \ker \pi_i|$,
 \item $s_{ij}:=|H\cap \ker (\pi_i\pi_j)|$,
 \item $n_i:=\frac{m}{r_i}$,
-\item $\eta:=\eta_{1234}$,
+\item $\eta:=\eta_{\{1234\}}$,
 \item $K_i$ as the maximal subfield of $K$ ramified only at $p_i$ (so that $$T_i=\Gal(K/K_jK_lK_h)\cong \Gal(K_i/\Q).)$$
 \end{itemize}
 
@@ -209,19 +217,20 @@ We will assume the following:
 \end{itemize}
 
 \section{Auxiliary results}
-\begin{lemma}
+\begin{lemma}\label{tau}
 Without loss of generality, we can assume $\tau=\sigma_1^{a_1}\sigma_2^{a_2}\sigma_3^{a_3}\sigma_4^{a_4}$.
 \end{lemma}
 \begin{proof}
 We know that $a_i=[T_i:\pi_i(H)]$, hence
-$\pi_i(\tau)$ generates a subgroup of $T_i$ of index $a_i$. The cyclicity of $T_i$ then implies that $\pi_i(\tau)$ must be the $a_i$-th power of some generater of $T_i$, WLOG $\sigma_i$. The statement now follows, because $\tau$ is determined by its four projections.
+$\pi_i(\tau)$ generates a subgroup of $T_i$ of index $a_i$. The cyclicity of $T_i$ then implies that $\pi_i(\tau)$ must be the $a_i$-th power of some generator of $T_i$, WLOG $\sigma_i$. The statement now follows, because $\tau$ is determined by its four projections.
 \end{proof}
 
 \begin{lemma}\label{comp}
 We have $kK_iK_jK_l=K$ and $K_1K_2K_3K_4=K$.
 \end{lemma}
 \begin{proof}
-The extension $K/K_iK_jK_l$ is totally ramified at the prime ideals above $p_h$, so the same must be true for the extension $K/kK_iK_jK_l$. But since the extension $K/k$ is unramified (by the definition of $K$), so is $K/kK_iK_jK_l$. Therefore $[K:kK_iK_jK_l]=1$. The second claim follows from the facts $\Gal(K_i/\Q)\cong T_i$ and $G=T_1\times T_2\times T_3\times T_4$.
+The extension $K/K_iK_jK_l$ is totally ramified at the prime ideals above $p_h$, so the same must be true for the extension $K/kK_iK_jK_l$. But since the extension $K/k$ is unramified (by the definition of $K$), so is $K/kK_iK_jK_l$. Therefore $[K:kK_iK_jK_l]=1$. The second claim follows from the facts %$\Gal(K_i/\Q)\cong$
+$T_i=\Gal(K/K_jK_lK_h)$ and $G=T_1\times T_2\times T_3\times T_4$.
 \end{proof}
 \begin{center}
 \begin{tikzpicture}
@@ -339,20 +348,22 @@ a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}.
 
 \end{proof}
 \begin{lemma}\label{coprime}
-We have $$s_{ij}=\gcd(r_i,r_j),$$ $$\gcd(r_i,r_j,r_l)=1$$ (this is also equivalent to $\lcm\left(\frac{m}{r_i},\frac{m}{r_j},\frac{m}{r_l}\right)=m$ and to $\gcd(s_{ij},r_l)=1$) and $$s_{ij}\frac{m}{r_ir_j}=\gcd(\frac{m}{r_i},\frac{m}{r_j}).$$
+We have 
+
+$$s_{ij}=\gcd(r_i,r_j), \gcd(r_i,r_j,r_l)=1, \lcm\left(n_i,n_j,n_l\right)=m \text{ and } s_{ij}\frac{m}{r_ir_j}=\gcd(n_i,n_j).$$ %(this is also equivalent to $\lcm\left(n_i,n_j,n_l\right)=m$ and to $\gcd(s_{ij},r_l)=1$) 
 \end{lemma}
 \begin{proof}
-It follows from Proposition \ref{degrees} that $s_{ij}\mid r_i, s_{ij}\mid r_j$ and from its proof that $|\pi_i(H)|=\frac{m}{r_i}$, $|\pi_i\pi_j(H)|=\frac{m}{s_{ij}}$ and $|\pi_i\pi_j\pi_l(H)|=m$. The cyclicity of $H$ then implies
-$$\frac{m}{s_{ij}}=|\pi_i\pi_j(H)|=|\langle\pi_i\pi_j(\tau)\rangle|=|\langle\pi_i(\tau)\pi_j(\tau)\rangle|=\lcm\left(\frac{m}{r_i},\frac{m}{r_j}\right),$$
+It follows from Proposition \ref{degrees} that $s_{ij}\mid r_i, s_{ij}\mid r_j$ and from its proof that $$|\pi_i(H)|=n_i, \quad |\pi_i\pi_j(H)|=\frac{m}{s_{ij}} \text{ and } |\pi_i\pi_j\pi_l(H)|=m.$$ The cyclicity of $H$ then implies
+$$\frac{m}{s_{ij}}=|\pi_i\pi_j(H)|=|\langle\pi_i\pi_j(\tau)\rangle|=|\langle\pi_i(\tau)\pi_j(\tau)\rangle|=\lcm\left(n_i,n_j\right),$$
 because $\langle\pi_i(\tau)\rangle=\pi_i(H)$ and any power of the product $\pi_i(\tau)\pi_j(\tau)$ is trivial if and only if the same power of both its factors is (since $G$ is the direct product of the $T_i$'s). 
 %the elements $\pi_i(H),\pi_j(H)$ have different non-zero coordinates in $G$.
-Now for any common divisor $t$ of $r_i,r_j$, we have $\frac{m}{s_{ij}}= \lcm\left(\frac{m}{r_i},\frac{m}{r_j}\right) \mid \frac{m}{t}$, which implies $t\mid s_{ij}$ and we are done.
+Now for any common divisor $t$ of $r_i,r_j$, we have $$\frac{m}{s_{ij}}= \lcm\left(n_i,n_j\right)=\lcm\left(\frac{m}{r_i},\frac{m}{r_j}\right) \mid \frac{m}{t},$$ which implies $t\mid s_{ij}$. Hence $s_{ij}=\gcd(r_i,r_j)$.
 
 Similarly, we have
-$$m=|\pi_i\pi_j\pi_l(H)|=|\langle\pi_i\pi_j\pi_l(\tau)\rangle|=|\langle\pi_i(\tau)\pi_j(\tau)\pi_l(\tau)\rangle|=\lcm\left(\frac{m}{r_i},\frac{m}{r_j},\frac{m}{r_l}\right),$$
-so if $t$ is any common divisor of $r_i,r_j,r_l$, we have $m=\lcm\left(\frac{m}{r_i},\frac{m}{r_j},\frac{m}{r_l}\right)\mid \frac{m}{t}$, which implies $t=1$.
+$$m=|\pi_i\pi_j\pi_l(H)|=|\langle\pi_i\pi_j\pi_l(\tau)\rangle|=|\langle\pi_i(\tau)\pi_j(\tau)\pi_l(\tau)\rangle|=\lcm(n_i,n_j,n_l),$$
+so if $t$ is any common divisor of $r_i,r_j,r_l$, we have $$m=\lcm(n_i,n_j,n_l)=\lcm\left(\frac{m}{r_i},\frac{m}{r_j},\frac{m}{r_l}\right) \mid \frac{m}{t},$$ which implies $t=1$. This implies both $m=\lcm(n_i,n_j,n_l)$ and $\gcd(r_i,r_j,r_l)=1$ (in fact, these are equivalent).
 
-Finally, using the first result, we have $s_{ij}\frac{m}{r_ir_j}=\frac{m}{\lcm(r_i,r_j)}$, which clearly divides both $\frac{m}{r_i}$ and $\frac{m}{r_j}$. Moreover, if $t$ is any common divisor of $\frac{m}{r_i}$ and $\frac{m}{r_j}$, then both $r_it$ and $r_jt$ divide $m$, hence $t\cdot\lcm(r_i,r_j)=\lcm(r_it,r_jt)\mid m$. Thus $t\mid \frac{m}{\lcm(r_i,r_j)}$ and we are done.
+Finally, using the first result, we have $$s_{ij}\frac{m}{r_ir_j}=\frac{m}{r_ir_j/s_{ij}}=\frac{m}{\lcm(r_i,r_j)},$$ which clearly divides both $\frac{m}{r_i}=n_i$ and $\frac{m}{r_j}=n_j$. Moreover, if $t$ is any common divisor of $n_i=\frac{m}{r_i}$ and $n_j=\frac{m}{r_j}$, then both $r_it$ and $r_jt$ divide $m$, hence $t\cdot\lcm(r_i,r_j)=\lcm(r_it,r_jt)\mid m$. Thus $t\mid \frac{m}{\lcm(r_i,r_j)}$ and we are done.
 \end{proof}
 
 \begin{prop}\label{gal}
@@ -366,12 +377,12 @@ We have
 where each automorphism of $k$ determines the quadruple $(x_1,x_2,x_3,x_4)$ uniquely.
 \end{prop}
 \begin{proof}
-By Corollary \ref{compcap}, the set on the right hand side has at most $|\Gal(k/\Qbb)|$ elements. Now let $\rho$ be any automorphism of $k$. If we can show that $\rho$ determines the quadruple $(x_1,x_2,x_3,x_4)$ belonging to the set on the right hand side uniquely, it will follow that the cardinalities agree and we will be done. Since $\Gal(k\cap K_4/\Q)$ is a cyclic group of order $a_4$ (by lemma \ref{degrees}) generated by $\restr{\sigma_4}{k\cap K_4}$ (as a quotient of $\Gal(K_4/\Q)=\langle \restr{\sigma_4}{K_4}\rangle$), there must exist a unique $x_4\in \Z$, $0\leq x_4<a_4$ such that $\rho$ and $\sigma_4^{x_4}$ have the same restrictions to $k\cap K_4$. Therefore $\rho\restr{\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_4)$. 
+First note that by Lemma \ref{coprime}, we have $$a_3\frac{m}{r_3r_4}s_{34}=a_3\gcd(n_3,n_4)\in\Nbb$$ and $$a_2\frac{m}{r_2s_{34}}=a_2\lcm(r_3,r_4)\frac{m}{r_2r_3r_4}\in\Nbb$$ (this follows from $r_i\mid m$ and $\gcd(r_2,r_3,r_4)=1$), so the expressions make sense. By Corollary \ref{compcap}, the set on the right hand side has at most $|\Gal(k/\Qbb)|$ elements. Now let $\rho$ be any automorphism of $k$. If we can show that $\rho$ determines the quadruple $(x_1,x_2,x_3,x_4)$ belonging to the set on the right hand side uniquely, it will follow that the cardinalities agree and we will be done. Since $\Gal(k\cap K_4/\Q)$ is a cyclic group of order $a_4$ (by Lemma \ref{degrees}) generated by $\restr{\sigma_4}{k\cap K_4}$ (as a quotient of $\Gal(K_4/\Q)=\langle \restr{\sigma_4}{K_4}\rangle$), there must exist a unique $x_4\in \Z$, $0\leq x_4<a_4$ such that $\rho$ and $\sigma_4^{x_4}$ have the same restrictions to $k\cap K_4$. Therefore $\rho\restr{\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_4)$. 
 
-Next, $\Gal(k\cap K_3K_4/k\cap K_4)$ is a cyclic group of order $\frac{[k\cap K_3K_4:\Q]}{[k\cap K_4:\Q]}=a_3\frac{m}{r_3r_4}s_{34}$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_3}{k\cap K_3K_4}$ (as a quotient of $\Gal(K_3K_4/K_4)=\langle \restr{\sigma_3}{K_3K_4}\rangle$), so there must exist a unique $x_3\in \Z$, $0\leq x_3<a_3\frac{m}{r_3r_4}s_{34}$ such that $\rho \restr{\sigma_4^{-x_4}}{k}$ and $\sigma_3^{x_3}$ have the same restriction to $k\cap K_3K_4$. Therefore $\restr{\rho\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_3K_4)$.
+Next, $\Gal(k\cap K_3K_4/k\cap K_4)$ is a cyclic group of order $\frac{[k\cap K_3K_4:\Q]}{[k\cap K_4:\Q]}=a_3\frac{m}{r_3r_4}s_{34}$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_3}{k\cap K_3K_4}$ (as it is isomorphic by restriction to $\Gal((k\cap K_3K_4)K_4 / K_4)$, which is a quotient of $\Gal(K_3K_4/K_4)=\langle \restr{\sigma_3}{K_3K_4}\rangle$), so there must exist a unique $x_3\in \Z$, $0\leq x_3<a_3\frac{m}{r_3r_4}s_{34}$ such that $\rho \restr{\sigma_4^{-x_4}}{k}$ and $\sigma_3^{x_3}$ have the same restriction to $k\cap K_3K_4$. Therefore $\restr{\rho\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_3K_4)$.
 
 Following the pattern, $\Gal(k\cap K_2K_3K_4/k\cap K_3K_4)$ is a cyclic group of order 
-$$\frac{[k\cap K_2K_3K_4:\Q]}{[k\cap K_3K_4:\Q]}=a_2\frac{m}{r_2s_{34}}$$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_2}{k\cap K_2K_3K_4}$ (as a quotient of $$\Gal(K_2K_3K_4/K_3K_4)=\langle \restr{\sigma_2}{K_2K_3K_4}\rangle),$$ so there must exist a unique $x_2\in \Z$, $0\leq x_2<a_2\frac{m}{r_2s_{34}}$ such that $\rho\restr{\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_2^{x_2}$ have the same restriction to $k\cap K_2K_3K_4$. Therefore $\restr{\rho\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_2K_3K_4)$.
+$$\frac{[k\cap K_2K_3K_4:\Q]}{[k\cap K_3K_4:\Q]}=a_2\frac{m}{r_2s_{34}}$$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_2}{k\cap K_2K_3K_4}$ (as it is isomorphic by restriction to $\Gal((k\cap K_2K_3K_4)K_3K_4 / K_3K_4)$, which is a quotient of $$\Gal(K_2K_3K_4/K_3K_4)=\langle \restr{\sigma_2}{K_2K_3K_4}\rangle),$$ so there must exist a unique $x_2\in \Z$, $0\leq x_2<a_2\frac{m}{r_2s_{34}}$ such that $\rho\restr{\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_2^{x_2}$ have the same restriction to $k\cap K_2K_3K_4$. Therefore $\restr{\rho\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_2K_3K_4)$.
 
 Finally, we have $$\Gal(k/k\cap K_2K_3K_4)\cong \Gal(kK_2K_3K_4/K_2K_3K_4)=\Gal(K_1K_2K_3K_4/K_2K_3K_4)=\langle\sigma_1\rangle$$
 (using Lemma \ref{comp}), where the isomorphism is given by restriction. Since the order of $\sigma_1$ is $a_1\frac{m}{r_1}$, it follows that there must exist a unique $x_1\in \Z$, $0\leq x_1<a_1\frac{m}{r_1}$ such that $\rho\restr{\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_1^{x_1}$ have the same restriction to $k$. Thus $\rho=\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k}$ and the proof is finished.
@@ -410,7 +421,7 @@ Finally, we have $$\Gal(k/k\cap K_2K_3K_4)\cong \Gal(kK_2K_3K_4/K_2K_3K_4)=\Gal(
 %Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). Such a basis is known only in a few very special cases though. We would like to construct it for general abelian fields as well, based only on the number of ramified primes.
 %\paragraph*{}
 Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). The generators of $D^+$ are subject to norm relations that correspond to the sum of all elements of the respective inertia groups $T_i$. Namely, let $$R_i=\sum_{u=0}^{a_i-1}\sigma_i^u,\, N_i=\sum_{u=0}^{n_i-1}\sigma_i^{ua_i}.$$ 
-Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e. the sum of all elements of $T_i$). If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have $$N_4\equiv \sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}.$$ Note that any subgroup of $k^*$ is naturally a $\Z[G/H]$-module, since the action of $H$ on $k$ is trivial.
+Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e. the sum of all elements of $T_i$). If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have (using Lemma \ref{tau}) $$N_4\equiv \sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}.$$ Note that any subgroup of $k^*$ is naturally a $\Z[G/H]$-module, since the action of $H$ on $k$ is trivial.
 
 Moreover, we will denote the congruence corresponding to the composition of canonical projections $$\Z[G]\to \Z[G/H]\to \Z[G/H]/(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$$ by $\sim$, where $(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ is the ideal generated in $\Z[G/H]$ by the images of the elements $R_iN_i$. When we apply any element of this ideal to the highest generator $\eta$, we will obtain a multiplicative $\Z$-linear combination of circular units belonging to subfields with less ramified primes. We will make use of this extensively.
 
@@ -423,7 +434,7 @@ The fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ s
 To construct a basis of $D^+$, we can take the union of all bases for the fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ (we can use the results in [1] to find these) and add in
 \begin{equation*}
 \begin{split}
-c:&=[k:\Q]+3-\sum_{i,j,l}([k\cap K_iK_jK_l:\Q]+2)+\sum_{i,j}([k\cap K_iK_j:\Q]+1)-\sum_{i}[k\cap K_i:\Q]\\&=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}
+N:&=[k:\Q]+3-\sum_{i,j,l}([k\cap K_iK_jK_l:\Q]+2)+\sum_{i,j}([k\cap K_iK_j:\Q]+1)-\sum_{i}[k\cap K_i:\Q]\\&=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}
 a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1
 \end{split}
 \end{equation*}
@@ -432,7 +443,7 @@ a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1
 We will always refer to the conjugates of $\eta$ by their coordinates $x_1,x_2,x_3,x_4$ according to Proposition \ref{gal}. This allows us to visualise $\Gal(k/\Q)$ geometrically as a discrete (at most) four-dimensional cuboid.
 \section{The case $r_1=r_2=r_3=r_4=1$}
 \section{The case $r_1=r_2=a_3=r_4=1$}
-(Note that in this case we have $s_{34}=1$ and $n_1=n_2=n_4=m$.) %, therefore $$c=a_1a_2a_4\frac{m^3}{r_3}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}+a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1.$$
+(Note that in this case we have $s_{34}=1$ and $n_1=n_2=n_4=m$.) %, therefore $$N=a_1a_2a_4\frac{m^3}{r_3}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}+a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1.$$
 \paragraph*{}
 We will add all the conjugates of $\eta$ to our basis except the following cases:
 \begin{itemize}
@@ -440,7 +451,7 @@ We will add all the conjugates of $\eta$ to our basis except the following cases
 \item $a_1\leq x_1 < a_1m-1, a_2(m-1)-1 \leq x_2 < a_2m-1, 0\leq x_3 < n_3-1, x_4=0$,
 \item $0\leq x_1 < a_1, a_2(m-1) \leq x_2 < a_2m-1, 0\leq x_3 < n_3-1, x_4=0$.
 \end{itemize}
-These cases are all disjoint, so it's easy to see that the number of conjugaters of $\eta$ that we chose is exactly
+These cases are all disjoint, so it's easy to see that the number of conjugates of $\eta$ that we chose is exactly
 $$((a_1m-1)a_2(m-2)+(a_1m-1)(a_2-1)+a_1+(a_4-1)(a_1m-1)(a_2m-1))\left(n_3-1\right)=c.$$
 \paragraph*{}
 First we will recover the cases $0<x_4<a_4$, $x_1=a_1m-1$ or $x_2=a_2m-1$ or $x_3=n_3-1$ using the relations $R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
@@ -458,11 +469,11 @@ Finally, we can use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_
 In this case, using Lemma \ref{coprime}, we have
 \begin{equation*}
 \begin{split}
-c&=a_3\left(n_1-1\right)\left(n_2-1\right)\left(m-1\right)-\left(n_1-1\right)\left(n_2-1\right)+\gcd\left(n_1,n_2\right)-1\\
+N&=a_3\left(n_1-1\right)\left(n_2-1\right)\left(m-1\right)-\left(n_1-1\right)\left(n_2-1\right)+\gcd\left(n_1,n_2\right)-1\\
 &+(a_4-1)\left(a_3\left(n_1-1\right)\left(n_2-1\right)m-\left(n_1-1\right)\left(n_2-1\right)\right).
 \end{split}
 \end{equation*}
-We will add the following $c$ conjugates of $\eta$ to our basis:
+We will add the following $N$ conjugates of $\eta$ to our basis:
 \begin{itemize}
 \item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<a_3m-1, 0<x_4\leq a_4-1$,
 \item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<a_3(m-1)-1, x_4=0$,
@@ -475,7 +486,7 @@ First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=
 Next, we will recover the cases $0\leq x_3<a_3(m-1)-1$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$. Now we can also use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ multiple times to recover the cases $$0\leq x_1\leq n_1-1, 0\leq x_2\leq n_2-1, a_3(m-1)\leq x_3<a_3m-1.$$
 \paragraph*{}
 At this moment, we are only missing all the cases with $x_3=a_3(m-1)-1$ and some of those with $x_3=a_3m-1$. 
-Let's focus on the second kind. The conjugates with $x_3=a_3m-1$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $n_1$ and $n_2$. It is easy to see that such a rectangle can be partitioned into $\gcd(n_1,n_2)$ diagonals, each containing $\lcm(n_1,n_2)$ elements (two conjugates lie in the same diagonal iff their quotient is a power of $\eta^{\sigma_1^v\sigma_2^v}$ for some $v\in\Z$). Now consider the relations $$T:=-\left(\sigma_3^{a_3-1}R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\right)-\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2} R_3N_3$$
+Let's focus on the second kind. The conjugates with $x_3=a_3m-1$ (and $x_4=0$) can be visualized as a discrete rectangle with sides $n_1$ and $n_2$. It is easy to see that such a rectangle can be partitioned into $\gcd(n_1,n_2)$ diagonals, each containing $\lcm(n_1,n_2)$ elements (two conjugates lie in the same diagonal iff their quotient is of the form $\eta^{\sigma_1^v\sigma_2^v}$ for some $v\in\Z$). Now consider the relations $$T:=-\left(\sigma_3^{a_3-1}R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\right)-\sigma_1^{\frac{m}{r_1}-2}\sigma_2^{\frac{m}{r_2}-2} R_3N_3$$
 and
 $$S_v:=\sum_{u=0}^{v}\sigma_1^{-u}\sigma_2^{-u}T \text{ for } v\in\Z.$$
 Clearly $T\sim 0, S_v\sim 0$ for all $v\in\Z$. Also note that for any $v$, $\eta^{S_v}$ contains no conjugate with $x_3=a_3(m-1)-1$ and contains exactly one conjugate with $x_3=a_3m-1$ that we cannot recover yet minus $\sigma_3^{a_3m-1}$, and these two always lie on the same diagonal. Moreover, any conjugate sharing this diagonal can occur as the one with positive sign for suitable $v\in\Z$. Therefore, since we already have the conjugates $$n_1-(\gcd\left(n_1,n_2\right)-1)\leq x_1\leq n_1-1, \leq x_2=n_2-1, x_3=a_3m-1$$ in our basis, we can recover all the conjugates that share the same diagonal with any (and therefore all) of these.
@@ -533,15 +544,15 @@ from which it follows that $ \gcd(n_1,n_2,n_3)=\frac{m}{ \lcm(r_1,r_2,r_3)}$.
 %In this case, Lemma \ref{coprime} implies that $\frac{n_1n_3}{m}=\frac{m}{r_1r_3}=\gcd(n_1,n_3)$.
 Thus $\frac{n_1n_2n_3}{m}=m=r_2n_2=\gcd(n_1,n_3)n_2$ and we have
 \begin{align*}
-c=&a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)-a_4-2+a_4(n_1+n_2+n_3)+\\
-&\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
-=&(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+\\
-&n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2\\
-=&(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+\\
-&(n_2-1)(n_1-r_2-1)+r_1+r_3-2.
+N&=a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)-a_4-2+a_4(n_1+n_2+n_3)+\\
+&\phantom{am}\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+&=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+\\
+&\phantom{am}n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2\\
+&=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+\\
+&\phantom{am}(n_2-1)(n_1-r_2-1)+r_1+r_3-2.
 \end{align*}
 
-We will add the following $c$ conjugates of $\eta$ to our basis:
+We will add the following $N$ conjugates of $\eta$ to our basis:
 \begin{itemize}
 \item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<n_3-1, 0<x_4\leq a_4-1$,
 \item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 1< x_3 \leq n_3-1, x_4=0$,
@@ -562,22 +573,27 @@ At this moment, we are only missing all the cases with $x_3=1$ and some of those
 
 %Since $s_{12}=1$, this implies that $m=\lcm(n_1,n_2)=tuv$. But we also have the conditions $s_{13}=s_{23}=1$ which imply that $tuv=m=\lcm(tu,n_3)=\lcm(tv,n_3)$. Next, since $\gcd(n_1,n_2,n_3)=1$, $t$ must be coprime with $n_3$, therefore $n_3\mid uv$. Finally, the equalities $$\lcm(tu,n_3)=\frac{tun_3}{\gcd(tu,n_3)}=tuv=\frac{tvn_3}{\gcd(tv,n_3)}=\lcm(tv,n_3)$$
 %show that $u\mid n_3, v\mid n_3$, hence $uv=\lcm(u,v)\mid n_3$ and $n_3=uv$. It follows that $$t=r_3,u=r_2,v=r_1$$ (and thus $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$). %Thanks to the symmetry, we will assume $1<t<u<v$ (if any of $t,u,v$ would equal $1$, this case could be reduced to one of the previous two). 
-From now on, we will use the notation $t:=r_3, u:=r_2, v:=r_1$ (PROBABLY NOT?). We will also write $\uo:=u\pmod{t}$, $\vo:=v\pmod{t}$ (so that $\uo,\vo\in\{1,2,\dots,t-1\}$) and similarly for other expressions. In particular, the expressions $\uo/\vo$ and $\vo/\uo$ will be regarded as being in the previous set.
+%From now on, we will use the notation $t:=r_3, u:=r_2, v:=r_1$ (PROBABLY NOT?). We will also write $\uo:=u\pmod{t}$, $\vo:=v\pmod{t}$ (so that $\uo,\vo\in\{1,2,\dots,t-1\}$) and similarly for other expressions. In particular, the expressions $\uo/\vo$ and $\vo/\uo$ will be regarded as being in the previous set.
 % It follows that also $\gcd(t,u)=\gcd(t,v)=1$ (and therefore $u=\gcd(n_1,n_3)$ and $v=\gcd(n_2,n_3)$. In fact, 
 
+From now on, we will write $\uo:=r_2\pmod{r_3}$, $\vo:=r_1\pmod{r_3}$ (so that $\uo,\vo\in\{1,2,\dots,r_3-1\}$) and similarly for other expressions. In particular, the expressions $\uo/\vo$ and $\vo/\uo$ will be regarded as being in the previous set.
+
 \paragraph*{}
-Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/k)]}$$
-and let $Q$ be the quotient $\Z$-module of $Q'$ by the conjugates we can already recover, i.e
+Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{\eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/\Q)]}$$
+and let $Q$ be the quotient $\Z$-module of $Q'$ by the conjugates we have already recovered, i.e.
 \begin{align*}
-Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}; \quad & 0\leq x_1< n_1, 0\leq x_2<n_2, 1< x_3<n_3,0\leq x_4<a_4,\\
+Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}; \quad & 0\leq x_1< n_1, 0\leq x_2<n_2, 0\leq x_3<n_3,0< x_4<a_4,\\
+\text { or }& 0\leq x_1< n_1, 0\leq x_2<n_2, 1< x_3<n_3,x_4=0,\\
 \text { or }& 0\leq x_1< n_1-r_2-1, 0\leq x_2<n_2, x_3=x_4=0,\\
 \text { or }& x_1= n_1-r_2-1, 0\leq x_2<r_1+r_3-2, x_3=x_4=0 \}\big\rangle_{\Z}.
 \end{align*}
-We will write $Q$ additively and for any $\rho\in\Gal(k/\Q)$, we will denote the image of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
-Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. For all $2\leq q\leq t+1$, we will denote the class of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ by $X_q$ and we will also put $X_{q'}:=X_q$ for all $q'\in\Z$, $q'\equiv q\pmod{t}$. Also for all $v+t-2\leq q\leq tv-1$ we will denote the class of $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ by $Y_q$. We will refer to the set of these $\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ with $v+t-2\leq q\leq tv-1$ as the critical line.
+We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
+Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. For all $2\leq q\leq r_3$, we will denote $X_q:=\sigma_1^{n_1-2}\sigma_2^{q-2}\cdot \mu$ and $X_1:=\sigma_1^{n_1-2}\sigma_2^{r_3-1}\cdot \mu$. %and we will also put $X_{q'}:=X_q$ for all $q'\in\Z$, $q'\equiv q\pmod{t}$. 
+Also for all $r_1+r_3-2\leq q\leq r_2-1$ we will denote $Y_q:=\sigma_1^{r_2(r_3-1)-1}\sigma_2^q\cdot \mu$. It is natural to regard the indices of the $Y$'s only modulo $n_2$. We will refer to the set of these $Y_q$ %$\eta^{\sigma_1^{(t-1)u-1}\sigma_2^q}$ with $v+t-2\leq q\leq tv-1$ 
+as to the \textit{critical strip}.
 
 \paragraph*{}
-The conjugates with $x_3=0$ and $x_4=0$ (i.e., those of the form $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the sum $\eta^{R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}}$ must contain $\frac{m}{n_3}=r_3=t$ conjugates in each of these rectangles. 
+The conjugates with $x_3=0$ and $x_4=0$ (i.e., those of the form $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the sum $\eta^{R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles. 
 
 Now let $T$ be the sum of the automorphisms contained in  $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}$ with $x_3=x_4=0$, i.e. $$T=\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}$$
 and let $$T':=R_4\left(\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}-\sigma_1\sigma_2 TN_3\right).$$
@@ -599,67 +615,140 @@ In $Q$, we have $((1-\sigma_1\sigma_2)T-T')\cdot \mu=0$ and $(1-\sigma_1\sigma_2
 The first part is immediate, because the conjugates of $\eta$ having $x_4>0$ or $x_3>1$ become trivial in $Q$. The second equality follows from the fact that $T'\sim 0$, hence $T'\cdot \mu =0$ (in fact, the image of $\eta^{T'}$ is alredy trivial in $Q'$).
 \end{proof}
 \paragraph*{}
-Now we will decompose our rectangle (of conjugates having $x_3=x_4=0$) into $t\times t$ rectangular blocks of height $u$ and width $v$ in the obvious way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $t$ consecutive blocks next to (resp. above) each other. Since $u\mid n_3, v\mid n_3$ and the conjugates contained in $\eta^T$ are given by $\sigma_1^{qn_3}\sigma_2^{qn_3}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $\eta^T$ contains exactly one conjugate in every big row (resp. big column), and these have the same relative position in each of the respective blocks (determined only by $n_3 \mod t$). We can be even more precise: the horizontal distance between $\eta^{\sigma_1^{qn_3}\sigma_2^{qn_3}}$ and $\eta^ {\sigma_1^{(q+1)n_3}\sigma_2^{(q+1)n_3}}$ for $0\leq q \leq r_3-1$ is exactly $\uo\cdot v$, i.e. $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot u$, i.e. $\vo$ blocks (again this follows easily from the Chinese remainder theorem). It follows that the horizontal distance between any two conjugates in $\eta^T$ with a vertical distance of one block is $\uo/\vo$ blocks.
+Now we will decompose our rectangle (of conjugates of $\eta$ having $x_3=x_4=0$) into $r_3\times r_3$ rectangular blocks of height $r_2$ and width $r_1$ in the natural way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $r_3$ consecutive blocks next to (resp. above) each other. Since $r_2\mid n_3, r_1\mid n_3$ and the conjugates contained in $\eta^T$ are given by $\eta^{\sigma_1^{qn_3}\sigma_2^{qn_3}}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}T}$ contains exactly one conjugate in every big row (resp. big column) for any $0\leq x_1< n_1, 0\leq x_2< n_2$, and these have the same relative position in each of the respective blocks (determined only by $n_3 \pmod {r_3}$ and $x_1,x_2$). We can be even more precise: the horizontal distance between $\eta^{\sigma_1^{qn_3+x_1}\sigma_2^{qn_3+x_2}}$ and $\eta^ {\sigma_1^{(q+1)n_3+x_1}\sigma_2^{(q+1)n_3+x_2}}$ for $0\leq q \leq r_3-1$ and $0\leq x_1< n_1, 0\leq x_2< n_2$ is exactly $\uo\cdot r_1$, i.e. $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot r_2$, i.e. $\vo$ blocks (again this follows easily from the Chinese remainder theorem). It follows that the horizontal distance between any two conjugates in $\eta^T$ with a vertical distance of one block is $\uo/\vo$ blocks.
 %Let $Q$ be the quotient module of $D^+$ by the conjugates we can already recover (including those living in the maximal subfields ramified at three primes), regarded as $\Z$-modules (i.e. forgetting the $G$-structure, otherwise the quotient would be trivial). We will write $Q$ additively and for the remainder of this section, all equalities between (classes of) conjugates will be regarded as if in $Q$.
 %From now on, we will regard the elements of our rectangle as their images in the quotient module of $\Z[G/H]/(N_1,N_2,N_3,N_4)$ by the $\Z$-module of the conjugates we can already recover (including those living in the maximal subfields ramified at three primes). We will call this quotient module $Q$.
 
 \begin{lemma}
-For any $0\leq x_1\leq tu-1, 0\leq x_2\leq tv-1$, we have
+For any $0\leq x_1<n_1, 0\leq x_2<n_2$, we have
+\iffalse
 $$
 \sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=
 \begin{cases}
 0 \quad &\!\begin{aligned} \text{ if }  &x_1<u(t-1)-1\\ &\text{ or } x_1=u(t-1)-1, x_2< v+t-2 \end{aligned}\\
 Y_{x_2} \quad &\text{ if } x_1=u(t-1)-1, v+t-2\leq x_2 \\
-X_{-x_1+x_2+1} \quad &\!\begin{aligned}\text{ if } & t(u-1)-1< x_1<tu-1 \\&
+X_{(-x_1+x_2)\pmod{t}+1} \quad &\!\begin{aligned}\text{ if } & t(u-1)-1< x_1<tu-1 \\&
  \text{ or }  x_1=tu-1, x_2\equiv q+\uo/\vo\cdot v\pmod{tv} \\
  &\text{ for some } 0\leq q<v+t-2  \end{aligned}\\
-X_{-x_1+x_2+1}-Y_{x_2+(t-\uo/\vo)\cdot v} \quad &\!\begin{aligned}\text{ if } & x_1=tu-1, x_2\not\equiv q+\uo/\vo\cdot v\pmod{tv} \\
+X_{(-x_1+x_2)\pmod{t}+1}-Y_{(x_2+(t-\uo/\vo)\cdot v)\pmod{n_2}} \quad &\!\begin{aligned}\text{ if } & x_1=tu-1, x_2\not\equiv q+\uo/\vo\cdot v\pmod{tv} \\
 &\text{ for any } 0\leq q<v+t-2.\end{aligned}
 \end{cases}
 $$
+\fi
+
+\begin{align*}
+\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=
+\begin{cases}
+0   &\text{ if }  x_1<r_2(r_3-1)-1\\
+& \text{ or } x_1=r_2(r_3-1)-1, x_2< r_1+r_3-2 \\
+Y_{x_2} \quad &\text{ if } x_1=r_2(r_3-1)-1, r_1+r_3-2\leq x_2<n_2 \\
+X_{\overline{-x_1+x_2}+1} \\
+%X_{(-x_1+x_2)\pmod{r_3}+1} \\
+&\text{ if }  r_2(r_3-1)-1< x_1<n_3-1\\ 
+&\text{ or }  x_1=n_3-1, x_2\equiv q+\uo/\vo\cdot r_1\pmod{n_2}\\
+& \text{ for some } 0\leq q<r_1+r_3-2  \\
+X_{\overline{-x_1+x_2}+1}-Y_{x_2-\uo/\vo\cdot r_1} \\
+%X_{(-x_1+x_2)\pmod{r_3}+1}-Y_{r}\\
+ &\text{ if }  x_1=n_1-1, x_2\not\equiv q+\uo/\vo\cdot r_1\pmod{r_2}\\
+ & \text{ for any } 0\leq q<r_1+r_3-2,
+\end{cases}
+\end{align*}
+%where $r=(x_2+(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}$.
+%where $r=x_2-\uo/\vo\cdot r_1\pmod{n_2}$.
+In particular, this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s).
 \end{lemma}
 \begin{proof}
-It is easy to see that our rectangle can be partitioned into $t=\gcd(n_1,n_2)$ (2D) diagonals, each going through exactly one of $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$ (two conjugates lie in the same diagonal iff their difference is a power of $\eta^{\sigma_1^q\sigma_2^q}$ for some $q\in\Z$). We will use this together with the fact that $\eta^{(1-\sigma_1\sigma_2)T}$ is trivial in $Q$ to find the classes of all conjugates in our rectangle in terms of $X_q,Y_q$. More specifically, if $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T}$ contains no elements from the critical line, it is just a difference of two conjugates, hence their classes are the same. On the other hand, if it contains $Y_{q}$ for some $q$ and a difference of two conjugates, the classes of these two conjugates differ only by $\pm Y_{q}$ (depending on the sign of $Y_{q}$ in $\eta^{\sigma_1^q\sigma_2^r(1-\sigma_1\sigma_2)T}$). Using the earlier observations, we can see that these are the only options, hence it follows that by going along each of the $t$ 2D diagonals starting at $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$, will will obtain that ...%the class of $\eta^{\sigma_1^q\sigma_2^r$
-Note that this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s).
+
+We will partition our $n_1\times n_2$ rectangle (of conjugates of $\eta$ having $x_3=x_4=0$) into $r_3=\gcd(n_1,n_2)$ two-dimensional diagonals in the following way: for any $x_1,x_2\in\Z$, the conjugate $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$ lies in the $q$-th diagonal for $1\leq q\leq r_3$ iff $x_1-x_2\equiv q \pmod{r_3}$ (this is well defined, since $r_3=\gcd(n_1,n_2)$). It's easy to see that each of these $r_3$ diagonals goes through exactly one of $\eta^{\sigma_1^{n_1-2}\sigma_2^{q-2}}$ for $2\leq q\leq r_3+1$. %(two conjugates of $\eta$ lie in the same diagonal iff their quotient is of the form $\eta^{\sigma_1^q\sigma_2^q}$ for some $q\in\Z$).
+%It is easy to see that our $n_1\times n_2$ rectangle (of conjugates of $\eta$ having $x_3=x_4=0$) can be partitioned into $r_3=\gcd(n_1,n_2)$ two-dimensional diagonals, each going through exactly one of $\eta^{\sigma_1^{n_1-2}\sigma_2^{q-2}}$ for $2\leq q\leq r_3+1$ (two conjugates of $\eta$ lie in the same diagonal iff their quotient is of the form $\eta^{\sigma_1^q\sigma_2^q}$ for some $q\in\Z$). 
+Thus after projecting the diagonals to $Q$, each of them goes through exactly one $X_q$ for $1\leq q \leq r_3$.
+We will use this together with the fact that $(1-\sigma_1\sigma_2)T\cdot \mu=0$ in $Q$ to find the classes of all conjugates in our rectangle in terms of $X_q,Y_q$. There are several posibilities.
+ \paragraph*{}
+The first case ($x_1<r_2(r_3-1)-1$ or  $x_1=r_2(r_3-1)-1, x_2< r_1+r_3-2)$ follows directly from the definition of $Q$ and the second case ($x_1=r_2(r_3-1)-1, r_1+r_3-2\leq x_2$) directly from the definition of $Y_{x_2}$.
+ \paragraph*{}
+Now for a moment suppose that all the $Y_q$'s are zero (we do not know that yet, but this will make the description easier). Then based on the observations above, we could say that for any $0\leq x_1< n_1, 0\leq x_2< n_2$, $$0=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu$$ is always a difference of two possibly nonzero elements %, where one is obtained from the other just by multiplication by $\sigma_1\sigma_2$ (and hence 
+that lie on the same diagonal. Thus we could say that these two elements are the same in $Q$. After increasing both $x_1$ and $x_2$ by $1$, we could use the same argument. Thus using the fact that all the automorphisms in $T$ lie on the same diagonal and repeating this process $\lcm(n_1,n_2)=m$ times, we would obtain that in $Q$, all the elements in the big row $r_2(r_3-1)\leq x_1<n_1$ sharing a diagonal are the same. This would imply $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_{(-x_1+x_2)\pmod{r_3}+1}$ for all such $x_1$, as can be easily checked (it agrees with the definition of $X_q$'s and respects the diagonals).
+\paragraph*{}
+This assertion is almost correct, but we need to account for the $Y_q$' as well. Whenever $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu$$ contains an element from the critical strip having coefficient $1$, say $Y_q$ (where $r_1+r_3-2\leq q<r_2$), we must have (based on the earlier geometric observations) $x_1=r_2(r_3-1)-1, x_2=q$, so that 
+$$0=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu=Y_q-\sigma_1^{r_2(r_3-1)}\sigma_2^{q+1}\cdot \mu+\sigma_1^{n_3-1}\sigma_2^{q+(\uo/\vo)\cdot r_1}\cdot \mu,$$
+hence $$\sigma_1^{n_3-1}\sigma_2^{q+(\uo/\vo)\cdot r_1}\cdot \mu=\sigma_1^{r_2(r_3-1)}\sigma_2^{q+1}\cdot \mu- Y_q.$$
+
+Similarly, whenever $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu$$ contains an element from the critical strip having coefficient $-1$, say $-Y_q$ (where $r_1+r_3-2\leq q<r_2$), we must have $x_1=r_2(r_3-1)-2, x_2=q-1$, so that 
+$$0=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu=-Y_q+\sigma_1^{n_3-2}\sigma_2^{q+(\uo/\vo)\cdot r_1-1}\cdot \mu-\sigma_1^{n_3-1}\sigma_2^{q+(\uo/\vo)\cdot r_1}\cdot \mu,$$
+hence $$\sigma_1^{n_3-1}\sigma_2^{q+(\uo/\vo)\cdot r_1}\cdot \mu=\sigma_1^{n_3-2}\sigma_2^{q+(\uo/\vo)\cdot r_1-1}\cdot \mu- Y_q.$$
+
+A slight alteration of the above naive proof and putting everything together now yields the result.
+%More specifically, if $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T}$ contains no elements from the critical strip, it is just a difference of two conjugates, hence their classes are the same. On the other hand, if it contains $Y_{q}$ for some $q$ and a difference of two conjugates, the classes of these two conjugates differ only by $\pm Y_{q}$ (depending on the sign of $Y_{q}$ in $\eta^{\sigma_1^q\sigma_2^r(1-\sigma_1\sigma_2)T}$). Using the earlier observations, we can see that these are the only options, hence it follows that by going along each of the $t$ 2D diagonals starting at $\eta^{\sigma_1^{tu-2}\sigma_2^{q-2}}$ for $2\leq q\leq t+1$, will will obtain that ...%the class of $\eta^{\sigma_1^q\sigma_2^r$
+%Note that this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s).
 %$X_q^{\sigma_2^{x_2}}=X_{q+x_2}$ for any $q,x_2$.
 \end{proof}
-Now it suffices to show that $X_q=0$ for all $1\leq q\leq t$ and $Y_q=0$ for all $v+t-2\leq q\leq tv-1$. To achieve this, we will use linear algebra.
+Thanks to this result, from now on we will regard the indices of the $X$'s only modulo $r_3$. We will also put $Y_q:=0$ for all $0\leq q<r_1+r_3-2$ (again regarded modulo $n_2$), so that the equality $$\sigma_1^{n_1-1}\sigma_2^{x_2}\cdot \mu=X_{\overline{-x_1+x_2}+1}-Y_{x_2-\uo/\vo\cdot r_1} $$ will hold for all $x_2\in\Z$.
+
+\includepdf[pages=-]{5_export.pdf}
+
+Now it suffices to show that $X_q=0$ for all $1\leq q\leq r_3$ and $Y_q=0$ for all $r_1+r_3-2\leq q\leq r_2-1$. To achieve this, we will use linear algebra.
 \paragraph*{}
-Let $\alpha:= Y_{v+t-2}+\dots+Y_{tv-1}$ and $\beta:=X_1+X_2+\dots+X_t$.
+Let $\alpha:= Y_{r_1+r_3-2}+\dots+Y_{r_2-1}\in Q$ and $\beta:=X_1+X_2+\dots+X_{r_3}\in Q$.
 \begin{lemma}
 We have $\alpha=\beta=0$.
 \end{lemma}
 \begin{proof}
-Using the relation $N_2\sim 0$, we have$$0=\sigma_1^{n_1-r_1-1}N_2\cdot \mu =\sum_{x_2=0}^{tv-1}  \sigma_1^{t(u-1)}\sigma_2^{x_2}\cdot \mu= \alpha$$ and
-$$0= \sigma_1^{u(t-1)}N_2\cdot \mu=\sum_{x_2=0}^{tv-1}  \sigma_1^{u(t-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{tv-1}  X_{-u(t-1)+x_2+1}=\sum_{x_2=0}^{tv-1}  X_{x_2+u+1}=v\cdot \beta.$$
-Similarly, using the relation $N_1\sim 0$, we have $$0= N_1\cdot \mu=\dots=u\cdot \beta.$$ Since $\gcd(u,v)=1$, this implies $\beta=0$ by Bezout's identity.
+Using the relation $N_2\sim 0$, we have $$0=\sigma_1^{r_2(r_3-1)-1}N_2\cdot \mu =\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu= \alpha$$ and
+\begin{align*}
+0&= \sigma_1^{r_2(r_3-1)}N_2\cdot \mu=\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{n_2-1}  X_{-r_2(r_3-1)+x_2+1}\\
+&=\sum_{x_2=0}^{r_1r_3-1}  X_{x_2+r_2+1}=
+\sum_{u=0}^{r_1-1}\sum_{v=0}^{r_3-1} X_{ur_3+v+r_2+1}=r_1\cdot \sum_{v=0}^{r_3-1} X_{v+r_2+1}=r_1\cdot \beta,
+\end{align*}
+since each $x_2\in\{0,1,\dots,r_1r_3-1\}$ can be uniquely written as $ur_3+v$, where $0\leq u<r_1$, $0\leq v<r_3$ and the unary operation of adding $r_2+1$ induces an isomorphism of $\Z/r_3$.
+
+Similarly, using the relation $N_1\sim 0$ and the fact that $$(\sigma^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{\overline{-x_1+x_2}+1}$$ for all $x_2\in\Z$, we have 
+\begin{align*}
+0&= \sum_{q=0}^{r_3-1} \sigma_2^{qr_1}N_1\cdot \mu
+%\sum_{\mathclap{\substack{ r_1+r_3-2\leq x_2<n_2,\\
+%                   r_1\mid x_2}}}Y_{x_2} +\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}\sigma_1^{x_1}\sigma_2^{qr_1}\cdot\mu\\
+   = \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}X_{x_1+q}
+=r_2\cdot \beta,
+\end{align*}
+%since all the $Y's$ cancel out %(there is a bijection .
+since for any $x_1$, all possible remainders modulo $r_3$ occur exactly once as the indices in the sum $\sum_{q=0}^{r_3-1}X_{x_1+q}$.
+Since $\gcd(r_1,r_2)=1$, this implies $\beta=0$ by Bezout's identity.
 \end{proof}
-%Using the relation $N_1\sim 0$, we obtain the equation $u\cdot (X_1+\dots+X_t)=0$, and similarly the relation $N_2\sim 0$ implies $v\cdot (X_1+\dots+X_t)=0$, as well as $Y_{v+t-2}+\dots+Y_{tv-1}=0$. Since $\gcd(u,v)=1$, this implies $X_1+\dots+X_t=0$ by Bezout's identity. We will put $\beta=X_1+\dots+X_t$.
+
+Next, for $0\leq q \leq r_3-3$, we will define $$\Gamma_q:=\sum_{u=0}^{r_3-\uo/\vo-1}\sum_{v=1}^{\uo}X_{\overline{q+v-ur_2}}\in Q.$$
+
+\begin{lemma}
+For any $0\leq q \leq r_3-3$, we have $\Gamma_q=0$.
+\end{lemma}
+\begin{proof}
+We can see that taking the sum of all conjugates with $x_2=q+r\cdot \uo/\vo\cdot r_1$ for $0\leq r\leq t-\uo/\vo-1$ (using the relation $N_1\sim 0$) will result in $0$ in $Q$. By construction, all the $Y$'s involved will cancel out, and since $(t-\uo/\vo)\cdot r_1\equiv -\uo \pmod{r_3}$, this implies (using $\beta=0$) that $\Gamma_q=0$ in $Q.$
+\end{proof}
+
+Finally, let $$\Delta:=\sum_{u=0}^{r_3-1}u\cdot\sum_{v=1}^{\uo}X_{\overline{v-ur_2}}\in Q.$$
+
+\begin{lemma}
+We have $\Delta=0$.
+\end{lemma}
+\begin{proof}
+Taking the sum of all conjugates with $u\cdot \uo/\vo\cdot r_1\leq x_2\leq r_1-1+u\cdot \uo/\vo\cdot r_1$ times $u$ for $0\leq u\leq r_3-\uo/\vo-1$ gives us $0$ (again using $N_1\sim 0$), hence so does summing over all such $u$ (where by construction all the $Y$'s involved cancel out except for one of each, and their sum is zero anyway). Therefore we have (by using $(r_3-\uo/\vo)\cdot r_1\equiv -\vo \pmod{r_3}$ and $\beta=0$ again) $\Delta=0$ in $Q$.
+\end{proof}
+
 \paragraph*{}
-%Next, note that for any set of conjugates, 
-%Next, for $0\leq q \leq t-3$, we will put $$\Gamma_q:=\sum_{r=0}^{t-\uo/\vo-1}\sum_{p=1}^{\uo}X_{\overline{q+p-rv}}$$
-%and $$\Delta:=\sum_{r=0}^{t-1}r\cdot\sum_{p=1}^{\uo}X_{\overline{p-rv}}.$$
-Next, for $0\leq q \leq t-3$, we can see that taking the sum of all conjugates with $x_2=q+r\cdot \uo/\vo\cdot v$ for $0\leq r\leq t-\uo/\vo-1$ (using the relation $N_1\sim 0$) will result in $0$ in $Q$. By construction, all the $Y$'s involved will cancel out, and since $(t-\uo/\vo)\cdot v\equiv -\uo \pmod{t}$, this implies (using $\beta=0$) that $\Gamma_q=0$ in $Q$, where
-$$\Gamma_q:=\sum_{r=0}^{t-\uo/\vo-1}\sum_{p=1}^{\uo}X_{\overline{q+p-rv}}.$$
-Similarly, taking the sum of all conjugates with $r\cdot \uo/\vo\cdot v\leq x_2\leq v-1+r\cdot \uo/\vo\cdot v$ times $r$ for $0\leq r\leq t-\uo/\vo-1$ gives us $0$ (again using $N_1\sim 0$), hence so does summing over all such $r$ (where by construction all the $Y$'s involved cancel out except for one of each, and their sum is zero anyway). Therefore we have (by using $(t-\uo/\vo)\cdot v\equiv -\vo \pmod{t}$ and $\beta=0$ again) $\Delta=0$ in $Q$, where
-$$\Delta:=\sum_{r=0}^{t-1}r\cdot\sum_{p=1}^{\uo}X_{\overline{p-rv}}.$$
-%It's easy to check that all the $Y$'s cancel out in both of them.%, and that any shift in the indices in $\Gamma$ by $1,2,\dots,t-3$ will also result in a valid relation.
-\paragraph*{}
-Now we will construct a matrix $M$ of type $t\times t$ as follows:
+Now we will construct a matrix $M$ of type $r_3\times r_3$ as follows:
 \begin{itemize}
 \item The first row will consist of all 1's (corresponding to the relation $\beta$).
-%\item The second row will correspond to the relation $\Gamma$.
-\item The $q$-th row for $2\leq q\leq t-1$ will correspond to the relation $\Gamma_{q-2}$.
+\item The $q$-th row for $2\leq q\leq r_3-1$ will correspond to the relation $\Gamma_{q-2}$.
 \item The last row will correspond to the relation $\Delta$.
 \end{itemize}
 
-Since the rows of $M$ are the coefficients of valid equlities in $Q$, we have $M\cdot X'=0$, where $X=(X_1,\dots,X_t)$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
+Since the rows of $M$ are the coefficients of valid equalities in $Q$, we have $M\cdot X'=0$, where $X=(X_1,\dots,X_{r_3})$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
 
+\iffalse
+\section{iffalse}
 \paragraph*{}
-Let $L$ be the localization of the quotient ring $\Z[x]/(1+x+x^2+\dots+x^{t-1})$ at the multiplicative subset generated by $x-1$ and $x^{t-\uo}-1$. (By abuse of notation, we will denote the class of $x$ in $L$ also by $x$). Note that since $$\gcd(x^t-1,x^q-1)=x^{\gcd(t,q)}-1$$ for any $q\in\Z$ and $\gcd(t,1)=\gcd(t,t-\uo)=1$, we have $$\gcd(1+x+x^2+\dots+x^{t-1},x-1)=\gcd(1+x+x^2+\dots+x^{t-1},x^{t-\uo}-1)=1,$$ so that $x-1$ nor $x^{t-\uo}-1$ are zero-divisors, hence $L$ is nontrivial. Moreover let $$D(x):=\sum_{q=1}^{t-1}q\cdot x^q\in L.$$
+Let  $R(x):=1+x+x^2+\dots+x^{t-1}$ and let $L$ be the localization of the quotient ring $\Z[x]/(R(x))$ at the multiplicative subset generated by $x-1$ and $x^{t-\uo}-1$. (By abuse of notation, we will denote the class of $x$ in $L$ also by $x$). Note that since $(x-1)\cdot R(x)=x^t-1$, $$gcd(x^t-1,x^q-1)=x^{\gcd(t,q)}-1$$ for any $q\in\Z$ and $\gcd(t,1)=\gcd(t,t-\uo)=1$, we have $$\gcd(R(x),x-1)=\gcd(R(x),x^{t-\uo}-1)=1,$$ so that neither $x-1$ nor $x^{t-\uo}-1$ are zero-divisors, hence $L$ is nontrivial. Moreover let $$D(x):=\sum_{q=1}^{t-1}q\cdot x^q\in Z[x]/(R(x)).$$
 
 \begin{lemma}
-We have $D(x)\cdot(x-1)=t$.
+We have $D(x)\cdot(x-1)=t$ in $L$.
 \end{lemma}
 \begin{proof}
 This follows from the computation
@@ -668,32 +757,34 @@ This follows from the computation
 D(x)\cdot(x-1)&=\sum_{q=1}^{t-1} q\cdot x^{q+1}-\sum_{q=1}^{t-1} q\cdot x^q=\sum_{q=2}^{t} (q-1)\cdot x^{q}-\sum_{q=1}^{t-1} q\cdot x^q\\
 &=(t-1)x^t+\sum_{q=1}^{t-1} (q-1)\cdot x^{q}-\sum_{q=1}^{t-1} q\cdot x^q\\
 &=t\cdot x^t-x^t-\sum_{q=1}^{t-1} x^{q}\\
-&=t-\sum_{q=0}^{t-1} x^{q}\\
+&=t-x\cdot R(x)\\
 &=t.
 \end{split}
 \end{equation*}
 \end{proof}
 
 \begin{lemma}
-The coefficients of $\Gamma_q$ are (up to a multiple of $\beta$) the coefficients of the polynomial $x^q\cdot P(x)$ and the coefficients of $\Delta$ are (up to a multiple of $\beta$) the coefficients of the polynomial $D\cdot P(x),$ where
-$$P(x):=-x^{\uo}\cdot (1+x+x^2+\dots+x^{\vo-1})\in L$$
+Up to integer multiples of $\beta$, the coefficients of $\Gamma_q$ are the coefficients of the polynomial $x^q\cdot P(x)$ and the coefficients of $\Delta$ are the coefficients of the polynomial $D(x)\cdot P(x),$ where
+$$P(x):=-x^{\uo}\cdot (1+x+x^2+\dots+x^{\vo-1})\in \Z[x]/(R(x))$$
 (where the coefficient at $X_{q+1}$ corresponds to the coefficient at $x^q$).
 \end{lemma}
 \begin{proof}
-Since a cyclic shift of the indices of $X_q$ corresponds to multiplication by $x$ in $L$ and $x^t=1$ in $L$, the coefficients of $\Gamma_q$ (up to a multiple of $\beta$) are
+A cyclic shift of the indices of $X_q$ corresponds to multiplication by $x$ in $L$ and $x^t=1$ in $L$. Also note that the polynomial corresponding to $\beta$ is $R(x)$, and since $(x-1)\cdot R(x)=0$ in $L$, multiplication by $x$ acts as the identity on $R(x)$ in $Z[x]/(x^t-1)$. Therefore (regarded in $\Z[x]/(x^t-1)$) the only multiples of $R(x)$ are scalar integer multiples.
+
+Now the coefficients of $\Gamma_q$ (up to a multiple of $\beta$) are coefficients of the polynomial
 \begin{equation*}\label{Gamma}
 \begin{split}
-&x^q\cdot(1+x+\dots+x^{\uo-1})(1+x^{m-\uo}+x^{2(m-\uo)}+\dots+x^{(t-\vo/\uo-1)(t-\uo)})\\
+&x^q\cdot(1+x+\dots+x^{\uo-1})(1+x^{t-\uo}+x^{2(t-\uo)}+\dots+x^{(t-\vo/\uo-1)(t-\uo)})\\
 &=x^q\cdot\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{(t-\vo/\uo)(t-\uo)}-1}{x^{t-\uo}-1}\\
 &=x^q\cdot\frac{x^{\uo}-1}{x^{t-\uo}-1}\cdot \frac{x^{\vo}-1}{x-1}\\
 &=-x^q\cdot x^{\uo}\cdot (1+x+x^2+\dots+x^{\vo-1})\\
-&=P(x).
+&=x^q\cdot P(x).
 \end{split}
 \end{equation*}
 %Coming back to the coefficients in $\Gamma$, this means that % the second row of $M(t,u,v)$
 %is exactly $$(1,\underbrace{0,\dots,0}_{\vo},\underbrace{1,\dots,1}_{t-\vo})$$ for $\uo=1$ and 
 %incrementing $\uo$ by $1$ results in a cyclic shift of $\Gamma$ by $1$ to the right.
-Similarly, using the substitution $y=x^{t-\uo}$ (so that $y^m=1$ in $L$), we can see that the coefficients of $\Delta$ (up to a multiple of $\beta$) are 
+Similarly, using the substitution $y=x^{t-\uo}$ (so that $y^m=1$ in $L$), we can see that the coefficients of $\Delta$ (up to an integer multiple of $\beta$) are the coefficients of the polynomial
 \begin{equation*}\label{Delta}
 \begin{split}
 &(1+x+\dots+x^{\uo-1})(1+x+\dots+x^{\vo-1})(x^{t-\uo}+2x^{2(t-\uo)}+\dots+(t-1)x^{(t-1)(t-\uo)})\\
@@ -701,62 +792,154 @@ Similarly, using the substitution $y=x^{t-\uo}$ (so that $y^m=1$ in $L$), we can
 &=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1}\cdot y \cdot \frac{ty^{t-1}(y-1)-(y^t-1)}{(y-1)^2}\\
 &=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1} \cdot \frac{t}{y-1}\\
 &=\frac{t}{x-1}\cdot \frac{x^{\uo}-1}{x^{t-\uo}-1}\cdot \frac{x^{\vo}-1}{x-1}\\
-&=D\cdot x^{\uo}\cdot\frac{x^{\vo}-1}{x-1}\\
+&=-D(x)\cdot x^{\uo}\cdot\frac{x^{\vo}-1}{x-1}\\
 &=D(x)\cdot P(x).
 \end{split}
 \end{equation*}
 %Again, this means that incrementing $\uo$ by $1$ results in a cyclic shift of $\Delta$ by $1$ to the right.
 \end{proof}
 
+The lemma tells us that we can construct a new matrix $M'$ by substracting a suitable integer multiple (specifically the maximal one so that the rows will remain nonnegative) of the first row from the others (clearly this doesn't change the determinant $\det M=\det M'$).
+
+\begin{cor}
+In $\Z[x]/(x^t-1)$, the first row of $M'$ corresponds to the coefficients of $R(x)$, the $q$-th row of $M'$ corresponds to the coefficients of $x^{q-2}\cdot P(x)$ for $2\leq q\leq t-1$ and the last row of $M'$ corresponds to the coefficients of $D(x)\cdot P(x)$.
+\end{cor}
+\begin{proof}
+It suffices to realize that the polynomials $R(x), x^q\cdot P(x)$ and $D(x)\cdot P(x)$ can be regarded as in $\Z[x]/(x^t-1)$ instead of $L$.
+\end{proof}
+\section{fi}
+\fi
+
+\paragraph*{}
+Let $$R(x):=\sum_{q=0}^{r_3-1} x^q\in\Z[x],$$
+$$D(x):=\sum_{q=0}^{r_3-1}q\cdot x^q\in \Z[x]$$
+and 
+$$P(x):=x^{\uo}\cdot \sum_{q=0}^{\vo-1} x^q\in \Z[x].$$
+%R(x):=1+x+x^2+\dots+x^{r_3-1}\in\Z[x].$$
+
+\begin{lemma}
+Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then we have $R(\zeta)=0$ and $$D(\zeta)\cdot(\zeta-1)=r_3.$$
+\end{lemma}
+\begin{proof}
+The first part is immediate since $R(\zeta)\cdot(\zeta-1)=\zeta^{r_3}-1=0$, but $\zeta\neq 1$. The second follows from the computation
+\begin{equation*}
+\begin{split}
+D(\zeta)\cdot(\zeta-1)&=\sum_{q=1}^{r_3-1} q\cdot \zeta^{q+1}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q=\sum_{q=2}^{r_3} (q-1)\cdot \zeta^{q}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q\\
+&=(r_3-1)\zeta^{r_3}+\sum_{q=1}^{r_3-1} (q-1)\cdot \zeta^{q}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q\\
+&=r_3\cdot \zeta^{r_3}-\zeta^{r_3}-\sum_{q=1}^{r_3-1} \zeta^{q}\\
+&=r_3-\zeta\cdot R(\zeta)\\
+&=r_3.
+\end{split}
+\end{equation*}
+\end{proof}
+
+Formally, we can regard $\beta,\Gamma_q$ and $\Delta$ as elements of $\Z[X_1,X_2,\dots,X_{r_3}]$. By abuse of notation, we can then denote $\beta(x),\Gamma_q(x)$ and $\Delta(x)$ their respective images under the homomorphism $\Z[X_1,X_2,\dots,X_{r_3}]\to \Z[x]$ determined by $X_u\mapsto x^{u-1}$ for all $1\leq u\leq r_3$. It's clear that $\beta(x)=R(x)$. In cases where there could be confusion, we will denote the evaluation homomorphism $\Z[x]\to \Z[\zeta]$ given by $x\mapsto\zeta$ by $\ev_{\z}$.
+
+\begin{lemma}
+Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then for all $2\leq q<r_3$, we have $$\Gamma_q(\zeta)=\zeta^q\cdot P(\zeta)$$ and $$\Delta(\zeta)=D(\zeta)\cdot P(\zeta).$$
+\end{lemma}
+\begin{proof}
+
+Since $R(\zeta)=0$, we can regard the polynomial $\Gamma_q(x)$ only modulo $R(x)$ during the proof. Then we have
+\begin{equation*}\label{Gamma}
+\begin{split}
+\Gamma_q(\zeta)&=\z^q\cdot(1+\zeta+\dots+\zeta^{\uo-1})(1+\zeta^{r_3-\uo}+\zeta^{2(r_3-\uo)}+\dots+\zeta^{(r_3-\vo/\uo-1)(r_3-\uo)})\\
+&=\zeta^q\cdot\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{(r_3-\vo/\uo)(r_3-\uo)}-1}{\zeta^{r_3-\uo}-1}\\
+&=\zeta^q\cdot\frac{\zeta^{\uo}-1}{\zeta^{r_3-\uo}-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\\
+&=-\zeta^q\cdot \zeta^{\uo}\cdot (1+\zeta+\zeta^2+\dots+\zeta^{\vo-1})\\
+&=\zeta^q\cdot P(\zeta).
+\end{split}
+\end{equation*}
+%Coming back to the coefficients in $\Gamma$, this means that % the second row of $M(t,u,v)$
+%is exactly $$(1,\underbrace{0,\dots,0}_{\vo},\underbrace{1,\dots,1}_{t-\vo})$$ for $\uo=1$ and 
+%incrementing $\uo$ by $1$ results in a cyclic shift of $\Gamma$ by $1$ to the right.
+Similarly, using the substitution $y=x^{r_3-\uo}$, we can see that
+\begin{equation*}\label{Delta}
+\begin{split}
+\Delta(\zeta)&=\ev_{\z}((1+x+\dots+x^{\uo-1})(1+x+\dots+x^{\vo-1})(x^{r_3-\uo}+2x^{2(r_3-\uo)}+\dots+(r_3-1)x^{(r_3-1)(r_3-\uo)}))\\
+&=\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \zeta^{-\uo} \cdot \frac{\partial}{\partial y} \left(\frac{y^{t}-1}{y-1}\right)\bigg\vert_{y=\zeta^{-\uo}}  \\
+&=\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \zeta^{-\uo} \cdot \ev_{\z}\left(\frac{r_3y^{r_3-1}(y-1)-(y^{r_3}-1)}{(y-1)^2}\right)\\
+&=\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1} \cdot \frac{r_3}{\zeta^{-\uo}-1}\\
+&=\frac{r_3}{\zeta-1}\cdot \frac{\zeta^{\uo}-1}{\zeta^{-\uo}-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\\
+&=-D(\zeta)\cdot \zeta^{\uo}\cdot\frac{\zeta^{\vo}-1}{\zeta-1}\\
+&=D(\zeta)\cdot P(\zeta).
+\end{split}
+\end{equation*}
+\end{proof}
+
+
 \begin{theorem}
 $M$ is unimodular, hence $X=0$.
 \end{theorem}
 \begin{proof}
-Let $\zt$ be a primitive $t$-th root of unity and let $C$ be the corresponding $t\times t$ character matrix, i.e. $C=(\zt^{r\cdot c})_{0\leq r,c<t}$. Then (after reindexing the dimensions of $M$ from $0$ to $t-1$) we have $M\cdot C=C'$, where $C_{0,0}=t$ and the $c-th$ column of $C'$ is
+Let $\zt$ be a primitive $r_3$-th root of unity and let $C$ be the corresponding $r_3\times r_3$ character matrix, i.e. $C=(\zt^{r\cdot c})_{0\leq r,c<r_3}$. We will use the two previous lemmas together with the fact that multiplying a column of successive powers of $\zt$ by a row of $M$ from the left corresponds to evaluating the polynomial obtained from this row at $\zt$. After reindexing the dimensions of $M$ from $0$ to $r_3-1$, we have $M\cdot C=C'$, where $C'_{0,0}=R(1)=r_3$ and the $c-th$ column of $C'$ is
 $$
+\begin{pmatrix}
+R(\zt^c)\\ 
+P(\zt^c) \\ 
+\zt^c \cdot P(\zt^c) \\ 
+(\zt^{c})^2 \cdot P(\zt^c) \\ 
+\vdots\\ 
+(\zt^{c})^{r_3-3} \cdot P(\zt^c) \\ 
+D(\zt^c) \cdot P(\zt^c)
+\end{pmatrix}
+=
 \begin{pmatrix}
 0\\ 
 P(\zt^c) \\ 
 \zt^c \cdot P(\zt^c) \\ 
 \zt^{2c} \cdot P(\zt^c) \\ 
 \vdots\\ 
-\zt^{(t-3)c} \cdot P(\zt^c) \\ 
+\zt^{(r_3-3)c} \cdot P(\zt^c) \\ 
 D(\zt^c) \cdot P(\zt^c)
 \end{pmatrix}
 $$
-for $0<c<t$ (we don't need to specify the rest of the $0$-th column, since it doesn't influence the determinant of $C'$). Thus by taking out $P(\zt^c)$ from each of these columns, we get  (since multiplication by $\vo$ is an automorphism of $\Z/t$)
-$$|\det C'|=|\det C''|\cdot\abs*{\prod_{0<c<t}P(\zt^c)}=|\det C''|\cdot\abs*{\prod_{0<c<t}-\zt^{c\uo}}\cdot\abs*{\prod_{0<c<t}\frac{\zt^{c\vo}-1}{\zt^c-1}}=|\det C''|,$$
+for $0<c<t$ (we don't need to specify the rest of the $0$-th column, since it doesn't influence the determinant of $C'$). Thus by taking out $P(\zt^c)$ from each of these columns, we get  (since multiplication by $\vo$ is an automorphism of $\Z/r_3$)
+$$|\det C'|=|\det C''|\cdot\abs*{\prod_{0<c<r_3}P(\zt^c)}=|\det C''|\cdot\abs*{\prod_{0<c<r_3}-\zt^{c\uo}}\cdot\abs*{\prod_{0<c<r_3}\frac{\zt^{c\vo}-1}{\zt^c-1}}=|\det C''|,$$
 where
 $$C''=
 \begin{pmatrix}
-t& 0& \dots & 0 & \dots & 0\\ 
+r_3& 0& \dots & 0 & \dots & 0\\ 
 *& 1& \dots & 1 & \dots & 1\\ 
-*& \zt& \dots & \zt^c & \dots & \zt^{t-1}\\ 
-*& \zt^2& \dots & \zt^{2c} & \dots & \zt^{2(t-1)}\\ 
+*& \zt& \dots & \zt^c & \dots & \zt^{r_3-1}\\ 
+*& \zt^2& \dots & \zt^{2c} & \dots & \zt^{2(r_3-1)}\\ 
 \vdots& \vdots&\ddots  & \vdots & \ddots & \vdots\\ 
-*& \zt^{t-3}& \dots & \zt^{(t-3)c} & \dots & \zt^{(t-3)(t-1)}\\ 
-*& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{t-1})\\ 
+*& \zt^{r_3-3}& \dots & \zt^{(r_3-3)c} & \dots & \zt^{(r_3-3)(r_3-1)}\\ 
+*& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{r_3-1})\\ 
 \end{pmatrix}.
 $$
 On the other hand, if we take the matrix $C$, add all of its rows to the last one (thus creating $\begin{pmatrix}
-t & 0 & 0& \dots &0
+r_3 & 0 & 0& \dots &0
 \end{pmatrix}$
-there) and then add a suitable linear combination of rows $0,1,\dots, t-3$ to the $t-2$-th row times $-1$ using the equality
-$$-\zt^{(t-2)c}+(t-1)\cdot\underbrace{\sum_{q=0}^{t-1}\zt^{qc}}_{=0}+\sum_{q=0}^{t-3}(q-t+1)\cdot\zt^{qc}=\sum_{q=0}^{t-1}q\cdot\zt^{qc},$$
-so that the $t-2$-th row will become
+there) and then add a suitable linear combination of rows $0,1,\dots, r_3-3$ to the $r_3-2$-th row times $-1$ using the equality
+$$-\zt^{(r_3-2)c}+(r_3-1)\cdot\underbrace{\sum_{q=0}^{r_3-1}\zt^{qc}}_{=0}+\sum_{q=0}^{r_3-3}(q-r_3+1)\cdot\zt^{qc}=\sum_{q=0}^{r_3-1}q\cdot\zt^{qc},$$
+so that the $r_3-2$-th row will become
 $\begin{pmatrix}
-*& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{t-1})
+*& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{r_3-1})
 \end{pmatrix},$
 we will obtain a matrix with the same determinant as $C''$ (up to a sign). Since the elementary row operations preserve the determinant up to a sign, it follows that
-$$|\det C|=|\det C''|=|\det C'|,$$ which together with the invertibility of $C$ (in fact it is well known that $\det C=\pm \sqrt{t^t}$) implies that $|\det M|=1$, as needed.
+$$|\det C|=|\det C''|=|\det C'|=|\det M|\cdot |\det C|.$$ 
+Now, $C$ can be seen as a special type of a Vandermonde matrix, so we have $$\det C=\prod_{0\leq r<c<r_3}(\zt^r-\zt^c)\neq 0$$
+(in fact it is well known that this equals $\pm \sqrt{r_3^{r_3}}$), which implies that %$|\det M'|=1$, hence%
+ $|\det M|=1$, as needed.
 \end{proof}
 
 \begin{cor}
-We have $Y_q=0$ for all $v+t-2\leq q\leq tv-1$.
+We have $Y_q=0$ for all $r_1+r_3-2\leq q\leq n_2-1$.
 \end{cor}
 \begin{proof}
-%This now follows 
-Take the sum of all conjugates with $x_2=r\cdot\uo/\vo\cdot v$ for $r=1$, then for $r=2$, and so on. In each sum all the conjugates are $0$ except the corresponding $Y_q$, so it must be zero as well. The result then follows by repeating the same procedure, only increasing $x_2$ in each of the sums by $1$ each time.
+For any $v-2\leq x_2<t+v-2$, we have $\sigma_2^{x_2}N_1\sim 0$, hence (using the fact that $X=0$)
+$$0=\sigma_2^{x_2}N_1 \cdot \mu=-Y_{x_2+(t-\uo/\vo)\cdot v)\pmod{n_2}}$$
+and consequently
+\begin{align*}
+0=\sigma_2^{x_2+(t-\uo/\vo)\cdot v}N_1 \cdot \mu &=Y_{x_2+(t-\uo/\vo)\cdot v)\pmod{n_2}}&-Y_{x_2+2\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}}\\
+&=&-Y_{x_2+2\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}},\\
+0=\sigma_2^{x_2+2\cdot (t-\uo/\vo)\cdot v}N_1 \cdot \mu &=Y_{x_2+2\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}}&-Y_{x_2+3\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}}\\
+&=&-Y_{x_2+3\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}},
+\end{align*}
+and so on. Continuing in this way, we will obtain the result.
+
+%Take the sum of all conjugates with $x_2=r\cdot\uo/\vo\cdot v$ for $r=1$, then for $r=2$, and so on. In each sum all the conjugates are $0$ except the corresponding $Y_q$, so it must be zero as well. The result then follows by repeating the same procedure, only increasing $x_2$ in each of the sums by $1$ each time.
 \end{proof}
 \section{The module of relations}
 \section{Construction of suitable abelian fields}
