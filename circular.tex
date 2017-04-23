@@ -619,7 +619,7 @@ Now we will decompose our rectangle (of conjugates of $\eta$ having $x_3=x_4=0$)
 %Let $Q$ be the quotient module of $D^+$ by the conjugates we can already recover (including those living in the maximal subfields ramified at three primes), regarded as $\Z$-modules (i.e. forgetting the $G$-structure, otherwise the quotient would be trivial). We will write $Q$ additively and for the remainder of this section, all equalities between (classes of) conjugates will be regarded as if in $Q$.
 %From now on, we will regard the elements of our rectangle as their images in the quotient module of $\Z[G/H]/(N_1,N_2,N_3,N_4)$ by the $\Z$-module of the conjugates we can already recover (including those living in the maximal subfields ramified at three primes). We will call this quotient module $Q$.
 
-\begin{lemma}
+\begin{lemma}\label{XY}
 For any $0\leq x_1<n_1, 0\leq x_2<n_2$, we have
 \iffalse
 $$
@@ -642,20 +642,21 @@ $$
 0   &\text{ if }  x_1<r_2(r_3-1)-1\\
 & \text{ or } x_1=r_2(r_3-1)-1, x_2< r_1+r_3-2 \\
 Y_{x_2} \quad &\text{ if } x_1=r_2(r_3-1)-1, r_1+r_3-2\leq x_2<n_2 \\
-X_{\overline{-x_1+x_2}+1} \\
+X_{\overline{-x_1+x_2}} \\
 %X_{(-x_1+x_2)\pmod{r_3}+1} \\
 &\text{ if }  r_2(r_3-1)-1< x_1<n_3-1\\ 
 &\text{ or }  x_1=n_3-1, x_2\equiv q+\uo/\vo\cdot r_1\pmod{n_2}\\
 & \text{ for some } 0\leq q<r_1+r_3-2  \\
-X_{\overline{-x_1+x_2}+1}-Y_{x_2-\uo/\vo\cdot r_1} \\
+X_{\overline{-x_1+x_2}}-Y_{x_2-\uo/\vo\cdot r_1} \\
 %X_{(-x_1+x_2)\pmod{r_3}+1}-Y_{r}\\
- &\text{ if }  x_1=n_1-1, x_2\not\equiv q+\uo/\vo\cdot r_1\pmod{r_2}\\
+ &\text{ if }  x_1=n_1-1, x_2\not\equiv q+\uo/\vo\cdot r_1\pmod{n_2}\\
  & \text{ for any } 0\leq q<r_1+r_3-2,
 \end{cases}
 \end{align*}
 %where $r=(x_2+(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}$.
 %where $r=x_2-\uo/\vo\cdot r_1\pmod{n_2}$.
-In particular, this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s).
+where the expression $\overline{-x_1+x_2}$ is taken in the set $\{1,2,\dots, r_3\}$.
+In particular, this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{\overline{q+x_1+x_2}}$ (unless the result is $0$ and ignoring all the $Y$'s).
 \end{lemma}
 \begin{proof}
 
@@ -667,7 +668,7 @@ We will use this together with the fact that $(1-\sigma_1\sigma_2)T\cdot \mu=0$ 
 The first case ($x_1<r_2(r_3-1)-1$ or  $x_1=r_2(r_3-1)-1, x_2< r_1+r_3-2)$ follows directly from the definition of $Q$ and the second case ($x_1=r_2(r_3-1)-1, r_1+r_3-2\leq x_2$) directly from the definition of $Y_{x_2}$.
  \paragraph*{}
 Now for a moment suppose that all the $Y_q$'s are zero (we do not know that yet, but this will make the description easier). Then based on the observations above, we could say that for any $0\leq x_1< n_1, 0\leq x_2< n_2$, $$0=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu$$ is always a difference of two possibly nonzero elements %, where one is obtained from the other just by multiplication by $\sigma_1\sigma_2$ (and hence 
-that lie on the same diagonal. Thus we could say that these two elements are the same in $Q$. After increasing both $x_1$ and $x_2$ by $1$, we could use the same argument. Thus using the fact that all the automorphisms in $T$ lie on the same diagonal and repeating this process $\lcm(n_1,n_2)=m$ times, we would obtain that in $Q$, all the elements in the big row $r_2(r_3-1)\leq x_1<n_1$ sharing a diagonal are the same. This would imply $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_{(-x_1+x_2)\pmod{r_3}+1}$ for all such $x_1$, as can be easily checked (it agrees with the definition of $X_q$'s and respects the diagonals).
+that lie on the same diagonal. Thus we could say that these two elements are the same in $Q$. After increasing both $x_1$ and $x_2$ by $1$, we could use the same argument. Thus using the fact that all the automorphisms in $T$ lie on the same diagonal and repeating this process $\lcm(n_1,n_2)=m$ times, we would obtain that in $Q$, all the elements in the big row $r_2(r_3-1)\leq x_1<n_1$ sharing a diagonal are the same. This would imply $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_{\overline{-x_1+x_2}}$ for all such $x_1$, as can be easily checked (it agrees with the definition of $X_q$'s and respects the diagonals).
 \paragraph*{}
 This assertion is almost correct, but we need to account for the $Y_q$' as well. Whenever $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu$$ contains an element from the critical strip having coefficient $1$, say $Y_q$ (where $r_1+r_3-2\leq q<r_2$), we must have (based on the earlier geometric observations) $x_1=r_2(r_3-1)-1, x_2=q$, so that 
 $$0=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu=Y_q-\sigma_1^{r_2(r_3-1)}\sigma_2^{q+1}\cdot \mu+\sigma_1^{n_3-1}\sigma_2^{q+(\uo/\vo)\cdot r_1}\cdot \mu,$$
@@ -682,7 +683,7 @@ A slight alteration of the above naive proof and putting everything together now
 %Note that this implies that the action of $\sigma_1^{-x_1}\sigma_2^{x_2}$ on $X_q$ results in $X_{q+x_1+x_2}$ (unless the result is $0$ and ignoring all the $Y$'s).
 %$X_q^{\sigma_2^{x_2}}=X_{q+x_2}$ for any $q,x_2$.
 \end{proof}
-Thanks to this result, from now on we will regard the indices of the $X$'s only modulo $r_3$. We will also put $Y_q:=0$ for all $0\leq q<r_1+r_3-2$ (again regarded modulo $n_2$), so that the equality $$\sigma_1^{n_1-1}\sigma_2^{x_2}\cdot \mu=X_{\overline{-x_1+x_2}+1}-Y_{x_2-\uo/\vo\cdot r_1} $$ will hold for all $x_2\in\Z$.
+Thanks to this result, from now on we will regard the indices of the $X$'s only modulo $r_3$ (to be more precise, in the set $\{1,2,\dots,r_3\}$) and drop the bar notation for them. We will also put $Y_q:=0$ for all $0\leq q<r_1+r_3-2$ (again regarded modulo $n_2$), so that the equality $$\sigma_1^{n_1-1}\sigma_2^{x_2}\cdot \mu=X_{1+x_2}-Y_{x_2-\uo/\vo\cdot r_1} $$ will hold for all $x_2\in\Z$.
 
 \includepdf[pages=-]{5_export.pdf}
 
@@ -695,35 +696,57 @@ We have $\alpha=\beta=0$.
 \begin{proof}
 Using the relation $N_2\sim 0$, we have $$0=\sigma_1^{r_2(r_3-1)-1}N_2\cdot \mu =\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu= \alpha$$ and
 \begin{align*}
-0&= \sigma_1^{r_2(r_3-1)}N_2\cdot \mu=\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{n_2-1}  X_{-r_2(r_3-1)+x_2+1}\\
-&=\sum_{x_2=0}^{r_1r_3-1}  X_{x_2+r_2+1}=
-\sum_{u=0}^{r_1-1}\sum_{v=0}^{r_3-1} X_{ur_3+v+r_2+1}=r_1\cdot \sum_{v=0}^{r_3-1} X_{v+r_2+1}=r_1\cdot \beta,
+0&= \sigma_1^{r_2(r_3-1)}N_2\cdot \mu=\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{n_2-1}  X_{-r_2(r_3-1)+x_2}\\
+&=\sum_{x_2=0}^{r_1r_3-1}  X_{x_2+r_2}=
+\sum_{u=0}^{r_1-1}\sum_{v=0}^{r_3-1} X_{ur_3+v+r_2}=r_1\cdot \sum_{v=0}^{r_3-1} X_{v+r_2}=r_1\cdot \beta,
 \end{align*}
-since each $x_2\in\{0,1,\dots,r_1r_3-1\}$ can be uniquely written as $ur_3+v$, where $0\leq u<r_1$, $0\leq v<r_3$ and the unary operation of adding $r_2+1$ induces an isomorphism of $\Z/r_3$.
+since each $x_2\in\{0,1,\dots,r_1r_3-1\}$ can be uniquely written as $ur_3+v$, where $0\leq u<r_1$, $0\leq v<r_3$ and the unary operation of adding $r_2$ induces an isomorphism of $\Z/r_3$.
 
-Similarly, using the relation $N_1\sim 0$ and the fact that $$(\sigma^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{\overline{-x_1+x_2}+1}$$ for all $x_2\in\Z$, we have 
+Similarly, using the relation $N_1\sim 0$ and the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, we have 
 \begin{align*}
-0&= \sum_{q=0}^{r_3-1} \sigma_2^{qr_1}N_1\cdot \mu
-%\sum_{\mathclap{\substack{ r_1+r_3-2\leq x_2<n_2,\\
-%                   r_1\mid x_2}}}Y_{x_2} +\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}\sigma_1^{x_1}\sigma_2^{qr_1}\cdot\mu\\
-   = \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}X_{x_1+q}
+0&= \sum_{q=0}^{r_3-1} \sigma_2^{qr_1}N_1\cdot \mu =\sum_{q=0}^{r_3-1}\left(\sigma_1^{n_1-1}+\sigma_1^{r_2(r_3-1)-1}\right) \sigma_2^{qr_1}\cdot \mu   
++\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1} \sigma_1^{x_1}\sigma_2^{qr_1}\cdot \mu\\
+&=\sum_{q=0}^{r_3-1}(\sigma_1^{n_1-1}\sigma_2^{qr_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{(q-\uo/\vo)\cdot r_1})\cdot \mu
++\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1} \sigma_1^{x_1}\sigma_2^{qr_1}\cdot \mu\\
+&=\sum_{q=0}^{r_3-1}X_{1+qr_1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1}X_{-x_1+qr_1}
+= \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}X_{-x_1+qr_1}
 =r_2\cdot \beta,
 \end{align*}
+%\sum_{\mathclap{\substack{ r_1+r_3-2\leq x_2<n_2,\\
+%                   r_1\mid x_2}}}Y_{x_2} +\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}\sigma_1^{x_1}\sigma_2^{qr_1}\cdot\mu\\
 %since all the $Y's$ cancel out %(there is a bijection .
-since for any $x_1$, all possible remainders modulo $r_3$ occur exactly once as the indices in the sum $\sum_{q=0}^{r_3-1}X_{x_1+q}$.
+since for any $x_1$, all possible remainders modulo $r_3$ occur exactly once as the indices in the sum $\sum_{q=0}^{r_3-1}X_{-x_1+qr_1}$ (due to the fact that the order of the class of $r_1$ is $r_3$ in $\Z/r_3$, due to their coprimality).
 Since $\gcd(r_1,r_2)=1$, this implies $\beta=0$ by Bezout's identity.
 \end{proof}
 
-Next, for $0\leq q \leq r_3-3$, we will define $$\Gamma_q:=\sum_{u=0}^{r_3-\uo/\vo-1}\sum_{v=1}^{\uo}X_{\overline{q+v-ur_2}}\in Q.$$
+Next, for $0\leq q \leq r_3-3$, we will define $$\Gamma_q:=\sum_{u=0}^{r_3-\uo/\vo-1}\sum_{v=1}^{\uo}X_{q+v-ur_2}\in Q.$$
 
 \begin{lemma}
 For any $0\leq q \leq r_3-3$, we have $\Gamma_q=0$.
 \end{lemma}
 \begin{proof}
-We can see that taking the sum of all conjugates with $x_2=q+r\cdot \uo/\vo\cdot r_1$ for $0\leq r\leq t-\uo/\vo-1$ (using the relation $N_1\sim 0$) will result in $0$ in $Q$. By construction, all the $Y$'s involved will cancel out, and since $(t-\uo/\vo)\cdot r_1\equiv -\uo \pmod{r_3}$, this implies (using $\beta=0$) that $\Gamma_q=0$ in $Q.$
+Using the relation $N_1\sim 0$ and the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, we have 
+\begin{align*}
+0&= \sum_{u=0}^{r_3-\uo/\vo-1} \sigma_2^{q-u\cdot\uo/\vo\cdot r_1}N_1\cdot \mu\\
+&= \sum_{u=0}^{r_3-\uo/\vo-2} \left( \sigma_1^{n_1-1}\sigma_2^{q-u\cdot\uo/\vo\cdot r_1} +\sigma_1^{r_2(r_3-1)-1}\sigma_2^{q-(u+1)\cdot\uo/\vo\cdot r_1} \right)\cdot \mu\\
+&+\sigma_1^{n_1-1}\sigma_2^{q-(r_3-\uo/\vo-1)\cdot (\uo/\vo\cdot r_1)}+
+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-\uo/\vo-1} \sigma_1^{x_1}\sigma_2^{q-u\cdot\uo/\vo\cdot r_1}\cdot \mu\\
+&= \left(\sum_{u=0}^{r_3-\uo/\vo-2} X_{q+1-u\cdot\uo/\vo\cdot r_1}\right)+X_{q+1-(r_3-\uo/\vo-1)\cdot (-\uo/\vo\cdot r_1)}\\
+&+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-\uo/\vo-1} X_{q-x_1-u\cdot\uo/\vo\cdot r_1}\\
+&=\sum_{u=0}^{r_3-\uo/\vo-1} X_{q+1-ur_2}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-\uo/\vo-1} X_{q-x_1-ur_2}\\
+&=\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{u=0}^{r_3-\uo/\vo-1} X_{q+-x_1-ur_2}=\sum_{u=0}^{r_3-\uo/\vo-1} \sum_{v=1}^{r_2} X_{q+v-ur_2}\\
+&=\sum_{u=0}^{r_3-\uo/\vo-1} \left(\sum_{v=1}^{\overline{r_2}} X_{q+v-ur_2}+\sum_{v=\overline{r_2}+1}^{r_2} X_{q+v-ur_2}\right)\\
+&=\sum_{u=0}^{r_3-\uo/\vo-1} \sum_{v=1}^{\overline{r_2}} X_{q+v-ur_2}+\sum_{u=0}^{r_3-\uo/\vo-1}\frac{r_2-\overline{r_2}}{r_3}\sum_{v=\overline{r_2}+1}^{\overline{r_2}+r_3} X_{q+v-ur_2}\\
+&=\Gamma_q+\sum_{u=0}^{r_3-\uo/\vo-1}\frac{r_2-\overline{r_2}}{r_3}\beta=\Gamma_q.
+\end{align*}
+Note that we also used the fact that 
+$$\sigma_1^{n_1-1}\sigma_2^{q-(r_3-\uo/\vo-1)\cdot (\uo/\vo\cdot r_1)}\cdot \mu =\sigma_1^{n_1-1}\sigma_2^{q+r_1+\uo/\vo\cdot r_1}\cdot \mu=X_{1+q+r_1+\uo/\vo\cdot r_1}$$
+by Lemma \ref{XY}, since $0\leq q+r_1<r_1+r_3-2$ (which also explains why this wouldn't work for higher $q$).
+
+%We can see that taking the sum of all conjugates with $x_2=q+r\cdot \uo/\vo\cdot r_1$ for $0\leq r\leq t-\uo/\vo-1$ (using the relation $N_1\sim 0$) will result in $0$ in $Q$. By construction, all the $Y$'s involved will cancel out, and since $(t-\uo/\vo)\cdot r_1\equiv -\uo \pmod{r_3}$, this implies (using $\beta=0$) that $\Gamma_q=0$ in $Q.$
 \end{proof}
 
-Finally, let $$\Delta:=\sum_{u=0}^{r_3-1}u\cdot\sum_{v=1}^{\uo}X_{\overline{v-ur_2}}\in Q.$$
+Finally, let $$\Delta:=\sum_{u=0}^{r_3-1}u\cdot\sum_{v=1}^{\uo} \sum _{w=1}^{\vo} X_{v+w-ur_2}\in Q.$$
 
 \begin{lemma}
 We have $\Delta=0$.
@@ -840,7 +863,7 @@ Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then for all $2\leq q<r_3$, we 
 \end{lemma}
 \begin{proof}
 
-Since $R(\zeta)=0$, we can regard the polynomial $\Gamma_q(x)$ only modulo $R(x)$ during the proof. Then we have
+Since $R(\zeta)=0$, we can regard the polynomial $\Gamma_q(x)$ only modulo $R(x)$ during the proof (PROBABLY NOT NEEDED?). Then we have
 \begin{equation*}\label{Gamma}
 \begin{split}
 \Gamma_q(\zeta)&=\z^q\cdot(1+\zeta+\dots+\zeta^{\uo-1})(1+\zeta^{r_3-\uo}+\zeta^{2(r_3-\uo)}+\dots+\zeta^{(r_3-\vo/\uo-1)(r_3-\uo)})\\
