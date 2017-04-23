@@ -752,18 +752,33 @@ Finally, let $$\Delta:=\sum_{u=0}^{r_3-1}u\cdot\sum_{v=1}^{\uo} \sum _{w=1}^{\vo
 We have $\Delta=0$.
 \end{lemma}
 \begin{proof}
-Taking the sum of all conjugates with $u\cdot \uo/\vo\cdot r_1\leq x_2\leq r_1-1+u\cdot \uo/\vo\cdot r_1$ times $u$ for $0\leq u\leq r_3-\uo/\vo-1$ gives us $0$ (again using $N_1\sim 0$), hence so does summing over all such $u$ (where by construction all the $Y$'s involved cancel out except for one of each, and their sum is zero anyway). Therefore we have (by using $(r_3-\uo/\vo)\cdot r_1\equiv -\vo \pmod{r_3}$ and $\beta=0$ again) $\Delta=0$ in $Q$.
+Using the relation $N_1\sim 0$ and the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, we have 
+\begin{align*}
+0&= \sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}N_1\cdot \mu\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \left( \sigma_1^{n_1-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}\right)\cdot \mu+\\
+&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}\cdot \mu\\
+&=\dots \text{(not finished)}\\
+%&=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \sigma_1^{n_1-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}\cdot\mu+\sum_{q=1}^{r_3}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}\cdot \mu+\\
+%&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}\cdot \mu\\
+&=\alpha+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}\cdot \mu\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}X_{-x_1+x_2-ur_2}\\\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=1)}^{r_2}\sum _{w=0}^{r_1}X_{v+w-ur_2}\\
+&=\dots \text{(not finished)}\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=1)}^{\uo}\sum _{w=0}^{\vo}X_{v+w-ur_2}=\Delta.
+\end{align*}
+%Taking the sum of all conjugates with $u\cdot \uo/\vo\cdot r_1\leq x_2\leq r_1-1+u\cdot \uo/\vo\cdot r_1$ times $u$ for $0\leq u\leq r_3-\uo/\vo-1$ gives us $0$ (again using $N_1\sim 0$), hence so does summing over all such $u$ (where by construction all the $Y$'s involved cancel out except for one of each, and their sum is zero anyway). Therefore we have (by using $(r_3-\uo/\vo)\cdot r_1\equiv -\vo \pmod{r_3}$ and $\beta=0$ again) $\Delta=0$ in $Q$.
 \end{proof}
 
 \paragraph*{}
-Now we will construct a matrix $M$ of type $r_3\times r_3$ as follows:
+Since $\beta,\Gamma_q$ and $\Delta$ are linear combinations of the $X_u$, they can be written as $\sum_{c=1}^{r_3}c_uX_u$, and thus
+correspond to the $r_3$-tuples of coefficients $(c_1,c_2,\dots,c_{r_3})$. Using this correspondence, we will now construct a matrix $M$ of size $r_3\times r_3$ as follows:
 \begin{itemize}
-\item The first row will consist of all 1's (corresponding to the relation $\beta$).
-\item The $q$-th row for $2\leq q\leq r_3-1$ will correspond to the relation $\Gamma_{q-2}$.
-\item The last row will correspond to the relation $\Delta$.
+\item The first row will corresponding to $\beta$ (i.e., it will consist only of 1's).
+\item The $q$-th row for $2\leq q\leq r_3-1$ will correspond to $\Gamma_{q-2}$.
+\item The last row will correspond to $\Delta$.
 \end{itemize}
 
-Since the rows of $M$ are the coefficients of valid equalities in $Q$, we have $M\cdot X'=0$, where $X=(X_1,\dots,X_{r_3})$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
+Since the rows of $M$ are coefficients of valid equalities in $Q$, we have $M\cdot X'=0$, where $X=(X_1,\dots,X_{r_3})$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
 
 \iffalse
 \section{iffalse}
@@ -856,7 +871,13 @@ D(\zeta)\cdot(\zeta-1)&=\sum_{q=1}^{r_3-1} q\cdot \zeta^{q+1}-\sum_{q=1}^{r_3-1}
 \end{equation*}
 \end{proof}
 
-Formally, we can regard $\beta,\Gamma_q$ and $\Delta$ as elements of $\Z[X_1,X_2,\dots,X_{r_3}]$. By abuse of notation, we can then denote $\beta(x),\Gamma_q(x)$ and $\Delta(x)$ their respective images under the homomorphism $\Z[X_1,X_2,\dots,X_{r_3}]\to \Z[x]$ determined by $X_u\mapsto x^{u-1}$ for all $1\leq u\leq r_3$. It's clear that $\beta(x)=R(x)$. In cases where there could be confusion, we will denote the evaluation homomorphism $\Z[x]\to \Z[\zeta]$ given by $x\mapsto\zeta$ by $\ev_{\z}$.
+Formally, we can regard $\beta,\Gamma_q$ and $\Delta$ as elements of $\Z[X_1,X_2,\dots,X_{r_3}]$. By abuse of notation, we can then denote $\beta(x),\Gamma_q(x)$ and $\Delta(x)$ their respective images under the homomorphism $\Z[X_1,X_2,\dots,X_{r_3}]\to \Z[x]$ determined by $X_u\mapsto x^{u-1}$ for all $1\leq u\leq r_3$. Since the we regard the indices of $X_u$ modulo $r_3$, this map is well defined only modulo $x^3-1$ (so we should in fact take the codomain to be $\Z[x]/(x^{r_3}-1)$), but we will only be interested in the values of these polynomials at $r_3$-th roots of unity, so this isn't an issue. With this in mind, we have
+%It's clear that 
+$$\beta(x)\approx R(x),$$
+$$\Gamma_q(x)\approx x^q\cdot(1+x+\dots+x^{\uo-1})(1+x^{r_3-\uo}+x^{2(r_3-\uo)}+\dots+x^{(r_3-\vo/\uo-1)(r_3-\uo)})$$
+and
+$$\Delta(x)\approx(1+x+\dots+x^{\uo-1})(1+x+\dots+x^{\vo-1})(x^{r_3-\uo}+2x^{2(r_3-\uo)}+\dots+(r_3-1)x^{(r_3-1)(r_3-\uo)}),$$
+where $\approx$ denotes the congruence modulo $x^{r_3}-1$.  In cases where there could be confusion, we will denote the evaluation homomorphism $\Z[x]\to \Z[\zeta]$ given by $x\mapsto\zeta$ by $\ev_{\z}$.
 
 \begin{lemma}
 Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then for all $2\leq q<r_3$, we have $$\Gamma_q(\zeta)=\zeta^q\cdot P(\zeta)$$ and $$\Delta(\zeta)=D(\zeta)\cdot P(\zeta).$$
@@ -951,14 +972,14 @@ Now, $C$ can be seen as a special type of a Vandermonde matrix, so we have $$\de
 We have $Y_q=0$ for all $r_1+r_3-2\leq q\leq n_2-1$.
 \end{cor}
 \begin{proof}
-For any $v-2\leq x_2<t+v-2$, we have $\sigma_2^{x_2}N_1\sim 0$, hence (using the fact that $X=0$)
-$$0=\sigma_2^{x_2}N_1 \cdot \mu=-Y_{x_2+(t-\uo/\vo)\cdot v)\pmod{n_2}}$$
+For any $r_1-2\leq x_2<r_1+r_3-2$, we have $\sigma_2^{x_2}N_1\sim 0$, hence (using the fact that $X=0$)
+$$0=\sigma_2^{x_2}N_1 \cdot \mu=-Y_{x_2+(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}}$$
 and consequently
 \begin{align*}
-0=\sigma_2^{x_2+(t-\uo/\vo)\cdot v}N_1 \cdot \mu &=Y_{x_2+(t-\uo/\vo)\cdot v)\pmod{n_2}}&-Y_{x_2+2\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}}\\
-&=&-Y_{x_2+2\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}},\\
-0=\sigma_2^{x_2+2\cdot (t-\uo/\vo)\cdot v}N_1 \cdot \mu &=Y_{x_2+2\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}}&-Y_{x_2+3\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}}\\
-&=&-Y_{x_2+3\cdot(t-\uo/\vo)\cdot v)\pmod{n_2}},
+0=\sigma_2^{x_2+(r_3-\uo/\vo)\cdot r_1}N_1 \cdot \mu &=Y_{x_2+(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}}&-Y_{x_2+2\cdot(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}}\\
+&=&-Y_{x_2+2\cdot(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}},\\
+0=\sigma_2^{x_2+2\cdot (r_3-\uo/\vo)\cdot r_1}N_1 \cdot \mu &=Y_{x_2+2\cdot(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}}&-Y_{x_2+3\cdot(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}}\\
+&=&-Y_{x_2+3\cdot(r_3-\uo/\vo)\cdot r_1)\pmod{n_2}},
 \end{align*}
 and so on. Continuing in this way, we will obtain the result.
 
