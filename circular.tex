@@ -688,183 +688,147 @@ $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_u-Y_{u-r_2+1}=X_{x_2-x_1-2}-Y_{x_2-h\c
 $$x_2-x_1-2=(u-r_2+1+h\cdot r_1)-(n_1-1)-2=u-r_2-h\cdot r_1-n_1\equiv u \pmod{r_3}.$$
 This concludes the proof.
 \end{proof}
-Thanks to this result, from now on we will regard the indices of the $X$'s only modulo $r_3$ (to be more precise, in the set $\{0,1,2,\dots,r_3-1\}$) and drop the bar notation for them. The lemma also implies the equality $$\sigma_1^{n_1-1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{n_1-r_2-1}\sigma_2^{x_2-h\cdot r_1}\cdot \mu=X_{x_2+1}-Y_{x_2-h\cdot r_1}+Y_{x_2-h\cdot r_1}= X_{x_2+1}$$ for any $x_2\in\Z$, which we will use several times. 
 
-To show that $Q$ is trivial, it now suffices to show that $X_q=0$ for all $0\leq q< r_3$ and $Y_q=0$ for all $r_1+r_3-2\leq q\leq r_2-1$. To achieve this, we will use linear algebra.
+Thanks to this result, from now on we will regard the indices of the $X$'s only modulo $r_3$ (to be more precise, in the set $\{0,1,2,\dots,r_3-1\}$) and drop the bar notation for them. The lemma also implies the equality
+\begin{equation}\label{Ycancel}
+\sigma_1^{n_1-1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{n_1-r_2-1}\sigma_2^{x_2-h\cdot r_1}\cdot \mu=X_{x_2-1}-Y_{x_2-h\cdot r_1}+Y_{x_2-h\cdot r_1}= X_{x_2-1}
+\end{equation}
+for any $x_2\in\Z$, which we will use several times. Another simple observation that will come in handy in the proofs of the following lemmas is that the unary operation of adding a fixed integer induces an automorphism of $\Z/r_3$, which we will not mention explicitly anymore.
+
+To show that $Q$ is trivial, it now suffices to show that $X_u=0$ for all $0\leq u< r_3$ and $Y_v=0$ for all $r_1+r_3-2\leq v< n_2$. To achieve this, we will use linear algebra.
 
 %\includepdf[pages=-]{5_export.pdf}
 \paragraph*{}
-Let $\alpha:= Y_{r_1+r_3-2}+\dots+Y_{r_2-1}\in Q$ and $\beta:=X_1+X_2+\dots+X_{r_3}\in Q$.
+Let $\alpha:= Y_{r_1+r_3-2}+Y_{r_1+r_3-1}+\dots+Y_{n_2-1}\in Q$ and $\beta:=X_0+X_1+\dots+X_{r_3-1}\in Q$.
 \begin{lemma}
 We have $\alpha=\beta=0$.
 \end{lemma}
 \begin{proof}
-Using the relation $N_2\sim 0$, we have $$0=\sigma_1^{r_2(r_3-1)-1}N_2\cdot \mu =\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu= \alpha$$ and
+Using the relation $N_2\sim 0$, we have $$0=\sigma_1^{r_2(r_3-1)-1}N_2\cdot \mu =\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2}\cdot \mu= \sum_{x_2=0}^{n_2-1}Y_{x_2}=\alpha$$ and
 \begin{align*}
-0&= \sigma_1^{r_2(r_3-1)}N_2\cdot \mu=\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{n_2-1}  X_{-r_2(r_3-1)+x_2}\\
-&=\sum_{x_2=0}^{r_1r_3-1}  X_{x_2+r_2}=
-\sum_{u=0}^{r_1-1}\sum_{v=0}^{r_3-1} X_{ur_3+v+r_2}=r_1\cdot \sum_{v=0}^{r_3-1} X_{v+r_2}=r_1\cdot \beta,
+0&= \sigma_1^{r_2(r_3-1)}N_2\cdot \mu=\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{n_2-1}  X_{x_2-r_2(r_3-1)-2}\\
+&=\sum_{x_2=0}^{r_1r_3-1}  X_{x_2+r_2-2}=
+\sum_{u=0}^{r_1-1}\sum_{v=0}^{r_3-1} X_{ur_3+v+r_2-2}=r_1\cdot \sum_{v=0}^{r_3-1} X_{v+r_2-2}=r_1\cdot \beta,
 \end{align*}
-since each $x_2\in\{0,1,\dots,r_1r_3-1\}$ can be uniquely written as $ur_3+v$, where $0\leq u<r_1$, $0\leq v<r_3$ and the unary operation of adding $r_2$ induces an isomorphism of $\Z/r_3$.
+since each $x_2\in\{0,1,\dots,r_1r_3-1\}$ can be uniquely written as $ur_3+v$, where $0\leq u<r_1$, $0\leq v<r_3$.% and the unary operation of adding $r_2-2$ induces an automorphism of $\Z/r_3$.
 
-Similarly, using the relation $N_1\sim 0$ and the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, we have 
+Similarly, using the relation $N_1\sim 0$ and the equality \eqref{Ycancel}, %(together with the fact that the operation of subtracting $h$ induces an automorphism of $\Z/r_3$),%the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{x_2-1}$$ for all $x_2\in\Z$, 
+we get
 \begin{align*}
 0&= \sum_{q=0}^{r_3-1} \sigma_2^{qr_1}N_1\cdot \mu =\sum_{q=0}^{r_3-1}\left(\sigma_1^{n_1-1}+\sigma_1^{r_2(r_3-1)-1}\right) \sigma_2^{qr_1}\cdot \mu   
 +\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1} \sigma_1^{x_1}\sigma_2^{qr_1}\cdot \mu\\
-&=\sum_{q=0}^{r_3-1}(\sigma_1^{n_1-1}\sigma_2^{qr_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{(q-\uo/\vo)\cdot r_1})\cdot \mu
+&=\sum_{q=0}^{r_3-1}(\sigma_1^{n_1-1}\sigma_2^{qr_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{(q-h)\cdot r_1})\cdot \mu
 +\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1} \sigma_1^{x_1}\sigma_2^{qr_1}\cdot \mu\\
-&=\sum_{q=0}^{r_3-1}X_{1+qr_1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1}X_{-x_1+qr_1}
-= \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}X_{-x_1+qr_1}
+&=\sum_{q=0}^{r_3-1}X_{qr_1-1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1}X_{qr_1-x_1-2}
+= \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}X_{qr_1-x_1-2}
 =r_2\cdot \beta,
 \end{align*}
 %\sum_{\mathclap{\substack{ r_1+r_3-2\leq x_2<n_2,\\
 %                   r_1\mid x_2}}}Y_{x_2} +\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}\sigma_1^{x_1}\sigma_2^{qr_1}\cdot\mu\\
 %since all the $Y's$ cancel out %(there is a bijection .
-since for any $x_1$, all possible remainders modulo $r_3$ occur exactly once as the indices in the sum $\sum_{q=0}^{r_3-1}X_{-x_1+qr_1}$ (due to the fact that the order of the class of $r_1$ is $r_3$ in $\Z/r_3$, due to their coprimality).
+since for any $x_1$, all possible remainders modulo $r_3$ occur exactly once as the indices in the sum $\sum_{q=0}^{r_3-1}X_{qr_1-x_1-2}$ (due to the fact that the order of the class of $r_1$ is $r_3$ in $\Z/r_3$, due to their coprimality).
 Since $\gcd(r_1,r_2)=1$, this implies $\beta=0$ by Bezout's identity.
 \end{proof}
 
-Next, for $0\leq q \leq r_3-3$, we will define $$\Gamma_q:=\sum_{u=0}^{r_3-\uo/\vo-1}\sum_{v=1}^{\uo}X_{q+v-ur_2}\in Q.$$
+Next, for $0\leq q \leq r_3-3$, we will define $$\Gamma_q:=\sum_{u=0}^{r_3-h'-1}\sum_{v=0}^{\uo-1}X_{q+v-ur_2-1}\in Q.$$
 
 \begin{lemma}
 For any $0\leq q \leq r_3-3$, we have $\Gamma_q=0$.
 \end{lemma}
 \begin{proof}
-Using the relation $N_1\sim 0$ and the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, we have 
+Using the relation $N_1\sim 0$ and the equality \eqref{Ycancel}, % fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, 
+we get
 \begin{align*}
-0&= \sum_{u=0}^{r_3-\uo/\vo-1} \sigma_2^{q-u\cdot\uo/\vo\cdot r_1}N_1\cdot \mu\\
-&= \sum_{u=0}^{r_3-\uo/\vo-2} \left( \sigma_1^{n_1-1}\sigma_2^{q-u\cdot\uo/\vo\cdot r_1} +\sigma_1^{r_2(r_3-1)-1}\sigma_2^{q-(u+1)\cdot\uo/\vo\cdot r_1} \right)\cdot \mu\\
-&+\sigma_1^{n_1-1}\sigma_2^{q-(r_3-\uo/\vo-1)\cdot (\uo/\vo\cdot r_1)}+
-\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-\uo/\vo-1} \sigma_1^{x_1}\sigma_2^{q-u\cdot\uo/\vo\cdot r_1}\cdot \mu\\
-&= \left(\sum_{u=0}^{r_3-\uo/\vo-2} X_{q+1-u\cdot\uo/\vo\cdot r_1}\right)+X_{q+1-(r_3-\uo/\vo-1)\cdot (-\uo/\vo\cdot r_1)}\\
-&+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-\uo/\vo-1} X_{q-x_1-u\cdot\uo/\vo\cdot r_1}\\
-&=\sum_{u=0}^{r_3-\uo/\vo-1} X_{q+1-ur_2}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-\uo/\vo-1} X_{q-x_1-ur_2}\\
-&=\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{u=0}^{r_3-\uo/\vo-1} X_{q+-x_1-ur_2}=\sum_{u=0}^{r_3-\uo/\vo-1} \sum_{v=1}^{r_2} X_{q+v-ur_2}\\
-&=\sum_{u=0}^{r_3-\uo/\vo-1} \left(\sum_{v=1}^{\overline{r_2}} X_{q+v-ur_2}+\sum_{v=\overline{r_2}+1}^{r_2} X_{q+v-ur_2}\right)\\
-&=\sum_{u=0}^{r_3-\uo/\vo-1} \sum_{v=1}^{\overline{r_2}} X_{q+v-ur_2}+\sum_{u=0}^{r_3-\uo/\vo-1}\frac{r_2-\overline{r_2}}{r_3}\sum_{v=\overline{r_2}+1}^{\overline{r_2}+r_3} X_{q+v-ur_2}\\
-&=\Gamma_q+\sum_{u=0}^{r_3-\uo/\vo-1}\frac{r_2-\overline{r_2}}{r_3}\beta=\Gamma_q.
+0&= \sum_{u=0}^{r_3-h'-1} \sigma_2^{q-uhr_1}N_1\cdot \mu\\
+&= \sum_{u=0}^{r_3-h'-2} \left( \underbrace{\sigma_1^{n_1-1}\sigma_2^{q-uh r_1} +\sigma_1^{r_2(r_3-1)-1}\sigma_2^{q-(u+1)h r_1}}_{=X_{q-uhr_1-1}} \right)\cdot \mu\\
+&+\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^q\cdot \mu}_{=Y_q=0}+
+\underbrace{\sigma_1^{n_1-1}\sigma_2^{q-(r_3-h'-1)h r_1}\cdot\mu}_{=X_{q-(r_3-h'-1)hr_1-1}+Y_{q+r_1}=X_{q-(r_3-h'-1)hr_1-1}}\\
+&+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} \sigma_1^{x_1}\sigma_2^{q-uh r_1}\cdot \mu,
 \end{align*}
-Note that we also used the fact that 
-$$\sigma_1^{n_1-1}\sigma_2^{q-(r_3-\uo/\vo-1)\cdot (\uo/\vo\cdot r_1)}\cdot \mu =\sigma_1^{n_1-1}\sigma_2^{q+r_1+\uo/\vo\cdot r_1}\cdot \mu=X_{1+q+r_1+\uo/\vo\cdot r_1}$$
-by Lemma \ref{XY}, since $0\leq q+r_1<r_1+r_3-2$ (which also explains why this wouldn't work for higher $q$).
+where we used the fact that $q\leq r_3-3\leq r_1+r_3-3$ (implying $Y_q=0$) and $$q-(r_3-h'-1)h r_1-hr_1=q-r_1r_3h+r_1hh'\equiv q+r_1\pmod{n_2},$$ since the congruence holds modulo both $r_1$ and $r_3$ (and $\gcd(r_1,r_3)=1$). Also note that $Y_{q+r_3}=0$, since
+$$r_1\leq q+r_1\leq r_1+r_3-3,$$
+which precisely justifies the bounds on $q$ that we used in the definition of $\Gamma_q$ and also explains why the upper bound in the first sum was chosen to be $r_3-h'-1$.
 
-%We can see that taking the sum of all conjugates with $x_2=q+r\cdot \uo/\vo\cdot r_1$ for $0\leq r\leq t-\uo/\vo-1$ (using the relation $N_1\sim 0$) will result in $0$ in $Q$. By construction, all the $Y$'s involved will cancel out, and since $(t-\uo/\vo)\cdot r_1\equiv -\uo \pmod{r_3}$, this implies (using $\beta=0$) that $\Gamma_q=0$ in $Q.$
+Continuing with the previous equality and using the congruence $hr_1\equiv r_2\pmod{r_3}$, we thus have
+\begin{align*}
+0&= \left(\sum_{u=0}^{r_3-h'-2} X_{q-uhr_1-1}\right)+X_{q-(r_3-h'-1)hr_1-1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} X_{q-uh r_1-x_1-2}\\
+&=\sum_{u=0}^{r_3-h'-1} X_{q-ur_2-1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} X_{q-ur_2-x_1-2}\\
+&=\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{u=0}^{r_3-h'-1} X_{q-ur_2-x_1-2}\\
+&=\sum_{u=0}^{r_3-h'-1} \sum_{v=0}^{r_2-1} X_{q+v-ur_2-1}\\
+&=\sum_{u=0}^{r_3-h'-1} \left(\sum_{v=0}^{\overline{r_2}-1} X_{q+v-ur_2-1}+\sum_{v=\overline{r_2}}^{r_2-1} X_{q+v-ur_2-1}\right)\\
+&=\sum_{u=0}^{r_3-h'-1} \sum_{v=0}^{\overline{r_2}-1} X_{q+v-ur_2-1}+\sum_{u=0}^{r_3-h'-1}\frac{r_2-\overline{r_2}}{r_3}\sum_{v=\overline{r_2}}^{\overline{r_2}+r_3-1} X_{q+v-ur_2-1}\\
+&=\Gamma_q+\sum_{u=0}^{r_3-h'-1}\frac{r_2-\overline{r_2}}{r_3}\cdot \beta=\Gamma_q.
+\end{align*}
+%since the unary operation of adding $q-ur_2-2$ induces an automorphism of $\Z/r_3$.
 \end{proof}
 
-Finally, let $$\Delta:=\sum_{u=0}^{r_3-1}u\cdot\sum_{v=1}^{\uo} \sum _{w=1}^{\vo} X_{v+w-ur_2}\in Q.$$
+Finally, let $$\Delta:=\sum_{u=0}^{r_3-1}u\cdot\sum_{v=0}^{\uo-1} \sum _{w=0}^{\vo-1} X_{v+w-ur_2-1}\in Q.$$
 
 \begin{lemma}
 We have $\Delta=0$.
 \end{lemma}
 \begin{proof}
-Using the relation $N_1\sim 0$ and the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, we have 
+Using the relation $N_1\sim 0$ and the equality \eqref{Ycancel}, %the fact that $$(\sigma_1^{n_1-1}\sigma_2^{x_2}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-\uo/\vo\cdot r_1})\cdot \mu=X_{1+x_2}$$ for all $x_2\in\Z$, we have 
+we get
 \begin{align*}
-0&= \sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}N_1\cdot \mu\\
-&=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \left( \sigma_1^{n_1-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}\right)\cdot \mu+\\
-&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}\cdot \mu\\
-&=\dots \text{(not finished)}\\
-%&=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \sigma_1^{n_1-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}\cdot\mu+\sum_{q=1}^{r_3}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-u\cdot\uo/\vo\cdot r_1}\cdot \mu+\\
-%&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}\cdot \mu\\
-&=\alpha+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-u\cdot \uo/\vo\cdot r_1}\cdot \mu\\
-&=\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}X_{-x_1+x_2-ur_2}\\\\
-&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=1)}^{r_2}\sum _{w=0}^{r_1}X_{v+w-ur_2}\\
-&=\dots \text{(not finished)}\\
-&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=1)}^{\uo}\sum _{w=0}^{\vo}X_{v+w-ur_2}=\Delta.
+0&= \sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_2^{x_2-uh r_1}N_1\cdot \mu\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \left( \sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-uh r_1}\right)\cdot \mu\\
+&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu\\
+&=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} \left( u\cdot\underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}\cdot \mu}_{=X_{x_2-uhr_1-1}-Y_{x_2-(u+1)hr_1}}+(u+1)\cdot\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-(u+1)h r_1}\cdot \mu}_{=Y_{x_2-(u+1)h r_1}}\right)+\\
+&+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot \underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-(r_3-1)h r_1}\cdot \mu}_{=
+%X_{x_2-(r_3-1)hr_1-1}-Y_{x_2-hr_1r_3}=
+X_{x_2-(r_3-1)hr_1-1}}+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu,
 \end{align*}
-%Taking the sum of all conjugates with $u\cdot \uo/\vo\cdot r_1\leq x_2\leq r_1-1+u\cdot \uo/\vo\cdot r_1$ times $u$ for $0\leq u\leq r_3-\uo/\vo-1$ gives us $0$ (again using $N_1\sim 0$), hence so does summing over all such $u$ (where by construction all the $Y$'s involved cancel out except for one of each, and their sum is zero anyway). Therefore we have (by using $(r_3-\uo/\vo)\cdot r_1\equiv -\vo \pmod{r_3}$ and $\beta=0$ again) $\Delta=0$ in $Q$.
+
+where we used the fact that $$x_2-hr_1r_3\equiv x_2\pmod{n_2}$$  and $0\leq x_2< r_1$, hence $Y_{x_2-hr_1r_3}=0$. Also note that for any $r_1\leq q<n_2$, there exist unique $$u\in\{0,1,\dots,r_3-2\},x_2\in\{0,1,\dots,r_1-1\}$$ such that $$q\equiv x_2-(u+1)hr_1 \pmod{n_2}$$ by the Chinese remainder theorem, since $\gcd(h,r_3)=1$ and for $u=r_3-1$, we would get  $q\equiv r\pmod{n_2}$, where $0\leq r<r_1$.
+
+Continuing with the previous equality and using the congruence $hr_1\equiv r_2\pmod{r_3}$, we thus have
+
+\begin{align*}
+0&=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} u\cdot X_{x_2-ur_2-1}+\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} Y_{x_2-(u+1)hr_1}+\underbrace{\sum_{q=0}^{r_1-1}Y_{q}}_{=0}\\
+&+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot X_{x_2-(r_3-1)r_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+&=\sum_{u=0}^{r_3-1} \sum _{x_2=0}^{r_1-1} u\cdot X_{x_2-ur_2-1}+\sum_{q=r_1}^{n_2-1} Y_{q}+\underbrace{\sum_{q=0}^{r_1-1}Y_{q}}_{=0}\\
+&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+&=\alpha+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+%&=\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\sum _{w=0}^{r_1-1}X_{v+w-ur_2-1}\\
+%\end{align*}
+%
+%This is almost what we want, we only need the change the upper sum bounds slightly. We will do this using the fact that the unary operations of adding $q-ur_2-2$ induces an automorphism of $\Z/r_3$.
+%\begin{align*}
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\left(\sum _{w=0}^{\vo-1}X_{v+w-ur_2-1}+\sum _{w=\vo}^{r_1-1}X_{v+w-ur_2-1}\right)\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\sum _{w=0}^{\vo-1}X_{v+w-ur_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\frac{r_1-\vo}{r_3}\cdot\sum _{w=\vo}^{\vo + r_3-1}X_{v+w-ur_2-1}\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo} \sum_{v=0}^{r_2-1} X_{v+w-ur_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\frac{r_1-\vo}{r_3}\cdot \beta\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo} \sum_{v=0}^{r_1} X_{v+w-ur_2-1}\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo}\left( \sum_{v=0}^{\uo-1} X_{v+w-ur_2-1}+\sum_{v=\uo}^{r_2-1} X_{v+w-ur_2-1}\right)\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo} \sum_{v=0}^{\uo-1} X_{v+w-ur_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo-1}\frac{r_2-\uo}{r_3}\cdot \sum_{v=\uo}^{\uo+r_3-1} X_{v+w-ur_2-1}\\
+&=\Delta+\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo-1}\frac{r_2-\uo}{r_3}\cdot \beta=\Delta.
+\end{align*}
+
 \end{proof}
 
 \paragraph*{}
-Since $\beta,\Gamma_q$ and $\Delta$ are linear combinations of the $X_u$, they can be written as $\sum_{c=1}^{r_3}c_uX_u$, and thus
-correspond to the $r_3$-tuples of coefficients $(c_1,c_2,\dots,c_{r_3})$. Using this correspondence, we will now construct a matrix $M$ of size $r_3\times r_3$ as follows:
+Since $\beta,\Gamma_q$ and $\Delta$ are linear combinations of the $X_u$, they can be uniquely written as $\sum_{c=0}^{r_3-1}c_uX_u$, and thus correspond to the $r_3$-tuples of coefficients $(c_1,c_2,\dots,c_{r_3})$. Using this correspondence, we will now construct a matrix $M$ of size $r_3\times r_3$ (indexing its dimensions from $0$ to $r_3-1$) as follows:
 \begin{itemize}
-\item The first row will corresponding to $\beta$ (i.e., it will consist only of 1's).
-\item The $q$-th row for $2\leq q\leq r_3-1$ will correspond to $\Gamma_{q-2}$.
-\item The last row will correspond to $\Delta$.
+\item The $0$-th row will correspond to $\beta$ (i.e., it will consist of all 1's).
+\item The $q$-th row for $1\leq q\leq r_3-2$ will correspond to $\Gamma_{q-1}$.
+\item The $r_3-1$-th row will correspond to $\Delta$.
 \end{itemize}
 
-Since the rows of $M$ are coefficients of valid equalities in $Q$, we have $M\cdot X'=0$, where $X=(X_1,\dots,X_{r_3})$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will first need to describe $M$ in a better way.
-
-\iffalse
-\section{iffalse}
-\paragraph*{}
-Let  $R(x):=1+x+x^2+\dots+x^{t-1}$ and let $L$ be the localization of the quotient ring $\Z[x]/(R(x))$ at the multiplicative subset generated by $x-1$ and $x^{t-\uo}-1$. (By abuse of notation, we will denote the class of $x$ in $L$ also by $x$). Note that since $(x-1)\cdot R(x)=x^t-1$, $$gcd(x^t-1,x^q-1)=x^{\gcd(t,q)}-1$$ for any $q\in\Z$ and $\gcd(t,1)=\gcd(t,t-\uo)=1$, we have $$\gcd(R(x),x-1)=\gcd(R(x),x^{t-\uo}-1)=1,$$ so that neither $x-1$ nor $x^{t-\uo}-1$ are zero-divisors, hence $L$ is nontrivial. Moreover let $$D(x):=\sum_{q=1}^{t-1}q\cdot x^q\in Z[x]/(R(x)).$$
-
-\begin{lemma}
-We have $D(x)\cdot(x-1)=t$ in $L$.
-\end{lemma}
-\begin{proof}
-This follows from the computation
-\begin{equation*}
-\begin{split}
-D(x)\cdot(x-1)&=\sum_{q=1}^{t-1} q\cdot x^{q+1}-\sum_{q=1}^{t-1} q\cdot x^q=\sum_{q=2}^{t} (q-1)\cdot x^{q}-\sum_{q=1}^{t-1} q\cdot x^q\\
-&=(t-1)x^t+\sum_{q=1}^{t-1} (q-1)\cdot x^{q}-\sum_{q=1}^{t-1} q\cdot x^q\\
-&=t\cdot x^t-x^t-\sum_{q=1}^{t-1} x^{q}\\
-&=t-x\cdot R(x)\\
-&=t.
-\end{split}
-\end{equation*}
-\end{proof}
-
-\begin{lemma}
-Up to integer multiples of $\beta$, the coefficients of $\Gamma_q$ are the coefficients of the polynomial $x^q\cdot P(x)$ and the coefficients of $\Delta$ are the coefficients of the polynomial $D(x)\cdot P(x),$ where
-$$P(x):=-x^{\uo}\cdot (1+x+x^2+\dots+x^{\vo-1})\in \Z[x]/(R(x))$$
-(where the coefficient at $X_{q+1}$ corresponds to the coefficient at $x^q$).
-\end{lemma}
-\begin{proof}
-A cyclic shift of the indices of $X_q$ corresponds to multiplication by $x$ in $L$ and $x^t=1$ in $L$. Also note that the polynomial corresponding to $\beta$ is $R(x)$, and since $(x-1)\cdot R(x)=0$ in $L$, multiplication by $x$ acts as the identity on $R(x)$ in $Z[x]/(x^t-1)$. Therefore (regarded in $\Z[x]/(x^t-1)$) the only multiples of $R(x)$ are scalar integer multiples.
-
-Now the coefficients of $\Gamma_q$ (up to a multiple of $\beta$) are coefficients of the polynomial
-\begin{equation*}\label{Gamma}
-\begin{split}
-&x^q\cdot(1+x+\dots+x^{\uo-1})(1+x^{t-\uo}+x^{2(t-\uo)}+\dots+x^{(t-\vo/\uo-1)(t-\uo)})\\
-&=x^q\cdot\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{(t-\vo/\uo)(t-\uo)}-1}{x^{t-\uo}-1}\\
-&=x^q\cdot\frac{x^{\uo}-1}{x^{t-\uo}-1}\cdot \frac{x^{\vo}-1}{x-1}\\
-&=-x^q\cdot x^{\uo}\cdot (1+x+x^2+\dots+x^{\vo-1})\\
-&=x^q\cdot P(x).
-\end{split}
-\end{equation*}
-%Coming back to the coefficients in $\Gamma$, this means that % the second row of $M(t,u,v)$
-%is exactly $$(1,\underbrace{0,\dots,0}_{\vo},\underbrace{1,\dots,1}_{t-\vo})$$ for $\uo=1$ and 
-%incrementing $\uo$ by $1$ results in a cyclic shift of $\Gamma$ by $1$ to the right.
-Similarly, using the substitution $y=x^{t-\uo}$ (so that $y^m=1$ in $L$), we can see that the coefficients of $\Delta$ (up to an integer multiple of $\beta$) are the coefficients of the polynomial
-\begin{equation*}\label{Delta}
-\begin{split}
-&(1+x+\dots+x^{\uo-1})(1+x+\dots+x^{\vo-1})(x^{t-\uo}+2x^{2(t-\uo)}+\dots+(t-1)x^{(t-1)(t-\uo)})\\
-&=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1}\cdot y \cdot \frac{\partial}{\partial y} \left(\frac{y^{t}-1}{y-1}\right)\\
-&=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1}\cdot y \cdot \frac{ty^{t-1}(y-1)-(y^t-1)}{(y-1)^2}\\
-&=\frac{x^{\uo}-1}{x-1}\cdot \frac{x^{\vo}-1}{x-1} \cdot \frac{t}{y-1}\\
-&=\frac{t}{x-1}\cdot \frac{x^{\uo}-1}{x^{t-\uo}-1}\cdot \frac{x^{\vo}-1}{x-1}\\
-&=-D(x)\cdot x^{\uo}\cdot\frac{x^{\vo}-1}{x-1}\\
-&=D(x)\cdot P(x).
-\end{split}
-\end{equation*}
-%Again, this means that incrementing $\uo$ by $1$ results in a cyclic shift of $\Delta$ by $1$ to the right.
-\end{proof}
-
-The lemma tells us that we can construct a new matrix $M'$ by substracting a suitable integer multiple (specifically the maximal one so that the rows will remain nonnegative) of the first row from the others (clearly this doesn't change the determinant $\det M=\det M'$).
-
-\begin{cor}
-In $\Z[x]/(x^t-1)$, the first row of $M'$ corresponds to the coefficients of $R(x)$, the $q$-th row of $M'$ corresponds to the coefficients of $x^{q-2}\cdot P(x)$ for $2\leq q\leq t-1$ and the last row of $M'$ corresponds to the coefficients of $D(x)\cdot P(x)$.
-\end{cor}
-\begin{proof}
-It suffices to realize that the polynomials $R(x), x^q\cdot P(x)$ and $D(x)\cdot P(x)$ can be regarded as in $\Z[x]/(x^t-1)$ instead of $L$.
-\end{proof}
-\section{fi}
-\fi
+Since the rows of $M$ are coefficients of valid equalities in $Q$, we have $M\cdot X'=0$, where $X=(X_0,X_1,\dots,X_{r_3-1})$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will study the effect of multiplying $M$ by a character matrix (i.e., performing the discrete Fourier transform).
+%we will first need to describe $M$ in a better way.
 
 \paragraph*{}
 Let $$R(x):=\sum_{q=0}^{r_3-1} x^q\in\Z[x],$$
 $$D(x):=\sum_{q=0}^{r_3-1}q\cdot x^q\in \Z[x]$$
 and 
-$$P(x):=x^{\uo}\cdot \sum_{q=0}^{\vo-1} x^q\in \Z[x].$$
-%R(x):=1+x+x^2+\dots+x^{r_3-1}\in\Z[x].$$
+$$P(x):=-x^{r_2-1}\cdot \sum_{q=0}^{r_1-1} x^q\in \Z[x].$$
 
 \begin{lemma}
 Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then we have $R(\zeta)=0$ and $$D(\zeta)\cdot(\zeta-1)=r_3.$$
 \end{lemma}
 \begin{proof}
-The first part is immediate since $R(\zeta)\cdot(\zeta-1)=\zeta^{r_3}-1=0$, but $\zeta\neq 1$. The second follows from the computation
+The first assertion is immediate since $R(\zeta)\cdot(\zeta-1)=\zeta^{r_3}-1=0$, but $\zeta\neq 1$. The second follows from the computation
 \begin{equation*}
 \begin{split}
 D(\zeta)\cdot(\zeta-1)&=\sum_{q=1}^{r_3-1} q\cdot \zeta^{q+1}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q=\sum_{q=2}^{r_3} (q-1)\cdot \zeta^{q}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q\\
@@ -876,73 +840,68 @@ D(\zeta)\cdot(\zeta-1)&=\sum_{q=1}^{r_3-1} q\cdot \zeta^{q+1}-\sum_{q=1}^{r_3-1}
 \end{equation*}
 \end{proof}
 
-Now let $\z$ be any $r_3$-th root of unity and consider the $\Z$-module homomorphism from the free module $\Z[X_0,X_1,\dots,X_{r_3-1}]$ to the cyclotomic field $\Q(\z)$ given by $$\sum_{u=0}^{r_3-1}c_u X_u\mapsto \sum_{u=0}^{r_3-1}c_u \z^u.$$ Since $\beta,\Gamma_q,\Delta \in Z[X_0,X_1,\dots,X_{r_3-1}]$ for $0\leq q\leq r_3-3$, we can apply this homomorphism to them, and we will denote its respective values by $\beta(\z),\Gamma_q(\z),\Delta(\z)\in\Q(\z)$. Note that since $\z^{r_3}=1$, these values depend on the indices of $X_u$ only modulo $r_3$, so we can use the original definitions of $\beta,\Gamma_q,\Delta$ for their computation.
+Now let $\z$ be any $r_3$-th root of unity and consider the $\Z$-module homomorphism from the free module $\Z[X_0,X_1,\dots,X_{r_3-1}]$ to the cyclotomic field $\Q(\z)$ given by $$\sum_{u=0}^{r_3-1}c_u X_u\mapsto \sum_{u=0}^{r_3-1}c_u \z^u.$$ Since $\beta,\Gamma_q,\Delta \in Z[X_0,X_1,\dots,X_{r_3-1}]$ for $0\leq q\leq r_3-3$, we can apply this homomorphism to them, and we will denote its respective values by $\beta(\z),\Gamma_q(\z),\Delta(\z)\in\Q(\z)$. Note that since $\z^{r_3}=1$, these values depend on the indices of $X_u$ only modulo $r_3$, so it doesn't matter whether we regard them as in the set $\{0,1,\dots,r_3-1\}$ or just as integers. This will allow us to use the original definitions of $\beta,\Gamma_q,\Delta$ for their computation quite easily.
 
-\iffalse
-Formally, we can regard $\beta,\Gamma_q$ and $\Delta$ as elements of $\Z[X_1,X_2,\dots,X_{r_3}]$. By abuse of notation, we can then denote $\beta(x),\Gamma_q(x)$ and $\Delta(x)$ their respective images under the homomorphism $\Z[X_1,X_2,\dots,X_{r_3}]\to \Z[x]$ determined by $X_u\mapsto x^{u-1}$ for all $1\leq u\leq r_3$. Since the we regard the indices of $X_u$ modulo $r_3$, this map is well defined only modulo $x^3-1$ (so we should in fact take the codomain to be $\Z[x]/(x^{r_3}-1)$), but we will only be interested in the values of these polynomials at $r_3$-th roots of unity, so this isn't an issue. With this in mind, we have
-%It's clear that 
-$$\beta(x)\approx R(x),$$
-$$\Gamma_q(x)\approx x^q\cdot(1+x+\dots+x^{\uo-1})(1+x^{r_3-\uo}+x^{2(r_3-\uo)}+\dots+x^{(r_3-\vo/\uo-1)(r_3-\uo)})$$
-and
-$$\Delta(x)\approx(1+x+\dots+x^{\uo-1})(1+x+\dots+x^{\vo-1})(x^{r_3-\uo}+2x^{2(r_3-\uo)}+\dots+(r_3-1)x^{(r_3-1)(r_3-\uo)}),$$
-where $\approx$ denotes the congruence modulo $x^{r_3}-1$.  In cases where there could be confusion, we will denote the evaluation homomorphism $\Z[x]\to \Z[\zeta]$ given by $x\mapsto\zeta$ by $\ev_{\z}$.
-\fi
-
-\begin{lemma}
-For any $q,v\in\Nbb$ and $x\in\C$, we have the equality
-$$(x^q-1)\cdot\sum_{u=1}^{v}u\cdot x^{uq}=(v+1)x^{q(v+1)}-\sum_{u=0}^v x^{q(u+1)}.$$
-%in $\R(x)$ (where defined).
+\begin{lemma}\label{argeo}
+For any $a,b\in\Nbb$ and $x\in\C$, we have the equality
+$$(x^a-1)\cdot\sum_{u=1}^{b}u\cdot x^{ua}=(b+1)x^{a(b+1)}-\sum_{u=0}^b x^{a(b+1)}.$$
 \end{lemma}
 \begin{proof}
-Let $y=x^q$. If $y=0$, both sides are equal to $0$. So suppose $y\neq 0$, then we have 
+Let $y=x^a$. If $y=0$, both sides are equal to $0$. So suppose $y\neq 0$, then we have 
 \begin{align*}
-\sum_{u=1}^{v}u\cdot x^{uq}&=\sum_{u=0}^{v}u\cdot y^{u}=y\cdot \sum_{u=0}^{v}u\cdot y^{u-1}=y\cdot \sum_{u=0}^{v}\frac{\partial}{\partial y} y^u=y\cdot \frac{\partial}{\partial y}\sum_{u=0}^{v} y^u\\
-&=y\cdot \frac{\partial}{\partial y} \left(\frac{y^{v+1}-1}{y-1}\right)=y\cdot \left(\frac{(v+1)y^{v}(y-1)-(y^{v+1}-1)}{(y-1)^2}\right)\\
-&=y\cdot \left(\frac{(v+1)y^{v}-\sum_{u=0}^v y^u}{y-1}\right)=\frac{(v+1)y^{v+1}-\sum_{u=0}^v y^{u+1}}{y-1}\\
-&=\frac{(v+1)x^{q(v+1)}-\sum_{u=0}^v x^{q(u+1)}}{x^q-1}.
+\sum_{u=1}^{b}u\cdot x^{ua}&=\sum_{u=0}^{b}u\cdot y^{u}=y\cdot \sum_{u=0}^{b}u\cdot y^{u-1}=y\cdot \sum_{u=0}^{b}\frac{\partial}{\partial y} y^u=y\cdot \frac{\partial}{\partial y}\sum_{u=0}^{b} y^u\\
+&=y\cdot \frac{\partial}{\partial y} \left(\frac{y^{b+1}-1}{y-1}\right)=y\cdot \left(\frac{(b+1)y^{b}(y-1)-(y^{b+1}-1)}{(y-1)^2}\right)\\
+&=y\cdot \left(\frac{(b+1)y^{b}-\sum_{u=0}^b y^u}{y-1}\right)=\frac{(b+1)y^{b+1}-\sum_{u=0}^b y^{u+1}}{y-1}\\
+&=\frac{(b+1)x^{a(b+1)}-\sum_{u=0}^b x^{a(b+1)}}{x^a-1}.
 \end{align*}
-By multiplying this equality by $x^q-1$, we obtain the result.
+By multiplying this equality by $x^a-1$, we obtain the result.
 \end{proof}
 
 \begin{lemma}
-Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then for all $0\leq q<r_3-3$, we have $$\Gamma_q(\zeta)=\zeta^q\cdot P(\zeta)$$ and $$\Delta(\zeta)=D(\zeta)\cdot P(\zeta).$$
+Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then for all $0\leq q<r_3-3$, we have $$\beta(\z)=R(\z),$$ $$\Gamma_q(\zeta)=\zeta^{q}\cdot P(\zeta)$$ and $$\Delta(\zeta)=D(\zeta)\cdot P(\zeta).$$
 \end{lemma}
 \begin{proof}
+Note that $\z^{-r_2}\neq 1$, since $\gcd(r_1,-r_2)=1$ and $\z\neq1$.
 
-We have
+The first assertion is clear from the definitions. For the second, we have
 \begin{equation*}\label{Gamma}
 \begin{split}
-\Gamma_q(\zeta)&=\sum_{u=0}^{r_3-\uo/\vo-1}\sum_{v=1}^{\uo}\z^{q+v-ur_2}=\z^q\cdot\left(\right)\sum_{u=0}^{r_3-\uo/\vo-1}\sum_{v=1}^{\uo}\z^{q+v-ur_2}\\
-&=\z^q\cdot(1+\zeta+\dots+\zeta^{\uo-1})(1+\zeta^{r_3-\uo}+\zeta^{2(r_3-\uo)}+\dots+\zeta^{(r_3-\vo/\uo-1)(r_3-\uo)})\\
-&=\zeta^q\cdot\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{(r_3-\vo/\uo)(r_3-\uo)}-1}{\zeta^{r_3-\uo}-1}\\
-&=\zeta^q\cdot\frac{\zeta^{\uo}-1}{\zeta^{r_3-\uo}-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\\
-&=-\zeta^q\cdot \zeta^{\uo}\cdot (1+\zeta+\zeta^2+\dots+\zeta^{\vo-1})\\
-&=\zeta^q\cdot P(\zeta).
+\Gamma_q(\zeta)&=\sum_{u=0}^{r_3-h'-1}\sum_{v=0}^{\uo-1}\z^{q+v-ur_2-1}\\
+&=\z^{q-1}\cdot\sum_{v=0}^{\uo-1}\z^{v}\sum_{u=0}^{r_3-h'-1}\z^{-ur_2}\\
+&=\z^{q-1}\cdot(1+\zeta+\dots+\zeta^{\uo-1})(1+\zeta^{-r_2}+\zeta^{-2r_2}+\dots+\zeta^{-(r_3-h'-1)r_2})\\
+&=\zeta^{q-1}\cdot\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{-(r_3-h')r_2}-1}{\zeta^{-r_2}-1}\\
+&=\zeta^{q-1}\cdot\frac{\zeta^{r_2}-1}{\zeta^{-r_2}-1}\cdot \frac{\zeta^{r_1}-1}{\zeta-1}\\
+&=-\zeta^{q}\cdot \zeta^{r_2-1}\cdot (1+\zeta+\zeta^2+\dots+\zeta^{r_1-1})\\
+&=\zeta^{q}\cdot P(\zeta).
 \end{split}
 \end{equation*}
-%Coming back to the coefficients in $\Gamma$, this means that % the second row of $M(t,u,v)$
-%is exactly $$(1,\underbrace{0,\dots,0}_{\vo},\underbrace{1,\dots,1}_{t-\vo})$$ for $\uo=1$ and 
-%incrementing $\uo$ by $1$ results in a cyclic shift of $\Gamma$ by $1$ to the right.
-Similarly, using the substitution $y=x^{r_3-\uo}$, we can see that
+
+Similarly, using Lemma \ref{argeo} with $a=\overline{-r_2}$ and $b=r_3-1$, we can see that
+
 \begin{equation*}\label{Delta}
 \begin{split}
-\Delta(\zeta)&=\ev_{\z}((1+x+\dots+x^{\uo-1})(1+x+\dots+x^{\vo-1})(x^{r_3-\uo}+2x^{2(r_3-\uo)}+\dots+(r_3-1)x^{(r_3-1)(r_3-\uo)}))\\
-&=\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \zeta^{-\uo} \cdot \frac{\partial}{\partial y} \left(\frac{y^{t}-1}{y-1}\right)\bigg\vert_{y=\zeta^{-\uo}}  \\
-&=\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \zeta^{-\uo} \cdot \ev_{\z}\left(\frac{r_3y^{r_3-1}(y-1)-(y^{r_3}-1)}{(y-1)^2}\right)\\
-&=\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1} \cdot \frac{r_3}{\zeta^{-\uo}-1}\\
-&=\frac{r_3}{\zeta-1}\cdot \frac{\zeta^{\uo}-1}{\zeta^{-\uo}-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\\
-&=-D(\zeta)\cdot \zeta^{\uo}\cdot\frac{\zeta^{\vo}-1}{\zeta-1}\\
+\Delta(\zeta)&=
+\sum_{u=0}^{r_3-1}u\cdot\sum_{v=0}^{\uo-1} \sum _{w=0}^{\vo-1} \z^{v+w-ur_2-1}\\
+&=\z^{-1}\cdot\sum_{v=0}^{\uo-1}\z^v \sum _{w=0}^{\vo-1} \z^{w}\sum_{u=0}^{r_3-1}u\cdot\z^{-ur_2}\\
+&=\z^{-1}(1+\z+\!\dots\!+\z^{\uo-1})(1\!+\z+\!\dots\!+\z^{\vo-1})(\z^{-r_2}+2\z^{-2r_2}+\!\dots\!+(r_3-1)\z^{-(r_3-1)r_2})\\
+&=\z^{-1} \cdot \frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \frac{r_3\z^{\overline{-r_2}r_3}-\sum_{u=0}^{r_3-1}\z^{\overline{-r_2}(u+1)}}{\z^{\overline{-r_2}}-1}
+\\
+&=\z^{-1} \cdot \frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \frac{r_3(\z^{r_3})^{r_2}-\zeta^{-r_2}\cdot R(\zeta^{-r_2})}{\z^{-r_2}-1}
+\\
+&=\z^{-1}\cdot\frac{\zeta^{r_2}-1}{\zeta-1}\cdot \frac{\zeta^{r_1}-1}{\zeta-1} \cdot \frac{r_3}{\zeta^{-r_2}-1}\\
+&=\z^{-1}\cdot\frac{r_3}{\zeta-1}\cdot \frac{\zeta^{r_2}-1}{\zeta^{-r_2}-1}\cdot \frac{\zeta^{r_1}-1}{\zeta-1}\\
+&=-D(\zeta)\cdot \zeta^{r_2-1}\cdot (1+\zeta+\zeta^2+\dots+\zeta^{r_1-1})\\
 &=D(\zeta)\cdot P(\zeta).
 \end{split}
 \end{equation*}
 \end{proof}
 
-
 \begin{theorem}
 $M$ is unimodular, hence $X=0$.
 \end{theorem}
 \begin{proof}
-Let $\zt$ be a primitive $r_3$-th root of unity and let $C$ be the corresponding $r_3\times r_3$ character matrix, i.e. $C=(\zt^{r\cdot c})_{0\leq r,c<r_3}$. We will use the two previous lemmas together with the fact that multiplying a column of successive powers of $\zt$ by a row of $M$ from the left corresponds to evaluating the polynomial obtained from this row at $\zt$. After reindexing the dimensions of $M$ from $0$ to $r_3-1$, we have $M\cdot C=C'$, where $C'_{0,0}=R(1)=r_3$ and the $c-th$ column of $C'$ is
+Let $\zt$ be a primitive $r_3$-th root of unity and let $C$ be the corresponding $r_3\times r_3$ character matrix, i.e. $C=(\zt^{r\cdot c})_{0\leq r,c<r_3}$. We will use the two previous lemmas together with the fact that multiplying a column of successive powers of $\zt$ by a row of $M$ from the left corresponds to evaluating the polynomial obtained from this row at $\zt$. %After reindexing the dimensions of $M$ from $0$ to $r_3-1$, we have
+Hence we have $M\cdot C=C'$, where $C'_{0,0}=R(1)=r_3$ and the $c-th$ column of $C'$ is
 $$
 \begin{pmatrix}
 R(\zt^c)\\ 
@@ -964,8 +923,8 @@ P(\zt^c) \\
 D(\zt^c) \cdot P(\zt^c)
 \end{pmatrix}
 $$
-for $0<c<t$ (we don't need to specify the rest of the $0$-th column, since it doesn't influence the determinant of $C'$). Thus by taking out $P(\zt^c)$ from each of these columns, we get  (since multiplication by $\vo$ is an automorphism of $\Z/r_3$)
-$$|\det C'|=|\det C''|\cdot\abs*{\prod_{0<c<r_3}P(\zt^c)}=|\det C''|\cdot\abs*{\prod_{0<c<r_3}-\zt^{c\uo}}\cdot\abs*{\prod_{0<c<r_3}\frac{\zt^{c\vo}-1}{\zt^c-1}}=|\det C''|,$$
+for $0<c<t$ (we don't need to specify the rest of the $0$-th column, since it doesn't influence the determinant of $C'$). Thus by taking out $P(\zt^c)$ from each of these columns, we get (using that multiplication by $r_1$ is an automorphism of $\Z/r_3$, since $\gcd(r_1,r_3)=1$)
+$$|\det C'|=|\det C''|\cdot\abs*{\prod_{0<c<r_3}P(\zt^c)}=|\det C''|\cdot\abs*{\prod_{0<c<r_3}-\zt^{c(r_2-1)}}\cdot\abs*{\prod_{0<c<r_3}\frac{\zt^{cr_1}-1}{\zt^c-1}}=|\det C''|,$$
 where
 $$C''=
 \begin{pmatrix}
@@ -982,11 +941,11 @@ On the other hand, if we take the matrix $C$, add all of its rows to the last on
 r_3 & 0 & 0& \dots &0
 \end{pmatrix}$
 there) and then add a suitable linear combination of rows $0,1,\dots, r_3-3$ to the $r_3-2$-th row times $-1$ using the equality
-$$-\zt^{(r_3-2)c}+(r_3-1)\cdot\underbrace{\sum_{q=0}^{r_3-1}\zt^{qc}}_{=0}+\sum_{q=0}^{r_3-3}(q-r_3+1)\cdot\zt^{qc}=\sum_{q=0}^{r_3-1}q\cdot\zt^{qc},$$
+$$-\zt^{(r_3-2)c}+(r_3-1)\cdot\underbrace{\sum_{u=0}^{r_3-1}\zt^{uc}}_{=0}+\sum_{u=0}^{r_3-3}(u-r_3+1)\cdot\zt^{uc}=\sum_{u=0}^{r_3-1}u\cdot\zt^{uc},$$
 so that the $r_3-2$-th row will become
-$\begin{pmatrix}
+$$\begin{pmatrix}
 *& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{r_3-1})
-\end{pmatrix},$
+\end{pmatrix},$$
 we will obtain a matrix with the same determinant as $C''$ (up to a sign). Since the elementary row operations preserve the determinant up to a sign, it follows that
 $$|\det C|=|\det C''|=|\det C'|=|\det M|\cdot |\det C|.$$ 
 Now, $C$ can be seen as a special type of a Vandermonde matrix, so we have $$\det C=\prod_{0\leq r<c<r_3}(\zt^r-\zt^c)\neq 0$$
@@ -1011,6 +970,7 @@ and so on. Continuing in this way, we will obtain the result.
 
 %Take the sum of all conjugates with $x_2=r\cdot\uo/\vo\cdot v$ for $r=1$, then for $r=2$, and so on. In each sum all the conjugates are $0$ except the corresponding $Y_q$, so it must be zero as well. The result then follows by repeating the same procedure, only increasing $x_2$ in each of the sums by $1$ each time.
 \end{proof}
+It now follows that $Q$ is trivial, so we are done.
 \section{The module of relations}
 \section{Construction of suitable abelian fields}
 Let $m,a_1,a_2,a_3,a_4,r_1,r_2,r_3,r_4$ be positive integers such that 
