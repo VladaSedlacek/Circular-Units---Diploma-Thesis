@@ -4,7 +4,16 @@
 %\usepackage[czech]{babel}
 \usepackage{a4wide}
 \usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,mathtools,csquotes,tikz,enumitem,calc,pdfpages}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+% ------
+% BibTex for bibliography
+\usepackage[square,sort,numbers]{natbib}
+%\usepackage[square,sort&compress,authoryear]{natbib}
+
+% Bilbiography entries spacing.
+\newcommand{\ignore}[1]{}
+\let\oldbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{\oldbibliography{#1}
+\setlength{\itemsep}{2.5pt}} %Reducing spacing in the bibliography.
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -52,8 +61,11 @@
 \newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
 \newcommand{\Char}{\mathrm{char }}
 \newcommand{\lcm}{\mathrm{lcm}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \setlist[enumerate,1]{label={\upshape(\roman*)}}
+
+
 
 \newcommand\restr[2]{{% we make the whole thing an ordinary symbol
   \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
@@ -129,6 +141,7 @@ If $K$ is the genus field in the narrow sense of an abelian field $k$ and $P$ is
 Every abelian field is a subfield of some cyclotomic field.
 \end{theorem}
 \begin{proof}
+See \citep{washington1982}, page 319.
 \end{proof}
 
 \begin{definition}
@@ -156,11 +169,12 @@ where $\langle \dots \rangle_{\Z[\Gal(K/\Q)]}$ means \enquote{generated as a $\Z
 The group $C(k)$ of circular numbers of $k$ is $E(k)\cap D$, where $E(k)$ is the group of units of the ring of algebraic integers of $k$. The subset of totally positive elements of $C(k)$ will be denoted by $C^+(k)$.
 \end{definition}
 
-One of the reasons that $C(k)$ is important is the following famous result, due to Sinnott:
+In \citep{Lettl1990}, it is proven that the previous definition of $C(k)$ gives the same group as Sinnott's original definition. One of the reasons that $C(k)$ is important is the following famous result, due to Sinnott:
 \begin{theorem}
 The index $[E(k):C(k)]$ is finite.
 \end{theorem}
 \begin{proof}
+See \citep{Sinnott}.
 \end{proof}
 
 \begin{lemma}\leavevmode
@@ -171,6 +185,7 @@ The index $[E(k):C(k)]$ is finite.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
+See \citep{Sinnott}.
 \end{proof}
 
 \begin{cor}
@@ -426,12 +441,13 @@ Then the norm operators from $k$ to a maximal subfield ramified at three primes 
 Moreover, we will denote the congruence corresponding to the composition of canonical projections $$\Z[G]\to \Z[G/H]\to \Z[G/H]/(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$$ by $\sim$, where $(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ is the ideal generated in $\Z[G/H]$ by the images of the elements $R_iN_i$. When we apply any element of this ideal to the highest generator $\eta$, we will obtain a multiplicative $\Z$-linear combination of circular units belonging to subfields with less ramified primes. We will make use of this extensively.
 
 \begin{lemma}
-The fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ satisfy the assumptions of [1].
+The fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ satisfy the assumptions of \citep{Kucera2016}.
 \end{lemma}
 \begin{proof}
+It's clear that these fields are all real and abelian (their Galois groups are quotients of $G$).\dots
 \end{proof}
 
-To construct a basis of $D^+$, we can take the union of all bases for the fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ (we can use the results in [1] to find these) and add in
+To construct a basis of $D^+$, we can take the union of all bases for the fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ (we can use the results in \citep{Kucera2016} to find these) and add in
 \begin{equation*}
 \begin{split}
 N:&=[k:\Q]+3-\sum_{i,j,l}([k\cap K_iK_jK_l:\Q]+2)+\sum_{i,j}([k\cap K_iK_j:\Q]+1)-\sum_{i}[k\cap K_i:\Q]\\&=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}
@@ -546,14 +562,26 @@ For any $0\leq x_1<n_1, 0\leq x_2<n_2$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}\c
 \end{cases}$$
 \end{lemma}
 \begin{proof}
-First we will prove that for any $1\leq u<\gcd(n_1,n_2)$ and $0\leq v<\lcm(n_1,n_2)$, we have $$\sigma_1^{u+v}\sigma_2^{v}\cdot \mu=0$$
-and $$\sigma_1^{v}\sigma_2^{v}\cdot \mu=\mu.$$
+First we will prove that for any $1\leq u<\gcd(n_1,n_2)$ and $0\leq v<\lcm(n_1,n_2)$, we have 
+\begin{equation}\label{UVV}
+\sigma_1^{u+v}\sigma_2^{v}\cdot \mu=0
+\end{equation}
+and
+\begin{equation}\label{VV}
+\sigma_1^{v}\sigma_2^{v}\cdot \mu=\mu.
+\end{equation}
 We will do so simultaneously by induction on $v$. For $v=0$, this follows directly from the definitions of $Q$ and $X$. Now suppose that the statements hold for $0\leq v<\lcm(n_1,n_2)-1$. Then Lemma \ref{diag} implies that $$\sigma_1^{u+(v+1)}\sigma_2^{v+1}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu=0$$
 and $$\sigma_1^{v+1}\sigma_2^{v+1}\cdot \mu=\sigma_1^{v}\sigma_2^{v}\cdot \mu=\mu$$
 by the induction hypothesis, so both statements also hold for $v+1$ and we are done with the induction.
 
 \paragraph*{}
-Now note that any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we can uniquely write $$x_1-x_2=v\cdot \gcd(n_1,n_2)+u,$$ where $0\leq u<\gcd(n_1,n_2)$ and $0\leq v<n_1\leq \lcm(n_1,n_2)$. Hence $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot\mu=\sigma_1^{v\cdot \gcd(n_1,n_2)+u+x_2}\sigma_2^{x_2}\cdot\mu$$
+Now consider the map $$\{0,1,\dots,\gcd(n_1,n_2)\}\times \{0,1,\dots,\gcd(n_1,n_2)\} \to \{0,1,\dots,n_1\}\times \{0,1,\dots,n_2\}$$
+given by $(u,v)\mapsto (u+v\pmod{n_1},v \pmod{n_2})$. Suppose that both $(u,v)$ and $(u',v')$ map to the same element. Then $$(u-u')+(v-v')=qn_1$$ and $$v-v'=q'n_2,$$ hence $$(u-u')=qn_1-q'n_2\equiv 0 \pmod {\gcd(n_1,n_2)}.$$ Since $0\le u,u'\le \gcd(n_1,n_2)$, this implies $u=u'$. Consequently both $n_1$ and $n_2$ divide $v-v'$, hence so does $\lcm(n_1,n_2)$ and $v=v'$ (using that $0\le v,v'\le \lcm(n_1,n_2)$). Thus we have shown that the above map is injective, and since both sets have cardinality $n_1n_2$, it must be a bijection. Therefore for any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we can write $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu$$
+for unique $0\leq u<\gcd(n_1,n_2)$ and $0\leq v<\lcm(n_1,n_2)$, and the equalities \eqref{UVV} and \eqref{VV} imply that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ unless $u=0$, in which case $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\mu$. But the congruences $$x_1\equiv u+v \pmod{n_1}$$ and $$x_2\equiv v \pmod{n_2}$$ imply that $$x_1-x_2\equiv u  \pmod{(\gcd(n_1,n_2)},$$
+so the condition $u=0$ is equivalent to $$x_1\equiv x_2 \pmod{(\gcd(n_1,n_2)},$$ as needed.
+% (note that this is well defined, since the order of $\sigma_1$ is $n_1$ and the order of $\sigma_2$ is $n_2$).
+
+%Now note that any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we can uniquely write $$x_1-x_2=v\cdot \gcd(n_1,n_2)+u,$$ where $0\leq u<\gcd(n_1,n_2)$ and $0\leq v<n_1\leq \lcm(n_1,n_2)$. Hence $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot\mu=\sigma_1^{v\cdot \gcd(n_1,n_2)+u+x_2}\sigma_2^{x_2}\cdot\mu$$
 \end{proof}
 
 \begin{lemma}
@@ -565,7 +593,7 @@ given by $(v,u)\mapsto v\cdot \gcd(n_1,n_2)+u$, we get
 \begin{align*}
 0&=N_1\cdot \mu=\sum_{w=0}^{n_1-1}\sigma_1^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu\\
 &=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{u}\cdot \mu\\
-&=\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\cdot \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_1^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
+&=\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_1^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
 &=\frac{n_1}{\gcd(n_1,n_2)}\cdot \mu.
 \end{align*}
 
@@ -573,7 +601,7 @@ Analogously, we get
 \begin{align*}
 0&=N_2\cdot \mu=\sum_{w=0}^{n_2-1}\sigma_2^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu\\
 &=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{u}\cdot \mu\\
-&=\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\cdot \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_2^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
+&=\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_2^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
 &=\frac{n_2}{\gcd(n_1,n_2)}\cdot \mu.
 \end{align*}
 Since $\frac{n_1}{\gcd(n_1,n_2)}$ and $\frac{n_2}{\gcd(n_1,n_2)}$ are coprime, this implies $\mu=0$ by Bezout's identity.
@@ -657,7 +685,9 @@ First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=
 \paragraph*{}
 At this moment, we are only missing all the cases with $x_3=1,x_4=0$ and some of those with $x_3=x_4=0$. From now on, we will only focus on recovering those with $x_3=x_4=0$, because once we have those, we can recover those with $x_3=1,x_4=0$ just by using the relation $N_3\sim 0$.
 \paragraph*{}
-From now on, we will write $\uo:=r_2\pmod{r_3}$, $\vo:=r_1\pmod{r_3}$ (so that $\uo,\vo\in\{0,1,\dots,r_3-1\}$) and similarly for other expressions. We will also define $h$ to be the unique integer satisfying $ r_1\cdot h\equiv r_2\pmod{r_3}$ and $h\in\{0,1,\dots,r_3-1\}$ and similarly $h'$ to be the unique integer satisfying $ r_2\cdot h'\equiv r_1\pmod{r_3}$ and $h'\in\{0,1,\dots,r_3-1\}$ (both are well defined, since $\gcd(r_1,r_3)=\gcd(r_2,r_3)=1$). Clearly $h\cdot h'\equiv 1 \pmod{r_3}$.
+From now on, we will write $\overline{z}:=z\pmod{r_3}$ for any $z\in\Z$, so that $\overline{z}\in\{0,1,\dots,r_3-1\}$.
+%$\uo:=r_2\pmod{r_3}$, $\vo:=r_1\pmod{r_3}$ % and similarly for other expressions
+We will also define $h$ to be the unique integer satisfying $ r_1\cdot h\equiv r_2\pmod{r_3}$ and $h\in\{0,1,\dots,r_3-1\}$ and similarly $h'$ to be the unique integer satisfying $ r_2\cdot h'\equiv r_1\pmod{r_3}$ and $h'\in\{0,1,\dots,r_3-1\}$ (both are well defined, since $\gcd(r_1,r_3)=\gcd(r_2,r_3)=1$). Clearly $h\cdot h'\equiv 1 \pmod{r_3}$.
 
 \paragraph*{}
 Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{\eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/\Q)]}$$
@@ -766,14 +796,22 @@ Thus we have
 +\underbrace{\sigma_1^{n_1-2}\sigma_2^{u-r_2+h\cdot r_1}\cdot \mu}_{=X_{u-r_2+h\cdot r_1}}-\underbrace{\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}\cdot \mu}_{=X_u-Y_{u-r_2+1} \text{ due to } \eqref{indXY}}.
 \end{align*}
 
-Therefore $X_{u -r_2+h\cdot r_1}=X_u$. Note that $$h\cdot r_1-r_2\equiv 0 \pmod{r_3}$$ and $$h\cdot r_1-r_2\equiv -r_2\pmod{r_1}.$$ Since $\gcd(-r_2,r_1)=1$ and $n_2=r_1r_3$, this means that for all $q,q'\in\Z$ satisfying $q\equiv q'\pmod{r_3}$, there is some $w\in\Z$ such that $$q=w(h\cdot r_1-r_2)+q' \pmod{n_2}.$$ But then $$X_q=X_{q+(h\cdot r_1-r_2)}=X_{q+2(h\cdot r_1-r_2)}=\dots=X_{q+w(h\cdot r_1-r_2)}=X_{q'}.$$
+Therefore $X_{u -r_2+h\cdot r_1}=X_u$. Note that $$h\cdot r_1-r_2\equiv 0 \pmod{r_3}$$ and $$h\cdot r_1-r_2\equiv -r_2\pmod{r_1}.$$ Since $\gcd(-r_2,r_1)=1$ and $n_2=r_1r_3$, this means that for all $q,q'\in\Z$ satisfying $q\equiv q'\pmod{r_3}$, there is some $w\in\Z$ such that $$q'=w(h\cdot r_1-r_2)+q \pmod{n_2}.$$ 
+Without loss of generality, we can assume that $w\ge 0$ (otherwise we can just swap $q$ and $q'$). But then $$X_{q}=X_{q+(h\cdot r_1-r_2)}=X_{q+2(h\cdot r_1-r_2)}=\dots=X_{q+w(h\cdot r_1-r_2)}=X_{q'}.$$
 
 \paragraph*{}
-Now for any $0\leq u<n_2$, $0\leq v\leq r_2-2$ and $x_1=n_1-2-v,x_2=u-v$, the equality \eqref{indX} implies that $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_u=X_{x_2-x_1-2},$$ since $$x_2-x_1-2=(u-v)-(n_1-2-v)-2=u-n_1\equiv u\pmod {r_3}.$$
+Now for any $x_1,x_2$ satisfying $r_2 (r_3-1) \le x_1 < n_1 - 1$ and $0\le x_2 <x_2$, denoting $v = n_1 - 2 - x_1,  u = v + x_2,$
+we get  $0 \le v \le r_2 - 2$ and the equality (1) implies
+$$\sigma_1 ^{x_1} \sigma_2 ^{x_2} \mu = X_{n_1-2-x_1+x_2} 
+= X_{x_2-x_1-2},$$
+because $r_3 \mid n_1$.
+%Now for any $0\leq u<n_2$, $0\leq v\leq r_2-2$ and $x_1=n_1-2-v,x_2=u-v$, the equality \eqref{indX} implies that $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_u=X_{x_2-x_1-2},$$ since $$x_2-x_1-2=(u-v)-(n_1-2-v)-2=u-n_1\equiv u\pmod {r_3}.$$
 
-Similarly, for any $0\leq u<n_2$, $x_2=u-r_2+1+h\cdot r_1$ and $x_1=n_1-1$, the equality \eqref{indXY} implies that 
+Similarly, for $x_1=n_1-1$ and any $0 \le x_2 <n_2$, denoting $u=x_2+r_2-1-h\cdot r_1$, the equality \eqref{indXY} implies that 
 $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_u-Y_{u-r_2+1}=X_{x_2-x_1-2}-Y_{x_2-h\cdot r_1},$$ since 
-$$x_2-x_1-2=(u-r_2+1+h\cdot r_1)-(n_1-1)-2=u-r_2-h\cdot r_1-n_1\equiv u \pmod{r_3}.$$
+$$u = x_2-1+r_2-h\cdot r_1 \equiv x_2-1\equiv x_2-2+1-n_1=x_2-x_1-2 \pmod{r_3}$$
+by definition of $h$ and the fact that $r_3 \mid n_1$.
+
 This concludes the proof.
 \end{proof}
 
@@ -938,18 +976,18 @@ Now let $\mathcal{X}$ be the free $\Z$-module with generators $X_0,X_1,\dots,X_{
 We can apply this homomorphism to $\widehat{\beta},\widehat{\Gamma_q},\widehat{\Delta}$, and we will denote its respective values by $\beta(\z),\Gamma_q(\z),\Delta(\z)\in\Q(\z)$. Note that since $\z^{r_3}=1$, these values depend on the indices of $X_u$ only modulo $r_3$, so it doesn't matter whether we regard them as in the set $\{0,1,\dots,r_3-1\}$ or just as integers. This will allow us to use the original definitions of $\beta,\Gamma_q,\Delta$ for their computation quite easily.
 
 \begin{lemma}\label{argeo}
-For any $a,b\in\Nbb$ and $x\in\C$, we have the equality
-$$(x^a-1)\cdot\sum_{u=1}^{b}u\cdot x^{ua}=(b+1)x^{a(b+1)}-\sum_{u=0}^b x^{a(b+1)}.$$
+For any $b\in\Nbb$ and $y\in\C$, we have the equality
+$$(y-1)\cdot\sum_{u=1}^{b}u\cdot y^u=(b+1)y^{b+1}-\sum_{u=0}^b y^{u+1}.$$
 \end{lemma}
 \begin{proof}
-Let $y=x^a$. If $y=0$, both sides are equal to $0$. So suppose $y\neq 0$, then we have 
+We have 
 \begin{align*}
-\sum_{u=1}^{b}u\cdot x^{ua}&=\sum_{u=0}^{b}u\cdot y^{u}=y\cdot \sum_{u=0}^{b}u\cdot y^{u-1}=y\cdot \sum_{u=0}^{b}\frac{\partial}{\partial y} y^u=y\cdot \frac{\partial}{\partial y}\sum_{u=0}^{b} y^u\\
-&=y\cdot \frac{\partial}{\partial y} \left(\frac{y^{b+1}-1}{y-1}\right)=y\cdot \left(\frac{(b+1)y^{b}(y-1)-(y^{b+1}-1)}{(y-1)^2}\right)\\
-&=y\cdot \left(\frac{(b+1)y^{b}-\sum_{u=0}^b y^u}{y-1}\right)=\frac{(b+1)y^{b+1}-\sum_{u=0}^b y^{u+1}}{y-1}\\
-&=\frac{(b+1)x^{a(b+1)}-\sum_{u=0}^b x^{a(b+1)}}{x^a-1}.
+(y-1)\cdot\sum_{u=1}^{b}u\cdot y^u&=\sum_{u=1}^{b}u\cdot y^{u+1}-\sum_{u=1}^{b}u\cdot y^u\\
+&=\sum_{u=0}^{b}u\cdot y^{u+1}-\sum_{v=0}^{b-1}(v+1)\cdot y^{v+1}\\
+&=b\cdot y^{b+1}+\sum_{u=0}^{b-1}(u-(u+1))\cdot y^{u+1}\\
+&=b\cdot y^{b+1}+\underbrace{y^{b+1}-y^{b+1}}_{=0}+\sum_{u=0}^{b-1}-1\cdot y^{u+1}\\
+&=(b+1)y^{b+1}-\sum_{u=0}^b y^{u+1}.
 \end{align*}
-By multiplying this equality by $x^a-1$, we obtain the result.
 \end{proof}
 
 \begin{lemma}
@@ -971,7 +1009,7 @@ From the definitions and Lemma \ref{RD}, we directly get $\beta(\z)=R(\z)=0$. Fo
 \end{split}
 \end{equation*}
 
-Similarly, using Lemma \ref{argeo} with $a=\overline{-r_2}$ and $b=r_3-1$, we can see that
+Similarly, using Lemma \ref{argeo} with $y=\z^{-r_2}$ and $b=r_3-1$, we can see that
 
 \begin{equation*}\label{Delta}
 \begin{split}
@@ -979,7 +1017,7 @@ Similarly, using Lemma \ref{argeo} with $a=\overline{-r_2}$ and $b=r_3-1$, we ca
 \sum_{u=0}^{r_3-1}u\cdot\sum_{v=0}^{\uo-1} \sum _{w=0}^{\vo-1} \z^{v+w-ur_2-1}\\
 &=\z^{-1}\cdot\sum_{v=0}^{\uo-1}\z^v \sum _{w=0}^{\vo-1} \z^{w}\sum_{u=0}^{r_3-1}u\cdot\z^{-ur_2}\\
 &=\z^{-1}(1+\z+\!\dots\!+\z^{\uo-1})(1\!+\z+\!\dots\!+\z^{\vo-1})(\z^{-r_2}+2\z^{-2r_2}+\!\dots\!+(r_3-1)\z^{-(r_3-1)r_2})\\
-&=\z^{-1} \cdot \frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \frac{r_3\z^{\overline{-r_2}r_3}-\sum_{u=0}^{r_3-1}\z^{\overline{-r_2}(u+1)}}{\z^{\overline{-r_2}}-1}
+&=\z^{-1} \cdot \frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \frac{r_3\z^{-r_2r_3}-\sum_{u=0}^{r_3-1}\z^{-r_2(u+1)}}{\z^{-r_2}-1}
 \\
 &=\z^{-1} \cdot \frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \frac{r_3(\z^{r_3})^{r_2}-\zeta^{-r_2}\cdot R(\zeta^{-r_2})}{\z^{-r_2}-1}
 \\
@@ -1032,16 +1070,18 @@ r_3& 0& \dots & 0 & \dots & 0\\
 *& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{r_3-1})\\ 
 \end{pmatrix}.
 $$
-On the other hand, if we take the matrix $C$, add all of its rows to the last one (thus creating $\begin{pmatrix}
+On the other hand, we can take the matrix $C$, add all of its rows to the $r_3-1$-th one (thus creating $\begin{pmatrix}
 r_3 & 0 & 0& \dots &0
 \end{pmatrix}$
-there) and then add a suitable linear combination of rows $0,1,\dots, r_3-3$ to the $r_3-2$-th row multiplied by $-1$ using the equality
-$$-\zt^{(r_3-2)c}+(r_3-1)\cdot\underbrace{\sum_{u=0}^{r_3-1}\zt^{uc}}_{=0}+\sum_{u=0}^{r_3-3}(u-r_3+1)\cdot\zt^{uc}=\sum_{u=0}^{r_3-1}u\cdot\zt^{uc},$$
+there) and then, using the equality
+$$-\zt^{(r_3-2)c}+\sum_{u=0}^{r_3-3}(u-r_3+1)\cdot\zt^{uc}=\sum_{u=0}^{r_3-1}u\cdot\zt^{uc}-(r_3-1)\cdot\underbrace{\sum_{u=0}^{r_3-1}\zt^{uc}}_{=0},$$ 
+%we see that if we 
+multiply the $(r_3-2)$-th row by $-1$ and add the $u$-th row multiplied by $(u-r_3+1)$ for each $0\le u \le r_3-3$,
 so that the $r_3-2$-th row will become
 $$\begin{pmatrix}
 *& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{r_3-1})
-\end{pmatrix},$$
-we will obtain a matrix with the same determinant as $C''$ (up to a sign). Since the elementary row operations preserve the determinant up to a sign, it follows that
+\end{pmatrix}.$$
+Thus we will obtain a matrix with the same determinant as $C''$ (up to a sign). Since the elementary row operations preserve the determinant up to a sign, it follows that
 $$|\det C|=|\det C''|=|\det C'|=|\det M|\cdot |\det C|.$$ 
 Now, $C$ can be seen as a special type of a Vandermonde matrix, so we have $$\det C=\prod_{0\leq r<c<r_3}(\zt^r-\zt^c)\neq 0$$
 (in fact it is well known that this equals $\pm \sqrt{r_3^{r_3}}$), which implies that %$|\det M'|=1$, hence%
@@ -1083,4 +1123,7 @@ $$[k\cap K_i:/\Q]=[\langle\sigma_1,\sigma_2,\sigma_3,\sigma_4\rangle:\langle\tau
 and
 $$[K:kK_iK_jK_l]=|\langle\tau\rangle\cap \langle\sigma_h\rangle|=|\langle\tau^{\lcm\left(n_i,n_j,n_l\right)}\rangle|=|\langle\tau^m\rangle|=1.$$
 \end{proof}
+
+\bibliographystyle{siam}
+\bibliography{circular}
 \end{document}
