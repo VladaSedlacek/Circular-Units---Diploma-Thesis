@@ -467,7 +467,7 @@ $$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^{a_1u}
 and
 \begin{align*}
 N&=a_1a_2a_3a_4m^3-(a_1a_2a_3+a_1a_2a_4+a_1a_3a_4+a_2a_3a_4)m^2\\
-&+(a_1a_2+a_1a_3+a_1a_4+a_2a_3+a_2a_4+a_3a_3)m-a_1-a_2-a_3-a_4+1.
+&+(a_1a_2+a_1a_3+a_1a_4+a_2a_3+a_2a_4+a_3a_4)m-a_1-a_2-a_3-a_4+1.
 \end{align*}
 \section{The case $r_1=r_2=a_3=r_4=1$}
 In this case, we have
@@ -489,13 +489,13 @@ N&=a_1a_2a_4\frac{m^3}{r_3}-a_1a_2a_4m^2-(a_1a_2+a_1a_4+a_2a_4)\frac{m^2}{r_3}\\
 We will add the following $N$ conjugates of $\eta$ to our basis:
 \begin{itemize}
 \item $0\le x_1 <a_1m-1, 0\le x_2 < a_2m-1, 0 \le x_3<n_3-1, 1\le x_4<a_4$,
-\item $0\le x_1 < a_1m-1, a_2 < x_2 < a_2m-1, 1\leq x_3 < n_3, x_4=0$,
-\item $0\le x_1 < a_1, x_2=a_2, 1\leq x_3 < n_3-1, x_4=0$.
+\item $0\le x_1 < a_1m-1, a_2 < x_2 < a_2m, 1\leq x_3 < n_3, x_4=0$,
+\item $0\le x_1 < a_1, x_2=a_2, 1\leq x_3 < n_3, x_4=0$.
 \end{itemize}
 \paragraph*{}
-First we will recover the cases $0<x_4<a_4$, $x_1=a_1m-1$ or $x_2=a_2m-1$ or $x_3=n_3-1$ using the relations $R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
+First we will recover the cases $0<x_4<a_4$, $x_1=a_1m-1$ or $x_2=a_2m-1$ or $x_3=n_3-1$ using the relations $R_1N_1\sim 0, R_2N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
 \paragraph*{}
-Next, we will recover the cases $$x_1=a_1m-1, a_2< x_2 < a_2m-1, 1\leq x_3 <n_3$$ using the relation $R_1N_1\sim 0$ and subsequently the cases $$0\leq x_1 < a_1m-1, a_2< x_2 < a_2m-1, x_3 = 0$$ and $$0\le x_1 < a_1, x_2 = a_2, x_3 = 0$$ using the relation $R_3N_3\sim 0$.
+Next, we will recover the cases $$x_1=a_1m-1, a_2< x_2 < a_2m, 1\leq x_3 <n_3$$ using the relation $R_1N_1\sim 0$ and subsequently the cases $$0\leq x_1 < a_1m, a_2< x_2 < a_2m, x_3 = 0$$ and $$0\le x_1 < a_1, x_2 = a_2, x_3 = 0$$ using the relation $N_3\sim 0$.
 
 \paragraph*{}
 At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$0\le x_1< a_1m, 0\le x_2 <a_2, 0\le x_3<n_3$$ and $$a_1\le x_1< a_1m, x_2=a_2, 0\le x_3<n_3.$$
@@ -541,10 +541,16 @@ We will add the following $N$ conjugates of $\eta$ to our basis:
 \paragraph*{}
 First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=a_3m-1$ using the relations $N_1\sim 0, N_2\sim 0, R_3N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
 \paragraph*{}
-Next, we will recover the cases $x_4=0, a_3< x_3<a_3m$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$. Now note that the exponents of $\sigma_3$ in $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ are pairwise congruent modulo $a_3$. Since for any $1\leq v<a_3$, we can already recover all the conjugates with $x_3\equiv v \pmod{a_3}$ except for one, we can also use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ multiple times to recover the cases $$0\leq x_1<n_1, 0\leq x_2< n_2, 1\leq x_3<a_3, x_4=0$$ as well.
+Next, we will recover the cases $x_4=0, a_3< x_3<a_3m$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$. Now note that the exponents of $\sigma_3$ in $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ are pairwise congruent modulo $a_3$. Since for any $1\leq v<a_3$, we have already recovered all the conjugates with $x_3\equiv v \pmod{a_3}$ except for one, we can also use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ several times to recover the cases $$0\leq x_1<n_1, 0\leq x_2< n_2, 1\leq x_3<a_3, x_4=0$$ as well.
 \paragraph*{}
-At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}}$ for all $$0\leq x_1<n_1, 0\leq x_2<n_2$$ and $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$ for all $$0\leq x_1<n_1, 1\leq x_2<n_2 \text{ and } \gcd(n_1,n_2)\leq x_1<n_1,x_2=0 \text{ and } x_1=x_2=0.$$
-We will focus on those of the second kind, because once we have those, we can recover those with $x_3=a_3,x_4=0$ just by using the relation $R_3N_3\sim 0$.
+At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}}$ for all $$0\leq x_1<n_1, 0\leq x_2<n_2$$ 
+and among the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$
+we have only those with 
+$0 < x_1 <gcd(n_1,n_2),  x_2 = 0$
+%and $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$ for all $$0\leq x_1<n_1, 1\leq x_2<n_2 \text{ and } \gcd(n_1,n_2)\leq x_1<n_1,x_2=0 \text{ and } x_1=x_2=0.$$
+We will focus on recovering the remaining conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$, 
+%those of the second kind, 
+because once we have those, we can recover those with $x_3=a_3,x_4=0$ just by using the relation $R_3N_3\sim 0$.
 
 \paragraph*{}
 Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{\eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/\Q)]}$$
@@ -555,7 +561,7 @@ Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_
 \text { or }& 1\leq x_1<\gcd(n_1,n_2), x_2=x_3=x_4=0 \}\big\rangle_{\Z}.
 \end{align*}
 We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$ or $\rho\in\Gal(K/\Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
-Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}R_3N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu-\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}\cdot \mu$$
+Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}R_3N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}\cdot \mu$$
 for any $x_1,x_2\in\Z$,
 this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for any $0\leq x_1<n_1, 0\leq x_2<n_2$.
 
@@ -569,17 +575,24 @@ Using the fact that the order of $\sigma_3$ is $a_3m$, we have
 \begin{align*}
 0&\sim \sigma_1^{x_1}\sigma_2^{x_2}\left(R_3R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}-\sigma_1\sigma_2R_4R_3N_3\right)=\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=0}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}\\
 &=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_3R_4+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}\\
-&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)+\underbrace{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_3\sum_{u=1}^{a_4-1}\sigma_4^u}_{
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)+
+%\underbrace{
+\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_3\sum_{u=1}^{a_4-1}\sigma_4^u
+%}_{
 %\text{contains only terms with } x_4>0
-=0, \text{ as explained below}
-}\\
-&+\underbrace{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_4\sum_{u=1}^{a_3-1}\sigma_3^u+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}}_{
+%=0, \text{ as explained below}
+%}
+\\
+&+
+%\underbrace{
+\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)\sum_{u=1}^{a_3-1}\sigma_3^u+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}
+%}_{
 %\text{contains only terms with } 1\leq x_3<a_3m \text{ and } x_3\neq a_3
-=0, \text{ as explained below}
-}.
+%=0, \text{ as explained below}
+%}.
 \end{align*}
 Since all the summands in the expression $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_3\sum_{u=1}^{a_4-1}\sigma_4^u
-+\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_4\sum_{u=1}^{a_3-1}\sigma_3^u+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}$$
++\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)\sum_{u=1}^{a_3-1}\sigma_3^u+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}$$
 have either $x_4>0$ or $ 1\leq x_3<a_3m,  x_3\neq a_3$ (where $x_3$ and $x_4$ denote the respective exponents of $\sigma_3$ and $\sigma_4$ in each term), the result of their action on $\mu$ becomes trivial in $Q$, which yields the result.
 \end{proof}
 
@@ -588,7 +601,7 @@ have either $x_4>0$ or $ 1\leq x_3<a_3m,  x_3\neq a_3$ (where $x_3$ and $x_4$ de
 \begin{lemma}\label{M0}
 For any $0\leq x_1<n_1, 0\leq x_2<n_2$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\begin{cases}
 \mu \quad \text{ if } x_1\equiv x_2 \pmod{\gcd(n_1,n_2)}\\
-0 \quad \text{ else}.
+0 \quad \text{ otherwise}.
 \end{cases}$$
 \end{lemma}
 \begin{proof}
@@ -600,13 +613,13 @@ and
 \begin{equation}\label{VV}
 \sigma_1^{v}\sigma_2^{v}\cdot \mu=\mu.
 \end{equation}
-We will do so simultaneously by induction on $v$. For $v=0$, this follows directly from the definitions of $Q$ and $X$. Now suppose that the statements hold for $0\leq v<\lcm(n_1,n_2)-1$. Then Lemma \ref{diag} implies that $$\sigma_1^{u+(v+1)}\sigma_2^{v+1}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu=0$$
+We will do so simultaneously by induction on $v$. For $v=0$, this follows directly from the definitions of $Q$ and $\mu$. Now suppose that the statements hold for $0\leq v<\lcm(n_1,n_2)-1$. Then Lemma \ref{diag} implies that $$\sigma_1^{u+(v+1)}\sigma_2^{v+1}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu=0$$
 and $$\sigma_1^{v+1}\sigma_2^{v+1}\cdot \mu=\sigma_1^{v}\sigma_2^{v}\cdot \mu=\mu$$
 by the induction hypothesis, so both statements also hold for $v+1$ and we are done with the induction.
 
 \paragraph*{}
-Now consider the map $$\{0,1,\dots,\gcd(n_1,n_2)\}\times \{0,1,\dots,\gcd(n_1,n_2)\} \to \{0,1,\dots,n_1\}\times \{0,1,\dots,n_2\}$$
-given by $(u,v)\mapsto (u+v\pmod{n_1},v \pmod{n_2})$. Suppose that both $(u,v)$ and $(u',v')$ map to the same element. Then $$(u-u')+(v-v')=qn_1$$ and $$v-v'=q'n_2,$$ hence $$(u-u')=qn_1-q'n_2\equiv 0 \pmod {\gcd(n_1,n_2)}.$$ Since $0\le u,u'\le \gcd(n_1,n_2)$, this implies $u=u'$. Consequently both $n_1$ and $n_2$ divide $v-v'$, hence so does $\lcm(n_1,n_2)$ and $v=v'$ (using that $0\le v,v'\le \lcm(n_1,n_2)$). Thus we have shown that the above map is injective, and since both sets have cardinality $n_1n_2$, it must be a bijection. Therefore for any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we can write $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu$$
+Now consider the map $$\{0,1,\dots,\gcd(n_1,n_2)\}\times \{0,1,\dots,\lcm(n_1,n_2)\} \to \{0,1,\dots,n_1\}\times \{0,1,\dots,n_2\}$$
+given by $(u,v)\mapsto (u+v\pmod{n_1},v \pmod{n_2})$. Suppose that both $(u,v)$ and $(u',v')$ map to the same element. Then, for suitable $q, q' \in \Z$, $$(u-u')+(v-v')=qn_1$$ and $$v-v'=q'n_2,$$ hence $$(u-u')=qn_1-q'n_2\equiv 0 \pmod {\gcd(n_1,n_2)}.$$ Since $0\le u,u'\le \gcd(n_1,n_2)$, this implies $u=u'$. Consequently both $n_1$ and $n_2$ divide $v-v'$, hence so does $\lcm(n_1,n_2)$ and $v=v'$ (using that $0\le v,v'\le \lcm(n_1,n_2)$). Thus we have shown that the above map is injective, and since both sets have cardinality $n_1n_2$, it must be a bijection. Therefore for any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we can write $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu$$
 for unique $0\leq u<\gcd(n_1,n_2)$ and $0\leq v<\lcm(n_1,n_2)$, and the equalities \eqref{UVV} and \eqref{VV} imply that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ unless $u=0$, in which case $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\mu$. But the congruences $$x_1\equiv u+v \pmod{n_1}$$ and $$x_2\equiv v \pmod{n_2}$$ imply that $$x_1-x_2\equiv u  \pmod{(\gcd(n_1,n_2)},$$
 so the condition $u=0$ is equivalent to $$x_1\equiv x_2 \pmod{(\gcd(n_1,n_2)},$$ as needed.
 % (note that this is well defined, since the order of $\sigma_1$ is $n_1$ and the order of $\sigma_2$ is $n_2$).
@@ -619,22 +632,25 @@ We have $\mu=0.$
 \end{lemma}
 \begin{proof}
 Using the relation $N_1\sim 0$ and Lemma \ref{M0} together with the bijection $$\{0,1,\dots,\gcd(n_1,n_2)-1\}\times \{0,1,\dots,\frac{n_1}{\gcd(n_1,n_2)}-1\}\to \{0,1,\dots, n_1-1\}$$
-given by $(v,u)\mapsto v\cdot \gcd(n_1,n_2)+u$, we get
+given by $(u,v)\mapsto v\cdot \gcd(n_1,n_2)+u$, we get
 \begin{align*}
-0&=N_1\cdot \mu=\sum_{w=0}^{n_1-1}\sigma_1^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu\\
-&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{u}\cdot \mu\\
-&=\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_1^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
-&=\frac{n_1}{\gcd(n_1,n_2)}\cdot \mu.
+0&=N_1\cdot \mu=\sum_{w=0}^{n_1-1}\sigma_1^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu
+%&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{u}\cdot \mu\\
+%&=\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_1^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}
+=\frac{n_1}{\gcd(n_1,n_2)}\cdot \mu,
 \end{align*}
+since by Lemma \ref{M0}, $\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu$ is zero for $u\neq 0$ and equal to $\mu$ otherwise.
 
 Analogously, we get 
 \begin{align*}
-0&=N_2\cdot \mu=\sum_{w=0}^{n_2-1}\sigma_2^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu\\
-&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{u}\cdot \mu\\
-&=\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_2^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
-&=\frac{n_2}{\gcd(n_1,n_2)}\cdot \mu.
+0&=N_2\cdot \mu=\sum_{w=0}^{n_2-1}\sigma_2^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu
+%&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{u}\cdot \mu\\
+%&=\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_2^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
+=\frac{n_2}{\gcd(n_1,n_2)}\cdot \mu,
 \end{align*}
-Since $\frac{n_1}{\gcd(n_1,n_2)}$ and $\frac{n_2}{\gcd(n_1,n_2)}$ are coprime, this implies $\mu=0$ by Bezout's identity.
+since by Lemma \ref{M0}, $\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu$ is zero for $u\neq 0$ and equal to $\mu$ otherwise.
+
+Due to the fact that $\frac{n_1}{\gcd(n_1,n_2)}$ and $\frac{n_2}{\gcd(n_1,n_2)}$ are coprime, this implies $\mu=0$ by Bezout's identity.
 \end{proof}
 It now follows that $Q$ is trivial, so we are done.
 
@@ -766,10 +782,13 @@ Together with $N_3\sim 0$, this means that
 \begin{align*}
 0&\sim \sigma_1^{x_1}\sigma_2^{x_2}\left(R_4T \sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}-\sigma_1\sigma_2N_3R_4T\right)=\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=0}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}\\
 &=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_4T+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}\\
-&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T+\underbrace{\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\sum_{u=1}^{a_4-1}\sigma_4^u+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}}_{
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T+
+%\underbrace{
+\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\sum_{u=1}^{a_4-1}\sigma_4^u+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}
+%}_{
 %\text{contains only terms with } x_4>0 \text{ or } x_3>1
-=0, \text{ as explained below}
-}
+%=0, \text{ as explained below}
+%}
 \end{align*}
 
 Since all the summands in the expression $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\sum_{u=1}^{a_4-1}\sigma_4^u+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}$$
