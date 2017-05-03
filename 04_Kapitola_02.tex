@@ -1,0 +1,904 @@
+\chapter{The construction of bases of circular numbers and circular units}
+%\texorpdfstring{$D^+$}{D^+} and \texorpdfstring{$C^+$}{C^+}}
+
+\section{General strategy}
+
+%Recall that $D^+$, the subgroup of totally positive elements of the group $D$ of circular numbers of a real abelian field $k'$ (using Lettl's modification of Sinnott's definition), has one generator $\eta_I$ for each nonempty subset $I\subseteq P$, where $P$ is the set of ramified primes of $k'$. (Since $k'$ is real, $D^+$ is also canonically isomorphic to the non-torsion part of $D$.) 
+
+%More explicitly, if we let $K'_i$ be the largest subfield of $K'$ (the genus field of $k'$ in the narrow sense) ramified only at $p_i$ for any $i\in I$, we have
+%$$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)})/\left(\prod_{i\in I}K'_i)\right)\cap k'}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K'_i\right)}\right).$$
+%It is well known that $D^+$ is a $\Zbb[G]$-module of $\Zbb$-rank $[k:\Qbb]+|P|-1$. 
+
+%(In our case, we have $k'=k, K'=K, K'_i=K_i, |P|=4$, $\eta:=\eta_{\{1,2,3,4\}}$.)
+
+%The generators of $D^+$ are subject to norm relations (which can be obtained by computing the norm of the generators to a subfield with less ramified primes) and for $|P|\geq 3$, also to the so-called Ennola relations, which are highly nontrivial relations that are not consequences of the norm relations.
+
+%Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). Such a basis is known only in a few very special cases though. We would like to construct it for general abelian fields as well, based only on the number of ramified primes.
+%\paragraph*{}
+Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of $C^+$). The generators of $D^+$ are subject to norm relations that correspond to the sum of all elements of the respective inertia groups $T_i$. Namely, let $$R_i=\sum_{u=0}^{a_i-1}\sigma_i^u,\, N_i=\sum_{u=0}^{n_i-1}\sigma_i^{ua_i}.$$ 
+Then the norm operator from $K$ to $K_jK_lK_h$ can be given as $R_iN_i$, because both are equal to the sum of all elements from $T_i$. Moreover, Lemma \ref{comp} implies that $$\Gal(k/k\cap K_1K_2K_3)\cong \Gal(K/ K_1K_2K_3)=T_i,$$
+where the first isomorphism is given by restriction, hence $R_iN_i$ also acts as the norm operator from $k$ to $k\cap K_1K_2K_3$.
+%Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e. the sum of all elements of $T_i$). 
+If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have (using Lemma \ref{tau}) $$N_4\equiv \sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}.$$ Note that any subgroup of $k^*$ is naturally a $\Z[G/H]$-module, since the action of $H$ on $k$ is trivial.
+
+Moreover, we will denote the congruence corresponding to the composition of canonical projections $$\Z[G]\to \Z[G/H]\to \Z[G/H]/(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$$ by $\sim$, where $(R_1N_1,R_2N_2,R_3N_3,R_4N_4)$ is the ideal generated in $\Z[G/H]$ by the images of the elements $R_iN_i$. When we apply any element of this ideal to the highest generator $\eta$, we will obtain a multiplicative $\Z$-linear combination of circular units belonging to subfields with less ramified primes. We will make use of this extensively.
+
+\begin{lemma}
+The fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ satisfy the assumptions of \citep{Kucera2016}.
+\end{lemma}
+\begin{proof}
+It's clear that these fields are all real, abelian (their Galois groups are quotients of $G$) and ramified at three primes.\dots
+\end{proof}
+
+Using the results in \citep{Kucera2016}, we can thus take the bases of $$D^+(k\cap K_1K_2K_3),D^+(k\cap K_1K_2K_4),D^+(k\cap K_1K_3K_4),D^+(k\cap K_2K_3K_4)$$
+and we will denote their union by $B_D$. Analogously, we can take bases of $$C^+(k\cap K_1K_2K_3),C^+(k\cap K_1K_2K_4),C^+(k\cap K_1K_3K_4),C^+(k\cap K_2K_3K_4)$$
+and denote their union by $B_C$.
+
+To construct a basis of $D^+$ (resp. $C^+$), we will take the union of $B_D$ (resp. $B_C$) with a set of suitably chosen conjugates of the highest generator $\eta$. In order to have a chance to obtain a basis, this set should contain
+\begin{equation*}
+\begin{split}
+N:&=[k:\Q]+4-1-|B_D|\\
+&=[k:\Q]+3-\sum_{i,j,l}([k\cap K_iK_jK_l:\Q]+2)+\sum_{i,j}([k\cap K_iK_j:\Q]+1)-\sum_{i}[k\cap K_i:\Q]\\
+&=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}
+a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1
+\end{split}
+\end{equation*}
+by Proposition \ref{Drank} and using the principle of inclusion and exclusion (due to the fact that these bases were constructed \enquote{inductively}).
+
+We cannot guarantee at the moment that the union of all these conjugates is not linearly dependent, but if we will show how to obtain all the missing conjugates of $\eta$ using the relations $$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3\sim 0, R_4\sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\sim 0,$$
+it will follow that we really have a basis.
+
+We will always refer to the conjugates of $\eta$ by their coordinates $x_1,x_2,x_3,x_4$ according to Proposition \ref{gal}. This allows us to visualise $\Gal(k/\Q)$ geometrically as a discrete (at most) four-dimensional cuboid.
+\section{The case $r_1=r_2=r_3=r_4=1$}
+In this case, we have
+$$\Gal(k/\Qbb)\cong
+ \{\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k};~  0\leq x_1<a_1m, 0\leq x_2<a_2m, 0\leq x_3<a_3m,0\leq x_4<a_4\},$$
+ $$s_{12}=s_{13}=s_{14}=s_{23}=s_{24}=s_{34}=1,$$
+$$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^{a_3u} \sim 0$$
+and
+\begin{align*}
+N&=a_1a_2a_3a_4m^3-(a_1a_2a_3+a_1a_2a_4+a_1a_3a_4+a_2a_3a_4)m^2\\
+&+(a_1a_2+a_1a_3+a_1a_4+a_2a_3+a_2a_4+a_3a_4)m-a_1-a_2-a_3-a_4+1.
+\end{align*}
+We will define $B_1$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
+
+Thus we have proven the following theorem:
+\begin{theorem}
+Under the assumptions on page \pageref{assum}, if $r_1=r_2=r_3=r_4=1$, then the set $B_{1}\cup B_D$ forms a basis of $D^+$ and the set $B_{1}\cup B_C$ forms a basis of $C^+$.
+\end{theorem}
+\section{The case $r_1=r_2=a_3=r_4=1$}
+In this case, we have
+$$\Gal(k/\Qbb)\cong
+ \{\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k};~  0\leq x_1<a_1m, 0\leq x_2<a_2m, 0\leq x_3<n_3,0\leq x_4<a_4\},$$
+  $$s_{12}=s_{13}=s_{14}=s_{23}=s_{24}=s_{34}=1,$$
+$$R_1N_1\sim 0, R_2N_2\sim 0, N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^{u} \sim 0$$
+and
+\begin{align*}
+N&=a_1a_2a_4\frac{m^3}{r_3}-a_1a_2a_4m^2-(a_1a_2+a_1a_4+a_2a_4)\frac{m^2}{r_3}\\
+&+(a_1a_2+a_1a_4+a_2a_4)m+(a_1+a_2+a_4)\frac{m}{r_3}-a_1-a_2-a_4\\
+&=(n_3-1)(a_1a_2a_4m^2-(a_1a_2+a_1a_4+a_2a_4)m+a_1+a_2+a_4)\\
+&=(n_3-1)(a_1a_2m^2-(a_1a_2+a_1+a_2)m+a_1+a_2+1)\\
+&+(n_3-1)(a_4-1)(a_1a_2m^2-a_1m-a_2m+1)\\
+%&=(n_3-1)((a_1m-1)a_2(m-2)\!+\!(a_1m-1)(a_2-1)+\!a_1\!+\!(a_4-1)(a_1m-1)(a_2m-1))\\
+&=(n_3-1)(a_4-1)(a_1m-1)(a_2m-1)+(n_3-1)(a_1m-1)(a_2m-1-a_2)\\
++(n_3-1)a_1
+\end{align*}
+
+We will define $B_2$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
+\begin{itemize}
+\item $0\le x_1 <a_1m-1, 0\le x_2 < a_2m-1, 0 \le x_3<n_3-1, 1\le x_4<a_4$,
+\item $0\le x_1 < a_1m-1, a_2 < x_2 < a_2m, 1\leq x_3 < n_3, x_4=0$,
+\item $0\le x_1 < a_1, x_2=a_2, 1\leq x_3 < n_3, x_4=0$.
+\end{itemize}
+\paragraph*{}
+First we will recover the cases $0<x_4<a_4$, $x_1=a_1m-1$ or $x_2=a_2m-1$ or $x_3=n_3-1$ using the relations $R_1N_1\sim 0, R_2N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
+\paragraph*{}
+Next, we will recover the cases $$x_1=a_1m-1, a_2< x_2 < a_2m, 1\leq x_3 <n_3$$ using the relation $R_1N_1\sim 0$ and subsequently the cases $$0\leq x_1 < a_1m, a_2< x_2 < a_2m, x_3 = 0$$ and $$0\le x_1 < a_1, x_2 = a_2, x_3 = 0$$ using the relation $N_3\sim 0$.
+
+\paragraph*{}
+At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$0\le x_1< a_1m, 0\le x_2 <a_2, 0\le x_3<n_3$$ and $$a_1\le x_1< a_1m, x_2=a_2, 0\le x_3<n_3.$$
+Next, we will recover all the cases $$0\leq x_1 < a_1m-1, 1\leq x_2 < a_2, 0\leq x_3 <n_3,x_4=0$$ and (note that $2a_1\leq a_1m$, since $m>1$) $$a_1\leq x_1 < 2a_1, x_2=0, 0\leq x_3 <n_3,x_4=0$$
+using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$, due to the fact that for any two different conjugates of $\eta$ used in this relation, the difference of their exponents of $\sigma_2$ is divisible by $a_2$ (and we have already recovered all of them except precisely one). %differs by at least $a_2$ in their second coordinate. After this, we can recover the cases $$0\leq x_1 < a_1, x_2 = a_2m-1, 0\leq x_3 <n_3-1$$ using the relation $R_2N_2\sim 0$.
+\paragraph*{}
+Finally, we will use induction with respect to $v=0,1,\dots, m-1$ to show we can recover the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$va_1\leq x_1 < (v+1)a_1,x_2=a_2,0\le x_3<n_3,x_4=0$$
+and
+$$(v+1)a_1\leq x_1 < (v+2)a_1,x_2=0,0\le x_3<n_3,x_4=0.$$
+The basis step $v=0$ has already been done. Now suppose the statement is true for $0<v<m-1$. Then using the relation $R_2N_2\sim 0$, we can recover the conjugates with $$(v+1)a_1\leq x_1 < (v+2)a_1,x_2=a_2,0\le x_3<n_3,x_4=0$$
+and subsequently we can recover the conjugates with $$(v+2)a_1\leq x_1 < (v+3)a_1,x_2=0,0\le x_3<n_3,x_4=0$$
+using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$, again due to the fact that for any two different conjugates of $\eta$ used in this relation, the difference of their exponents of $\sigma_2$ is divisible by $a_2$ (and we have already recovered all of them except precisely one).
+%Finally, we can use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2m-1, 0\leq x_3 <n_3-1$$ and subsequently $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$ to recover the cases $$a_1 \leq x_1 <2a_1, x_2 =a_2(m-1)-1, 0\leq x_3 <n_3-1.$$ By repeating these two steps $(m-2)$ more times, increasing the first coordinate by $a_1$ each time, we will recover all the conjugates.
+Therefore the induction is complete and we have recovered all conjugates of $\eta$. Thus we have proven the following theorem:
+\begin{theorem}
+Under the assumptions on page \pageref{assum}, if $r_1=r_2=a_3=r_4=1$, then the set $B_{2}\cup B_D$ forms a basis of $D^+$ and the set $B_{2}\cup B_C$ forms a basis of $C^+$.
+\end{theorem}
+\section{The case $a_1=a_2=r_3=r_4=1$}
+In this case, we have
+$$\Gal(k/\Qbb)\cong
+ \{\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k};~  0\leq x_1<n_1, 0\leq x_2<n_2, 0\leq x_3<a_3m,0\leq x_4<a_4\},$$
+  $$s_{12}=\gcd(r_1,r_2),s_{13}=s_{14}=s_{23}=s_{24}=s_{34}=1$$
+ and $$N_1\sim 0, N_2\sim 0, R_3N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^u\sigma_2^u\sigma_3^{a_3u} \sim 0.$$
+
+Moreover, by Lemma \ref{coprime}, we have $s_{12}\frac{m}{r_1r_2}=\gcd(n_1,n_2)$, hence
+\begin{align*}
+N&=a_3a_4\frac{m^3}{r_1r_2}-a_3\frac{m^2}{r_1r_2}-a_4\frac{m^2}{r_1r_2}-a_3a_4\left(\frac{m^2}{r_1}+\frac{m^2}{r_2}\right)+s_{12}\frac{m}{r_1r_2}\\
+&+a_3(n_1+n_2)+a_4(n_1+n_2)+a_3a_4m-a_3-a_4-1\\
+%&=a_3\left( \frac{m^3}{r_1r_2}-\frac{m^2}{r_1r_2} -\frac{m^2}{r_1}-\frac{m^2}{r_2}+n_1+n_2+m-1\right)+\frac{m^2}{r_1r_2}+n_1+n_2-1+
+%\gcd(n_1,n_2)
+&=a_3\left(mn_1n_2-n_1n_2 -mn_1-mn_2+n_1+n_2+m-1\right)-n_1n_2+n_1+n_2-1\\
+&+(a_4-1)(a_3\left(mn_1n_2 -mn_1-mn_2+m\right)-n_1n_2+n_1+n_2-1)+\gcd(n_1,n_2)-1\\
+&=a_3\left(m-1\right)\left(n_1-1\right)\left(n_2-1\right)-\left(n_1-1\right)\left(n_2-1\right)\\
+&+(a_4-1)\left(a_3m\left(n_1-1\right)\left(n_2-1\right)-\left(n_1-1\right)\left(n_2-1\right)\right)+\gcd(n_1,n_2)-1\\
+&=(n_1-1)(n_2-1)(a_3(m-1)-1)\\
+&+(a_4-1)(n_1-1)(n_2-1)(a_3m-1)+\gcd(n_1,n_2)-1.
+\end{align*}
+
+We will define $B_3$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
+\begin{itemize}
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<a_3m-1, 0<x_4\leq a_4-1$,
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, a_3<x_3<a_3m, x_4=0$
+\item $1\leq x_1<\gcd(n_1,n_2) , x_2=0, x_3=0, x_4=0$.
+\end{itemize}
+
+\paragraph*{}
+First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=a_3m-1$ using the relations $N_1\sim 0, N_2\sim 0, R_3N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
+\paragraph*{}
+Next, we will recover the cases $x_4=0, a_3< x_3<a_3m$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0, N_2\sim 0$. Now note that the exponents of $\sigma_3$ in $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ are pairwise congruent modulo $a_3$. Since for any $1\leq v<a_3$, we have already recovered all the conjugates with $x_3\equiv v \pmod{a_3}$ except for one, we can also use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ several times to recover the cases $$0\leq x_1<n_1, 0\leq x_2< n_2, 1\leq x_3<a_3, x_4=0$$ as well.
+\paragraph*{}
+At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}}$ for all $$0\leq x_1<n_1, 0\leq x_2<n_2$$ 
+and among the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$
+we have only those with 
+$0 < x_1 <gcd(n_1,n_2),  x_2 = 0$
+%and $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$ for all $$0\leq x_1<n_1, 1\leq x_2<n_2 \text{ and } \gcd(n_1,n_2)\leq x_1<n_1,x_2=0 \text{ and } x_1=x_2=0.$$
+We will focus on recovering the remaining conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$, 
+%those of the second kind, 
+because once we have those, we can recover those with $x_3=a_3,x_4=0$ just by using the relation $R_3N_3\sim 0$.
+
+\paragraph*{}
+Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{\eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/\Q)]}$$
+and let $Q$ be the quotient $\Z$-module of $Q'$ by the conjugates we have already recovered, i.e.
+\begin{align*}
+Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}; \quad & 0\leq x_1< n_1, 0\leq x_2<n_2, 0\leq x_3<a_3m,0< x_4<a_4,\\
+\text { or }& 0\leq x_1< n_1, 0\leq x_2<n_2, 1\leq x_3<a_3m, x_3\neq a_3, x_4=0,\\
+\text { or }& 1\leq x_1<\gcd(n_1,n_2), x_2=x_3=x_4=0 \}\big\rangle_{\Z}.
+\end{align*}
+We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$ or $\rho\in\Gal(K/\Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
+Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}R_3N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}\cdot \mu$$
+for any $x_1,x_2\in\Z$,
+this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for any $0\leq x_1<n_1, 0\leq x_2<n_2$.
+
+\paragraph*{}
+\begin{lemma}\label{diag}
+In $Q$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)\cdot \mu=0$$
+for any $x_1,x_2\in\Z$.
+\end{lemma}
+\begin{proof}
+Using the fact that the order of $\sigma_3$ is $a_3m$, we have
+\begin{align*}
+0&\sim \sigma_1^{x_1}\sigma_2^{x_2}\left(R_3R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}-\sigma_1\sigma_2R_4R_3N_3\right)\\
+&=\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=0}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}\\
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_3R_4+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}\\
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)+
+%\underbrace{
+\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_3\sum_{u=1}^{a_4-1}\sigma_4^u
+%}_{
+%\text{contains only terms with } x_4>0
+%=0, \text{ as explained below}
+%}
+\\
+&+
+%\underbrace{
+\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)\sum_{u=1}^{a_3-1}\sigma_3^u+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}
+%}_{
+%\text{contains only terms with } 1\leq x_3<a_3m \text{ and } x_3\neq a_3
+%=0, \text{ as explained below}
+%}.
+\end{align*}
+Since all the summands in the expression 
+\begin{align*}
+&\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_3\sum_{u=1}^{a_4-1}\sigma_4^u
++\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)\sum_{u=1}^{a_3-1}\sigma_3^u\\
++&\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}
+\end{align*}
+have either $x_4>0$ or $ 1\leq x_3<a_3m,  x_3\neq a_3$ (where $x_3$ and $x_4$ denote the respective exponents of $\sigma_3$ and $\sigma_4$ in each term), the result of their action on $\mu$ becomes trivial in $Q$, which yields the result.
+\end{proof}
+
+\begin{lemma}\label{M0}
+For any $0\leq x_1<n_1, 0\leq x_2<n_2$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\begin{cases}
+\mu \quad \text{ if } x_1\equiv x_2 \pmod{\gcd(n_1,n_2)}\\
+0 \quad \text{ otherwise}.
+\end{cases}$$
+\end{lemma}
+\begin{proof}
+First we will prove that for any $1\leq u<\gcd(n_1,n_2)$ and $0\leq v<\lcm(n_1,n_2)$, we have 
+\begin{equation}\label{UVV}
+\sigma_1^{u+v}\sigma_2^{v}\cdot \mu=0
+\end{equation}
+and
+\begin{equation}\label{VV}
+\sigma_1^{v}\sigma_2^{v}\cdot \mu=\mu.
+\end{equation}
+We will do so simultaneously by induction on $v$. For $v=0$, this follows directly from the definitions of $Q$ and $\mu$. Now suppose that the statements hold for $0\leq v<\lcm(n_1,n_2)-1$. Then Lemma \ref{diag} implies that $$\sigma_1^{u+(v+1)}\sigma_2^{v+1}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu=0$$
+and $$\sigma_1^{v+1}\sigma_2^{v+1}\cdot \mu=\sigma_1^{v}\sigma_2^{v}\cdot \mu=\mu$$
+by the induction hypothesis, so both statements also hold for $v+1$ and we are done with the induction.
+
+\paragraph*{}
+Now consider the map $$\{0,1,\dots,\gcd(n_1,n_2)\}\times \{0,1,\dots,\lcm(n_1,n_2)\} \to \{0,1,\dots,n_1\}\times \{0,1,\dots,n_2\}$$
+given by $(u,v)\mapsto (u+v\pmod{n_1},v \pmod{n_2})$. Suppose that both $(u,v)$ and $(u',v')$ map to the same element. Then, for suitable $q, q' \in \Z$, $$(u-u')+(v-v')=qn_1$$ and $$v-v'=q'n_2,$$ hence $$(u-u')=qn_1-q'n_2\equiv 0 \pmod {\gcd(n_1,n_2)}.$$ Since $0\le u,u'\le \gcd(n_1,n_2)$, this implies $u=u'$. Consequently both $n_1$ and $n_2$ divide $v-v'$, hence so does $\lcm(n_1,n_2)$ and $v=v'$ (using that $0\le v,v'\le \lcm(n_1,n_2)$). Thus we have shown that the above map is injective, and since both sets have cardinality $n_1n_2$, it must be a bijection. Therefore for any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we can write $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v}\cdot \mu$$
+for unique $0\leq u<\gcd(n_1,n_2)$ and $0\leq v<\lcm(n_1,n_2)$, and the equalities \eqref{UVV} and \eqref{VV} imply that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ unless $u=0$, in which case $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\mu$. But the congruences $$x_1\equiv u+v \pmod{n_1}$$ and $$x_2\equiv v \pmod{n_2}$$ imply that $$x_1-x_2\equiv u  \pmod{(\gcd(n_1,n_2)},$$
+so the condition $u=0$ is equivalent to $$x_1\equiv x_2 \pmod{(\gcd(n_1,n_2)},$$ as needed.
+% (note that this is well defined, since the order of $\sigma_1$ is $n_1$ and the order of $\sigma_2$ is $n_2$).
+
+%Now note that any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we can uniquely write $$x_1-x_2=v\cdot \gcd(n_1,n_2)+u,$$ where $0\leq u<\gcd(n_1,n_2)$ and $0\leq v<n_1\leq \lcm(n_1,n_2)$. Hence $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot\mu=\sigma_1^{v\cdot \gcd(n_1,n_2)+u+x_2}\sigma_2^{x_2}\cdot\mu$$
+\end{proof}
+
+\begin{prop}
+We have $\mu=0.$
+\end{prop}
+\begin{proof}
+Using the relation $N_1\sim 0$ and Lemma \ref{M0} together with the bijection $$\{0,1,\dots,\gcd(n_1,n_2)-1\}\times \{0,1,\dots,\frac{n_1}{\gcd(n_1,n_2)}-1\}\to \{0,1,\dots, n_1-1\}$$
+given by $(u,v)\mapsto v\cdot \gcd(n_1,n_2)+u$, we get
+\begin{align*}
+0&=N_1\cdot \mu=\sum_{w=0}^{n_1-1}\sigma_1^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu
+%&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{u}\cdot \mu\\
+%&=\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_1^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}
+=\frac{n_1}{\gcd(n_1,n_2)}\cdot \mu,
+\end{align*}
+since by Lemma \ref{M0}, $\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu$ is zero for $u\neq 0$ and equal to $\mu$ otherwise.
+
+Analogously, we get 
+\begin{align*}
+0&=N_2\cdot \mu=\sum_{w=0}^{n_2-1}\sigma_2^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu
+%&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{u}\cdot \mu\\
+%&=\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_2^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
+=\frac{n_2}{\gcd(n_1,n_2)}\cdot \mu,
+\end{align*}
+since by Lemma \ref{M0}, $\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu$ is zero for $u\neq 0$ and equal to $\mu$ otherwise.
+
+Due to the fact that $\frac{n_1}{\gcd(n_1,n_2)}$ and $\frac{n_2}{\gcd(n_1,n_2)}$ are coprime, this implies $\mu=0$ by Bézout's identity.
+\end{proof}
+It now follows that $Q$ is trivial, so we have proven the following theorem:
+\begin{theorem}
+Under the assumptions on page \pageref{assum}, if $a_1=a_2=r_3=r_4=1$, then the set $B_{3}\cup B_D$ forms a basis of $D^+$ and the set $B_{3}\cup B_C$ forms a basis of $C^+$.
+\end{theorem}
+
+\section{The case $a_1\!=\!a_2\!=\!a_3\!=\!r_4\!=\!1, \gcd(n_1,n_2,n_3)\!=\!\gcd(n_1,n_2)$}
+In this case, we have
+$$\Gal(k/\Qbb)\cong
+ \{\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k};~  0\leq x_1<n_1, 0\leq x_2<n_2, 0\leq x_3<n_3,0\leq x_4<a_4\},$$
+  $$s_{12}=\gcd(r_1,r_2), s_{13}=\gcd(r_1,r_3), s_{23}=\gcd(r_2,r_3), s_{14}=s_{24}=s_{34}=1$$
+ and
+$$N_1\sim 0, N_2\sim 0, N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u} \sim 0.$$
+
+\begin{lemma}\label{LCM3}
+For any three integers $a,b,c$, we have $$\lcm(a,b,c)=\frac{abc\cdot \gcd(a,b,c)}{\gcd(a,b)\cdot \gcd(a,c)\cdot\gcd(b,c)}.$$
+\end{lemma}
+\begin{proof}
+Let $d:=\gcd(a,b,c)$. Then there exist $a',b',c'\in\Z$ such that $a=da', b=db', c=dc'$ and $\gcd(a',b',c')=1$. Letting $e:=\gcd(a,b), f:=\gcd(a,c), g:=\gcd(b,c)$, we get that there must exist $a'',b'',c''\in\Z$ such that $a=defa'', b=degb'', c=dfgc''$ and $$\gcd(a'',b'')=\gcd(a'',c'')=\gcd(b'',c'')=1.$$ Also the condition $\gcd(a',b',c')=1$ can be reformulated as  $$\gcd(e,f)=\gcd(e,g)=\gcd(f,g)=1.$$
+Thus we get $$\lcm(a,b,c)=defga''b''c''=\frac{abcdefg}{d^3e^2f^2g^2}=\frac{abc\cdot d}{de\cdot df\cdot dg}=\frac{abc\cdot \gcd(a,b,c)}{\gcd(a,b)\cdot \gcd(a,c)\cdot\gcd(b,c)},$$
+as needed.
+\end{proof}
+
+\begin{lemma}\label{TFAE4}
+%Under the assumptions $s_{12}=s_{13}=s_{23}=1,$ 
+The following are equivalent:
+\begin{enumerate}%[label={\upshape(\roman*)}]
+\item $\gcd(n_1,n_2,n_3)=\gcd(n_1,n_2)$,
+\item $\frac{n_1n_2n_3}{m}=\gcd(n_1,n_3)\cdot \gcd(n_2,n_3)$,
+\item $\gcd(n_1,n_2)=\gcd(\gcd(n_1,n_3),\gcd(n_2,n_3))$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\leavevmode
+%mbox{}\\
+\begin{DESCRIPTION}%[labelindent=0cm]
+\item[\enquote{(i) $\Leftrightarrow$ (ii)}:] Using Lemma \ref{LCM3} together with Lemma \ref{coprime}, we get 
+$$m=\lcm(n_1,n_2,n_3)=\frac{n_1n_2n_3\cdot \gcd(n_1n_2n_3)}{\gcd(n_1,n_2)\cdot \gcd(n_1,n_3)\cdot\gcd(n_2,n_3)},$$
+hence $$\frac{n_1n_2n_3}{m}=\frac{\gcd(n_1,n_2)\cdot \gcd(n_1,n_3)\cdot\gcd(n_2,n_3)}{\gcd(n_1n_2n_3)}$$
+and this equals $\gcd(n_1,n_3)\cdot\gcd(n_2,n_3)$ iff $\gcd(n_1,n_2,n_3)=\gcd(n_1,n_2)$.
+\item[\enquote{(i) $\Leftrightarrow$ (iii)}:] It suffices to show that $\gcd(n_1,n_2,n_3)=\gcd(\gcd(n_1,n_3),\gcd(n_2,n_3))$. This is true in general, because any integer is a common divisor of $n_1,n_2,n_3$ iff it is a common divisor of $n_1,n_3$ and a common divisor of $n_2,n_3$ iff it is a common divisor of $\gcd(n_1,n_3)$ and $\gcd(n_2,n_3)$ iff it is a common divisor of $\gcd(\gcd(n_1,n_3),\gcd(n_2,n_3))$.
+\end{DESCRIPTION}
+\end{proof}
+
+Therefore, using Lemma \ref{TFAE4} together with Lemma \ref{coprime}, we get
+\begin{align*}
+N&=a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)-a_4-2+a_4(n_1+n_2+n_3)\\
+&+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+&=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+(n_1-1)(n_2-1)-2\\
+&-\gcd(n_1,n_3)\cdot\gcd(n_2,n_3)+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+&=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)\\
+&+(n_1-1)(n_2-\gcd(n_2,n_3)+(n_1-\gcd(n_1,n_3))\cdot(\gcd(n_2,n_3)-1)+\gcd(n_1,n_2)-1
+\end{align*}
+
+We will define $B_4$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
+\begin{itemize}
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<n_3-1, 0<x_4\leq a_4-1$,
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 1< x_3 \leq n_3-1, x_4=0$,
+\item $1\leq x_1< n_1, \gcd(n_2,n_3)\leq x_2<n_2, x_3=0, x_4=0$,
+\item $\gcd(n_1,n_3)\leq x_1< n_1, 1\leq x_2<\gcd(n_2,n_3), x_3=0, x_4=0$,
+\item $0\leq x_1 <\gcd(n_1,n_2)-1, x_2=0, x_3=0, x_4=0$.
+\end{itemize}
+
+\paragraph*{}
+First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=n_3-1$ using the relations $N_1\sim 0, N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$. Next, we will recover the cases $1< x_3 \leq n_3-1$, $x_1=n_1-1$ or $x_2=n_2-1$ (and always $x_4=0$) using the relations $N_1\sim 0, N_2\sim 0$ and the cases $x_3=x_4=0$, $\gcd(n_1,n_3)\leq x_1< n_1,x_2=0$ and  $x_3=x_4=0$, $x_1=0, \gcd(n_2,n_3)\leq x_2<n_2$ using the relation $N_2\sim 0$.
+\paragraph*{}
+At this moment, we are only missing all the cases with $x_3=1,x_4=0$ and some of those with $x_3=x_4=0$. From now on, we will only focus on recovering those with $x_3=x_4=0$, because once we have those, we can recover those with $x_3=1,x_4=0$ just by using the relation $N_3\sim 0$.
+
+\paragraph*{}
+Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{\eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/\Q)]}$$
+and let $Q$ be the quotient $\Z$-module of $Q'$ by the conjugates we have already recovered, i.e.
+\begin{align*}
+Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}; \quad & 0\leq x_1< n_1, 0\leq x_2<n_2, 0\leq x_3<n_3,0< x_4<a_4,\\
+\text { or }& 0\leq x_1< n_1, 0\leq x_2<n_2, 1< x_3<n_3,x_4=0,\\
+\text { or }& 0\leq x_1< n_1, \gcd(n_2,n_3)\leq x_2<n_2, x_3=x_4=0,\\
+\text { or }& \gcd(n_1,n_3)\leq x_1< n_1, 0\leq x_2<\gcd(n_2,n_3), x_3=x_4=0\\ 
+\text { or }&0\leq x_1 <\gcd(n_1,n_2)-1, x_2=x_3=x_4=0 \}\big\rangle_{\Z}.
+\end{align*}
+We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$ or $\rho\in \Gal(K/Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
+Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3\cdot \mu$$
+for any $x_1,x_2\in\Z$,
+this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for each $0\leq x_1<n_1, 0\leq x_2<n_2$ (and because of the definition of $Q$, it suffices to show this for each $0\leq x_1<\gcd(n_1,n_3), 0\leq x_2<\gcd(n_2,n_3)$).
+
+\paragraph*{}
+The conjugates with $x_3=0$ and $x_4=0$ (i.e., those of the form $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the sum $\eta^{R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles (and in this case, it can be seen geometrically that these form a regular grid). We will now describe the sum of these. 
+
+Let $$T:=\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}.$$
+
+\begin{lemma}\label{Tdiag4}
+In $Q$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu=0$$
+for any $x_1,x_2\in\Z$.
+\end{lemma}
+\begin{proof}
+Using the fact that every $0\leq w<m$ can be uniquely written as $un_3+v$ with $0\leq u<r_3, 0\leq v<n_3$ together with the fact that the order of $\sigma_3$ is $n_3$, we get 
+\begin{align*}
+R_4T\sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}\sigma_3^{un_3}\cdot \sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{w=0}^{m-1}\sigma_1^{w}\sigma_2^{w}\sigma_3^{w}\sim 0.
+\end{align*}
+Together with $N_3\sim 0$, this means that 
+\begin{align*}
+0&\sim \sigma_1^{x_1}\sigma_2^{x_2}\left(R_4T \sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}-\sigma_1\sigma_2N_3R_4T\right)=\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=0}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}\\
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_4T+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}\\
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\!+\!
+%\underbrace{
+\sigma_1^{x_1}\sigma_2^{x_2}(1\!-\!\sigma_1\sigma_2)T\sum_{u=1}^{a_4-1}\sigma_4^u\!+\!\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}\!-\!\sigma_1\sigma_2\right)\sigma_3^{v}.
+%}_{
+%\text{contains only terms with } x_4>0 \text{ or } x_3>1
+%=0, \text{ as explained below}
+%}
+\end{align*}
+
+Since all the summands in the expression $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\sum_{u=1}^{a_4-1}\sigma_4^u+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}$$
+have either $x_4>0$ or $x_3>1$ (where $x_3$ and $x_4$ denote the respective exponents of $\sigma_3$ and $\sigma_4$ in each term), the result of their action on $\mu$ becomes trivial in $Q$, which yields the result.
+\end{proof}
+
+
+\begin{lemma}\label{M04}
+For any $0\leq x_1<\gcd(n_1,n_3), 0\leq x_2<\gcd(n_2,n_3)$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\begin{cases}
+\mu \quad \text{ if } x_1\equiv x_2 \pmod{\gcd(n_1,n_2)}\\
+0 \quad \text{ otherwise}.
+\end{cases}$$
+\end{lemma}
+\begin{proof}
+Podobně jako v předchozí sekci, ale některé části bude potřeba trochu upravit.
+\end{proof}
+
+\begin{prop}
+We have $\mu=0.$
+\end{prop}
+\begin{proof}
+Recall that we have $\gcd(n_1,n_2)=\gcd(\gcd(n_1,n_3),\gcd(n_2,n_3))$ by Lemma \ref{TFAE4}. Using the relation $N_1\sim 0$ and Lemma \ref{M0} together with the bijection $$\{0,1,\dots,\gcd(n_1,n_2)-1\}\times \{0,1,\dots,\frac{\gcd(n_1,n_3)}{\gcd(n_1,n_2)}-1\}\to \{0,1,\dots, \gcd(n_1,n_3)-1\}$$
+given by $(u,v)\mapsto v\cdot \gcd(n_1,n_2)+u$, we get
+\begin{align*}
+0&=N_1\cdot \mu=\sum_{w=0}^{\gcd(n_1,n_3)-1}\sigma_1^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{\gcd(n_1,n_3)}{\gcd(n_1,n_2)}-1}\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu
+%&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\sigma_1^{u}\cdot \mu\\
+%&=\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_1}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_1^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}
+=\frac{\gcd(n_1,n_3)}{\gcd(n_1,n_2)}\cdot \mu,
+\end{align*}
+since by Lemma \ref{M0}, $\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu$ is zero for $u\neq 0$ and equal to $\mu$ otherwise.
+
+Analogously, we get 
+\begin{align*}
+0&=N_2\cdot \mu=\sum_{w=0}^{\gcd(n_2,n_3)-1}\sigma_2^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{\gcd(n_2,n_3)}{\gcd(n_1,n_2)}-1}\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu
+%&=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\sigma_2^{u}\cdot \mu\\
+%&=\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1} \mu+\sum_{u=1}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{n_2}{\gcd(n_1,n_2)}-1}\underbrace{\sigma_2^{u}\cdot \mu}_{=0 \text { by Lemma \ref{M0} }}\\
+=\frac{\gcd(n_2,n_3)}{\gcd(n_1,n_2)}\cdot \mu,
+\end{align*}
+since by Lemma \ref{M0}, $\sigma_2^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu$ is zero for $u\neq 0$ and equal to $\mu$ otherwise.
+
+Due to the fact that $\frac{\gcd(n_1,n_3)}{\gcd(n_1,n_2)}$ and $\frac{\gcd(n_2,n_3)}{\gcd(n_1,n_2)}$ are coprime, this implies $\mu=0$ by Bézout's identity.
+\end{proof}
+
+It now follows that $Q$ is trivial, so we have proven the following theorem:
+\begin{theorem}
+Under the assumptions on page \pageref{assum}, if $$a_1=a_2=a_3=r_4=1,\gcd(n_1,n_2,n_3)=\gcd(n_1,n_2),$$ then the set $B_{4}\cup B_D$ forms a basis of $D^+$ and the set $B_{4}\cup B_C$ forms a basis of $C^+$.
+\end{theorem}
+\section{The case $a_1=a_2=a_3=r_4=1, r_1\neq 1, r_2\neq 1, r_3 \neq 1$, $s_{12}=s_{13}=s_{23}=1,\gcd(n_1,n_2,n_3)=1$}
+In this case, we have
+\begin{equation*}
+\Gal(k/\Qbb)\cong
+ \{\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k};  0\leq x_1<n_1, 0\leq x_2<n_2,  0\leq x_3<n_3,0\leq x_4<a_4\},
+\end{equation*}
+ $$s_{12}=s_{13}=s_{14}=s_{23}=s_{24}=s_{34}=1$$
+and $$N_1\sim 0, N_2\sim 0, N_3\sim 0, R_4\sum_{u=0}^{m-1}\sigma_1^u\sigma_2^u\sigma_3^u\sim0.$$
+%Note that the condition $\gcd(n_1,n_2,n_3)=1$ is equivalent to $\lcm(r_1,r_2,r_3)=m$, and since we assume that the $r_i$ are pairwise coprime, this is also equivalent to $m=r_1r_2r_3$. Also 
+Note that the condition $r_1\neq 1, r_2\neq 1, r_3 \neq 1$ is actually not restrictive, since we have already discussed the cases where it is not true earlier in this chapter. %Also $r_1,r_2,r_3$ must be pairwise distinct, otherwise their coprimality would imply that two of them equal $1$. %This means that we can without loss of generality assume that $r_1>r_2>r_3$ (MAYBE NOT NEEDED?). 
+
+\begin{lemma}\label{TFAE5}
+Under the assumptions $s_{12}=s_{13}=s_{23}=1,$ the following are equivalent:
+\begin{enumerate}%[label={\upshape(\roman*)}]
+\item $\gcd(n_1,n_2,n_3)=1$,
+\item $\lcm(r_1,r_2,r_3)=m$,
+\item $r_1r_2r_3=m$,
+\item $n_1=r_2r_3, n_2=r_1r_3, n_3=r_1r_2$,
+\item $\frac{n_1n_2n_3}{m}=m$,
+\item $\gcd(n_1,n_2)=r_3, \gcd(n_1,n_3)=r_2, \gcd(n_2,n_3)=r_1$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\leavevmode
+%mbox{}\\
+\begin{DESCRIPTION}%[labelindent=0cm]
+\item[\enquote{(i) $\Leftrightarrow$ (ii)}:] For any $t\in\Z$, we have
+\begin{align*}
+t \mid \gcd(n_1,n_2,n_3) &\Leftrightarrow t \mid n_1, t\mid n_2, t\mid n_3 \Leftrightarrow r_1\mid \frac{m}{t}, r_2\mid \frac{m}{t}, r_3\mid \frac{m}{t} \\&\Leftrightarrow \lcm(r_1,r_2,r_3)\mid \frac{m}{t} \Leftrightarrow t \mid \frac{m}{ \lcm(r_1,r_2,r_3)},
+\end{align*}
+from which it follows that $ \gcd(n_1,n_2,n_3)=\frac{m}{ \lcm(r_1,r_2,r_3)}$.
+\item[\enquote{(ii) $\Leftrightarrow$ (iii)}:]   Since $s_{12}=s_{13}=s_{23}=1$, any common multiple of $r_1,r_2,r_3$ is in fact a multiple of $r_1r_2r_3$, hence $\lcm(r_1,r_2,r_3)=r_1r_2r_3$.
+\item[\enquote{(iii) $\Leftrightarrow$ (iv)}:] This follows straight from the definition $n_i=\frac{m}{r_i}$.
+\item[\enquote{(iii) $\Leftrightarrow$ (v)}:] We have $\frac{n_1n_2n_3}{m}=\frac{m^2}{r_1r_2r_3}$, which equals $m$ iff $\frac{m}{r_1r_2r_3}=1$.
+\item[\enquote{(iv) $\Rightarrow$ (vi)}:] For $\{i,j,l\}=\{1,2,3\}$, we have $\gcd(n_i,n_j)=\gcd(r_jr_l,r_ir_l)=r_ls_{ij}=r_l$.
+\item[\enquote{(vi) $\Rightarrow$ (i)}:] Since $\gcd(n_1,n_2,n_3)$ must divide $\gcd(n_1,n_2)$, $\gcd(n_1,n_3)$, $\gcd(n_2,n_3)$ and these are pairwise coprime, it must be equal to $1$.
+\end{DESCRIPTION}
+\end{proof}
+
+Thus $\frac{n_1n_2n_3}{m}=m=r_2n_2=\gcd(n_1,n_3)n_2$ by Lemma \ref{TFAE5} and using Lemma \ref{coprime}, we get
+\begin{align*}
+N&=a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)-a_4-2+a_4(n_1+n_2+n_3)\\
+&+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+&=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)\\
+&+n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2\\
+&=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)\\
+&+(n_2-1)(n_1-r_2-1)+r_1+r_3-2.
+\end{align*}
+
+We will define $B_5$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
+\begin{itemize}
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 0\leq x_3<n_3-1, 0<x_4\leq a_4-1$,
+\item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 1< x_3 \leq n_3-1, x_4=0$,
+\item $0\leq x_1< n_1-r_2-1, 0\leq x_2<n_2-1, x_3=0, x_4=0$,
+\item           $x_1=n_1-r_2-1, 0\leq x_2<r_1+r_3-2, x_3=0, x_4=0$.
+\end{itemize}
+(Note that $n_1-r_2-1=r_2(r_3-1)-1> 0$ and $r_1+r_3-2>0$ since $r_1,r_2,r_3>1$.)
+
+\paragraph*{}
+First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=n_3-1$ using the relations $N_1\sim 0, N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$. Next, we will recover the cases $1< x_3 \leq n_3-1$, $x_1=n_1-1$ or $x_2=n_2-1$ (and always $x_4=0$) using the relations $N_1\sim 0, N_2\sim 0$ and the cases $x_3=x_4=0$, $0\leq x_1< n_1-r_2-1$, $x_2=n_2-1$ using the relation $N_2\sim 0$.
+\paragraph*{}
+At this moment, we are only missing all the cases with $x_3=1,x_4=0$ and some of those with $x_3=x_4=0$. From now on, we will only focus on recovering those with $x_3=x_4=0$, because once we have those, we can recover those with $x_3=1,x_4=0$ just by using the relation $N_3\sim 0$.
+\paragraph*{}
+From now on, we will write $\overline{z}:=z\pmod{r_3}$ for any $z\in\Z$, so that $\overline{z}\in\{0,1,\dots,r_3-1\}$.
+%$\uo:=r_2\pmod{r_3}$, $\vo:=r_1\pmod{r_3}$ % and similarly for other expressions
+We will also define $h$ to be the unique integer satisfying $ r_1\cdot h\equiv r_2\pmod{r_3}$ and $h\in\{0,1,\dots,r_3-1\}$ and similarly $h'$ to be the unique integer satisfying $ r_2\cdot h'\equiv r_1\pmod{r_3}$ and $h'\in\{0,1,\dots,r_3-1\}$ (both are well defined, since $\gcd(r_1,r_3)=\gcd(r_2,r_3)=1$). Clearly $h\cdot h'\equiv 1 \pmod{r_3}$.
+
+\paragraph*{}
+Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{\eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/\Q)]}$$
+and let $Q$ be the quotient $\Z$-module of $Q'$ by the conjugates we have already recovered, i.e.
+\begin{align*}
+Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}; \quad & 0\leq x_1< n_1, 0\leq x_2<n_2, 0\leq x_3<n_3,0< x_4<a_4,\\
+\text { or }& 0\leq x_1< n_1, 0\leq x_2<n_2, 1< x_3<n_3,x_4=0,\\
+\text { or }& 0\leq x_1< n_1-r_2-1, 0\leq x_2<n_2, x_3=x_4=0,\\
+\text { or }& x_1= n_1-r_2-1, 0\leq x_2<r_1+r_3-2, x_3=x_4=0 \}\big\rangle_{\Z}.
+\end{align*}
+We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$ or $\rho\in \Gal(K/Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
+Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3\cdot \mu$$
+for any $x_1,x_2\in\Z$,
+this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for each $0\leq x_1<n_1, 0\leq x_2<n_2$.
+
+\paragraph*{}
+The conjugates with $x_3=0$ and $x_4=0$ (i.e., those of the form $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the sum $\eta^{R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles. We will now describe the sum of these. 
+
+Let $$T:=\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}.$$
+
+\begin{lemma}\label{Tdiag}
+In $Q$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu=0$$
+for any $x_1,x_2\in\Z$.
+\end{lemma}
+\begin{proof}
+Using the fact that every $0\leq w<m$ can be uniquely written as $un_3+v$ with $0\leq u<r_3, 0\leq v<n_3$ together with the fact that the order of $\sigma_3$ is $n_3$, we get 
+\begin{align*}
+R_4T\sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}\sigma_3^{un_3}\cdot \sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{w=0}^{m-1}\sigma_1^{w}\sigma_2^{w}\sigma_3^{w}\sim 0.
+\end{align*}
+Together with $N_3\sim 0$, this means that 
+\begin{align*}
+0&\sim \sigma_1^{x_1}\sigma_2^{x_2}\left(R_4T \sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}-\sigma_1\sigma_2N_3R_4T\right)=\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=0}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}\\
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)R_4T+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}\\
+&=\sigma_1^{x_1}\sigma_2^{x_2}(1\!-\!\sigma_1\sigma_2)T\!+\!
+%\underbrace{
+\sigma_1^{x_1}\sigma_2^{x_2}(1\!-\!\sigma_1\sigma_2)T\sum_{u=1}^{a_4-1}\sigma_4^u\!+\!\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}.
+%}_{
+%\text{contains only terms with } x_4>0 \text{ or } x_3>1
+%=0, \text{ as explained below}
+%}
+\end{align*}
+
+Since all the summands in the expression $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\sum_{u=1}^{a_4-1}\sigma_4^u+\sigma_1^{x_1}\sigma_2^{x_2}R_4T\sum_{v=2}^{n_3-1}\left(\sigma_1^{v}\sigma_2^{v}-\sigma_1\sigma_2\right)\sigma_3^{v}$$
+have either $x_4>0$ or $x_3>1$ (where $x_3$ and $x_4$ denote the respective exponents of $\sigma_3$ and $\sigma_4$ in each term), the result of their action on $\mu$ becomes trivial in $Q$, which yields the result.
+\end{proof}
+\paragraph*{}
+The rest of the proof will be carried out purely algebraically, but perhaps it is helpful (although not strictly required) to see some of its parts geometrically.
+
+We will decompose our rectangle (of conjugates of $\eta$ having $x_3=x_4=0$) into $r_3\times r_3$ rectangular blocks of height $r_2$ and width $r_1$ in the natural way. In the following, by a big row (resp. big column) we will understand a row of blocks (resp. columns), that is $r_3$ consecutive blocks next to (resp. above) each other. Since $r_2\mid n_3, r_1\mid n_3$ and the conjugates contained in $\eta^T$ are given by $\eta^{\sigma_1^{qn_3}\sigma_2^{qn_3}}$ for $0\leq q \leq r_3-1$, the Chinese remainder theorem implies that $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}T}$ contains exactly one conjugate in every big row (resp. big column) for any $0\leq x_1< n_1, 0\leq x_2< n_2$, and these have the same relative position in each of the respective blocks (determined only by $\vo,\uo,x_1,x_2$). We can be even more precise: the horizontal distance between $\eta^{\sigma_1^{qn_3+x_1}\sigma_2^{qn_3+x_2}}$ and $\eta^ {\sigma_1^{(q+1)n_3+x_1}\sigma_2^{(q+1)n_3+x_2}}$ for $0\leq q \leq r_3-1$ and $0\leq x_1< n_1, 0\leq x_2< n_2$ is exactly $\uo\cdot r_1$, i.e. $\uo$ blocks, and the vertical distance between them is exactly $\vo\cdot r_2$, i.e. $\vo$ blocks (again this follows easily from the Chinese remainder theorem). It follows that the horizontal distance between any two conjugates in $\eta^T$ with a vertical distance of one block is $h$ blocks.
+
+\paragraph*{}
+For all $0\leq u\leq n_2$, we will denote $X_u:=\sigma_1^{n_1-2}\sigma_2^{u}\cdot \mu$ and $Y_u:=\sigma_1^{r_2(r_3-1)-1}\sigma_2^u\cdot \mu$. It will be convenient to allow any integers in the indices of the $X$'s and $Y$'s and regard them only modulo $n_2$ (to be more precise, as in the set $\{0,1,\dots,n_2-1\}$). Moreover note that by definition, $Y_u=0$ for $0\leq u< r_1+r_3-2$. 
+
+\begin{lemma}\label{XY}
+We have $X_q=X_{q'}$ for any $q\equiv q'\pmod {r_3}$. Moreover,
+for any $0\leq x_1<n_1, 0\leq x_2<n_2$, we have
+\begin{align*}
+\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=
+\begin{cases}
+0   &\text{ if }  x_1<r_2(r_3-1)-1\\
+Y_{x_2} \quad &\text{ if } x_1=r_2(r_3-1)-1 \\
+X_{x_2-x_1-2}  \quad &\text{ if } r_2(r_3-1)\leq x_1<n_1-1 \\
+X_{x_2-x_1-2}-Y_{x_2-h\cdot r_1} &\text{ if }  x_1=n_1-1.
+\end{cases}
+\end{align*}
+\end{lemma}
+\begin{proof}
+
+The first case ($x_1<r_2(r_3-1)-1$) follows directly from the definition of $Q$ and the second case ($x_1=r_2(r_3-1)-1$) directly from the definition of $Y_{x_2}$.
+
+\paragraph*{}
+Now for every $0\leq u <n_2$, we will prove by induction with respect to $v=0,1,\dots,r_2-2$ that 
+\begin{equation}\label{indX}
+\sigma_1^{n_1-2-v}\sigma_2^{u-v}\cdot \mu =X_u.
+\end{equation}
+
+The base step $v=0$ is just the definition of $X_u$. Now suppose that $0<v\leq r_2-2$ and the statement holds for $v-1$. Then in the equality
+\begin{equation}\label{Teq}
+\left(\sigma_1^{n_1-2-v}\sigma_2^{u-v}(1-\sigma_1\sigma_2)\sum_{w=0}^{r_3-1}\sigma_1^{wn_3}\sigma_2^{wn_3}\right)\cdot \mu=0,
+\end{equation}
+which follows from Lemma \ref{Tdiag}, we claim that all the terms with $w>0$ do not contribute anything to the sum. Indeed, all the exponents of $\sigma_1$ are pairwise congruent modulo $r_2$ (since $r_2\mid n_3$), and since $n_1-r_2\leq n_1-2-v<n_1-2$ and $n_1-r_2+1\leq n_1-1-v<n_1-1$, we have $$\left(\sigma_1^{n_1-2-v}\sigma_2^{u-v}(1-\sigma_1\sigma_2)\sigma_1^{wn_3}\sigma_2^{wn_3}\right)\cdot \mu=0$$ for any $w>0$, because  $r_3$ does not divide $wn_3$ in this case. Hence \eqref{Teq} implies that
+$$0=\left(\sigma_1^{n_1-2-v}\sigma_2^{u-v}(1-\sigma_1\sigma_2)\right)\cdot \mu=\sigma_1^{n_1-2-v}\sigma_2^{u-v}\cdot \mu-\underbrace{\sigma_1^{n_1-2-(v-1)}\sigma_2^{u-(v-1)}\cdot \mu}_{=X_u},$$
+therefore $\sigma_1^{n_1-2-v}\sigma_2^{u-v}\cdot \mu=X_u$ by the induction hypothesis. This completes the induction, so \eqref{indX} holds.
+
+\paragraph*{}
+Now for any $0\leq u< n_2$, we will take $v=r_2-1$ in \eqref{Teq}. Again, since all the exponents of $\sigma_1$ are pairwise congruent modulo $r_2$ (since $r_2\mid n_3$) in this sum, the only terms which could be nonzero are those arising from $w=0$ and from $w$ satisfying
+$$wn_3+n_1-2-(r_2-1)\equiv n_1-1 \pmod{n_1},$$
+which is equivalent to $wn_3\equiv r_2\pmod{n_1}$, which implies $wn_3\equiv r_2\pmod{r_3}$. Together with $wn_3\equiv 0\pmod{r_1}$ and the fact that $\gcd(r_1,r_3)=1$, this means that the only solution to the above congruence is $wn_3\equiv h\cdot r_1\pmod{n_2}$.
+
+Thus we have 
+\begin{align*}
+0&=\left(\sigma_1^{n_1-r_2-1}\sigma_2^{u-r_2+1}(1-\sigma_1\sigma_2)+\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}(1-\sigma_1\sigma_2)\right)\cdot \mu\\
+&=\underbrace{\sigma_1^{n_1-r_2-1}\sigma_2^{u-r_2+1}\cdot\mu}_{=Y_{u-r_2+1}}-\underbrace{\sigma_1^{n_1-r_2}\sigma_2^{u-r_2+2}\cdot\mu}_{=X_u \text{ due to } \eqref{indX}}+\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}\cdot \mu\\
+&-\underbrace{\sigma_1^{n_1}\sigma_2^{u-r_2+1+h\cdot r_1+1}\cdot \mu}_{=0}.
+\end{align*}
+
+Therefore
+\begin{equation}\label{indXY}
+\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}\cdot \mu = X_u -Y_{u-r_2+1}.
+\end{equation}
+
+\paragraph*{}
+Finally, for any $0\leq u< n_2$, we will take $v=r_2$ in \eqref{Teq}. Again, since all the exponents of $\sigma_1$ are pairwise congruent modulo $r_2$ in this sum, we only get nonzero terms for $w=0$ and for $w$ satisfying
+$$wn_3+n_1-2-r_2\equiv n_1-2 \pmod{n_1},$$ which implies (because we have got the same congruence as above) $wn_3\equiv h\cdot r_1\pmod{n_2}$.
+
+Thus we have 
+\begin{align*}
+0&\!=\underbrace{\sigma_1^{n_1-r_2-2}\sigma_2^{u-r_2}\cdot\!\mu}_{=0}\!-\!\underbrace{\sigma_1^{n_1-r_2-1}\sigma_2^{u-r_2+1}\cdot\!\mu}_{=Y_{u-r_2+1}}
+\!+\!\underbrace{\sigma_1^{n_1-2}\sigma_2^{u-r_2+h\cdot r_1}\cdot \!\mu}_{=X_{u-r_2+h\cdot r_1}}\!-\!\underbrace{\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}\cdot \!\mu}_{=X_u-Y_{u-r_2+1} \text{ due to } \eqref{indXY}}.
+\end{align*}
+
+Therefore $X_{u -r_2+h\cdot r_1}=X_u$. Note that $$h\cdot r_1-r_2\equiv 0 \pmod{r_3}$$ and $$h\cdot r_1-r_2\equiv -r_2\pmod{r_1}.$$ Since $\gcd(-r_2,r_1)=1$ and $n_2=r_1r_3$, this means that for all $q,q'\in\Z$ satisfying $q\equiv q'\pmod{r_3}$, there is some $w\in\Z$ such that $$q'=w(h\cdot r_1-r_2)+q \pmod{n_2}.$$ 
+Without loss of generality, we can assume that $w\ge 0$ (otherwise we can just swap $q$ and $q'$). But then $$X_{q}=X_{q+(h\cdot r_1-r_2)}=X_{q+2(h\cdot r_1-r_2)}=\dots=X_{q+w(h\cdot r_1-r_2)}=X_{q'}.$$
+
+\paragraph*{}
+Now for any $x_1,x_2$ satisfying $r_2 (r_3-1) \le x_1 < n_1 - 1$ and $0\le x_2 <x_2$, denoting $v = n_1 - 2 - x_1,  u = v + x_2,$
+we get  $0 \le v \le r_2 - 2$ and the equality (1) implies
+$$\sigma_1 ^{x_1} \sigma_2 ^{x_2} \mu = X_{n_1-2-x_1+x_2} 
+= X_{x_2-x_1-2},$$
+because $r_3 \mid n_1$.
+%Now for any $0\leq u<n_2$, $0\leq v\leq r_2-2$ and $x_1=n_1-2-v,x_2=u-v$, the equality \eqref{indX} implies that $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_u=X_{x_2-x_1-2},$$ since $$x_2-x_1-2=(u-v)-(n_1-2-v)-2=u-n_1\equiv u\pmod {r_3}.$$
+
+Similarly, for $x_1=n_1-1$ and any $0 \le x_2 <n_2$, denoting $u=x_2+r_2-1-h\cdot r_1$, the equality \eqref{indXY} implies that 
+$$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=X_u-Y_{u-r_2+1}=X_{x_2-x_1-2}-Y_{x_2-h\cdot r_1},$$ since 
+$$u = x_2-1+r_2-h\cdot r_1 \equiv x_2-1\equiv x_2-2+1-n_1=x_2-x_1-2 \pmod{r_3}$$
+by definition of $h$ and the fact that $r_3 \mid n_1$.
+
+This concludes the proof.
+\end{proof}
+
+Thanks to Lemma \ref{XY}, from now on we will regard the indices of the $X$'s only modulo $r_3$. %(to be more precise, in the set $\{0,1,2,\dots,r_3-1\}$) and drop the bar notation for them. 
+The lemma also implies the equality
+\begin{equation}\label{Ycancel}
+\sigma_1^{n_1-1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{n_1-r_2-1}\sigma_2^{x_2-h\cdot r_1}\cdot \mu=X_{x_2-1}-Y_{x_2-h\cdot r_1}+Y_{x_2-h\cdot r_1}= X_{x_2-1}
+\end{equation}
+for any $x_2\in\Z$, which we will use several times. Another simple observation that will come in handy in the proofs of the following lemmas is that the unary operation of adding a fixed integer induces an automorphism of $\Z/r_3$, which we will not mention explicitly anymore.
+
+To show that $Q$ is trivial, it now suffices to show that $X_u=0$ for all $0\leq u< r_3$ and $Y_v=0$ for all $r_1+r_3-2\leq v< n_2$ (knowing already that  $Y_v = 0$ 
+for all $0 \le v < r_1 +r_3 - 2$). To achieve this, we will use linear algebra.
+
+%\includepdf[pages=-]{5_export.pdf}
+\paragraph*{}
+Let $\alpha:= Y_{r_1+r_3-2}+Y_{r_1+r_3-1}+\dots+Y_{n_2-1}\in Q$ and $\beta:=X_0+X_1+\dots+X_{r_3-1}\in Q$.
+\begin{lemma}\label{AB}
+We have $\alpha=\beta=0$.
+\end{lemma}
+\begin{proof}
+Using the relation $N_2\sim 0$, we have $$0=\sigma_1^{r_2(r_3-1)-1}N_2\cdot \mu =\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2}\cdot \mu= \sum_{x_2=0}^{n_2-1}Y_{x_2}=\alpha$$ and
+\begin{align*}
+0&= \sigma_1^{r_2(r_3-1)}N_2\cdot \mu=\sum_{x_2=0}^{n_2-1}  \sigma_1^{r_2(r_3-1)}\sigma_2^{x_2}\cdot \mu=\sum_{x_2=0}^{n_2-1}  X_{x_2-r_2(r_3-1)-2}\\
+&=\sum_{x_2=0}^{r_1r_3-1}  X_{x_2+r_2-2}=
+\sum_{u=0}^{r_1-1}\sum_{v=0}^{r_3-1} X_{ur_3+v+r_2-2}=r_1\cdot \sum_{v=0}^{r_3-1} X_{v+r_2-2}=r_1\cdot \beta,
+\end{align*}
+since each $x_2\in\{0,1,\dots,r_1r_3-1\}$ can be uniquely written as $ur_3+v$, where $0\leq u<r_1$, $0\leq v<r_3$.% and the unary operation of adding $r_2-2$ induces an automorphism of $\Z/r_3$.
+
+Similarly, using Lemma \ref{XY} together with the relation $N_1\sim 0$ and the equality \eqref{Ycancel}, %(together with the fact that the operation of subtracting $h$ induces an automorphism of $\Z/r_3$),
+we get
+\begin{align*}
+0&= \sum_{q=0}^{r_3-1} \sigma_2^{qr_1}N_1\cdot \mu =\sum_{q=0}^{r_3-1}\left(\sigma_1^{n_1-1}+\sigma_1^{r_2(r_3-1)-1}\right) \sigma_2^{qr_1}\cdot \mu   
++\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1} \sigma_1^{x_1}\sigma_2^{qr_1}\cdot \mu\\
+&=\sum_{q=0}^{r_3-1}(\sigma_1^{n_1-1}\sigma_2^{qr_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{(q-h)\cdot r_1})\cdot \mu
++\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1} \sigma_1^{x_1}\sigma_2^{qr_1}\cdot \mu\\
+&=\sum_{q=0}^{r_3-1}X_{qr_1-1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{q=0}^{r_3-1}X_{qr_1-x_1-2}
+= \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{q=0}^{r_3-1}X_{qr_1-x_1-2}
+=r_2\cdot \beta,
+\end{align*}
+since for any $x_1$, all possible remainders modulo $r_3$ occur exactly once as the indices in the sum $\sum_{q=0}^{r_3-1}X_{qr_1-x_1-2}$ (due to the fact that the order of the class of $r_1$ is $r_3$ in $\Z/r_3$, due to their coprimality).
+Since $\gcd(r_1,r_2)=1$, this implies $\beta=0$ by Bézout's identity.
+\end{proof}
+
+Next, for $0\leq q \leq r_3-3$, we will define $$\Gamma_q:=\sum_{u=0}^{r_3-h'-1}\sum_{v=0}^{\uo-1}X_{q+v-ur_2-1}\in Q.$$
+
+\begin{lemma}
+For any $0\leq q \leq r_3-3$, we have $\Gamma_q=0$.
+\end{lemma}
+\begin{proof}
+Using Lemma \ref{XY}, the relation $N_1\sim 0$ and the equality \eqref{Ycancel}, 
+we get
+\begin{align*}
+0&= \sum_{u=0}^{r_3-h'-1} \sigma_2^{q-uhr_1}N_1\cdot \mu\\
+&= \sum_{u=0}^{r_3-h'-2}  \underbrace{\left(\sigma_1^{n_1-1}\sigma_2^{q-uh r_1} +\sigma_1^{r_2(r_3-1)-1}\sigma_2^{q-(u+1)h r_1}\right)\cdot \mu}_{=X_{q-uhr_1-1} \text{ due to } \eqref{Ycancel}}\\
+&+\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^q\cdot \mu}_{=Y_q}+
+\underbrace{\sigma_1^{n_1-1}\sigma_2^{q-(r_3-h'-1)h r_1}\cdot\mu}_{=X_{q-(r_3-h'-1)hr_1-1}-Y_{q+r_1}}\\
+&+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} \sigma_1^{x_1}\sigma_2^{q-uh r_1}\cdot \mu.
+\end{align*}
+Now we will use the fact that $q\leq r_3-3\leq r_1+r_3-3$ (implying $Y_q=0$) and $$q-(r_3-h'-1)h r_1-hr_1=q-r_1r_3h+r_1hh'\equiv q+r_1\pmod{n_2},$$ since the congruence holds modulo both $r_1$ and $r_3$ (and $\gcd(r_1,r_3)=1$). Also note that $Y_{q+r_1}=0$, since
+$$r_1\leq q+r_1\leq r_1+r_3-3,$$
+which precisely justifies the bounds on $q$ that we used in the definition of $\Gamma_q$ and also explains why the upper bound in the first sum was chosen to be $r_3-h'-1$.
+
+Continuing with the previous equality and using the congruence $hr_1\equiv r_2\pmod{r_3}$ and Lemma \ref{XY}, we thus have
+\begin{align*}
+0&= \left(\sum_{u=0}^{r_3-h'-2} X_{q-uhr_1-1}\right)+X_{q-(r_3-h'-1)hr_1-1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} X_{q-uh r_1-x_1-2}\\
+&=\sum_{u=0}^{r_3-h'-1} X_{q-ur_2-1}+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} X_{q-ur_2-x_1-2}\\
+&=\sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum_{u=0}^{r_3-h'-1} X_{q-ur_2-x_1-2}.
+\end{align*}
+
+After using the substitution $v=n_1-1-x_1$, this becomes
+\begin{align*}
+0&=\sum_{u=0}^{r_3-h'-1} \sum_{v=0}^{r_2-1} X_{q+v-ur_2-1}\\
+&=\sum_{u=0}^{r_3-h'-1} \left(\sum_{v=0}^{\overline{r_2}-1} X_{q+v-ur_2-1}+\sum_{v=\overline{r_2}}^{r_2-1} X_{q+v-ur_2-1}\right)\\
+&=\sum_{u=0}^{r_3-h'-1} \sum_{v=0}^{\overline{r_2}-1} X_{q+v-ur_2-1}+\sum_{u=0}^{r_3-h'-1}\frac{r_2-\overline{r_2}}{r_3}\sum_{v=\overline{r_2}}^{\overline{r_2}+r_3-1} X_{q+v-ur_2-1}\\
+&=\Gamma_q+\sum_{u=0}^{r_3-h'-1}\frac{r_2-\overline{r_2}}{r_3}\cdot \beta\\
+&=\Gamma_q,
+\end{align*}
+since $\beta=0$ by Lemma \ref{AB}.
+%since the unary operation of adding $q-ur_2-2$ induces an automorphism of $\Z/r_3$.
+\end{proof}
+
+Finally, let $$\Delta:=\sum_{u=0}^{r_3-1}u\cdot\sum_{v=0}^{\uo-1} \sum _{w=0}^{\vo-1} X_{v+w-ur_2-1}\in Q.$$
+
+\begin{lemma}
+We have $\Delta=0$.
+\end{lemma}
+\begin{proof}
+Using Lemma \ref{XY}, the relation $N_1\sim 0$ and the equality \eqref{Ycancel},
+we get
+\begin{align*}
+0&= \sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_2^{x_2-uh r_1}N_1\cdot \mu\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \left( \sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-uh r_1}\right)\cdot \mu\\
+&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu\\
+&=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} \left( u\cdot\underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}\cdot \mu}_{=X_{x_2-uhr_1-1}-Y_{x_2-(u+1)hr_1}}+(u+1)\cdot\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-(u+1)h r_1}\cdot \mu}_{=Y_{x_2-(u+1)h r_1}}\right)+\\
+&+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot \underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-(r_3-1)h r_1}\cdot \mu}_{=
+X_{x_2-(r_3-1)hr_1-1}-Y_{x_2-hr_1r_3}=
+%X_{x_2-(r_3-1)hr_1-1}
+}+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu,
+\end{align*}
+
+where we used the fact that $$x_2-hr_1r_3\equiv x_2\pmod{n_2}$$  and $0\leq x_2< r_1$, hence $Y_{x_2-hr_1r_3}=0$. Also note that for any $r_1\leq q<n_2$, there exist unique $$u\in\{0,1,\dots,r_3-2\},x_2\in\{0,1,\dots,r_1-1\}$$ such that $$q\equiv x_2-(u+1)hr_1 \pmod{n_2}$$ by the Chinese remainder theorem, since $\gcd(h,r_3)=1$ and for $u=r_3-1$, we would get  $q\equiv r\pmod{n_2}$, where $0\leq r<r_1$. Thus we get a bijection $$\{0,1,\dots,r_3-2\}\times\{0,1,\dots,r_1-1\}\to \{r_1,r_1+1,\dots,n_2-1\},$$ which we will use in a moment to transform a double sum into a simple one.
+
+Continuing with the previous equality and using the congruence $hr_1\equiv r_2\pmod{r_3}$, we thus have
+
+\begin{align*}
+0&=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} u\cdot X_{x_2-ur_2-1}+\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} Y_{x_2-(u+1)hr_1}+\underbrace{\sum_{q=0}^{r_1-1}Y_{q}}_{=0}\\
+&+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot X_{x_2-(r_3-1)r_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+&=\sum_{u=0}^{r_3-1} \sum _{x_2=0}^{r_1-1} u\cdot X_{x_2-ur_2-1}+\underbrace{\sum_{q=r_1}^{n_2-1} Y_{q}+\sum_{q=0}^{r_1-1}Y_{q}}_{=\alpha}\\
+&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+&=\alpha+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}
+\end{align*}
+
+After using the equality $\alpha=0$ by Lemma \ref{AB} and the substitutions $v=n_1-1-x_1$, $w=x_2$. this becomes
+\begin{align*}
+%&=\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+0&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\sum _{w=0}^{r_1-1}X_{v+w-ur_2-1}\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\left(\sum _{w=0}^{\vo-1}X_{v+w-ur_2-1}+\sum _{w=\vo}^{r_1-1}X_{v+w-ur_2-1}\right)\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\sum _{w=0}^{\vo-1}X_{v+w-ur_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\frac{r_1-\vo}{r_3}\cdot\sum _{w=\vo}^{\vo + r_3-1}X_{v+w-ur_2-1}\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo} \sum_{v=0}^{r_2-1} X_{v+w-ur_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{v=0}^{r_2-1}\frac{r_1-\vo}{r_3}\cdot \beta\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo} \sum_{v=0}^{r_1} X_{v+w-ur_2-1}\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo}\left( \sum_{v=0}^{\uo-1} X_{v+w-ur_2-1}+\sum_{v=\uo}^{r_2-1} X_{v+w-ur_2-1}\right)\\
+&=\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo} \sum_{v=0}^{\uo-1} X_{v+w-ur_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo-1}\frac{r_2-\uo}{r_3}\cdot \sum_{v=\uo}^{\uo+r_3-1} X_{v+w-ur_2-1}\\
+&=\Delta+\sum_{u=0}^{r_3-1}u\cdot \sum _{w=0}^{\vo-1}\frac{r_2-\uo}{r_3}\cdot \beta\\
+&=\Delta,
+\end{align*}
+since $\beta=0$ by Lemma \ref{AB}.
+\end{proof}
+
+\paragraph*{}
+Since $\beta,\Gamma_q$ and $\Delta$ are linear combinations of the $X_u$, they can be written as $\sum_{c=0}^{r_3-1}c_uX_u$, and thus correspond to the $r_3$-tuples of integer coefficients $(c_1,c_2,\dots,c_{r_3})$. Using this correspondence, we will now construct a matrix $M$ of size $r_3\times r_3$ (indexing its dimensions from $0$ to $r_3-1$) as follows:
+\begin{itemize}
+\item The $0$-th row will correspond to $\beta$ (i.e., it will consist of all 1's).
+\item The $q$-th row for $1\leq q\leq r_3-2$ will correspond to $\Gamma_{q-1}$.
+\item The $r_3-1$-th row will correspond to $\Delta$.
+\end{itemize}
+
+Since the rows of $M$ are coefficients of valid equalities in $Q$, we have $M\cdot X'=0$, where $X=(X_0,X_1,\dots,X_{r_3-1})$ and $'$ denotes transposition. We will show that $M$ is unimodular, i.e. invertible over $\Z$, from which it will follow that $X=0$. To do that, we will study the effect of multiplying $M$ by a character matrix (i.e., basically performing the discrete Fourier transform).
+%we will first need to describe $M$ in a better way.
+
+\paragraph*{}
+Let $$R(x):=\sum_{q=0}^{r_3-1} x^q\in\Z[x],$$
+$$D(x):=\sum_{q=0}^{r_3-1}q\cdot x^q\in \Z[x]$$
+and 
+$$P(x):=-x^{r_2-1}\cdot \sum_{q=0}^{r_1-1} x^q\in \Z[x].$$
+
+\begin{lemma}\label{RD}
+Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then we have $R(\zeta)=0$ and $$D(\zeta)\cdot(\zeta-1)=r_3.$$
+\end{lemma}
+\begin{proof}
+The first assertion is immediate since $R(\zeta)\cdot(\zeta-1)=\zeta^{r_3}-1=0$, but $\zeta\neq 1$. The second follows from the computation
+\begin{equation*}
+\begin{split}
+D(\zeta)\cdot(\zeta-1)&=\sum_{q=1}^{r_3-1} q\cdot \zeta^{q+1}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q=\sum_{q=2}^{r_3} (q-1)\cdot \zeta^{q}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q\\
+&=(r_3-1)\zeta^{r_3}+\sum_{q=1}^{r_3-1} (q-1)\cdot \zeta^{q}-\sum_{q=1}^{r_3-1} q\cdot \zeta^q\\
+&=r_3-1-\sum_{q=1}^{r_3-1} \zeta^{q}\\
+&=r_3- R(\zeta)\\
+&=r_3.
+\end{split}
+\end{equation*}
+\end{proof}
+
+Now let $\mathcal{X}$ be the free $\Z$-module with generators $X_0,X_1,\dots,X_{r_3-1}$. By abuse of notation, we can consider $\widehat{\beta},\widehat{\Gamma_q},\widehat{\Delta}\in \mathcal{X}$ for $0\leq q\leq r_3-3$, which formally look the same as $\beta,\Gamma_q,\Delta$. Moreover let $\z$ be any $r_3$-th root of unity and consider the $\Z$-module homomorphism from $\mathcal{X}$ to the cyclotomic field $\Q(\z)$ given by $$\sum_{u=0}^{r_3-1}c_u X_u\mapsto \sum_{u=0}^{r_3-1}c_u \z^u.$$ 
+We can apply this homomorphism to $\widehat{\beta},\widehat{\Gamma_q},\widehat{\Delta}$, and we will denote its respective values by $\beta(\z),\Gamma_q(\z),\Delta(\z)\in\Q(\z)$. Note that since $\z^{r_3}=1$, these values depend on the indices of $X_u$ only modulo $r_3$, so it doesn't matter whether we regard them as in the set $\{0,1,\dots,r_3-1\}$ or just as integers. This will allow us to use the original definitions of $\beta,\Gamma_q,\Delta$ for their computation quite easily.
+
+\begin{lemma}\label{argeo}
+For any $b\in\Nbb$ and $y\in\Cbb$, we have the equality
+$$(y-1)\cdot\sum_{u=1}^{b}u\cdot y^u=(b+1)y^{b+1}-\sum_{u=0}^b y^{u+1}.$$
+\end{lemma}
+\begin{proof}
+We have 
+\begin{align*}
+(y-1)\cdot\sum_{u=1}^{b}u\cdot y^u&=\sum_{u=1}^{b}u\cdot y^{u+1}-\sum_{u=1}^{b}u\cdot y^u\\
+&=\sum_{u=0}^{b}u\cdot y^{u+1}-\sum_{v=0}^{b-1}(v+1)\cdot y^{v+1}\\
+&=b\cdot y^{b+1}+\sum_{u=0}^{b-1}(u-(u+1))\cdot y^{u+1}\\
+&=b\cdot y^{b+1}+\underbrace{y^{b+1}-y^{b+1}}_{=0}+\sum_{u=0}^{b-1}-1\cdot y^{u+1}\\
+&=(b+1)y^{b+1}-\sum_{u=0}^b y^{u+1}.
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+Let $\zeta\neq 1$ be any $r_3$-th root of unity. Then for all $0\leq q<r_3-3$, we have $$\beta(\z)=0,$$ $$\Gamma_q(\zeta)=\zeta^{q}\cdot P(\zeta)$$ and $$\Delta(\zeta)=D(\zeta)\cdot P(\zeta).$$
+\end{lemma}
+\begin{proof}
+Note that $\z^{-r_2}\neq 1$, since $\gcd(r_3,-r_2)=1$ and $\z\neq1$.
+
+From the definitions and Lemma \ref{RD}, we directly get $\beta(\z)=R(\z)=0$. For the second assertion, we have
+\begin{equation*}\label{Gamma}
+\begin{split}
+\Gamma_q(\zeta)&=\sum_{u=0}^{r_3-h'-1}\sum_{v=0}^{\uo-1}\z^{q+v-ur_2-1}\\
+&=\z^{q-1}\cdot\sum_{v=0}^{\uo-1}\z^{v}\sum_{u=0}^{r_3-h'-1}\z^{-ur_2}\\
+&=\z^{q-1}\cdot(1+\zeta+\dots+\zeta^{\uo-1})(1+\zeta^{-r_2}+\zeta^{-2r_2}+\dots+\zeta^{-(r_3-h'-1)r_2})\\
+&=\zeta^{q-1}\cdot\frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{-(r_3-h')r_2}-1}{\zeta^{-r_2}-1}\\
+&=\zeta^{q-1}\cdot\frac{\zeta^{r_2}-1}{\zeta^{-r_2}-1}\cdot \frac{\zeta^{r_1}-1}{\zeta-1}\\
+&=-\zeta^{q}\cdot \zeta^{r_2-1}\cdot (1+\zeta+\zeta^2+\dots+\zeta^{r_1-1})\\
+&=\zeta^{q}\cdot P(\zeta).
+\end{split}
+\end{equation*}
+
+Similarly, using Lemma \ref{argeo} with $y=\z^{-r_2}$ and $b=r_3-1$, we can see that
+
+\begin{equation*}\label{Delta}
+\begin{split}
+\Delta(\zeta)&=
+\sum_{u=0}^{r_3-1}u\cdot\sum_{v=0}^{\uo-1} \sum _{w=0}^{\vo-1} \z^{v+w-ur_2-1}\\
+&=\z^{-1}\cdot\sum_{v=0}^{\uo-1}\z^v \sum _{w=0}^{\vo-1} \z^{w}\sum_{u=0}^{r_3-1}u\cdot\z^{-ur_2}\\
+&=\z^{-1}(1+\z+\!\dots\!+\z^{\uo-1})\\
+&\cdot(1\!+\z+\dots+\z^{\vo-1})(\z^{-r_2}+2\z^{-2r_2}+\dots+(r_3-1)\z^{-(r_3-1)r_2})\\
+&=\z^{-1} \cdot \frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \frac{r_3\z^{-r_2r_3}-\sum_{u=0}^{r_3-1}\z^{-r_2(u+1)}}{\z^{-r_2}-1}
+\\
+&=\z^{-1} \cdot \frac{\zeta^{\uo}-1}{\zeta-1}\cdot \frac{\zeta^{\vo}-1}{\zeta-1}\cdot \frac{r_3(\z^{r_3})^{r_2}-\zeta^{-r_2}\cdot R(\zeta^{-r_2})}{\z^{-r_2}-1}
+\\
+&=\z^{-1}\cdot\frac{\zeta^{r_2}-1}{\zeta-1}\cdot \frac{\zeta^{r_1}-1}{\zeta-1} \cdot \frac{r_3}{\zeta^{-r_2}-1}\\
+&=\z^{-1}\cdot\frac{r_3}{\zeta-1}\cdot \frac{\zeta^{r_2}-1}{\zeta^{-r_2}-1}\cdot \frac{\zeta^{r_1}-1}{\zeta-1}\\
+&=-D(\zeta)\cdot \zeta^{r_2-1}\cdot (1+\zeta+\zeta^2+\dots+\zeta^{r_1-1})\\
+&=D(\zeta)\cdot P(\zeta).
+\end{split}
+\end{equation*}
+\end{proof}
+
+\begin{prop}
+$M$ is unimodular, hence $X=0$.
+\end{prop}
+\begin{proof}
+Let $\zt$ be a primitive $r_3$-th root of unity and let $C$ be the corresponding $r_3\times r_3$ character matrix, i.e. $C=(\zt^{r\cdot c})_{0\leq r,c<r_3}$. We will use the two previous lemmas together with the fact that multiplying a column of successive powers of $\zt$ by a row of $M$ from the left corresponds to evaluating the polynomial obtained from this row at $\zt$. %After reindexing the dimensions of $M$ from $0$ to $r_3-1$, we have
+Hence we have $M\cdot C=C'$, where $C'_{0,0}=R(1)=r_3$ and the $c-th$ column of $C'$ is
+$$
+\begin{pmatrix}
+R(\zt^c)\\ 
+P(\zt^c) \\ 
+\zt^c \cdot P(\zt^c) \\ 
+(\zt^{c})^2 \cdot P(\zt^c) \\ 
+\vdots\\ 
+(\zt^{c})^{r_3-3} \cdot P(\zt^c) \\ 
+D(\zt^c) \cdot P(\zt^c)
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\ 
+P(\zt^c) \\ 
+\zt^c \cdot P(\zt^c) \\ 
+\zt^{2c} \cdot P(\zt^c) \\ 
+\vdots\\ 
+\zt^{(r_3-3)c} \cdot P(\zt^c) \\ 
+D(\zt^c) \cdot P(\zt^c)
+\end{pmatrix}
+$$
+for any $0<c<r_3$ (we don't need to specify the rest of the $0$-th column, since it doesn't influence the determinant of $C'$). Thus by taking out $P(\zt^c)$ from each of these columns, we get (using that multiplication by $r_1$ is an automorphism of $\Z/r_3$, since $\gcd(r_1,r_3)=1$)
+\begin{align*}
+|\det C'|&=|\det C''|\cdot\abs*{\prod_{0<c<r_3}P(\zt^c)}\\
+&=|\det C''|\cdot\abs*{\prod_{0<c<r_3}-\zt^{c(r_2-1)}}\cdot\abs*{\prod_{0<c<r_3}\frac{\zt^{cr_1}-1}{\zt^c-1}}\\
+&=|\det C''|,
+\end{align*}
+
+where
+$$C''=
+\begin{pmatrix}
+r_3& 0& \dots & 0 & \dots & 0\\ 
+*& 1& \dots & 1 & \dots & 1\\ 
+*& \zt& \dots & \zt^c & \dots & \zt^{r_3-1}\\ 
+*& \zt^2& \dots & \zt^{2c} & \dots & \zt^{2(r_3-1)}\\ 
+\vdots& \vdots&\ddots  & \vdots & \ddots & \vdots\\ 
+*& \zt^{r_3-3}& \dots & \zt^{(r_3-3)c} & \dots & \zt^{(r_3-3)(r_3-1)}\\ 
+*& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{r_3-1})\\ 
+\end{pmatrix}.
+$$
+On the other hand, we can take the matrix $C$, add all of its rows to the $r_3-1$-th one (thus creating $\begin{pmatrix}
+r_3 & 0 & 0& \dots &0
+\end{pmatrix}$
+there) and then, using the equality
+$$-\zt^{(r_3-2)c}+\sum_{u=0}^{r_3-3}(u-r_3+1)\cdot\zt^{uc}=\sum_{u=0}^{r_3-1}u\cdot\zt^{uc}-(r_3-1)\cdot\underbrace{\sum_{u=0}^{r_3-1}\zt^{uc}}_{=0},$$ 
+%we see that if we 
+multiply the $(r_3-2)$-th row by $-1$ and add the $u$-th row multiplied by $(u-r_3+1)$ for each $0\le u \le r_3-3$,
+so that the $r_3-2$-th row will become
+$$\begin{pmatrix}
+*& D(\zt)& \dots & D(\zt^c) & \dots & D(\zt^{r_3-1})
+\end{pmatrix}.$$
+Thus we will obtain a matrix with the same determinant as $C''$ (up to a sign). Since the elementary row operations preserve the determinant up to a sign, it follows that
+$$|\det C|=|\det C''|=|\det C'|=|\det M|\cdot |\det C|.$$ 
+Now, $C$ can be seen as a special type of a Vandermonde matrix, so we have $$\det C=\prod_{0\leq r<c<r_3}(\zt^r-\zt^c)\neq 0$$
+(in fact it is well known that this equals $\pm \sqrt{r_3^{r_3}}$), which implies that %$|\det M'|=1$, hence%
+ $|\det M|=1$, as needed.
+\end{proof}
+
+\begin{cor}
+We have $Y_q=0$ for all $r_1+r_3-2\leq q\leq n_2-1$.
+\end{cor}
+\begin{proof}
+By the Chinese remainder theorem, it suffices to show by induction with respect to $u=0,1,\dots,r_3-1$ that for any $0\leq v<r_1$, we have $Y_{v-uhr_1}=0.$ The base case $u=0$ follows directly from the definition of $Y_u$. Now suppose the statement is true for $0\leq u<r_3-1$. Then using $N_1\sim 0$ and Lemma \ref{XY}, we get
+\begin{align*}
+0&=\sigma_2^{v-uhr_1} N_1 \cdot \mu=\sum_{x_1=r_2(r_3-1)-1}^{n_1-1}\sigma_1^{x_1}\sigma_2^{v-uhr_1}\cdot\mu\\
+&=\underbrace{Y_{v-uhr_1}}_{=0}-Y_{v-uhr_1-hr_1}+\sum_{x_1=r_2(r_3-1)}^{n_1-1}\underbrace {X_{v-uhr_1-x_1-2}}_{=0}=-Y_{v-(u+1)hr_1}
+\end{align*}
+by the induction hypothesis and the fact that $X=0$. This completes the induction.
+\end{proof}
+
+It now follows that $Q$ is trivial, so we have proven the following theorem:
+\begin{theorem}
+Under the assumptions on page \pageref{assum}, if $$a_1=a_2=a_3=r_4=1, r_1\neq 1, r_2\neq 1, r_3 \neq 1,s_{12}=s_{13}=s_{23}=1,\gcd(n_1,n_2,n_3)=1,$$ then  the set $B_{5}\cup B_D$ forms a basis of $D^+$ and the set $B_{5}\cup B_C$ forms a basis of $C^+$.
+\end{theorem}

@@ -1,0 +1,221 @@
+\documentclass[12pt,a4paper,oneside,final]{book} %% PRO OBOUSTRANNY TISK
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} %fonty vyladene pro cestinu/slovenstinu
+%\usepackage{lmodern}
+%\usepackage[ IL2]{fontenc} %fonty vyladene pro cestinu/slovenstinu
+\usepackage[english]{babel}
+%\usepackage{txfonts}
+\usepackage{mathptmx}
+%\usepackage{lmodern}
+%\usepackage[lite]{mtpro2}
+%\usepackage{newtxtext,newtxmath}
+%\usepackage{qtxmath,tgtermes}
+%\usepackage[mtbold,mtplusscr,mtpluscal]{mathtime}
+\usepackage{longtable,lipsum} 
+\usepackage{amsmath, amsthm, amsfonts, amssymb, graphicx, url, fancyhdr,multicol,enumerate,mathtools,csquotes,tikz,enumitem,calc,pdfpages}
+\usepackage{hhline}
+%\usepackage[labelformat=empty]{caption}
+\usepackage{tikz}
+\usepackage[Mgr,Barevne]{sci.muni.thesis}
+
+\usepackage{makeidx}
+\makeindex
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{ex}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{rem}[theorem]{Remark}
+
+% ------
+% BibTex for bibliography
+\usepackage[square,sort,numbers]{natbib}
+%\usepackage[square,sort&compress,authoryear]{natbib}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}} %Roman numerals
+
+% Bibliography entries spacing.
+\newcommand{\ignore}[1]{}
+\let\oldbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{\oldbibliography{#1}
+\setlength{\itemsep}{2.5pt}} %Reducing spacing in the bibliography.
+
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\Qbb}{\mathbb{Q}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Zbb}{\mathbb{Z}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\cok}{\mathrm{coker}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\No}{\mathrm{N}_{\Qbb}^K}
+\newcommand{\cond}{\text{cond }}
+\newcommand{\Ok}{\ensuremath{\mathcal{O}_K}}
+\newcommand{\Ol}{\ensuremath{\mathcal{O}_L}}
+\newcommand{\Cl}{\ensuremath{\mathcal{C}l}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\qq}{\mathfrak{q}}
+\newcommand{\af}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\rr}{\mathfrak{r}}
+\newcommand{\al}{\alpha}
+\newcommand{\z}{\zeta}
+\newcommand{\zt}{\zeta_{r_3}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\uo}{\overline{r_2}}
+\newcommand{\vo}{\overline{r_1}}
+\newcommand{\Mat}{\ensuremath{\text{Mat}(2,\mathbb{Z})}}
+\newcommand{\Char}{\mathrm{char }}
+\newcommand{\lcm}{\mathrm{lcm}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+%\setlist[enumerate,1]{label={\upshape(\roman*)}}
+
+
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  %\vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+  
+\makeatletter
+\newcommand{\DESCRIPTION@original@item}{}
+\let\DESCRIPTION@original@item\item
+\newcommand*{\DESCRIPTION@envir}{DESCRIPTION}
+\newlength{\DESCRIPTION@totalleftmargin}
+\newlength{\DESCRIPTION@linewidth}
+\newcommand{\DESCRIPTION@makelabel}[1]{\llap{#1}}%
+\newcommand{\DESCRIPTION@item}[1][]{%
+  \setlength{\@totalleftmargin}%
+       {\DESCRIPTION@totalleftmargin+\widthof{\textbf{#1 }}-\leftmargin}%
+  \setlength{\linewidth}
+       {\DESCRIPTION@linewidth-\widthof{\textbf{#1 }}+\leftmargin}%
+  \par\parshape \@ne \@totalleftmargin \linewidth
+  \DESCRIPTION@original@item[\textbf{#1}]%
+}
+\newenvironment{DESCRIPTION}
+  {\list{}{\setlength{\labelwidth}{0cm}%
+           \let\makelabel\DESCRIPTION@makelabel}%
+   \setlength{\DESCRIPTION@totalleftmargin}{\@totalleftmargin}%
+   \setlength{\DESCRIPTION@linewidth}{\linewidth}%
+   \renewcommand{\item}{\ifx\@currenvir\DESCRIPTION@envir
+                           \expandafter\DESCRIPTION@item
+                        \else
+                           \expandafter\DESCRIPTION@original@item
+                        \fi}}
+  {\endlist}
+\makeatother
+
+
+
+\NazevUstavu{Ústav matematiky a statistiky}{Department of Mathematics and Statistics}
+
+\RokOdevzdaniPrace{2017}
+
+\AkademickyRok{2016/2017}
+
+\Autor{Vladimír Sedláček}{Vladimír Sedláček}
+
+\NazevPrace{Kruhové jednotky abelovských těles}{Kruhové jednotky abelovských těles}{Circular units of abelian fields}
+
+\VedouciPraceSTituly{prof. RNDr. Radan Kučera, DSc.} %% Neni potreba pro rigorozni prace
+
+\StudijniProgram{Matematika}{Mathematics}
+
+\StudijniObor{Algebra a diskrétní matematika}{Algebra and Discrete Mathematics}
+
+\PocetStran{ix\,$+$\,??}
+
+\KlicovaSlova{kruhové jednotky; kruhová čísla, abelovská tělesa}
+{circular units; circular numbers; abelian fields}
+
+\Abstrakty%
+{V této diplomové práci se zabýváme....}
+{In this thesis we study...}
+
+\TextPodekovani%
+{%Na tomto místě bych chtěl velmi poděkovat prof. RNDr. Radanu Kučerovi, DSc. za velkou ochotu, vstřícnost, trpělivost a mnoho cenných rad a připomínek, které tuto práci výrazně vylepšily nejen po odborné stránce.
+}
+
+\TextProhlaseni%
+{Prohlašuji, že jsem svoji bakalářskou práci vypracoval samostatně pod vedením prof. RNDr. Radana Kučery, DSc. s~využitím informačních
+zdrojů, které jsou v práci citovány.}
+
+\DatumProhlaseni{15. května 2017}
+
+\makeindex
+
+\begin{document}
+\VytvorPovinneStrany
+\AbstraktyNaJedneStrane
+%\VlozZadani{zadani}
+\SemVlozitZadani
+
+\PodekovaniAProhlaseni
+
+\pdfbookmark{Obsah}{Obsah}
+\VytvorObsah
+\cleardoublepage
+
+\HlavickaZnaceni
+%\pdfbookmark{Přehled použitého značení}{Prehled pouziteho znaceni}
+\vloz{text_prace/02_Znaceni}
+
+\HlavickaUvod
+%\pdfbookmark{Úvod}{Uvod}
+\vloz{text_prace/01_Uvod}
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}{}}
+\HlavickaKapitoly
+\vloz{text_prace/03_Kapitola_01}
+
+\vloz{text_prace/04_Kapitola_02}
+
+\vloz{text_prace/04_Kapitola_03}
+
+\HlavickaZaver
+%\pdfbookmark{Conclusion}{Conclusion}
+\vloz{text_prace/05_Zaver}
+
+%\HlavickaPriloha
+%\pdfbookmark{Příloha}{Priloha}
+%\vloz{text_prace/06_Priloha}
+
+\renewcommand{\bibname}{Bibliography}
+%\HlavickaLiteratura
+%\vloz{text_prace/07_Literatura}
+
+\bibliographystyle{siam}
+\bibliography{circular}
+\addcontentsline{toc}{chapter}{\bibname}
+
+\renewcommand{\indexname}{Rejstřík}
+%\HlavickaRejstrik
+%\VytvorRejstrik
+
+%\newpage
+%\thispagestyle{empty}
+%\fancyhf{}
+%\newpage
+%\mbox{}
+\end{document}
