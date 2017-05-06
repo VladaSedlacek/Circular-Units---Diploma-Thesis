@@ -49,6 +49,7 @@ We cannot guarantee at the moment that the union of all these conjugates is not 
 it will follow that we really have a basis.
 
 We will always refer to the conjugates of $\eta$ by their coordinates $x_1,x_2,x_3,x_4$ according to Proposition \ref{gal}. This allows us to visualise $\Gal(k/\Q)$ geometrically as a discrete (at most) four-dimensional cuboid.
+
 \section{The case $r_1=r_2=r_3=r_4=1$}
 In this case, we have
 $$\Gal(k/\Qbb)\cong
@@ -58,9 +59,59 @@ $$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^{a_1u}
 and
 \begin{align*}
 N&=a_1a_2a_3a_4m^3-(a_1a_2a_3+a_1a_2a_4+a_1a_3a_4+a_2a_3a_4)m^2\\
-&+(a_1a_2+a_1a_3+a_1a_4+a_2a_3+a_2a_4+a_3a_4)m-a_1-a_2-a_3-a_4+1.
+&+(a_1a_2+a_1a_3+a_1a_4+a_2a_3+a_2a_4+a_3a_4)m-a_1-a_2-a_3-a_4+1.\\
+&=(a_1m-1)(a_2m-1)(a_3m-1)(a_4-1)+(a_1m-1)(a_2m-1)(a_3m-1)\\
+&-a_1a_2a_3m^2+(a_1a_2+a_1a_3+a_2a_3)m-a_1-a_2-a_3+1\\
+&=(a_1m-1)(a_2m-1)(a_3m-1)(a_4-1)+(a_1m-1)(a_2(m-1)-1)(a_3m-1)\\
+&+(a_1-1)(a_3m-1)+a_3(m-1)
 \end{align*}
 We will define $B_1$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
+
+\begin{itemize}
+\item $0\le x_1 <a_1m-1, 0\le x_2 < a_2m-1, 0 \le x_3<a_3m-1, 1\le x_4<a_4$,
+\item $0 \le x_1 <a_1m-1, 0\le x_2 < a_2(m-1)-1, 0 \le x_3<a_3m-1, x_4=0$,
+\item $0\le x_1 < a_1-1, x_2 =a_2(m-1)-1, 0\leq x_3 < a_3m-1, x_4=0$,
+\item $x_1=a_1-1, x_2 =a_2(m-1)-1, 0\leq x_3 < a_3(m-1), x_4=0$.
+\end{itemize}
+
+First we will recover the cases $0<x_4<a_4$, $x_1=a_1m-1$ or $x_2=a_2m-1$ or $x_3=n_3-1$ using the relations $R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
+\paragraph*{}
+Next, we will recover the cases $$x_1=a_1m-1, 0\le x_2 < a_2(m-1)-1, 0\leq x_3 <a_3m-1$$ using the relation $R_1N_1\sim 0$ and subsequently the cases $$0\leq x_1 < a_1m,  0\le x_2 < a_2(m-1)-1, x_3 = a_3m-1$$ and $$0\le x_1 < a_1-1, x_2 = a_2(m-1)-1, x_3 = a_3m-1$$ using the relation $R_3N_3\sim 0$.
+
+\paragraph*{}
+At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$a_1\le x_1< a_1m, x_2=a_2(m-1)-1, 0\le x_3<a_3m,$$ $$0\le x_1< a_1m, a_2(m-1)\le x_2<a_2m, 0\le x_3<a_3m$$ and $$x_1=a_1-1, x_2=a_2(m-1)-1, a_3(m-1)\le x_3<a_3m.$$ To continue, we need to define an auxiliary relation.
+
+Let $$\Gamma:=\sigma_2^{a_2(m-2)}-\sum_{u=0}^{m-3}\sum_{v=1}^{u+1}\sigma_1^{a_1v}\sigma_2^{a_2u}\in\Z[G].$$
+\begin{lemma}\label{Gamma1}
+We have $$R_1R_2R_4\Gamma\sum_{u=0}^{m-1}\sigma_3^{a_3u}\sim 0.$$
+\end{lemma}
+\begin{proof}
+We have 
+\begin{align*}
+\sigma_1^{a_1}\sigma_2^{a_2}\Gamma &=\sigma_1^{a_1}\sigma_2^{a_2(m-1)}-\sum_{u=1}^{m-2}\sum_{v=2}^{u+1}\sigma_1^{a_1v}\sigma_2^{a_2u}\\
+&=\sigma_1^{a_1}N_2-\sigma_1^{a_1}\sum_{u=0}^{m-2}\sigma_2^{a_2u}-\sum_{u=0}^{m-2}\sum_{v=2}^{u+1}\sigma_1^{a_1v}\sigma_2^{a_2u}\\
+&=\sigma_1^{a_1}N_2-\sum_{u=0}^{m-2}\sum_{v=1}^{u+1}\sigma_1^{a_1v}\sigma_2^{a_2u}\\
+&=\sigma_1^{a_1}N_2-\sigma_2^{a_2(m-2)}+\Gamma-\sum_{v=1}^{m-1}\sigma_1^{a_1v}\sigma_2^{a_2(m-2)}\\
+&=\sigma_1^{a_1}N_2-\sigma_2^{a_2}N_1+\Gamma,
+\end{align*}
+which implies $$\sigma_1^{a_1}\sigma_2^{a_2}R_1R_2\Gamma \sim R_1R_2\Gamma.$$
+Using this repeatedly, we obtain
+\begin{align*}
+R_1R_2R_4\Gamma\sum_{u=0}^{m-1}\sigma_3^{a_3} \sim R_1R_2\Gamma \left(R_4 \sum_{u=0}^{m-1}\sigma_1^{a_1}\sigma_2^{a_2}\sigma_3^{a_3}\right)\sim 0,
+\end{align*}
+as needed.
+\end{proof}
+
+Thanks to Lemma \ref{Gamma1}, we will recover all the cases $$x_1=a_1-1, x_2=a_2(m-1)-1, a_3(m-1)\le x_3<a_3m,x_4=0$$ using the relation $R_1R_2R_4\Gamma\sum_{u=0}^{m-1}\sigma_3^{a_3u}$.
+
+Next, we will recover all the cases $$0\leq x_1 < a_1m, a_2(m-1)\leq x_2 < a_2m-1, 0\leq x_3 <a_3m,x_4=0$$
+using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^{a_3u}$, due to the fact that for any two different conjugates of $\eta$ used in this relation, the difference of their exponents of $\sigma_2$ is divisible by $a_2$ (and we have already recovered all of them except exactly one).
+ After this, we can recover the cases $$0\leq x_1 < a_1, x_2 = a_2m-1, 0\leq x_3 <a_3m,x_4=0$$ using the relation $R_2N_2\sim 0$.
+\paragraph*{}
+Finally, we will use induction with respect to $v=0,1,\dots, m-1$ to show that we can recover the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$va_1\leq x_1 < (v+1)a_1,x_2=a_2(m-1)-1,0\le x_3<a_3m,x_4=0$$ and $$va_1\leq x_1 < (v+1)a_1,x_2=a_2m-1,0\le x_3<a_3m,x_4=0.$$
+The basis step $v=0$ has already been done. Now suppose that the statement is true for $0<v<m-1$. Then we can recover the conjugates with $$(v+1)a_1\leq x_1 < (v+2)a_1,x_2=a_2m-1,0\le x_3<a_3m,x_4=0$$
+using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^{a_3u}$, again due to the fact that for any two different conjugates of $\eta$ used in this relation, the difference of their exponents of $\sigma_2$ is divisible by $a_2$ (and we have already recovered all of them except exactly one) and subsequently the conjugates with $$(v+1)a_1\leq x_1 < (v+2)a_1,x_2=a_2(m-1)-1,0\le x_3<a_3m,x_4=0$$ using the relation $R_2N_2\sim 0$.
+Therefore the induction is complete and we have recovered all the conjugates of $\eta$. 
 
 Thus we have proven the following theorem:
 \begin{theorem}
@@ -90,10 +141,10 @@ We will define $B_2$ as the set of the following $N$ conjugates $\eta^{\sigma_1^
 \item $0\le x_1 < a_1m-1, 0\le x_2 < a_2(m-1)-1, 1\leq x_3 < n_3, x_4=0$,
 \item $0\le x_1 < a_1, x_2=a_2(m-1)-1, 1\leq x_3 < n_3, x_4=0$.
 \end{itemize}
-\paragraph*{}
+
 First we will recover the cases $0<x_4<a_4$, $x_1=a_1m-1$ or $x_2=a_2m-1$ or $x_3=n_3-1$ using the relations $R_1N_1\sim 0, R_2N_2\sim 0, N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
 \paragraph*{}
-Next, we will recover the cases $$x_1=a_1m-1, 0\le x_2 < a_2(m-1)-1, 1\leq x_3 <n_3$$ using the relation $R_1N_1\sim 0$ and subsequently the cases $$0\leq x_1 < a_1m,  0\le x_2 < a_2(m-1)-1, x_3 = 0$$ and $$0\le x_1 < a_1, x_2 = a_2(m-1)-1, x_3 = 0$$ using the relation $N_3\sim 0$.
+Next, we will recover the cases $$x_1=a_1m-1, 0\le x_2 < a_2(m-1)-1, 1\leq x_3 <n_3, x_4=0$$ using the relation $R_1N_1\sim 0$ and subsequently the cases $$0\leq x_1 < a_1m,  0\le x_2 < a_2(m-1)-1, x_3 = x_4=0$$ and $$0\le x_1 < a_1, x_2 = a_2(m-1)-1, x_3 = x_4=0$$ using the relation $N_3\sim 0$.
 
 \paragraph*{}
 At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$0\le x_1< a_1m, a_2(m-1)\le x_2 <a_2m, 0\le x_3<n_3$$ and $$a_1\le x_1< a_1m, x_2=a_2(m-1)-1, 0\le x_3<n_3.$$
@@ -163,7 +214,7 @@ Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_
 We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$ or $\rho\in\Gal(K/\Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
 Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}R_3N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}\cdot \mu$$
 for any $x_1,x_2\in\Z$,
-this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for any $0\leq x_1<n_1, 0\leq x_2<n_2$.
+this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for any $0\leq x_1<n_1$, $0\leq x_2<n_2$.
 
 \paragraph*{}
 \begin{lemma}\label{diag}
@@ -314,7 +365,7 @@ We will define $B_4$ as the set of the following $N$ conjugates $\eta^{\sigma_1^
 \item $0\leq x_1<n_1-1, 0\leq x_2<n_2-1, 1< x_3 \leq n_3-1, x_4=0$,
 \item $1\leq x_1< n_1, \gcd(n_2,n_3)\leq x_2<n_2, x_3=0, x_4=0$,
 \item $\gcd(n_1,n_3)\leq x_1< n_1, 1\leq x_2<\gcd(n_2,n_3), x_3=0, x_4=0$,
-\item $0\leq x_1 <\gcd(n_1,n_2)-1, x_2=0, x_3=0, x_4=0$.
+\item $1\leq x_1 <\gcd(n_1,n_2), x_2=0, x_3=0, x_4=0$.
 \end{itemize}
 
 \paragraph*{}
@@ -330,12 +381,12 @@ Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_
 \text { or }& 0\leq x_1< n_1, 0\leq x_2<n_2, 1< x_3<n_3,x_4=0,\\
 \text { or }& 0\leq x_1< n_1, \gcd(n_2,n_3)\leq x_2<n_2, x_3=x_4=0,\\
 \text { or }& \gcd(n_1,n_3)\leq x_1< n_1, 0\leq x_2<\gcd(n_2,n_3), x_3=x_4=0\\ 
-\text { or }&0\leq x_1 <\gcd(n_1,n_2)-1, x_2=x_3=x_4=0 \}\big\rangle_{\Z}.
+\text { or }&1\leq x_1 <\gcd(n_1,n_2), x_2=x_3=x_4=0 \}\big\rangle_{\Z}.
 \end{align*}
 We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$ or $\rho\in \Gal(K/Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
 Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3\cdot \mu$$
 for any $x_1,x_2\in\Z$,
-this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for each $0\leq x_1<n_1, 0\leq x_2<n_2$ (and because of the definition of $Q$, it suffices to show this for each $0\leq x_1<\gcd(n_1,n_3), 0\leq x_2<\gcd(n_2,n_3)$).
+this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for each $0\leq x_1<n_1$, $0\leq x_2<n_2$ (and because of the definition of $Q$, it suffices to show this only for each $0\leq x_1<\gcd(n_1,n_3)$, $0\leq x_2<\gcd(n_2,n_3)$).
 
 \paragraph*{}
 The conjugates with $x_3=0$ and $x_4=0$ (i.e., those of the form $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the sum $\eta^{R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles (and in this case, it can be seen geometrically that these form a regular grid). We will now describe the sum of these. 
@@ -347,7 +398,7 @@ In $Q$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu=0$$
 for any $x_1,x_2\in\Z$.
 \end{lemma}
 \begin{proof}
-Using the fact that every $0\leq w<m$ can be uniquely written as $un_3+v$ with $0\leq u<r_3, 0\leq v<n_3$ together with the fact that the order of $\sigma_3$ is $n_3$, we get 
+Using the fact that every $0\leq w<m$ can be uniquely written as $un_3+v$, where $0\leq u<r_3$, $0\leq v<n_3$, together with the fact that the order of $\sigma_3$ is $n_3$, we get 
 \begin{align*}
 R_4T\sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}\sigma_3^{un_3}\cdot \sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{w=0}^{m-1}\sigma_1^{w}\sigma_2^{w}\sigma_3^{w}\sim 0.
 \end{align*}
@@ -376,14 +427,21 @@ For any $0\leq x_1<\gcd(n_1,n_3), 0\leq x_2<\gcd(n_2,n_3)$, we have $$\sigma_1^{
 \end{cases}$$
 \end{lemma}
 \begin{proof}
-Podobně jako v předchozí sekci, ale některé části bude potřeba trochu upravit.
+Let $0\leq x_1<\gcd(n_1,n_3), 0\leq x_2<\gcd(n_2,n_3)$ be arbitrary. For the same reasons as in the proof of Lemma \ref{M0}, we can write $$\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=\sigma_1^{u+v}\sigma_2^{v} \cdot \mu,$$
+where $0\leq u<\gcd(n_1,n_2)$ (by Lemma \ref{TFAE4}) and $0\leq v<\lcm(n_1,n_2)$. Moreover, by Lemma \ref{Tdiag4}, we have
+\begin{align*}
+\sigma_1^{u+v}\sigma_2^{v}T\cdot \mu&=\sigma_1^{u+v-1}\sigma_2^{v-1}T\cdot \mu=\dots=\sigma_1^{u+1}\sigma_2T\cdot \mu=\sigma_1^{u}T\cdot \mu\\
+&=\sum_{w=0}^{r_3-1}\sigma_1^{wn_3+u}\sigma_2^{wn_3}\cdot \mu=\sigma_1^u\cdot \mu,
+\end{align*}
+where we used the definition of $Q$ and the fact that $n_3$ is divisible by $$\gcd(n_1,n_2)=\gcd(\gcd(n_1,n_3),\gcd(n_2,n_3))$$ by Lemma \ref{TFAE4}
+The assertion now follows from the definition of $Q$, since $$u\equiv x_1-x_2 \pmod{\gcd(n_1,n_2)}.$$
 \end{proof}
 
 \begin{prop}
 We have $\mu=0.$
 \end{prop}
 \begin{proof}
-Recall that we have $\gcd(n_1,n_2)=\gcd(\gcd(n_1,n_3),\gcd(n_2,n_3))$ by Lemma \ref{TFAE4}. Using the relation $N_1\sim 0$ and Lemma \ref{M0} together with the bijection $$\{0,1,\dots,\gcd(n_1,n_2)-1\}\times \{0,1,\dots,\frac{\gcd(n_1,n_3)}{\gcd(n_1,n_2)}-1\}\to \{0,1,\dots, \gcd(n_1,n_3)-1\}$$
+Recall that we have $$\gcd(n_1,n_2)=\gcd(\gcd(n_1,n_3),\gcd(n_2,n_3))$$ by Lemma \ref{TFAE4}. Using the relation $N_1\sim 0$ and Lemma \ref{M0} together with the bijection $$\{0,1,\dots,\gcd(n_1,n_2)-1\}\times \{0,1,\dots,\frac{\gcd(n_1,n_3)}{\gcd(n_1,n_2)}-1\}\to \{0,1,\dots, \gcd(n_1,n_3)-1\}$$
 given by $(u,v)\mapsto v\cdot \gcd(n_1,n_2)+u$, we get
 \begin{align*}
 0&=N_1\cdot \mu=\sum_{w=0}^{\gcd(n_1,n_3)-1}\sigma_1^w\cdot \mu=\sum_{u=0}^{\gcd(n_1,n_2)-1}\sum_{v=0}^{\frac{\gcd(n_1,n_3)}{\gcd(n_1,n_2)}-1}\sigma_1^{ v\cdot \gcd(n_1,n_2)+u}\cdot \mu
@@ -474,7 +532,7 @@ At this moment, we are only missing all the cases with $x_3=1,x_4=0$ and some of
 \paragraph*{}
 From now on, we will write $\overline{z}:=z\pmod{r_3}$ for any $z\in\Z$, so that $\overline{z}\in\{0,1,\dots,r_3-1\}$.
 %$\uo:=r_2\pmod{r_3}$, $\vo:=r_1\pmod{r_3}$ % and similarly for other expressions
-We will also define $h$ to be the unique integer satisfying $ r_1\cdot h\equiv r_2\pmod{r_3}$ and $h\in\{0,1,\dots,r_3-1\}$ and similarly $h'$ to be the unique integer satisfying $ r_2\cdot h'\equiv r_1\pmod{r_3}$ and $h'\in\{0,1,\dots,r_3-1\}$ (both are well defined, since $\gcd(r_1,r_3)=\gcd(r_2,r_3)=1$). Clearly $h\cdot h'\equiv 1 \pmod{r_3}$.
+We will also define $h$ to be the unique integer satisfying $$r_1\cdot h\equiv r_2\pmod{r_3} \text{ and } h\in\{0,1,\dots,r_3-1\}$$ and similarly $h'$ to be the unique integer satisfying $$ r_2\cdot h'\equiv r_1\pmod{r_3} \text { and } h'\in\{0,1,\dots,r_3-1\}$$ (both are well defined, since $\gcd(r_1,r_3)=\gcd(r_2,r_3)=1$). Clearly $h\cdot h'\equiv 1 \pmod{r_3}$.
 
 \paragraph*{}
 Let $Q'$ be the quotient $\Z[G]$-module $$D^+/\big\langle \{\eta_I \big\vert \emptyset \subsetneq I \subsetneq P \}\big\rangle_{\Z[\Gal(K/\Q)]}$$
@@ -488,7 +546,7 @@ Q:=Q'/\big\langle \{\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_
 We will write $Q$ additively, denoting the class of $\eta$ by $\mu$, hence for any $\rho\in\Gal(k/\Q)$ or $\rho\in \Gal(K/Q)$, denoting the class of $\eta^{\rho}$ in $Q$ by $\rho\cdot \mu$.
 Showing that we have indeed chosen a basis now amounts to showing that $Q$ is trivial. Since $$0=\sigma_1^{x_1}\sigma_2^{x_2}N_3\cdot \mu=\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu+\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3\cdot \mu$$
 for any $x_1,x_2\in\Z$,
-this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for each $0\leq x_1<n_1, 0\leq x_2<n_2$.
+this is equivalent with showing that $\sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=0$ for each $0\leq x_1<n_1$, $0\leq x_2<n_2$.
 
 \paragraph*{}
 The conjugates with $x_3=0$ and $x_4=0$ (i.e., those of the form $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$) can be visualized as a discrete rectangle with $n_1$ rows and $n_2$ columns. Since for each $x_4$, there are $n_3$ layers of such rectangles in total, the sum $\eta^{R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{u}}$ must contain $\frac{m}{n_3}=r_3$ conjugates in each of these rectangles. We will now describe the sum of these. 
@@ -500,7 +558,7 @@ In $Q$, we have $$\sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)T\cdot \mu=0$$
 for any $x_1,x_2\in\Z$.
 \end{lemma}
 \begin{proof}
-Using the fact that every $0\leq w<m$ can be uniquely written as $un_3+v$ with $0\leq u<r_3, 0\leq v<n_3$ together with the fact that the order of $\sigma_3$ is $n_3$, we get 
+Using the fact that every $0\leq w<m$ can be uniquely written as $un_3+v$, where $0\leq u<r_3$, $0\leq v<n_3$, together with the fact that the order of $\sigma_3$ is $n_3$, we get 
 \begin{align*}
 R_4T\sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{u=0}^{r_3-1}\sigma_1^{un_3}\sigma_2^{un_3}\sigma_3^{un_3}\cdot \sum_{v=0}^{n_3-1}\sigma_1^{v}\sigma_2^{v}\sigma_3^{v}=R_4\sum_{w=0}^{m-1}\sigma_1^{w}\sigma_2^{w}\sigma_3^{w}\sim 0.
 \end{align*}
@@ -530,7 +588,7 @@ For all $0\leq u\leq n_2$, we will denote $X_u:=\sigma_1^{n_1-2}\sigma_2^{u}\cdo
 
 \begin{lemma}\label{XY}
 We have $X_q=X_{q'}$ for any $q\equiv q'\pmod {r_3}$. Moreover,
-for any $0\leq x_1<n_1, 0\leq x_2<n_2$, we have
+for any $0\leq x_1<n_1$, $0\leq x_2<n_2$, we have
 \begin{align*}
 \sigma_1^{x_1}\sigma_2^{x_2}\cdot \mu=
 \begin{cases}
@@ -586,11 +644,11 @@ Thus we have
 \!+\!\underbrace{\sigma_1^{n_1-2}\sigma_2^{u-r_2+h\cdot r_1}\cdot \!\mu}_{=X_{u-r_2+h\cdot r_1}}\!-\!\underbrace{\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}\cdot \!\mu}_{=X_u-Y_{u-r_2+1} \text{ due to } \eqref{indXY}}.
 \end{align*}
 
-Therefore $X_{u -r_2+h\cdot r_1}=X_u$. Note that $$h\cdot r_1-r_2\equiv 0 \pmod{r_3}$$ and $$h\cdot r_1-r_2\equiv -r_2\pmod{r_1}.$$ Since $\gcd(-r_2,r_1)=1$ and $n_2=r_1r_3$, this means that for all $q,q'\in\Z$ satisfying $q\equiv q'\pmod{r_3}$, there is some $w\in\Z$ such that $$q'=w(h\cdot r_1-r_2)+q \pmod{n_2}.$$ 
+Therefore $X_{u -r_2+h\cdot r_1}=X_u$. Note that $$h\cdot r_1-r_2\equiv 0 \pmod{r_3}$$ and $$h\cdot r_1-r_2\equiv -r_2\pmod{r_1}.$$ Since $\gcd(-r_2,r_1)=1$ and $n_2=r_1r_3$, this means that for all $q,q'\in\Z$ satisfying $$q\equiv q'\pmod{r_3},$$ there is some $w\in\Z$ such that $$q'=w(h\cdot r_1-r_2)+q \pmod{n_2}.$$ 
 Without loss of generality, we can assume that $w\ge 0$ (otherwise we can just swap $q$ and $q'$). But then $$X_{q}=X_{q+(h\cdot r_1-r_2)}=X_{q+2(h\cdot r_1-r_2)}=\dots=X_{q+w(h\cdot r_1-r_2)}=X_{q'}.$$
 
 \paragraph*{}
-Now for any $x_1,x_2$ satisfying $r_2 (r_3-1) \le x_1 < n_1 - 1$ and $0\le x_2 <x_2$, denoting $v = n_1 - 2 - x_1,  u = v + x_2,$
+Now for any $x_1,x_2$ satisfying $r_2 (r_3-1) \le x_1 < n_1 - 1$ and $0\le x_2 <x_2$, denoting $$v = n_1 - 2 - x_1,  u = v + x_2,$$
 we get  $0 \le v \le r_2 - 2$ and the equality (1) implies
 $$\sigma_1 ^{x_1} \sigma_2 ^{x_2} \mu = X_{n_1-2-x_1+x_2} 
 = X_{x_2-x_1-2},$$
@@ -695,7 +753,7 @@ we get
 0&= \sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_2^{x_2-uh r_1}N_1\cdot \mu\\
 &=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \left( \sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-uh r_1}\right)\cdot \mu\\
 &+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu\\
-&=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} \left( u\cdot\underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}\cdot \mu}_{=X_{x_2-uhr_1-1}-Y_{x_2-(u+1)hr_1}}+(u+1)\cdot\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-(u+1)h r_1}\cdot \mu}_{=Y_{x_2-(u+1)h r_1}}\right)+\\
+&=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} \left( u\cdot\underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}\cdot \mu}_{=X_{x_2-uhr_1-1}-Y_{x_2-(u+1)hr_1}}+(u+1)\cdot\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-(u+1)h r_1}\cdot \mu}_{=Y_{x_2-(u+1)h r_1}}\right)\\
 &+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot \underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-(r_3-1)h r_1}\cdot \mu}_{=
 X_{x_2-(r_3-1)hr_1-1}-Y_{x_2-hr_1r_3}=
 %X_{x_2-(r_3-1)hr_1-1}
