@@ -21,11 +21,12 @@ If $K$ is the genus field in the narrow sense of an abelian field $k$ and $P$ is
 Every abelian field is a subfield of some cyclotomic field.
 \end{theorem}
 \begin{proof}
-See \citep{washington1982}, page 319.
+See \citep{washington1997}, page 321.
+%\citep{washington1982}, page 319.
 \end{proof}
 
 \begin{definition}
-Let $k$ be an abelian field. The least number $n\in\mathbb{N}$ such that $k\subseteq \Q(\zeta_n)$ is called the conductor of $k$ and denoted by $\cond k$.
+Let $k$ be an abelian field. The least number $n\in\mathbb{N}$ such that $k\subseteq \Q(\zeta_n)$ is called the conductor of $k$ and denoted by $\cond(k)$.
 \end{definition}
 
 \begin{definition}
@@ -37,18 +38,23 @@ An element $\alpha$ of a totally real number field $K$ is called totally positiv
 \end{definition}
 
 \section{The group of circular numbers}
-Let $k$ be a real abelian field, $K$ its the genus field in the narrow sense, $P$ is the set of ramified primes of $k$, $K_p$ is the maximal subfield of $K$ ramified only at $p\in P$. Since $\Gal(K/\Q)$ has a natural action on $K$ (given by evaluating an automorphism on an element), this makes $K$ into a $\Z[\Gal(K/\Q)]$-module. 
+Let $k\neq \Q$ be a real abelian field, $K$ its the genus field in the narrow sense, $P\neq \emptyset$ be the set of ramified primes of $k$ and $K_p$ be the maximal subfield of $K$ ramified only at $p\in P$. Since $\Gal(K/\Q)$ has a natural action on $K$ (given by evaluating an automorphism on an element), this makes $K$ into a $\Z[\Gal(K/\Q)]$-module. 
 
 The following definition is equivalent to Lettl's modification of Sinnott's definition:
 \begin{definition}
 The group $D(k)$ of circular numbers of $k$ is given as
 $$D:=\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P \}\big\rangle_{\Z[\Gal(K/\Q)]},$$
-where $\langle \dots \rangle_{\Z[\Gal(K/\Q)]}$ means \enquote{generated as a $\Z[\Gal(K/\Q)]$-submodule of $K$} and $$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)})/\left(\prod_{i\in I}K_i)\right)\cap k}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)}\right),$$ where $\text{N}$ denotes the norm operator and the product of fields denotes their compositum. The subset of totally positive elements of $D(k)$ will be denoted by $D^+(k)$.
+where $\langle \dots \rangle_{\Z[\Gal(K/\Q)]}$ means \enquote{generated as a $\Z[\Gal(K/\Q)]$-submodule of $K$} and $$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)})/\left(\prod_{i\in I}K_i)\right)\cap k}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)}\right),$$ where $\text{N}$ denotes the norm operator and the product of fields denotes their compositum. The subgroup of totally positive elements of $D(k)$ will be denoted by $D^+(k)$.
 \end{definition}
 
 \begin{definition}
-The group $C(k)$ of circular numbers of $k$ is $E(k)\cap D$, where $E(k)$ is the group of units of the ring of algebraic integers of $k$. The subset of totally positive elements of $C(k)$ will be denoted by $C^+(k)$.
+The group $C(k)$ of circular numbers of $k$ is $E(k)\cap D(k)$, where $E(k)$ is the group of units of the ring of algebraic integers of $k$. The subgroup of totally positive elements of $C(k)$ will be denoted by $C^+(k)$.
 \end{definition}
+
+\begin{rem}
+All the generators $\eta_I$ of $D$ are totally positive, because they are defined as norms of elements from an imaginary field to a real field. Hence they are images of a product of pairs of complex conjugate automorphisms, and as such they must become positive upon fixing an embedding $\sigma:k\to \R$. On the other hand, $-1$ is not totally positive and its product with any totally positive element is also not totally positive. This shows that $$D^+(k)=\big\langle  \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/\Q)]},$$
+which is canonically isomorphic to the to torsion-free part of $D(k)$. Since $\Z$ is a principal ideal domain and $D(k)$ is finitely generated, this implies that $D^+(k)$ and consequently also $C^+(k)$ are free $\Z$-modules.
+\end{rem}
 
 In \citep{Lettl1990}, it is proven that the previous definition of $C(k)$ gives the same group as Sinnott's original definition in \citep{SinnottAb}. One of the reasons that $C(k)$ is important is the following result, due to Sinnott:
 \begin{theorem}\label{finind}
@@ -58,44 +64,56 @@ The index $[E(k):C(k)]$ is finite.
 See \citep{SinnottAb}, Theorem 4.1.
 \end{proof}
 
-\begin{lemma}\leavevmode
-%We have $$C(k)=\big\langle \{-1, \eta_I \big\vert \emptyset \subsetneq I \subseteq P, 1<|I| \}\cup\big\rangle_{\Z[\Gal(K/k)]}$$
+\begin{lemma}\leavevmode \label{units}
 \begin{enumerate}%[i)]
 \item For $|I|>1$, we have $\eta_I\in E(k)$.
-\item For $I=\{p\}$, we have $\eta_I\not\in E(k)$, but $\eta_I^{1-\sigma}\in E(k)$ for any $\sigma\in \Gal(K/\Q)$. % in the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$.
+\item For $|I|$, we have $\eta_I\not\in E(k)$, but $\eta_I^{1-\sigma}\in E(k)$ for any $\sigma\in \Gal(K/\Q)$. % in the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-This follows from \citep{SinnottAb}, Lemma 4.1. %nebo bakalářka?
+Since all $\eta_I$ are algebraic integers, it suffices to compute their absolute norm. We have 
+\begin{align*}
+\N_{\prod_{i\in I}K_i\cap k/\Q}(\eta_I)&=\N_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)})/\Q}
+(1-\zeta_{\cond\left(\prod_{i\in I}K_i\right)})\\
+&=\begin{cases}
+p & \quad \text{ if } \cond\left(\prod_{i\in I}K_i\right) \text{ is a power of a prime } p,\\
+1 & \quad \text{ otherwise } \\
+\end{cases}
+\end{align*}
+using the computation in \citep{Sedlacek2015thesis}, page 29. Now, we know that $\Q(\cond\left(\prod_{i\in I}K_i\right))$ is ramified at the same primes as $\prod_{i\in I}K_i$ (this follows from the fact that the intersection of cyclotomic fields is again a cyclotomic field), hence $\N_{\prod_{i\in I}K_i\cap k/\Q}(\eta_I)=1$ iff $|I|>1$. Moreover, for any $I$ and any $\sigma\in \Gal(K/\Q)$, we have $\N_{\prod_{i\in I}K_i\cap k/\Q}(\eta_I)=\N_{\prod_{i\in I}K_i\cap k/\Q}(\sigma(\eta_I))$, hence $\N_{\prod_{i\in I}K_i\cap k/\Q}(\eta_I^{1-\sigma})=1$, which proves the rest of the assertion.
+%This follows from \citep{SinnottAb}, Lemma 4.1. %nebo bakalářka?
 \end{proof}
 
 \begin{cor}
-We have $$C(k)=\big\langle \{ -1, \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
+We have $$C(k)=\big\langle \{ -1, \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}$$
+and
+$$C^+(k)=\big\langle \{ \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
 \end{cor}
 
-The next result shows that $D^+(k)$ and $C^+(k)$ are non-torsion, hence free $\Z$-modules.
-\begin{lemma}\label{torsion}
-$D^+(k)$ is a subgroup of $D(k)$ given as $$D^+(k)=\big\langle  \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/\Q)]},$$
-hence canonically isomorphic to the non-torsion part of $D(k)$. Similarly, $C^+(k)$ is a subgroup of $C(k)$ given as $$C^+(k)=\big\langle \{ \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
-\end{lemma}
-\begin{proof}
-\end{proof}
+%The next result shows that $D^+(k)$ and $C^+(k)$ are non-torsion, hence free $\Z$-modules.
+%\begin{lemma}\label{torsion}
+%$D^+(k)$ is a subgroup of $D(k)$ given as $$D^+(k)=\big\langle  \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/\Q)]},$$
+%hence canonically isomorphic to the non-torsion part of $D(k)$. Similarly, $C^+(k)$ is a subgroup of $C(k)$ given as $$C^+(k)=\big\langle \{ \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
+%\end{lemma}
+%\begin{proof}
+%\end{proof}
 
 \begin{prop}\label{Drank}
 The $\Z$-rank of $D^+(k)$ is $[k:\Q]+|P|-1$ and the $\Z$-rank of $C^+(k)$ is $[k:\Q]-1$.
 \end{prop}
 \begin{proof}
-By Dirichlet's unit theorem, the $\Z$-rank of $E(k)$ is $[k:\Q]-1$, since all the embeddings of $k$ are real. Since the index $[E(k):C(k)]$ is finite by Theorem \ref{finind},  the $\Z$-rank of $C(k)$ must be $[k:\Q]-1$ as well. Because $C(k)$ is finitely generated, its torsion subgroup is finite, hence the $\Z$-rank of $C^+(k)$, which is isomorphic to the non-torsion part of $C(k)$ by Lemma \ref{torsion}, must also be $[k:\Q]-1$.
+By Dirichlet's unit theorem, the $\Z$-rank of $E(k)$ is $[k:\Q]-1$, since all the embeddings of $k$ are real. Since the index $[E(k):C(k)]$ is finite by Theorem \ref{finind},  the $\Z$-rank of $C(k)$ must be $[k:\Q]-1$ as well. Since $C^+(k)$ is isomorphic to the torsion-free part of $C(k)$, its $\Z$-rank must also be $[k:\Q]-1$
+%Because $C(k)$ is finitely generated, its torsion subgroup is finite, hence the $\Z$-rank of $C^+(k)$, which is isomorphic to the non-torsion part of $C(k)$ by Lemma \ref{torsion}, must also be $[k:\Q]-1$.
 
-Now consider the quotient module $D^+(k)/C^+(k)$. By Lemma \ref{torsion}, it is generated as a $\Z$-module by the images of $\eta_I$ for $|I|=1$, hence it has exactly $|P|$ generators. Since the absolute norm of $\eta_I$ is the power of the prime lying in $|I|$%odkaz na bakalářku?
-, the elements $\eta_I$ are multiplicatively independent (any nontrivial relation between them would give us a nontrivial multiplicative relation between powers of different primes, which is not possible). Moreover, since the absolute norm of all elements in $C^+$ is $1$, the images of $\eta_I$ remain multiplicatively independent in $D^+(k)/C^+(k)$. Thefore this quotient module has $\Z$-rank $|P|$, which implies that the $\Z$-rank of $D^+$ is $[k:\Q]+|P|-1$ by the first part.
+Now consider the quotient module $D^+(k)/C^+(k)$. By Lemma \ref{units}, it is generated as a $\Z$-module by the images of $\eta_I$ for $|I|=1$, hence it has exactly $|P|$ generators. Since the absolute norm of $\eta_{\{p\}}$ is a power of $p$%odkaz na bakalářku?
+, the elements $\eta_I$ with $|I|=1$ are multiplicatively independent (any nontrivial relation between them would give us a nontrivial multiplicative relation between powers of different primes, which is not possible). Moreover, since the absolute norm of all elements in $C^+$ is $1$, the images of $\eta_I$ remain multiplicatively independent in $D^+(k)/C^+(k)$. Thefore this quotient module has $\Z$-rank $|P|$, which implies that the $\Z$-rank of $D^+$ is $[k:\Q]+|P|-1$ by the first part.
 \end{proof}
 
 \section{Notation and assumptions}
-In the remainder of the thesis, we will fix $k$ to be a real abelian field with exactly four ramified primes $p_1,p_2,p_3,p_4$ and we will abbreviate $D(k),D^{+}(k),C(k),C^+(k)$ simply as $D,D^{+},C,C^+$.
-\paragraph*{}
+In the remainder of the thesis, we will fix $k$ to be a real abelian field with exactly four ramified primes $p_1,p_2,p_3,p_4$ and we will abbreviate $D(k),D^{+}(k),C(k),C^+(k)$ simply as $D,D^{+},C,C^+$. We will alsso use the convention that whenever any of the indices $i,j,l,h$ appear on the same line, they are pairwise distinct and moreover $1\leq i,j,l,h\leq 4$, unless stated otherwise. Finally, for any $n\in \Nbb$, $\zeta_n$ will denote a primitive $n$-th root of unity (WLOG we can take $\zeta_n=e^{2\pi i/n}$). 
 
- Let $K$ be the genus field in the narrow sense of $k$ and let $G:=\Gal(K/\Q)$. Then by Lemma \ref{genus}, we can identify $G$ with the direct product $T_1\times T_2\times T_3\times T_4$, where $T_i$ is the inertia group corresponding the ramified prime $p_i$. Next, we will define:
+\paragraph*{}
+Let $K$ be the genus field in the narrow sense of $k$ and let $G:=\Gal(K/\Q)$. Then by Lemma \ref{genus}, we can identify $G$ with the direct product $T_1\times T_2\times T_3\times T_4$, where $T_i$ is the inertia group corresponding the ramified prime $p_i$. Next, we will define:
 
 \begin{itemize}
 \item $H:=\Gal(K/k)$, 
@@ -111,10 +129,13 @@ In the remainder of the thesis, we will fix $k$ to be a real abelian field with 
 
 We will assume the following: \label{assum}
 \begin{itemize}
-\item $K\neq k$,
+%\item $K\neq k$,
 \item $H$ is cyclic, generated by $\tau$,
 \item each $T_i$ is cyclic, generated by $\sigma_i$.
 \end{itemize}
+%\begin{rem}
+Note that the second assumption isn't very restrictive, as it is automatically true for example if all the ramified primes of $k$ are odd (because $T_i\cong \Gal(K_i/\Q)$ is a quotient of the Galois group $\Gal(\Q(\zeta_{\cond{K_i}})/\Q)\cong (\Z/p_i^e\Z)^{\times}$ for some $e\in\Nbb$).
+%\end{rem}
 
 \section{Auxiliary results}
 \begin{lemma}\label{tau}
