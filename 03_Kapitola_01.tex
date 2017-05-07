@@ -7,16 +7,6 @@
 An \textit{abelian field} is a finite Galois extension of $\Q$ with an abelian Galois group. 
 \end{definition}
 
-\begin{definition}
-The \textit{genus field in the narrow sense} of an abelian field is its maximal extension which is abelian over $\Q$ and unramified at all finite primes. %In this thesis, we will just call it the \textit{genus field}.
-\end{definition}
-
-\begin{lemma}\label{genus}
-If $K$ is the genus field in the narrow sense of an abelian field $k$ and $P$ is the set of ramified primes of $k$, we have $\Gal(K/\Q)\cong \prod_{p\in P} T_p$, where $T_p$ is the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$.
-\end{lemma}
-\begin{proof}
-\end{proof}
-
 \begin{theorem}[Kronecker-Weber]
 Every abelian field is a subfield of some cyclotomic field.
 \end{theorem}
@@ -28,6 +18,79 @@ See \citep{washington1997}, page 321.
 \begin{definition}
 Let $k$ be an abelian field. The least number $n\in\mathbb{N}$ such that $k\subseteq \Q(\zeta_n)$ is called the conductor of $k$ and denoted by $\cond(k)$.
 \end{definition}
+
+\begin{definition}\label{genusdef}
+The \textit{genus field in the narrow sense} of an abelian field is its maximal extension which is abelian over $\Q$ and unramified at all finite primes.
+\end{definition}
+
+Because Definition \ref{genusdef} is not constructive, it will prove useful to have an alternate characterization. % of the genus field in the narrow sense.
+\begin{lemma}\label{genus}
+Let $k\subseteq K$ be abelian fields, $P$ be the set of ramified primes of $k$ and for any $p\in P$, let $e_p$ be ramification index of $p$ in $k$ and let $T_p$ be the inertia subgroup of $\Gal(K/\Q)$ corresponding to p. Assume that all the inertia subgroups of $\Gal(K/\Q)$ are cyclic and for any $p\in P$, let $K_p$ be the unique abelian field of degree $[K_p:\Q]=e_p$ ramified only at $p$. Then the following are equivalent (the products denote the composita of fields):
+\begin{enumerate}%[label={\upshape(\roman*)}]
+\item $K$ is the genus field in the narrow sense of $k$ (using Definition \ref{genusdef}),
+\item $K=\prod_{p\in P} K_p$,
+\item $K=k\prod_{p\in P\setminus \{q\}} K_p$ for any $q\in P$,
+\item $\Gal(K/\Q)\cong \prod_{p\in P} T_p$ and $$T_p=\Gal\left(K/\prod_{q\in P\setminus\{p\}}K_p\right)\cong \Gal\left(k/k\cap\prod_{q\in P\setminus\{p\}}K_p\right)\cong \Gal(K_p/\Q)$$ for any $p\in P$.
+\item For any $p\in P$, $K_p$ is the maximal subfield of $K$ ramified only at $p$.
+\end{enumerate}
+% $K$ is the genus field in the narrow sense of an abelian field $k$ and $P$ is the set of ramified primes of $k$, we have $\Gal(K/\Q)\cong \prod_{p\in P} T_p$, where $T_p$ is the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$.
+\end{lemma}
+\begin{proof}
+The lemma %whole equivalence \enquote{(i) $\Leftrightarrow$ (ii) $\Leftrightarrow$ (iii)} 
+is well known and follows from the isomorphism of the lattice of all abelian fields and the lattice of all finite subgroups of the group of all Dirichlet characters. More specifically, Theorem 3.5 from \citep{washington1997}, page 24 %or 23 in 1st ed
+is used here. We will briefly outline at least some of the implications that do not use Dirichlet characters directly.
+
+\begin{DESCRIPTION}%[labelindent=0cm]
+\item[\enquote{(ii)+(iii) $\Leftrightarrow$ (iv)}:] This follows by elementary Galois theory, since $K_p\cap K_q=\Q$ for any $p,q\in P$.
+\item[\enquote{(ii) $\Leftrightarrow$ (v)}:] This is clear from the definition of ramification.
+\item[\enquote{(i) $\Rightarrow$ (iii)}:] Let $q\in P$ be fixed.
+The extension $K/\prod_{p\in P\setminus\{q\}}K_p$ is totally ramified at the prime ideals above $q$, so the same must be true for the extension $$K/k\prod_{p\in P\setminus\{q\}}K_p.$$ But since the extension $K/k$ is unramified by the definition of $K$, so is $K/k\prod_{p\in P\setminus\{q\}}K_p$. Therefore $[K:k\prod_{p\in P\setminus\{q\}}K_p]=1$.
+\begin{center}
+\begin{tikzpicture}
+  \node (a) at (0,4)  {$K$};
+  \node (b) at (0,2)  {$k\prod_{p\in P\setminus\{q\}}K_p$};
+  \node (c) at (-3,1)  {$k$};
+  \node (d) at (3.5,1)  {$\prod_{p\in P\setminus\{q\}}K_p$};
+  \draw[transform canvas={xshift=-1.5pt}] (a) -- (b);
+  \draw[transform canvas={xshift=1.5pt}] (b) -- (a);
+  \draw   (b) --  (c)
+   (b) -- (d);
+  \draw[bend left](c) to node [above , sloped]{\text{unramified}}(a);
+  \draw[bend right](d) to node [above , sloped]{\text{totally ramified above $q$}}(a);
+\end{tikzpicture}
+\end{center}
+\end{DESCRIPTION}
+\end{proof}
+
+\begin{rem}
+Note that for any $p\in P$, the field $K_p$ in the statement of Lemma \ref{genus} is really determined uniquely, because
+ by the ramification requirement, it must be a subfield of the cyclotomic field $\Q(\zeta_{p^f})$ for some $f\in\Nbb$, whose absolute Galois group is isomorphic to $(\Z/p^f\Z)^{\times}$, which is cyclic iff $p\geq 3$ or $f\leq 2$, and cyclic groups have at exactly one quotient group of any possible order. The assumption of the cyclicity of all inertia groups in the statement of the lemma is thus not required for $p\geq 3$ or $f\leq 2$, and can be also be removed for the other cases (but then there are three possible choices for $K_2$, so we must slightly change the statement).
+\end{rem}
+
+\iffalse
+\begin{lemma}\label{comp}
+We have $kK_iK_jK_l=K$ and $K_1K_2K_3K_4=K$.
+\end{lemma}
+\begin{proof}
+The extension $K/K_iK_jK_l$ is totally ramified at the prime ideals above $p_h$, so the same must be true for the extension $K/kK_iK_jK_l$. But since the extension $K/k$ is unramified (by the definition of $K$), so is $K/kK_iK_jK_l$. Therefore $[K:kK_iK_jK_l]=1$. The second claim follows from the facts %$\Gal(K_i/\Q)\cong$
+$T_i=\Gal(K/K_jK_lK_h)$ and $G=T_1\times T_2\times T_3\times T_4$.
+\end{proof}
+\begin{center}
+\begin{tikzpicture}
+  \node (a) at (0,4)  {$K$};
+  \node (b) at (0,2)  {$kK_iK_jK_l$};
+  \node (c) at (-3,1)  {$k$};
+  \node (d) at (3,1)  {$K_iK_jK_l$};
+  \draw[transform canvas={xshift=-1.5pt}] (a) -- (b);
+  \draw[transform canvas={xshift=1.5pt}] (b) -- (a);
+  \draw   (b) --  (c)
+   (b) -- (d);
+  \draw[bend left](c) to node [above , sloped]{\text{unramified}}(a);
+  \draw[bend right](d) to node [above , sloped]{\text{totally ramified above $p_h$}}(a);
+\end{tikzpicture}
+\end{center}
+\fi
+
 
 \begin{definition}
 Let $G$ be any group. The (integral) \textit{group ring} $\Z[G]$ is the free $\Z$-module with basis $G$, which is made into a ring, extending linearly the group law on $G$.
@@ -90,14 +153,6 @@ and
 $$C^+(k)=\big\langle \{ \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
 \end{cor}
 
-%The next result shows that $D^+(k)$ and $C^+(k)$ are non-torsion, hence free $\Z$-modules.
-%\begin{lemma}\label{torsion}
-%$D^+(k)$ is a subgroup of $D(k)$ given as $$D^+(k)=\big\langle  \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/\Q)]},$$
-%hence canonically isomorphic to the non-torsion part of $D(k)$. Similarly, $C^+(k)$ is a subgroup of $C(k)$ given as $$C^+(k)=\big\langle \{ \eta_I \big\vert I \subseteq P,  |I|\geq 2\} \cup \{\eta_I^{1-\sigma} \big\vert |I|=1, \sigma\in \Gal(K/\Q))\}\big\rangle_{\Z[\Gal(K/\Q]}.$$
-%\end{lemma}
-%\begin{proof}
-%\end{proof}
-
 \begin{prop}\label{Drank}
 The $\Z$-rank of $D^+(k)$ is $[k:\Q]+|P|-1$ and the $\Z$-rank of $C^+(k)$ is $[k:\Q]-1$.
 \end{prop}
@@ -124,7 +179,7 @@ Let $K$ be the genus field in the narrow sense of $k$ and let $G:=\Gal(K/\Q)$. T
 \item $s_{ij}:=|H\cap \ker (\pi_i\pi_j)|$,
 \item $n_i:=\frac{m}{r_i}$,
 \item $\eta:=\eta_{\{1234\}}$,
-\item $K_i$ as the maximal subfield of $K$ ramified only at $p_i$ (so that $$T_i=\Gal(K/K_jK_lK_h)\cong \Gal(K_i/\Q).)$$
+\item $K_i$ as the maximal subfield of $K$ ramified only at $p_i$ (so that $$T_i=\Gal(K/K_jK_lK_h)\cong \Gal(K_i/\Q)$$ by Lemma \ref{genus}.)
 \end{itemize}
 
 We will assume the following: \label{assum}
@@ -146,31 +201,10 @@ We know that $a_i=[T_i:\pi_i(H)]$, hence
 $\pi_i(\tau)$ generates a subgroup of $T_i$ of index $a_i$. The cyclicity of $T_i$ then implies that $\pi_i(\tau)$ must be the $a_i$-th power of some generator of $T_i$, WLOG $\sigma_i$. The statement now follows, because $\tau$ is determined by its four projections.
 \end{proof}
 
-\begin{lemma}\label{comp}
-We have $kK_iK_jK_l=K$ and $K_1K_2K_3K_4=K$.
-\end{lemma}
-\begin{proof}
-The extension $K/K_iK_jK_l$ is totally ramified at the prime ideals above $p_h$, so the same must be true for the extension $K/kK_iK_jK_l$. But since the extension $K/k$ is unramified (by the definition of $K$), so is $K/kK_iK_jK_l$. Therefore $[K:kK_iK_jK_l]=1$. The second claim follows from the facts %$\Gal(K_i/\Q)\cong$
-$T_i=\Gal(K/K_jK_lK_h)$ and $G=T_1\times T_2\times T_3\times T_4$.
-\end{proof}
-\begin{center}
-\begin{tikzpicture}
-  \node (a) at (0,4)  {$K$};
-  \node (b) at (0,2)  {$kK_iK_jK_l$};
-  \node (c) at (-3,1)  {$k$};
-  \node (d) at (3,1)  {$K_iK_jK_l$};
-  \draw[transform canvas={xshift=-1.5pt}] (a) -- (b);
-  \draw[transform canvas={xshift=1.5pt}] (b) -- (a);
-  \draw   (b) --  (c)
-   (b) -- (d);
-  \draw[bend left](c) to node [above , sloped]{\text{unramified}}(a);
-  \draw[bend right](d) to node [above , sloped]{\text{totally ramified above $p_h$}}(a);
-\end{tikzpicture}
-\end{center}
 %Přidat zvláštní lemma o Galoisových grupách K_iK_jK_l/K_i a podobně kvůli čitelnosti?
 
 \begin{prop}\label{degrees}
-We have $a_i=[k\cap K_i:\Q]$, $r_i=[K:kK_i]$, $|T_i|=a_in_i$,  $s_{ij}=[K:kK_iK_j]$. Also $[K_i:k\cap K_i]=n_i$, $[K_iK_j:k\cap K_iK_j]=\frac{m}{s_{ij}}$ and $[K_iK_jK_l:k\cap K_iK_jK_l]=m$.
+We have $$a_i=[k\cap K_i:\Q],$$ $$r_i=[K:kK_i],$$ $$|T_i|=a_in_i,$$ $$s_{ij}=[K:kK_iK_j],$$ $$[K_i:k\cap K_i]=n_i,$$ $$[K_iK_j:k\cap K_iK_j]=\frac{m}{s_{ij}}$$ and $$[K_iK_jK_l:k\cap K_iK_jK_l]=m.$$
 \end{prop}
 \begin{proof}
 Since
@@ -210,9 +244,9 @@ to conclude that $|\pi_i\pi_j(H)|=\frac{m}{s_{ij}}$ and
 \end{equation*}
 Then it follows that 
 $$[K:kK_iK_j]=\frac{|\Gal(K/k)|}{|\Gal(kK_iK_j/k)|}=\frac{|H|}{|\Gal(K_iK_j/k\cap K_iK_j)|}=\frac{m}{|\pi_i\pi_j(H)|}=s_{ij}.$$
-The last part of the statement is a consequence of Lemma \ref{comp}, since we have $$\Gal(K_iK_jK_l/k\cap K_iK_jK_l)\cong \Gal(kK_iK_jK_l/k)=\Gal(K/k)=H.$$
+The last part of the statement is a consequence of Lemma \ref{genus}, since we have $$\Gal(K_iK_jK_l/k\cap K_iK_jK_l)\cong \Gal(kK_iK_jK_l/k)=\Gal(K/k)=H.$$
 Finally note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l(H)\cong \frac{H}{H\cap T_h}\cong H$$
-(since Lemma \ref{comp} implies that $|H\cap T_h|=1$).
+(since Lemma \ref{genus} implies that $|H\cap T_h|=1$).
 %Finally note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l(H)\cong \Gal(K_iK_jK_l/k\cap K_iK_jK_l).$$
 \end{proof}
 \begin{center}
@@ -250,7 +284,7 @@ Finally note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l
 \end{center}
 
 \begin{cor}\label{compcap}
-We have $[k\cap K_iK_j:\Q]=a_ia_j\frac{m}{r_ir_j}s_{ij}$, $[k\cap K_iK_jK_l:\Q]=a_ia_ja_l\frac{m^2}{r_ir_jr_l}$ and $[k:\Q]=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}$.
+We have $$[k\cap K_iK_j:\Q]=a_ia_j\frac{m}{r_ir_j}s_{ij},$$ $$[k\cap K_iK_jK_l:\Q]=a_ia_ja_l\frac{m^2}{r_ir_jr_l}$$ and $$[k:\Q]=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}.$$
 \end{cor}
 \begin{proof}
 This follows from the computations
@@ -271,7 +305,7 @@ a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}.
 \begin{lemma}\label{coprime}
 We have 
 
-$$s_{ij}=\gcd(r_i,r_j), \gcd(r_i,r_j,r_l)=1, \lcm\left(n_i,n_j,n_l\right)=m \text{ and } s_{ij}\frac{m}{r_ir_j}=\gcd(n_i,n_j).$$ %(this is also equivalent to $\lcm\left(n_i,n_j,n_l\right)=m$ and to $\gcd(s_{ij},r_l)=1$) 
+$$s_{ij}=\gcd(r_i,r_j),$$ $$\gcd(r_i,r_j,r_l)=1,$$ $$\lcm\left(n_i,n_j,n_l\right)=m$$ and $$s_{ij}\frac{m}{r_ir_j}=\gcd(n_i,n_j).$$
 \end{lemma}
 \begin{proof}
 It follows from Proposition \ref{degrees} that $s_{ij}\mid r_i, s_{ij}\mid r_j$ and from its proof that $$|\pi_i(H)|=n_i, \quad |\pi_i\pi_j(H)|=\frac{m}{s_{ij}} \text{ and } |\pi_i\pi_j\pi_l(H)|=m.$$ The cyclicity of $H$ then implies
@@ -298,15 +332,8 @@ We have
 where each automorphism of $k$ determines the quadruple $(x_1,x_2,x_3,x_4)$ uniquely.
 \end{prop}
 \begin{proof}
-First note that by Lemma \ref{coprime}, we have $$a_3\frac{m}{r_3r_4}s_{34}=a_3\gcd(n_3,n_4)\in\Nbb$$ and $$a_2\frac{m}{r_2s_{34}}=a_2\lcm(r_3,r_4)\frac{m}{r_2r_3r_4}\in\Nbb$$ (this follows from $r_i\mid m$ and $\gcd(r_2,r_3,r_4)=1$), so the expressions make sense. By Corollary \ref{compcap}, the set on the right hand side has at most $|\Gal(k/\Qbb)|$ elements. Now let $\rho$ be any automorphism of $k$. If we can show that $\rho$ determines the quadruple $(x_1,x_2,x_3,x_4)$ belonging to the set on the right hand side uniquely, it will follow that the cardinalities agree and we will be done. Since $\Gal(k\cap K_4/\Q)$ is a cyclic group of order $a_4$ (by Lemma \ref{degrees}) generated by $\restr{\sigma_4}{k\cap K_4}$ (as a quotient of $\Gal(K_4/\Q)=\langle \restr{\sigma_4}{K_4}\rangle$), there must exist a unique $x_4\in \Z$, $0\leq x_4<a_4$ such that $\rho$ and $\sigma_4^{x_4}$ have the same restrictions to $k\cap K_4$. Therefore $\rho\restr{\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_4)$. 
+First note that by Lemma \ref{coprime}, we have $$a_3\frac{m}{r_3r_4}s_{34}=a_3\gcd(n_3,n_4)\in\Nbb$$ and $$a_2\frac{m}{r_2s_{34}}=a_2\lcm(r_3,r_4)\frac{m}{r_2r_3r_4}\in\Nbb$$ (this follows from $r_i\mid m$ and $\gcd(r_2,r_3,r_4)=1$), so the expressions make sense. By Corollary \ref{compcap}, the set on the right hand side has at most $|\Gal(k/\Qbb)|$ elements. Now let $\rho$ be any automorphism of $k$. If we can show that $\rho$ determines the quadruple $(x_1,x_2,x_3,x_4)$ belonging to the set on the right hand side uniquely, it will follow that the cardinalities agree and we will be done.
 
-Next, $\Gal(k\cap K_3K_4/k\cap K_4)$ is a cyclic group of order $\frac{[k\cap K_3K_4:\Q]}{[k\cap K_4:\Q]}=a_3\frac{m}{r_3r_4}s_{34}$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_3}{k\cap K_3K_4}$ (as it is isomorphic by restriction to $$\Gal((k\cap K_3K_4)K_4 / K_4),$$ which is a quotient of $\Gal(K_3K_4/K_4)=\langle \restr{\sigma_3}{K_3K_4}\rangle$), so there must exist a unique $x_3\in \Z$, $0\leq x_3<a_3\frac{m}{r_3r_4}s_{34}$ such that $\rho \restr{\sigma_4^{-x_4}}{k}$ and $\sigma_3^{x_3}$ have the same restriction to $k\cap K_3K_4$. Therefore $\restr{\rho\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_3K_4)$.
-
-Following the pattern, $\Gal(k\cap K_2K_3K_4/k\cap K_3K_4)$ is a cyclic group of order 
-$$\frac{[k\cap K_2K_3K_4:\Q]}{[k\cap K_3K_4:\Q]}=a_2\frac{m}{r_2s_{34}}$$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_2}{k\cap K_2K_3K_4}$ (as it is isomorphic by restriction to $$\Gal((k\cap K_2K_3K_4)K_3K_4 / K_3K_4),$$ which is a quotient of $$\Gal(K_2K_3K_4/K_3K_4)=\langle \restr{\sigma_2}{K_2K_3K_4}\rangle),$$ so there must exist a unique $x_2\in \Z$, $0\leq x_2<a_2\frac{m}{r_2s_{34}}$ such that $\rho\restr{\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_2^{x_2}$ have the same restriction to $k\cap K_2K_3K_4$. Therefore $\restr{\rho\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_2K_3K_4)$.
-
-Finally, we have $$\Gal(k/k\cap K_2K_3K_4)\cong \Gal(kK_2K_3K_4/K_2K_3K_4)=\Gal(K_1K_2K_3K_4/K_2K_3K_4)=\langle\sigma_1\rangle$$
-(using Lemma \ref{comp}), where the isomorphism is given by restriction. Since the order of $\sigma_1$ is $a_1\frac{m}{r_1}$, it follows that there must exist a unique $x_1\in \Z$, $0\leq x_1<a_1\frac{m}{r_1}$ such that $\rho\restr{\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_1^{x_1}$ have the same restriction to $k$. Thus $\rho=\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k}$ and the proof is finished.
 \begin{center}
 \begin{tikzpicture}
   \node (a) at (0,4)  {$K_1K_2K_3K_4=K$};
@@ -325,6 +352,17 @@ Finally, we have $$\Gal(k/k\cap K_2K_3K_4)\cong \Gal(kK_2K_3K_4/K_2K_3K_4)=\Gal(
   (g) -- (h);
 \end{tikzpicture}
 \end{center}
+
+Since $\Gal(k\cap K_4/\Q)$ is a cyclic group of order $a_4$ (by Lemma \ref{degrees}) generated by $\restr{\sigma_4}{k\cap K_4}$ (as a quotient of $\Gal(K_4/\Q)=\langle \restr{\sigma_4}{K_4}\rangle$), there must exist a unique $x_4\in \Z$, $0\leq x_4<a_4$ such that $\rho$ and $\sigma_4^{x_4}$ have the same restrictions to $k\cap K_4$. Therefore $\rho\restr{\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_4)$. 
+
+Next, $\Gal(k\cap K_3K_4/k\cap K_4)$ is a cyclic group of order $\frac{[k\cap K_3K_4:\Q]}{[k\cap K_4:\Q]}=a_3\frac{m}{r_3r_4}s_{34}$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_3}{k\cap K_3K_4}$ (as it is isomorphic by restriction to $$\Gal((k\cap K_3K_4)K_4 / K_4),$$ which is a quotient of $\Gal(K_3K_4/K_4)=\langle \restr{\sigma_3}{K_3K_4}\rangle$), so there must exist a unique $x_3\in \Z$, $0\leq x_3<a_3\frac{m}{r_3r_4}s_{34}$ such that $\rho \restr{\sigma_4^{-x_4}}{k}$ and $\sigma_3^{x_3}$ have the same restriction to $k\cap K_3K_4$. Therefore $\restr{\rho\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_3K_4)$.
+
+Following the pattern, $\Gal(k\cap K_2K_3K_4/k\cap K_3K_4)$ is a cyclic group of order 
+$$\frac{[k\cap K_2K_3K_4:\Q]}{[k\cap K_3K_4:\Q]}=a_2\frac{m}{r_2s_{34}}$$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_2}{k\cap K_2K_3K_4}$ (as it is isomorphic by restriction to $$\Gal((k\cap K_2K_3K_4)K_3K_4 / K_3K_4),$$ which is a quotient of $$\Gal(K_2K_3K_4/K_3K_4)=\langle \restr{\sigma_2}{K_2K_3K_4}\rangle),$$ so there must exist a unique $x_2\in \Z$, $0\leq x_2<a_2\frac{m}{r_2s_{34}}$ such that $\rho\restr{\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_2^{x_2}$ have the same restriction to $k\cap K_2K_3K_4$. Therefore $\restr{\rho\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_2K_3K_4)$.
+
+Finally, we have $$\Gal(k/k\cap K_2K_3K_4)\cong \Gal(kK_2K_3K_4/K_2K_3K_4)=\Gal(K_1K_2K_3K_4/K_2K_3K_4)=\langle\sigma_1\rangle$$
+(using Lemma \ref{genus}), where the isomorphism is given by restriction. Since the order of $\sigma_1$ is $a_1\frac{m}{r_1}$, it follows that there must exist a unique $x_1\in \Z$, $0\leq x_1<a_1\frac{m}{r_1}$ such that $\rho\restr{\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_1^{x_1}$ have the same restriction to $k$. Thus $\rho=\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k}$ and the proof is finished.
+
 \end{proof}
 
 %\subsection{Odstavec}

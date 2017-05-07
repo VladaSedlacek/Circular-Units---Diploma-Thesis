@@ -16,7 +16,7 @@
 %Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of the group of circular units). Such a basis is known only in a few very special cases though. We would like to construct it for general abelian fields as well, based only on the number of ramified primes.
 %\paragraph*{}
 Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of $C^+$). The generators of $D^+$ are subject to norm relations that correspond to the sum of all elements of the respective inertia groups $T_i$. Namely, let $$R_i=\sum_{u=0}^{a_i-1}\sigma_i^u,\, N_i=\sum_{u=0}^{n_i-1}\sigma_i^{ua_i}.$$ 
-Then the norm operator from $K$ to $K_jK_lK_h$ can be given as $R_iN_i$, because both are equal to the sum of all elements from $T_i$. Moreover, Lemma \ref{comp} implies that $$\Gal(k/k\cap K_1K_2K_3)\cong \Gal(K/ K_1K_2K_3)=T_i,$$
+Then the norm operator from $K$ to $K_jK_lK_h$ can be given as $R_iN_i$, because both are equal to the sum of all elements from $T_i$. Moreover, Lemma \ref{genus} implies that $$\Gal(k/k\cap K_1K_2K_3)\cong \Gal(K/ K_1K_2K_3)=T_i,$$
 where the first isomorphism is given by restriction, hence $R_iN_i$ also acts as the norm operator from $k$ to $k\cap K_1K_2K_3$.
 %Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e. the sum of all elements of $T_i$). 
 If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have (using Lemma \ref{tau}) $$N_4\equiv \sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}.$$ Note that any subgroup of $k^*$ is naturally a $\Z[G/H]$-module, since the action of $H$ on $k$ is trivial.
@@ -27,7 +27,30 @@ Moreover, we will denote the congruence corresponding to the composition of cano
 The fields $$k\cap K_1K_2K_3,k\cap K_1K_2K_4,k\cap K_1K_3K_4,k\cap K_2K_3K_4$$ satisfy the assumptions of \citep{Kucera2016}.
 \end{lemma}
 \begin{proof}
-It's clear that these fields are all real, abelian (their Galois groups are quotients of $G$) and ramified at three primes.\dots
+It's clear that these fields are all real, abelian (their absolute Galois groups are quotients of $G$) and ramified at three primes. By symmetry, it suffices to prove the rest of the statement only for the field $k':=k\cap K_1K_2K_3$.
+
+Now let $K'$ be the genus field of $k'$, and for any $i\in\{1,2,3\}$, let $K'_i$ be the maximal subfield of $K'$ ramified only at $p_i$ and $T_i'$ be the inertia subgroup of $\Gal(K'/\Q)$ corresponding to $p_i$
+%Now fix $i,j,l$ (where $\{i,j,l,h \}=\{1,2,3,4\}$, as usual) and let $k'=k\cap K_iK_jK_l$, $K'$ be the genus field of $k'$, $K'_i$ be the maximal subfield of $K'$ ramified only at $p_i$ and $T_i'$ be the inertia subgroup of $\Gal(K'/\Q)$ corresponding to $p_i$. 
+Then by Lemma \ref{genus}, we have $K_i'\subseteq K_i$ (using the alternate characterization of $K_i$), hence $T'_i\cong \Gal(K_i'/\Q)$ is isomorphic to a quotient of the cyclic group $\Gal(K/\Q)\cong T_i$, so it must also be cyclic.
+
+Finally note that by Lemma \ref{genus}, we have $K'=K_1'K_2'K_3'\subseteq K_1K_2K_3$ and $kK_1K_2K_3=K$, hence $\Gal(K'/k')=\Gal(K_1'K_2'K_3'/k\cap K_1K_2K_3)$ is a quotient of $$\Gal(K_1K_2K_3/k\cap K_1K_2K_3)\cong \Gal(K/k),$$
+which is cyclic. This concludes the proof.
+
+\begin{center}
+\begin{tikzpicture}
+  \node (a) at (0,2)  {$K=kK_1K_2K_3$};
+  \node (c) at (-2,-1)  {$k$};
+  \node (d) at (2,0)  {$K_1K_2K_3$};
+  \node (g) at (2,-2)  {$K'=K_1'K_2'K_3'$};
+  \node (e) at (0,-4)  {$k'=k\cap K_1K_2K_3$};
+  \node (f) at (0,-6)  {$\Q$};
+\draw   (a) -- (c) -- (e) -- (g) -- (d) -- (a)
+  (e) -- (f);
+%  \draw   (a) -- node [above left]{} (c) -- (e) -- (g) -- node [below right ]{} (d) -- node [above right]{} (a)
+%  (e) -- node [left]{}{} (f);
+\end{tikzpicture}
+\end{center}
+
 \end{proof}
 
 Using the results in \citep{Kucera2016}, we can thus take the bases of $$D^+(k\cap K_1K_2K_3),D^+(k\cap K_1K_2K_4),D^+(k\cap K_1K_3K_4),D^+(k\cap K_2K_3K_4)$$
@@ -789,7 +812,7 @@ since $\beta=0$ by Lemma \ref{AB}.
 \end{proof}
 
 \paragraph*{}
-Since $\beta,\Gamma_q$ and $\Delta$ are linear combinations of the $X_u$, they can be written as $\sum_{c=0}^{r_3-1}c_uX_u$, and thus correspond to the $r_3$-tuples of integer coefficients $(c_1,c_2,\dots,c_{r_3})$. Using this correspondence, we will now construct a matrix $M$ of size $r_3\times r_3$ (indexing its dimensions from $0$ to $r_3-1$) as follows:
+For any linear combination of the $X_u$'s, we can take the indices of all $X_u$ in the set $\{0,1,\dots,r_3-1\}$ (since $X_u=X_{\overline{u}}$ by Lemma \ref{XY}) and write the linear combination as $\sum_{c=0}^{r_3-1}c_uX_u$. By definition, $\beta,\Gamma_q$ and $\Delta$ are such linear combinations, and thus correspond to the $r_3$-tuples of integer coefficients $(c_1,c_2,\dots,c_{r_3})$. Using this correspondence, we will now construct a matrix $M$ of size $r_3\times r_3$ (indexing its dimensions from $0$ to $r_3-1$) as follows:
 \begin{itemize}
 \item The $0$-th row will correspond to $\beta$ (i.e., it will consist of all 1's).
 \item The $q$-th row for $1\leq q\leq r_3-2$ will correspond to $\Gamma_{q-1}$.
@@ -821,8 +844,8 @@ D(\zeta)\cdot(\zeta-1)&=\sum_{q=1}^{r_3-1} q\cdot \zeta^{q+1}-\sum_{q=1}^{r_3-1}
 \end{equation*}
 \end{proof}
 
-Now let $\mathcal{X}$ be the free $\Z$-module with generators $X_0,X_1,\dots,X_{r_3-1}$. By abuse of notation, we can consider $\widehat{\beta},\widehat{\Gamma_q},\widehat{\Delta}\in \mathcal{X}$ for $0\leq q\leq r_3-3$, which formally look the same as $\beta,\Gamma_q,\Delta$. Moreover let $\z$ be any $r_3$-th root of unity and consider the $\Z$-module homomorphism from $\mathcal{X}$ to the cyclotomic field $\Q(\z)$ given by $$\sum_{u=0}^{r_3-1}c_u X_u\mapsto \sum_{u=0}^{r_3-1}c_u \z^u.$$ 
-We can apply this homomorphism to $\widehat{\beta},\widehat{\Gamma_q},\widehat{\Delta}$, and we will denote its respective values by $\beta(\z),\Gamma_q(\z),\Delta(\z)\in\Q(\z)$. Note that since $\z^{r_3}=1$, these values depend on the indices of $X_u$ only modulo $r_3$, so it doesn't matter whether we regard them as in the set $\{0,1,\dots,r_3-1\}$ or just as integers. This will allow us to use the original definitions of $\beta,\Gamma_q,\Delta$ for their computation quite easily.
+Now let $\mathcal{X}$ be the free $\Z$-module with generators $\widehat{X_0},\widehat{X_1},\dots,\widehat{X_{r_3-1}}$. By abuse of notation, we can consider $\widehat{\beta},\widehat{\Gamma_q},\widehat{\Delta}\in \mathcal{X}$ for $0\leq q\leq r_3-3$, which formally look the same as $\beta,\Gamma_q,\Delta$ (except for the hats). Moreover let $\z$ be any $r_3$-th root of unity and consider the $\Z$-module homomorphism from $\mathcal{X}$ to the cyclotomic field $\Q(\z)$ given by $$\sum_{u=0}^{r_3-1}c_u X_u\mapsto \sum_{u=0}^{r_3-1}c_u \z^u.$$ 
+We can apply this homomorphism to $\widehat{\beta},\widehat{\Gamma_q},\widehat{\Delta}$, and we will denote its respective values by $\beta(\z),\Gamma_q(\z),\Delta(\z)\in\Q(\z)$. Note that since $\z^{r_3}=1$, these values depend on the indices of $X_u$ only modulo $r_3$, so it doesn't matter whether we regard these indices as in the set $\{0,1,\dots,r_3-1\}$ or just as integers. This will allow us to use the original definitions of $\beta,\Gamma_q,\Delta$ for their computation and switch between these two viewpoints liberally.
 
 \begin{lemma}\label{argeo}
 For any $b\in\Nbb$ and $y\in\Cbb$, we have the equality
