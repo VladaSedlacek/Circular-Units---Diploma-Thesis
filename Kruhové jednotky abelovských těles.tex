@@ -16,7 +16,6 @@
 \usepackage{hhline}
 %\usepackage[labelformat=empty]{caption}
 \usepackage{tikz}
-\usepackage[Mgr,Barevne]{sci.muni.thesis}
 
 \usepackage{makeidx}
 \makeindex
@@ -107,11 +106,11 @@
 \newcommand{\DESCRIPTION@makelabel}[1]{\llap{#1}}%
 \newcommand{\DESCRIPTION@item}[1][]{%
   \setlength{\@totalleftmargin}%
-       {\DESCRIPTION@totalleftmargin+\widthof{\textbf{#1 }}-\leftmargin}%
+       {\DESCRIPTION@totalleftmargin+\widthof{#1}-\leftmargin}%textbf deleted
   \setlength{\linewidth}
-       {\DESCRIPTION@linewidth-\widthof{\textbf{#1 }}+\leftmargin}%
+       {\DESCRIPTION@linewidth-\widthof{#1}+\leftmargin}%textbf deleted
   \par\parshape \@ne \@totalleftmargin \linewidth
-  \DESCRIPTION@original@item[\textbf{#1}]%
+  \DESCRIPTION@original@item[#1]%textbf deleted
 }
 \newenvironment{DESCRIPTION}
   {\list{}{\setlength{\labelwidth}{0cm}%
@@ -126,7 +125,7 @@
   {\endlist}
 \makeatother
 
-
+\usepackage[Mgr,Tisk]{sci.muni.thesis}
 
 \NazevUstavu{Ústav matematiky a statistiky}{Department of Mathematics and Statistics}
 
@@ -134,7 +133,7 @@
 
 \AkademickyRok{2016/2017}
 
-\Autor{Vladimír Sedláček}{Vladimír Sedláček}
+\Autor{Vladimír Sedláček}{Bc. Vladimír Sedláček}
 
 \NazevPrace{Kruhové jednotky abelovských těles}{Kruhové jednotky abelovských těles}{Circular units of abelian fields}
 
@@ -146,19 +145,19 @@
 
 \PocetStran{ix\,$+$\,??}
 
-\KlicovaSlova{kruhové jednotky; kruhová čísla, abelovská tělesa, Ennolovy relace, modul relací, čtyři rozvětvená prvočísla }
-{circular units; circular numbers; abelian fields, Ennola relations, the module of relations, four ramified primes }
+\KlicovaSlova{kruhové jednotky; kruhová čísla; abelovská tělesa; Ennolovy relace; modul relací; čtyři rozvětvená prvočísla}
+{circular units; circular numbers; abelian fields; Ennola relations; the module of relations; four ramified primes }
 
 \Abstrakty%
-{V této diplomové práci se zabýváme grupami kruhových čísel a kruhových jednotek v reálných abelovských tělesech s právě čtyřmi rozvětvenými prvočísly za jistých speciálních předpokladů. Konkrétně se snažíme nalézt jejich $\Z$-báze a popsat příslušný modul relací. Práce navazuje na článek \citep{Kucera2016}.}
-{In this thesis we study the groups of circular numbers and circular units in real abelian fields with exactly four ramified primes under certain special conditions. More specifically, we are trying to find their $\Z$-bases and to describe the corresponding module of relations. The thesis builds upon the paper \citep{Kucera2016}.}
+{V této diplomové práci se zabýváme grupami kruhových čísel a kruhových jednotek v Sinnottově smyslu v reálných abelovských tělesech s právě čtyřmi rozvětvenými prvočísly za jistých speciálních předpokladů. Konkrétně se snažíme nalézt jejich $\Z$-báze a popsat příslušný modul relací. Práce navazuje na článek \citep{Kucera2016}.}
+{In this thesis we study the groups of circular numbers and circular units in Sinnott's sense in real abelian fields with exactly four ramified primes under certain special conditions. More specifically, we are trying to find their $\Z$-bases and to describe the corresponding module of relations. The thesis builds upon the paper \citep{Kucera2016}.}
 
 \TextPodekovani%
-{Na tomto místě bych chtěl upřímně poděkovat prof. RNDr. Radanu Kučerovi, DSc. za velkou ochotu, nadšení, vstřícnost, trpělivost a mnoho cenných rad a připomínek, které tuto práci výrazně vylepšily po odborné i didaktické stránce.
+{Na tomto místě bych chtěl upřímně poděkovat prof. RNDr. Radanu Kučerovi, DSc., za velkou ochotu, nadšení, vstřícnost, trpělivost a mnoho cenných rad a připomínek, které tuto práci výrazně vylepšily po odborné i didaktické stránce.
 }
 
 \TextProhlaseni%
-{Prohlašuji, že jsem svoji bakalářskou práci vypracoval samostatně pod vedením prof. RNDr. Radana Kučery, DSc. s~využitím informačních
+{Prohlašuji, že jsem svoji diplomovou práci vypracoval samostatně pod vedením prof. RNDr. Radana Kučery, DSc., s~využitím informačních
 zdrojů, které jsou v práci citovány.}
 
 \DatumProhlaseni{15. května 2017}
@@ -189,6 +188,8 @@ zdrojů, které jsou v práci citovány.}
 \renewcommand{\sectionmark}[1]{\markright{\thesection. #1}{}}
 \HlavickaKapitoly
 \vloz{text_prace/03_Kapitola_01}
+
+\vloz{text_prace/03_Kapitola_01,5}
 
 \vloz{text_prace/04_Kapitola_02}
 
