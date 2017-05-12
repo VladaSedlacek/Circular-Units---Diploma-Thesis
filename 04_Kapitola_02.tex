@@ -1,10 +1,10 @@
-\chapter{The construction of bases of circular numbers and circular units}
+\chapter{The construction of bases of circular numbers and circular units}\label{bases}
 %\texorpdfstring{$D^+$}{D^+} and \texorpdfstring{$C^+$}{C^+}}
 
 \section{General strategy}
 Our goal will be to find a basis of $D^+$ (it can then be easily modified in order to obtain a basis of $C^+$). To achive this, we will build upon the results in \citep{Kucera2016}. The generators of $D^+$ are subject to norm relations that correspond to the sum of all elements of the respective inertia groups $T_i$. Namely, let $$R_i=\sum_{u=0}^{a_i-1}\sigma_i^u,\, N_i=\sum_{u=0}^{n_i-1}\sigma_i^{ua_i}.$$ 
-Then the norm operator from $K$ to $K_jK_lK_h$ can be given as $R_iN_i$, because both are equal to the sum of all elements from $T_i$. Moreover, Lemma \ref{genus} implies that $$\Gal(k/k\cap K_1K_2K_3)\cong \Gal(K/ K_1K_2K_3)=T_i,$$
-where the first isomorphism is given by restriction, hence $R_iN_i$ also acts as the norm operator from $k$ to $k\cap K_1K_2K_3$.
+Then the norm operator from $K$ to $K_jK_lK_h$ can be given as $R_iN_i$, because both are equal to the sum of all elements from $T_i$. Moreover, Lemma \ref{genus} implies that $$\Gal(k/k\cap K_jK_lK_h)\cong \Gal(K/ K_jK_lK_h)=T_i,$$
+where the first isomorphism is given by restriction, hence $R_iN_i$ also acts as the norm operator from $k$ to $k\cap K_jK_lK_h$.
 %Then the norm operators from $k$ to a maximal subfield ramified at three primes can be given as $R_iN_i$ (i.e., the sum of all elements of $T_i$). 
 If we denote the congruence corresponding to the canonical projection $\Z[G]\to \Z[G/H]$ by $\equiv$, then we have (using Lemma \ref{tau}) $$N_4\equiv \sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}.$$ Note that any subgroup of $k^{\times}$ is naturally a $\Z[G/H]$-module, since the action of $H$ on $k$ is trivial.
 
@@ -66,7 +66,7 @@ it will follow that we really have a basis (thanks to the discussion above Lemma
 
 We will always refer to the conjugates of $\eta$ by their coordinates $x_1,x_2,x_3,x_4$ according to Proposition \ref{gal}. This allows us to visualise $\Gal(k/\Q)$ geometrically as a discrete (at most) four-dimensional cuboid.
 
-\section{The case $r_1=r_2=r_3=r_4=1$}
+\section{The case $r_1=r_2=r_3=r_4=1$}\label{bases1}
 In this case, we have
 $$\Gal(k/\Qbb)\cong
  \{\restr{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}{k};~  0\leq x_1<a_1m, 0\leq x_2<a_2m, 0\leq x_3<a_3m,0\leq x_4<a_4\},$$
@@ -75,11 +75,11 @@ $$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^{a_1u}
 and
 \begin{align*}
 N&=a_1a_2a_3a_4m^3-(a_1a_2a_3+a_1a_2a_4+a_1a_3a_4+a_2a_3a_4)m^2\\
-&+(a_1a_2+a_1a_3+a_1a_4+a_2a_3+a_2a_4+a_3a_4)m-a_1-a_2-a_3-a_4+1.\\
+&\hp+(a_1a_2+a_1a_3+a_1a_4+a_2a_3+a_2a_4+a_3a_4)m-a_1-a_2-a_3-a_4+1.\\
 &=(a_1m-1)(a_2m-1)(a_3m-1)(a_4-1)+(a_1m-1)(a_2m-1)(a_3m-1)\\
-&-a_1a_2a_3m^2+(a_1a_2+a_1a_3+a_2a_3)m-a_1-a_2-a_3+1\\
+&\hp-a_1a_2a_3m^2+(a_1a_2+a_1a_3+a_2a_3)m-a_1-a_2-a_3+1\\
 &=(a_1m-1)(a_2m-1)(a_3m-1)(a_4-1)+(a_1m-1)(a_2(m-1)-1)(a_3m-1)\\
-&+(a_1-1)(a_3m-1)+a_3(m-1)
+&\hp+(a_1-1)(a_3m-1)+a_3(m-1)
 \end{align*}
 We will define $B_1$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
 
@@ -97,7 +97,11 @@ Next, we will recover the cases $$x_1=a_1m-1, 0\le x_2 < a_2(m-1)-1, 0\leq x_3 <
 \paragraph*{}
 At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$a_1\le x_1< a_1m, x_2=a_2(m-1)-1, 0\le x_3<a_3m,$$ $$0\le x_1< a_1m, a_2(m-1)\le x_2<a_2m, 0\le x_3<a_3m$$ and $$x_1=a_1-1, x_2=a_2(m-1)-1, a_3(m-1)\le x_3<a_3m.$$ To continue, we need to define an auxiliary relation.
 
-Let $$\Gamma:=\sigma_2^{a_2(m-2)}-\sum_{u=0}^{m-3}\sum_{v=1}^{u+1}\sigma_1^{a_1v}\sigma_2^{a_2u}\in\Z[G].$$
+Let 
+\begin{equation}\label{Gamma1def}
+\Gamma:=\sigma_2^{a_2(m-2)}-\sum_{u=0}^{m-3}\sum_{v=1}^{u+1}\sigma_1^{a_1v}\sigma_2^{a_2u}\in\Z[G].
+\end{equation}
+
 \begin{lemma}\label{Gamma1}
 We have $$R_1R_2R_4\Gamma\sum_{u=0}^{m-1}\sigma_3^{a_3u}\sim 0.$$
 \end{lemma}
@@ -118,7 +122,7 @@ R_1R_2R_4\Gamma\sum_{u=0}^{m-1}\sigma_3^{a_3u} \sim R_1R_2\Gamma \left(R_4 \sum_
 as needed.
 \end{proof}
 
-Thanks to Lemma \ref{Gamma1}, we will recover all the cases $$x_1=a_1-1, x_2=a_2(m-1)-1, a_3(m-1)\le x_3<a_3m,x_4=0$$ using the relation $R_1R_2R_4\Gamma\sum_{u=0}^{m-1}\sigma_3^{a_3u}$.
+Thanks to Lemma \ref{Gamma1}, we will recover all the cases $$x_1=a_1-1, x_2=a_2(m-1)-1, a_3(m-1)\le x_3<a_3m,x_4=0$$ using the relation $\sigma_3^{w}R_1R_2R_4\Gamma\sum_{u=0}^{m-1}\sigma_3^{a_3u}\sim 0$ for all $0\le w< a_3$, since we can already recover the conjugates of $\eta$ corresponding to the summands in this relation arising from the double sum in \eqref{Gamma1def} (their exponents of $\sigma_2$ are between $0$ and $a_2(m-2)-1$) as well as the conjugates of $\eta$ corresponding to the summands arising from the first summand in \eqref{Gamma1def}, except for precisely one.
 
 Next, we will recover all the cases $$0\leq x_1 < a_1m, a_2(m-1)\leq x_2 < a_2m-1, 0\leq x_3 <a_3m,x_4=0$$
 using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^{a_3u}$, due to the fact that for any two different conjugates of $\eta$ used in this relation, the difference of their exponents of $\sigma_2$ is divisible by $a_2$ (and we have already recovered all of them except exactly one).
@@ -142,13 +146,13 @@ $$R_1N_1\sim 0, R_2N_2\sim 0, N_3 \sim 0, R_4 \sum_{u=0}^{m-1}\sigma_1^{a_1u}\si
 and
 \begin{align*}
 N&=a_1a_2a_4\frac{m^3}{r_3}-a_1a_2a_4m^2-(a_1a_2+a_1a_4+a_2a_4)\frac{m^2}{r_3}\\
-&+(a_1a_2+a_1a_4+a_2a_4)m+(a_1+a_2+a_4)\frac{m}{r_3}-a_1-a_2-a_4\\
+&\hp+(a_1a_2+a_1a_4+a_2a_4)m+(a_1+a_2+a_4)\frac{m}{r_3}-a_1-a_2-a_4\\
 &=(n_3-1)(a_1a_2a_4m^2-(a_1a_2+a_1a_4+a_2a_4)m+a_1+a_2+a_4)\\
 &=(n_3-1)(a_1a_2m^2-(a_1a_2+a_1+a_2)m+a_1+a_2+1)\\
-&+(n_3-1)(a_4-1)(a_1a_2m^2-a_1m-a_2m+1)\\
+&\hp+(n_3-1)(a_4-1)(a_1a_2m^2-a_1m-a_2m+1)\\
 %&=(n_3-1)((a_1m-1)a_2(m-2)\!+\!(a_1m-1)(a_2-1)+\!a_1\!+\!(a_4-1)(a_1m-1)(a_2m-1))\\
 &=(n_3-1)(a_4-1)(a_1m-1)(a_2m-1)+(n_3-1)(a_1m-1)(a_2(m-1)-1)\\
-&+(n_3-1)a_1.
+&\hp+(n_3-1)a_1.
 \end{align*}
 
 We will define $B_2$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
@@ -165,7 +169,8 @@ Next, we will recover the cases $$x_1=a_1m-1, 0\le x_2 < a_2(m-1)-1, 1\leq x_3 <
 \paragraph*{}
 At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$0\le x_1< a_1m, a_2(m-1)\le x_2 <a_2m, 0\le x_3<n_3$$ and $$a_1\le x_1< a_1m, x_2=a_2(m-1)-1, 0\le x_3<n_3.$$
 Next, we will recover all the cases $$0\leq x_1 < a_1m, a_2(m-1)\leq x_2 < a_2m-1, 0\leq x_3 <n_3,x_4=0$$ %and (note that $2a_1\leq a_1m$, since $m>1$) $$a_1\leq x_1 < 2a_1, x_2=0, 0\leq x_3 <n_3,x_4=0$$
-using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$, due to the fact that for any two different conjugates of $\eta$ used in this relation, the difference of their exponents of $\sigma_2$ is divisible by $a_2$ (and we have already recovered all of them except exactly one). %differs by at least $a_2$ in their second coordinate.
+using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{a_1u}\sigma_2^{a_2u}\sigma_3^u$, due to the fact that %for any two different conjugates of $\eta$ used in this relation, 
+the exponents of $\sigma_2$ in this relation are pairwise congruent modulo $a_2$ (and we have already recovered all of them except exactly one). %differs by at least $a_2$ in their second coordinate.
  After this, we can recover the cases $$0\leq x_1 < a_1, x_2 = a_2m-1, 0\leq x_3 <n_3$$ using the relation $R_2N_2\sim 0$.
 \paragraph*{}
 Finally, we will use induction with respect to $v=0,1,\dots, m-1$ to show that we can recover the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}}$ with $$va_1\leq x_1 < (v+1)a_1,x_2=a_2(m-1)-1,0\le x_3<n_3,x_4=0$$ and $$va_1\leq x_1 < (v+1)a_1,x_2=a_2m-1,0\le x_3<n_3,x_4=0.$$
@@ -187,15 +192,15 @@ $$\Gal(k/\Qbb)\cong
 Moreover, by Lemma \ref{coprime}, we have $s_{12}\frac{m}{r_1r_2}=\gcd(n_1,n_2)$, hence
 \begin{align*}
 N&=a_3a_4\frac{m^3}{r_1r_2}-a_3\frac{m^2}{r_1r_2}-a_4\frac{m^2}{r_1r_2}-a_3a_4\left(\frac{m^2}{r_1}+\frac{m^2}{r_2}\right)+s_{12}\frac{m}{r_1r_2}\\
-&+a_3(n_1+n_2)+a_4(n_1+n_2)+a_3a_4m-a_3-a_4-1\\
+&\hp+a_3(n_1+n_2)+a_4(n_1+n_2)+a_3a_4m-a_3-a_4-1\\
 %&=a_3\left( \frac{m^3}{r_1r_2}-\frac{m^2}{r_1r_2} -\frac{m^2}{r_1}-\frac{m^2}{r_2}+n_1+n_2+m-1\right)+\frac{m^2}{r_1r_2}+n_1+n_2-1+
 %\gcd(n_1,n_2)
 &=a_3\left(mn_1n_2-n_1n_2 -mn_1-mn_2+n_1+n_2+m-1\right)-n_1n_2+n_1+n_2-1\\
-&+(a_4-1)(a_3\left(mn_1n_2 -mn_1-mn_2+m\right)-n_1n_2+n_1+n_2-1)+\gcd(n_1,n_2)-1\\
+&\hp+(a_4-1)(a_3\left(mn_1n_2 -mn_1-mn_2+m\right)-n_1n_2+n_1+n_2-1)+\gcd(n_1,n_2)-1\\
 &=a_3\left(m-1\right)\left(n_1-1\right)\left(n_2-1\right)-\left(n_1-1\right)\left(n_2-1\right)\\
-&+(a_4-1)\left(a_3m\left(n_1-1\right)\left(n_2-1\right)-\left(n_1-1\right)\left(n_2-1\right)\right)+\gcd(n_1,n_2)-1\\
+&\hp+(a_4-1)\left(a_3m\left(n_1-1\right)\left(n_2-1\right)-\left(n_1-1\right)\left(n_2-1\right)\right)+\gcd(n_1,n_2)-1\\
 &=(n_1-1)(n_2-1)(a_3(m-1)-1)\\
-&+(a_4-1)(n_1-1)(n_2-1)(a_3m-1)+\gcd(n_1,n_2)-1.
+&\hp+(a_4-1)(n_1-1)(n_2-1)(a_3m-1)+\gcd(n_1,n_2)-1.
 \end{align*}
 
 We will define $B_3$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
@@ -208,7 +213,8 @@ We will define $B_3$ as the set of the following $N$ conjugates $\eta^{\sigma_1^
 \paragraph*{}
 First we will recover the cases $0<x_4<a_4$, $x_1=n_1-1$ or $x_2=n_2-1$ or $x_3=a_3m-1$ using the relations $N_1\sim 0$, $ N_2\sim 0$, $ R_3N_3\sim 0$. From now on, we only need to deal with the cases where $x_4=0$.
 \paragraph*{}
-Next, we will recover the cases $x_4=0$, $a_3< x_3<a_3m$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0$, $ N_2\sim 0$. Now note that the exponents of $\sigma_3$ in $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ are pairwise congruent modulo $a_3$. Since for any $1\leq v<a_3$, we have already recovered all the conjugates with $x_3\equiv v \pmod{a_3}$ except for one, we can also use the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$ several times to recover the cases $$0\leq x_1<n_1, 0\leq x_2< n_2, 1\leq x_3<a_3, x_4=0$$ as well.
+Next, we will recover the cases $x_4=0$, $a_3< x_3<a_3m$, $x_1=n_1-1$ or $x_2=n_2-1$ using the relations $N_1\sim 0$, $ N_2\sim 0$. Now we can also recover the cases $$0\leq x_1<n_1, 0\leq x_2< n_2, 1\leq x_3<a_3, x_4=0$$
+using the relation $R_4\sum_{u=0}^{m-1}\sigma_1^{u}\sigma_2^{u}\sigma_3^{a_3u}\sim 0$, due to the fact that the exponents of $\sigma_3$ in this relation are pairwise congruent modulo $a_3$ (and we have already recovered all of them except exactly one).
 \paragraph*{}
 At this moment, we are only missing the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{a_3}}$ for all $$0\leq x_1<n_1, 0\leq x_2<n_2$$ 
 and among the conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}}$
@@ -252,7 +258,7 @@ Using the fact that the order of $\sigma_3$ is $a_3m$, we have
 %=0, \text{ as explained below}
 %}
 \\
-&+
+&\hp+
 %\underbrace{
 \sigma_1^{x_1}\sigma_2^{x_2}(1-\sigma_1\sigma_2)\sum_{u=1}^{a_3-1}\sigma_3^u+\sigma_1^{x_1}\sigma_2^{x_2}R_3R_4\sum_{u=2}^{m-1}\left(\sigma_1^{u}\sigma_2^{u}-\sigma_1\sigma_2\right)\sigma_3^{a_3u}
 %}_{
@@ -372,11 +378,11 @@ and this equals $\gcd(n_1,n_3)\cdot\gcd(n_2,n_3)$ iff $\gcd(n_1,n_2,n_3)=\gcd(n_
 Therefore, using Lemma \ref{TFAE4} together with Lemma \ref{coprime}, we get
 \begin{align*}
 N&=a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)-a_4-2+a_4(n_1+n_2+n_3)\\
-&+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+&\hp+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
 &=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)+(n_1-1)(n_2-1)-2\\
-&-\gcd(n_1,n_3)\cdot\gcd(n_2,n_3)+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+&\hp-\gcd(n_1,n_3)\cdot\gcd(n_2,n_3)+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
 &=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)\\
-&+(n_1-1)(n_2-\gcd(n_2,n_3))+(n_1-\gcd(n_1,n_3))\cdot(\gcd(n_2,n_3)-1)+\gcd(n_1,n_2)-1.
+&\hp+(n_1-1)(n_2-\gcd(n_2,n_3))+(n_1-\gcd(n_1,n_3))\cdot(\gcd(n_2,n_3)-1)\!+\!\gcd(n_1,n_2)\!-\!1.
 \end{align*}
 (Note that $n_3=a_3n_3>1$ by Remark \ref{remAN}.)
 
@@ -531,11 +537,11 @@ from which it follows that $ \gcd(n_1,n_2,n_3)=\frac{m}{ \lcm(r_1,r_2,r_3)}$.
 Thus $\frac{n_1n_2n_3}{m}=m=r_2n_2=\gcd(n_1,n_3)n_2$ by Lemma \ref{TFAE5} and using Lemma \ref{coprime}, we get
 \begin{align*}
 N&=a_4n_1n_2n_3-\frac{n_1n_2n_3}{m}-a_4(n_1n_2+n_1n_3+n_2n_3)-a_4-2+a_4(n_1+n_2+n_3)\\
-&+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
+&\hp+\gcd(n_1,n_2)+\gcd(n_1,n_3)+\gcd(n_2,n_3)\\
 &=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)\\
-&+n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2\\
+&\hp+n_1n_2-(\gcd(n_1,n_3)+1)n_2-(n_1-\gcd(n_1,n_3)-1)+\gcd(n_2,n_3)+\gcd(n_1,n_2)-2\\
 &=(a_4-1)(n_1-1)(n_2-1)(n_3-1)+(n_1-1)(n_2-1)(n_3-2)\\
-&+(n_2-1)(n_1-r_2-1)+r_1+r_3-2.
+&\hp+(n_2-1)(n_1-r_2-1)+r_1+r_3-2.
 \end{align*}
 
 We will define $B_5$ as the set of the following $N$ conjugates $\eta^{\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}}$:
@@ -649,7 +655,7 @@ Thus we have
 \begin{align*}
 0&=\left(\sigma_1^{n_1-r_2-1}\sigma_2^{u-r_2+1}(1-\sigma_1\sigma_2)+\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}(1-\sigma_1\sigma_2)\right)\cdot \mu\\
 &=\underbrace{\sigma_1^{n_1-r_2-1}\sigma_2^{u-r_2+1}\cdot\mu}_{=Y_{u-r_2+1}}-\underbrace{\sigma_1^{n_1-r_2}\sigma_2^{u-r_2+2}\cdot\mu}_{=X_u \text{ due to } \eqref{indX}}+\sigma_1^{n_1-1}\sigma_2^{u-r_2+1+h\cdot r_1}\cdot \mu\\
-&-\underbrace{\sigma_1^{n_1}\sigma_2^{u-r_2+1+h\cdot r_1+1}\cdot \mu}_{=0}.
+&\hp-\underbrace{\sigma_1^{n_1}\sigma_2^{u-r_2+1+h\cdot r_1+1}\cdot \mu}_{=0}.
 \end{align*}
 
 Therefore
@@ -748,9 +754,9 @@ we get
 \begin{align*}
 0&= \sum_{u=0}^{r_3-h'-1} \sigma_2^{q-uhr_1}N_1\cdot \mu\\
 &= \sum_{u=0}^{r_3-h'-2}  \underbrace{\left(\sigma_1^{n_1-1}\sigma_2^{q-uh r_1} +\sigma_1^{r_2(r_3-1)-1}\sigma_2^{q-(u+1)h r_1}\right)\cdot \mu}_{=X_{q-uhr_1-1} \text{ due to } \eqref{Ycancel}}\\
-&+\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^q\cdot \mu}_{=Y_q}+
+&\hp+\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^q\cdot \mu}_{=Y_q}+
 \underbrace{\sigma_1^{n_1-1}\sigma_2^{q-(r_3-h'-1)h r_1}\cdot\mu}_{=X_{q-(r_3-h'-1)hr_1-1}-Y_{q+r_1}}\\
-&+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} \sigma_1^{x_1}\sigma_2^{q-uh r_1}\cdot \mu.
+&\hp+\sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum_{u=0}^{r_3-h'-1} \sigma_1^{x_1}\sigma_2^{q-uh r_1}\cdot \mu.
 \end{align*}
 Now we will use the fact that $q\leq r_3-3\leq r_1+r_3-3$ (implying $Y_q=0$) and $$q-(r_3-h'-1)h r_1-hr_1=q-r_1r_3h+r_1hh'\equiv q+r_1\pmod{n_2},$$ since the congruence holds modulo both $r_1$ and $r_3$ (and $\gcd(r_1,r_3)=1$). Also note that $Y_{q+r_1}=0$, since
 $$r_1\leq q+r_1\leq r_1+r_3-3,$$
@@ -789,9 +795,9 @@ we get
 \begin{align*}
 0&= \sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1}\sigma_2^{x_2-uh r_1}N_1\cdot \mu\\
 &=\sum_{u=0}^{r_3-1}u\cdot \sum _{x_2=0}^{r_1-1} \left( \sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}+\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-uh r_1}\right)\cdot \mu\\
-&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu\\
+&\hp+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu\\
 &=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} \left( u\cdot\underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-uh r_1}\cdot \mu}_{=X_{x_2-uhr_1-1}-Y_{x_2-(u+1)hr_1}}+(u+1)\cdot\underbrace{\sigma_1^{r_2(r_3-1)-1}\sigma_2^{x_2-(u+1)h r_1}\cdot \mu}_{=Y_{x_2-(u+1)h r_1}}\right)\\
-&+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot \underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-(r_3-1)h r_1}\cdot \mu}_{=
+&\hp+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot \underbrace{\sigma_1^{n_1-1}\sigma_2^{x_2-(r_3-1)h r_1}\cdot \mu}_{=
 X_{x_2-(r_3-1)hr_1-1}-Y_{x_2-hr_1r_3}=
 %X_{x_2-(r_3-1)hr_1-1}
 }+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}\sigma_1^{x_1}\sigma_2^{x_2-uh r_1}\cdot \mu,
@@ -803,9 +809,9 @@ Continuing with the previous equality and using the congruence $hr_1\equiv r_2\p
 
 \begin{align*}
 0&=\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} u\cdot X_{x_2-ur_2-1}+\sum_{u=0}^{r_3-2} \sum _{x_2=0}^{r_1-1} Y_{x_2-(u+1)hr_1}+\underbrace{\sum_{q=0}^{r_1-1}Y_{q}}_{=0}\\
-&+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot X_{x_2-(r_3-1)r_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+&\hp+\sum_{x_2=0}^{r_1-1}(r_3-1)\cdot X_{x_2-(r_3-1)r_2-1}+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
 &=\sum_{u=0}^{r_3-1} \sum _{x_2=0}^{r_1-1} u\cdot X_{x_2-ur_2-1}+\underbrace{\sum_{q=r_1}^{n_2-1} Y_{q}+\sum_{q=0}^{r_1-1}Y_{q}}_{=\alpha}\\
-&+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
+&\hp+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-2}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}\\
 &=\alpha+\sum_{u=0}^{r_3-1}u\cdot \sum_{x_1=r_2(r_3-1)}^{n_1-1}\sum _{x_2=0}^{r_1-1}X_{x_2-ur_2-x_1-2}.
 \end{align*}
 

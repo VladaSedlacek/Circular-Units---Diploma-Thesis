@@ -40,17 +40,15 @@ $\pi_i(\tau)$ generates a subgroup of $T_i$ of index $a_i$. The cyclicity of $T_
 %Přidat zvláštní lemma o Galoisových grupách K_iK_jK_l/K_i a podobně kvůli čitelnosti?
 
 \begin{prop}\label{degrees}
-We have $$a_i=[k\cap K_i:\Q],$$ $$r_i=[K:kK_i],$$ $$|T_i|=a_in_i,$$ $$s_{ij}=[K:kK_iK_j],$$ $$[K_i:k\cap K_i]=n_i,$$ $$[K_iK_j:k\cap K_iK_j]=\frac{m}{s_{ij}}$$ and $$[K_iK_jK_l:k\cap K_iK_jK_l]=m.$$
+We have $$[k\cap K_i:\Q]=a_i,$$ $$[K:kK_i]=r_i,$$ $$|T_i|=a_in_i,$$ $$[K:kK_iK_j]=s_{ij},$$ $$[K_i:k\cap K_i]=|\pi_i(H)|=n_i,$$ $$[K_iK_j:k\cap K_iK_j]=|\pi_i\pi_j(H)|=\frac{m}{s_{ij}}$$ and $$[K_iK_jK_l:k\cap K_iK_jK_l]=| \pi_i\pi_j\pi_l(H)|=m.$$
 \end{prop}
 \begin{proof}
 Since
-\begin{equation*}
-\begin{split}
+\begin{align*}
 \Gal(K/K_i)&=\Gal(K/K_iK_jK_l\cap K_iK_jK_h\cap K_iK_lK_h)\\
 &=\Gal(K/K_iK_jK_l)\cdot \Gal(K/K_iK_jK_h)\cdot \Gal(K/K_iK_lK_h)
 = T_jT_lT_h
-\end{split}
-\end{equation*} 
+\end{align*} 
 %$$\Gal(K/K_i)\cong \Gal(K/\Q)/\Gal(K_i/\Q)\cong T_1T_2T_3T_4/T_i\cong T_jT_lT_h$$
  and $\Gal(K/k)=H$, it follows that $\Gal(K/k\cap K_i)= T_jT_lT_h\cdot H$. Now consider the short exact sequence %(clearly $\ker \pi_i=T_jT_lT_h$) 
 $$0\to H\cap \ker \pi_i\to H \xrightarrow{\restr{\pi_i}{H}} \pi_i(H)\to 0.$$
@@ -62,28 +60,33 @@ and
 $$[K:kK_i]=\frac{|\Gal(K/k)|}{|\Gal(kK_i/k)|}=\frac{|H|}{|\Gal(K_i/k\cap K_i)|}=\frac{m}{|\pi_i(H)|}=r_i.$$
 Putting everything together, we obtain $$|T_i|=[K_i:k\cap K_i]\cdot[k\cap K_i:\Q]=a_i|\pi_i(H)|=a_in_i.$$
 Next, we also have 
-\begin{equation*}
-\begin{split}
+\begin{align*}
 \Gal(K/K_iK_j)&=\Gal(K/K_iK_jK_l\cap K_iK_jK_h)\\
 &=\Gal(K/K_iK_jK_l)\cdot \Gal(K/K_iK_jK_h)= T_lT_h
-\end{split}
-\end{equation*} 
+\end{align*} 
 %$$\Gal(K/K_iK_j)\cong \Gal(K/\Q)/\Gal(K_iK_j/\Q)\cong T_1T_2T_3T_4/T_iT_j\cong T_lT_h,$$
 so that $\Gal(K/k\cap K_iK_j)=T_lT_h\cdot H$. Thus we can consider the short exact sequence 
 $$0\to H\cap \ker \pi_i\pi_j\to H \xrightarrow{\restr{\pi_i\pi_j}{H}} \pi_i\pi_j(H)\to 0$$
 to conclude that $|\pi_i\pi_j(H)|=\frac{m}{s_{ij}}$ and 
-\begin{equation*}
-\begin{split}
+\begin{align*}
 \pi_i\pi_j(H)&\cong \frac{H}{H\cap \ker \pi_i\pi_j}=\frac{H}{H\cap T_lT_h}\cong \frac{T_lT_h\cdot H}{T_lT_h}\\
 &\cong \frac{\Gal(K/k\cap K_iK_j)}{\Gal(K/K_iK_j)}\cong \Gal(K_iK_j/k\cap K_iK_j).
-\end{split}
-\end{equation*}
+\end{align*}
 Then it follows that 
 $$[K:kK_iK_j]=\frac{|\Gal(K/k)|}{|\Gal(kK_iK_j/k)|}=\frac{|H|}{|\Gal(K_iK_j/k\cap K_iK_j)|}=\frac{m}{|\pi_i\pi_j(H)|}=s_{ij}.$$
 The last part of the statement is a consequence of Lemma \ref{genus}, since we have $$\Gal(K_iK_jK_l/k\cap K_iK_jK_l)\cong \Gal(kK_iK_jK_l/k)=\Gal(K/k)=H.$$
-Finally note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l(H)\cong \frac{H}{H\cap T_h}\cong H$$
+
+Finally we can consider the short exact sequence 
+$$0\to H\cap \ker \pi_i\pi_j\pi_l\to H \xrightarrow{\restr{\pi_i\pi_j\pi_l}{H}} \pi_i\pi_j\pi_l(H)\to 0,$$
+where $$H\cap \ker \pi_i\pi_j\pi_l=H\cap T_h=\Gal(K/kK_iK_jK_l)=0$$ by Lemma \ref{genus}. Thus $| \pi_i\pi_j\pi_l(H)|=m$ and
+\begin{align*}
+\pi_i\pi_j\pi_l(H)&\cong H\cong \frac{T_h\cdot H}{T_h}\\
+&\cong \frac{\Gal(K/k\cap K_iK_jK_l)}{\Gal(K/K_iK_jK_l)}\cong \Gal(K_iK_jK_l/k\cap K_iK_jK_l).
+\end{align*}
+
+%note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l(H)\cong \frac{H}{H\cap T_h}\cong H$$
 (since Lemma \ref{genus} implies that $|H\cap T_h|=1$).
-%Finally note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l(H)\cong \Gal(K_iK_jK_l/k\cap K_iK_jK_l).$$
+
 \end{proof}
 \begin{center}
 \begin{tikzpicture}
@@ -120,7 +123,7 @@ Finally note that in the same way as above, we could show that $$\pi_i\pi_j\pi_l
 \end{center}
 
 \begin{rem}\label{remAN}
-Note that Lemma \ref{degrees} implies that $a_in_i\neq 1$, otherwise $T_i$ would be trivial and $p_i$ wouldn't ramify in $k$.
+Note that Proposition \ref{degrees} implies that $a_in_i\neq 1$, otherwise $T_i$ would be trivial and $p_i$ wouldn't ramify in $k$.
 \end{rem}
 
 \begin{cor}\label{compcap}
@@ -147,7 +150,7 @@ We have
 $$s_{ij}=\gcd(r_i,r_j),$$ $$\gcd(r_i,r_j,r_l)=1,$$ $$\lcm\left(n_i,n_j,n_l\right)=m$$ and $$s_{ij}\frac{m}{r_ir_j}=\gcd(n_i,n_j).$$
 \end{lemma}
 \begin{proof}
-It follows from Proposition \ref{degrees} that $s_{ij}\mid r_i, s_{ij}\mid r_j$ and from its proof that $$|\pi_i(H)|=n_i, \quad |\pi_i\pi_j(H)|=\frac{m}{s_{ij}} \text{ and } |\pi_i\pi_j\pi_l(H)|=m.$$ The cyclicity of $H$ then implies
+It follows from Proposition \ref{degrees} that $s_{ij}\mid r_i, s_{ij}\mid r_j$ and $$|\pi_i(H)|=n_i, \quad |\pi_i\pi_j(H)|=\frac{m}{s_{ij}} \text{ and } |\pi_i\pi_j\pi_l(H)|=m.$$ The cyclicity of $H$ then implies
 $$\frac{m}{s_{ij}}=|\pi_i\pi_j(H)|=|\langle\pi_i\pi_j(\tau)\rangle|=|\langle\pi_i(\tau)\pi_j(\tau)\rangle|=\lcm\left(n_i,n_j\right),$$
 because $\langle\pi_i(\tau)\rangle=\pi_i(H)$ and any power of the product $\pi_i(\tau)\pi_j(\tau)$ is trivial if and only if the same power of both its factors is (since $G$ is the direct product of the $T_i$'s). 
 %the elements $\pi_i(H),\pi_j(H)$ have different non-zero coordinates in $G$.
@@ -201,7 +204,7 @@ First note that by Lemma \ref{coprime}, we have $$a_3\frac{m}{r_3r_4}s_{34}=a_3\
 
 Since $\Gal(k\cap K_4/\Q)$ is a cyclic group of order $a_4$ (by Lemma \ref{degrees}) generated by $\restr{\sigma_4}{k\cap K_4}$ (as a quotient of $\Gal(K_4/\Q)=\langle \restr{\sigma_4}{K_4}\rangle$), there must exist a unique $x_4\in \Z$, $0\leq x_4<a_4$ such that $\rho$ and $\sigma_4^{x_4}$ have the same restrictions to $k\cap K_4$. Therefore $\rho\restr{\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_4)$. 
 
-Next, $\Gal(k\cap K_3K_4/k\cap K_4)$ is a cyclic group of order $\frac{[k\cap K_3K_4:\Q]}{[k\cap K_4:\Q]}=a_3\frac{m}{r_3r_4}s_{34}$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_3}{k\cap K_3K_4}$ (as it is isomorphic by restriction to $$\Gal((k\cap K_3K_4)K_4 / K_4),$$ which is a quotient of $\Gal(K_3K_4/K_4)=\langle \restr{\sigma_3}{K_3K_4}\rangle$), so there must exist a unique $x_3\in \Z$, $0\leq x_3<a_3\frac{m}{r_3r_4}s_{34}$ such that $\rho \restr{\sigma_4^{-x_4}}{k}$ and $\sigma_3^{x_3}$ have the same restriction to $k\cap K_3K_4$. Therefore $\restr{\rho\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_3K_4)$.
+Next, $\Gal(k\cap K_3K_4/k\cap K_4)$ is a cyclic group of order $\frac{[k\cap K_3K_4:\Q]}{[k\cap K_4:\Q]}=a_3\frac{m}{r_3r_4}s_{34}$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_3}{k\cap K_3K_4}$ (as it is isomorphic by restriction to $$\Gal((k\cap K_3K_4)K_4 / K_4),$$ which is a quotient of $\Gal(K_3K_4/K_4)=\langle \restr{\sigma_3}{K_3K_4}\rangle$), so there must exist a unique $x_3\in \Z$ with $0\leq x_3<a_3\frac{m}{r_3r_4}s_{34}$ such that $\rho \restr{\sigma_4^{-x_4}}{k}$ and $\sigma_3^{x_3}$ have the same restriction to $k\cap K_3K_4$. Therefore $\restr{\rho\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_3K_4)$.
 
 Following the pattern, $\Gal(k\cap K_2K_3K_4/k\cap K_3K_4)$ is a cyclic group of order 
 $$\frac{[k\cap K_2K_3K_4:\Q]}{[k\cap K_3K_4:\Q]}=a_2\frac{m}{r_2s_{34}}$$ (by Corollary \ref{compcap}) generated by $\restr{\sigma_2}{k\cap K_2K_3K_4}$ (as it is isomorphic by restriction to $$\Gal((k\cap K_2K_3K_4)K_3K_4 / K_3K_4),$$ which is a quotient of $$\Gal(K_2K_3K_4/K_3K_4)=\langle \restr{\sigma_2}{K_2K_3K_4}\rangle),$$ so there must exist a unique $x_2\in \Z$, $0\leq x_2<a_2\frac{m}{r_2s_{34}}$ such that $\rho\restr{\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}$ and $\sigma_2^{x_2}$ have the same restriction to $k\cap K_2K_3K_4$. Therefore $\restr{\rho\sigma_2^{-x_2}\sigma_3^{-x_3}\sigma_4^{-x_4}}{k}\in \Gal(k/k\cap K_2K_3K_4)$.
