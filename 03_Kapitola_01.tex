@@ -20,17 +20,17 @@ Let $k$ be an abelian field. The least number $n\in\mathbb{N}$ such that $k\subs
 \end{definition}
 
 \begin{rem}\label{ramif}
-Using ramification theory, it's not hard to see that for any abelian field $k$, $\Q(\z_\cond(k))$ is ramified exactly at the same primes as $k$. In other words, a prime divides $\cond(k)$ iff it ramifies in $k$.
+Using ramification theory, it's not hard to see that for any abelian field $k$, the extension $\Q(\z_{\cond(k)})/\Q$ is ramified exactly at the same primes as $k$. In other words, a prime divides $\cond(k)$ iff it ramifies in $k/\Q$.
 \end{rem}
 
 \begin{definition}\label{genusdef}
-The \textit{genus field in the narrow sense} of an abelian field is its maximal field extension which is abelian over $\Q$ and unramified at all finite primes.
+The \textit{genus field in the narrow sense} of an abelian field $k$ is its maximal field extension which is abelian over $\Q$ and unramified over $k$ at all finite primes.
 \end{definition}
 
 Usually, we will use Definition \ref{genusdef} only indirectly, thanks to the following lemma:
 %Because Definition \ref{genusdef} is not constructive, it will prove useful to have an alternate characterization. % of the genus field in the narrow sense.
 \begin{lemma}\label{genus}
-Let $k$ be an abelian field, $K$ be its genus field in the narrow sense, $P$ be the set of ramified primes of $k$ and for any $p\in P$, let $e_p$ be ramification index of $p$ in $k$ and let $T_p$ be the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$. Moreover for any $p\in P$, let $K_p$ be the maximal subfield of $K$ ramified only at $p$.
+Let $k$ be an abelian field, $K$ be its genus field in the narrow sense, $P$ be the set of primes ramified in $k/\Q$ and for any $p\in P$, let $e_p$ be ramification index of $p$ in $k/\Q$ and let $T_p$ be the inertia subgroup of $\Gal(K/\Q)$ corresponding to $p$. Moreover for any $p\in P$, let $K_p$ be the maximal subfield of $K$ ramified over $\Q$ only at $p$.
 %be an abelian field of degree $[K_p:\Q]=e_p$ ramified only at $p$. 
 Then the following statements hold (the products denote the composita of fields):
 %Assume that all the inertia subgroups of $\Gal(K/\Q)$ are cyclic and for any $p\in P$, let $K_p$ be the unique abelian field of degree $[K_p:\Q]=e_p$ ramified only at $p$. Then the following are equivalent (the products denote the composita of fields):
@@ -79,7 +79,7 @@ The extension $K/\prod_{p\in P\setminus\{q\}}K_p$ is totally ramified at the pri
 \end{rem}
 
 \begin{rem}
-Note that for any odd $p\in P$, the field $K_p$ in the statement of Lemma \ref{genus} is determined uniquely by the condition (iv) alone (together with the fact that it must be abelian), because by Remark \ref{ramif},%the ramification requirement,
+Note that for any odd $p\in P$, the field $K_p$ in the statement of Lemma \ref{genus} is determined uniquely by the condition (iv) alone (together with the fact that it must be abelian and ramified over $\Q$ only at $p$), because by Remark \ref{ramif}, %the ramification requirement,
  it must be a subfield of the cyclotomic field $\Q(\zeta_{p^f})$ for some $f\in\Nbb$, whose absolute Galois group is isomorphic to $(\Z/p^f\Z)^{\times}$, which is cyclic, since $p$ is odd. Thus if only odd primes ramify in $k$, the equalities (i) or (ii) in Lemma \ref{genus} can be used to construct $K$ from $k$. In general though, this argument doesn't help us determine the field $K_2$ without prior knowledge of $K$ (there could be up to three possibilities), and the \enquote{correct} choice of $K_2$ is given by the theory of Dirichlet characters. However, even in this case we can still construct $K$ only from the data provided by $k$ thanks to the equality (ii).
  
  %iff $p\geq 3$ or $f\leq 2$, and cyclic groups have at exactly one quotient group of any possible order. %The assumption of the cyclicity of all inertia groups in the statement of the lemma is thus not required for $p\geq 3$ or $f\leq 2$, and can be also be removed for the other cases (but then there are three possible choices for $K_2$, so we must slightly change the statement).
@@ -118,13 +118,13 @@ An element $\alpha$ of a real abelian field $K$ is called \textit{totally positi
 Let $G$ be any group. The (integral) \textit{group ring} $\Z[G]$ is the free $\Z$-module with basis $G$, which is made into a ring, extending linearly the group law on $G$.
 \end{definition}
 
-For the remainder of this chapter, let $k\neq \Q$ be a real abelian field, $K$ be its the genus field in the narrow sense, $P$ be the set of ramified primes of $k$ (note that the condition $k\neq \Q$ implies that $P\neq \emptyset$) and $K_p$ be the maximal subfield of $K$ ramified only at $p\in P$. Since $\Gal(K/\Q)$ has a natural action on $K$ (given by evaluating an automorphism on an element), this makes $K$ into a $\Z[\Gal(K/\Q)]$-module. 
+For the remainder of this chapter, let $k\neq \Q$ be a real abelian field, $K$ be its the genus field in the narrow sense, $P$ be the set of ramified primes of $k/\Q$ (note that the condition $k\neq \Q$ implies that $P\neq \emptyset$) and $K_p$ be the maximal subfield of $K$ ramified over $\Q$ only at $p\in P$. Since $\Gal(K/\Q)$ has a natural action on $K$ (given by evaluating an automorphism on an element), this makes $K$ and $K^{\times}$ into $\Z[\Gal(K/\Q)]$-modules. 
 
 The following definition is equivalent to Lettl's modification of Sinnott's definition:
 \begin{definition}
 The group $D(k)$ of circular numbers of $k$ is given as
 $$D:=\big\langle \{-1\} \cup \{\eta_I \big\vert \emptyset \subsetneq I \subseteq P \}\big\rangle_{\Z[\Gal(K/\Q)]},$$
-where $\langle \dots \rangle_{\Z[\Gal(K/\Q)]}$ means \enquote{generated as a $\Z[\Gal(K/\Q)]$-submodule of $K$} and $$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)})/\left(\prod_{i\in I}K_i\right)\cap k}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)}\right),$$ where $\text{N}$ denotes the norm operator and the product of fields denotes their compositum. The subgroup of totally positive elements of $D(k)$ will be denoted by $D^+(k)$.
+where $\langle \dots \rangle_{\Z[\Gal(K/\Q)]}$ means \enquote{generated as a $\Z[\Gal(K/\Q)]$-submodule of $K^{\times}$} and $$\eta_I=\text{N}_{\Qbb(\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)})/\left(\prod_{i\in I}K_i\right)\cap k}\left(1-\zeta_{\text{cond} \left(\prod_{i\in I}K_i\right)}\right),$$ where $\text{N}$ denotes the norm operator and the product of fields denotes their compositum. The subgroup of totally positive elements of $D(k)$ will be denoted by $D^+(k)$.
 \end{definition}
 
 \begin{definition}
@@ -133,8 +133,8 @@ The group $C(k)$ of circular numbers of $k$ is $E(k)\cap D(k)$, where $E(k)$ is 
 
 \begin{rem}
 All the generators $\eta_I$ of $D(k)$ are norms of nonzero elements from an imaginary abelian field to a real subfield. Hence for any $I$, we can write 
-$$\eta_I=(1-\z_{\cond(\prod_{i\in I}K_i)})^{\sum_{i=1}^r(\sigma_i+\overline{\sigma_i})}$$
-for some $r\in\Nbb$, where $\overline{\sigma_i}$ is the automorphism which is complex conjugate to $\sigma_i$. It follows that $\sigma(\eta_I)>0$ for any embedding $\sigma:k\to \R$, so that $\eta_I$ so totally positive. On the other hand, $-1$ is not totally positive and its product with any totally positive element is also not totally positive. This shows that $$D^+(k)=\big\langle  \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/\Q)]},$$
+$$\eta_I=(1-\z_{\cond(\prod_{i\in I}K_i)})^{\sum_{j=1}^r(\sigma_j+\overline{\sigma_j})}$$
+for some $r\in\Nbb$, where $\overline{\sigma_j}$ is the automorphism which is complex conjugate to $\sigma_j$. It follows that $\sigma(\eta_I)>0$ for any embedding $\sigma:k\to \R$, so that $\eta_I$ so totally positive. On the other hand, $-1$ is not totally positive and its product with any totally positive element is also not totally positive. This shows that $$D^+(k)=\big\langle  \eta_I \big\vert \emptyset \subsetneq I \subseteq P\big\rangle_{\Z[\Gal(K/\Q)]},$$
 which is canonically isomorphic to the to torsion-free part of $D(k)$. Since $\Z$ is a principal ideal domain and $D(k)$ is finitely generated, this implies that $D^+(k)$ and consequently also $C^+(k)$ are free $\Z$-modules.
 \end{rem}
 
@@ -186,11 +186,11 @@ By Dirichlet's unit theorem, the $\Z$-rank of $E(k)$ is $[k:\Q]-1$, since all th
 %Because $C(k)$ is finitely generated, its torsion subgroup is finite, hence the $\Z$-rank of $C^+(k)$, which is isomorphic to the non-torsion part of $C(k)$ by Lemma \ref{torsion}, must also be $[k:\Q]-1$.
 
 Now consider the quotient module $D^+(k)/C^+(k)$. By Lemma \ref{units}, it is generated as a $\Z$-module by the images of $\eta_I$ for $|I|=1$, hence it has exactly $|P|$ generators. Since the absolute norm of $\eta_{\{p\}}$ is a power of $p$%odkaz na bakalářku?
-, the elements $\eta_I$ with $|I|=1$ are multiplicatively independent (any nontrivial relation between them would give us a nontrivial multiplicative relation between powers of different primes, which is not possible). Moreover, since the absolute norm of all elements in $C^+(k)$ is $1$, the images of $\eta_I$ remain multiplicatively independent in $D^+(k)/C^+(k)$. Thefore this quotient module has $\Z$-rank $|P|$, which implies that the $\Z$-rank of $D^+$ is $[k:\Q]+|P|-1$ by the first part.
+, the elements $\eta_I$ with $|I|=1$ are multiplicatively independent (any nontrivial relation between them would give us a nontrivial multiplicative relation between powers of different primes, which is not possible). Moreover, since the absolute norm of all elements in $C^+(k)$ is $1$, the images of $\eta_I$ remain multiplicatively independent in $D^+(k)/C^+(k)$. Thefore this quotient module has $\Z$-rank $|P|$, which implies that the $\Z$-rank of $D^+(k)$ is $[k:\Q]+|P|-1$ by the first part.
 \end{proof}
 
 \begin{lemma}\label{NoFrob}
-If $L' \subset L$ are abelian fields, then for any $\epsilon\in C(L)$ (resp. $C^+(L)$, resp. $D(L)$, resp. $D^+(L)$) we have $\N_{L/L'}(\epsilon)\in C(L')$ (resp. $C^+(L')$, resp. $D(L')$, resp. $D^+(L')$).
+If $L' \subseteq L$ are abelian fields, then for any $\epsilon\in C(L)$ (or $C^+(L)$ or $D(L)$ or $D^+(L)$) we have $\N_{L/L'}(\epsilon)\in C(L')$ (or $C^+(L')$ or $D(L')$ or $D^+(L')$), respectively.
 \end{lemma}
 \begin{proof}
 This is well known and can be proved easily using the original Sinnott's definition of $C(L)$.

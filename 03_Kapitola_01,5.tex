@@ -181,7 +181,8 @@ We have
 where each automorphism of $k$ determines the quadruple $(x_1,x_2,x_3,x_4)$ uniquely.
 \end{prop}
 \begin{proof}
-First note that by Lemma \ref{coprime}, we have $$a_3\frac{m}{r_3r_4}s_{34}=a_3\gcd(n_3,n_4)\in\Nbb$$ and $$a_2\frac{m}{r_2s_{34}}\in\Nbb$$ (this follows from $r_2\mid m$, $s_{34}\mid m$ and $\gcd(r_2,s_{34})=\gcd(r_2,r_3,r_4)=1$), so the expressions make sense. By Corollary \ref{compcap}, the set on the right hand side has at most $|\Gal(k/\Qbb)|$ elements. Now let $\rho$ be any automorphism of $k$. If we can show that $\rho$ determines the quadruple $(x_1,x_2,x_3,x_4)$ belonging to the set on the right hand side uniquely, it will follow that the cardinalities agree and we will be done.
+First note that by Lemma \ref{coprime}, we have $$a_3\frac{m}{r_3r_4}s_{34}=a_3\gcd(n_3,n_4)\in\Nbb$$ and $$a_2\frac{m}{r_2s_{34}}\in\Nbb$$ (this follows from $r_2\mid m$, $s_{34}\mid m$ and $\gcd(r_2,s_{34})=\gcd(r_2,r_3,r_4)=1$), so the expressions make sense. By Corollary \ref{compcap}, the set on the right hand side has at most $|\Gal(k/\Qbb)|$ elements. Now let $\rho$ be any automorphism of $k$. %If we can show that $\rho$ determines the quadruple $(x_1,x_2,x_3,x_4)$ belonging to the set on the right hand side uniquely, it will follow that the cardinalities agree and we will be done.
+If we can show that $\rho$ can be written as $$\rho=\sigma_1^{x_1}\sigma_2^{x_2}\sigma_3^{x_3}\sigma_4^{x_4}\mid_k$$ for a unique quadruple $(x_1,x_2,x_3,x_4)$ satisfying $$0\leq x_1<a_1\frac{m}{r_1}, 0\leq x_2<a_2\frac{m}{r_2s_{34}}, 0\leq x_3<a_3\frac{m}{r_3r_4}s_{34},0\leq x_4<a_4\},$$ it will follow that the cardinalities agree and we will be done.
 
 \begin{center}
 \begin{tikzpicture}
