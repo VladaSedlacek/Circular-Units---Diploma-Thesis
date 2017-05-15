@@ -51,16 +51,19 @@ which is cyclic. This concludes the proof.
 
 Using the results in \citep{Kucera2016}, we can thus take the $\Z$-bases of $$D^+(k\cap K_1K_2K_3),D^+(k\cap K_1K_2K_4),D^+(k\cap K_1K_3K_4),D^+(k\cap K_2K_3K_4)$$
 and we will denote their union by $B_D$. Analogously, we can take the $\Z$-bases of $$C^+(k\cap K_1K_2K_3),C^+(k\cap K_1K_2K_4),C^+(k\cap K_1K_3K_4),C^+(k\cap K_2K_3K_4)$$
-and denote their union by $B_C$. Note that $B_C\subseteq B_D$ and $B_D\setminus B_C$ contains only some conjugates of $\eta_{\{1\}},\eta_{\{2\}},\eta_{\{3\}},\eta_{\{4\}}.$
+and denote their union by $B_C$. Note that $B_D$ and $B_C$ contain the same conjugates of $\eta_I$ for each $I\subsetneq \{1,2,3,4\}$, $|I|\geq 2$.
+%$B_C\subseteq B_D$ and $B_D\setminus B_C$ contains only some conjugates of $\eta_{\{1\}},\eta_{\{2\}},\eta_{\{3\}},\eta_{\{4\}}.$
 %Lemma \ref{F} now implies that $\eta^{R_iN_i}\in C^{+}$, so it can be expressed as a multiplicative combination of the elements of $B_C$
 
 To construct a $\Z$-basis of $D^+$ (or $C^+$), we will take the union of $B_D$ (or $B_C$, respectively) with a set $B$ of suitably chosen conjugates of the highest generator $\eta$. In order to have a chance to obtain a $\Z$-basis of $D^+$, this set should have cardinality
-\begin{align}\label{Ndef}
+\begin{equation}\label{Ndef}
+\begin{split}
 N:&=[k:\Q]+4-1-|B_D|\\
 &=[k:\Q]+3-\sum_{i,j,l}([k\cap K_iK_jK_l:\Q]+2)+\sum_{i,j}([k\cap K_iK_j:\Q]+1)-\sum_{i}[k\cap K_i:\Q]\\
 &=a_1a_2a_3a_4\frac{m^3}{r_1r_2r_3r_4}-\sum_{i,j,l}a_ia_ja_l\frac{m^2}{r_ir_jr_l}+\sum_{i,j}
 a_ia_js_{ij}\frac{m}{r_ir_j}-\sum_{i}a_i+1
-\end{align}
+\end{split}
+\end{equation}
 by Proposition \ref{Drank} and using the principle of inclusion and exclusion (due to the fact that these bases were constructed \enquote{inductively}). Note that all conjugates of $\eta$ are units by Lemma \ref{units}, so this number $N$ will remain the same in the case of constructing a $\Z$-basis of $C^+$. Thus we do not have to distinguish between the cases of $D^+$ and $C^+$ anymore and we can take the set $B$ to be the same for both of them.
 
 We cannot guarantee at the moment that the union of all these conjugates is not linearly dependent, but if we will show how to obtain all the missing conjugates of $\eta$ using the relations $$R_1N_1\sim 0, R_2N_2\sim 0, R_3N_3\sim 0, R_4\sum_{u=0}^{n_4-1}\sigma_1^{ua_1}\sigma_2^{ua_2}\sigma_3^{ua_3}\sim 0$$
